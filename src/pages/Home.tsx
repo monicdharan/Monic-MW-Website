@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useModal } from '../context/ModalContext';
 import { servicesData } from '../data/services';
@@ -12,12 +12,6 @@ import { CtaBanner } from '../components/sections/CtaBanner';
 
 export const Home: React.FC = () => {
   const { openConsultation } = useModal();
-  const [pubFilter, setPubFilter] = useState<'all' | 'original' | 'case'>('all');
-
-  const filteredPubs = publicationsData.filter((p) => {
-    if (pubFilter === 'all') return true;
-    return p.category === pubFilter;
-  });
 
   return (
     <div className="page-home">
@@ -153,44 +147,17 @@ export const Home: React.FC = () => {
           =================================================================== */}
       <section className="editorial-section section-bg-white" aria-labelledby="home-portfolio-heading">
         <div className="site-container">
-          {/* Header & Filter Controls */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', marginBottom: '20px' }}>
-            <div>
-              <span className="section-header-eyebrow">DOCUMENT ARCHIVE</span>
-              <h2 id="home-portfolio-heading" style={{ fontSize: 'clamp(1.5rem, 2.5vw, 1.9rem)', margin: 0, fontWeight: 700 }}>
-                Verified Publication Records
-              </h2>
-            </div>
-
-            {/* Filter Pills */}
-            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <button
-                type="button"
-                className={`btn btn-sm ${pubFilter === 'all' ? 'btn-primary' : 'btn-secondary'}`}
-                onClick={() => setPubFilter('all')}
-              >
-                All Documents
-              </button>
-              <button
-                type="button"
-                className={`btn btn-sm ${pubFilter === 'original' ? 'btn-primary' : 'btn-secondary'}`}
-                onClick={() => setPubFilter('original')}
-              >
-                Original Research
-              </button>
-              <button
-                type="button"
-                className={`btn btn-sm ${pubFilter === 'case' ? 'btn-primary' : 'btn-secondary'}`}
-                onClick={() => setPubFilter('case')}
-              >
-                Case Reports
-              </button>
-            </div>
+          {/* Header */}
+          <div style={{ marginBottom: '20px' }}>
+            <span className="section-header-eyebrow">DOCUMENT ARCHIVE</span>
+            <h2 id="home-portfolio-heading" style={{ fontSize: 'clamp(1.5rem, 2.5vw, 1.9rem)', margin: 0, fontWeight: 700 }}>
+              Verified Publication Records
+            </h2>
           </div>
 
-          {/* Cards Grid: Only 3 Cards */}
+          {/* Cards Grid: Top 3 Cards */}
           <div className="publications-archive-grid">
-            {filteredPubs.slice(0, 3).map((pub) => (
+            {publicationsData.slice(0, 3).map((pub) => (
               <PublicationCard key={pub.id} publication={pub} />
             ))}
           </div>
