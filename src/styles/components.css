@@ -927,31 +927,40 @@
 .screenshot-card {
   background: #FFFFFF;
   border: 1px solid var(--border-card);
-  border-radius: var(--radius-sm);
-  padding: 10px;
+  border-radius: var(--radius-md);
+  padding: 16px;
   cursor: pointer;
-  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 420px;
+  box-shadow: var(--shadow-subtle);
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
 }
 
 .screenshot-card:hover {
   box-shadow: var(--shadow-soft);
   transform: translateY(-2px);
+  border-color: var(--mint-primary);
 }
 
 .screenshot-card-img {
   width: 100%;
-  height: 170px;
+  height: clamp(300px, 32vw, 380px);
   object-fit: contain;
-  background: var(--bg-alt);
-  border-radius: var(--radius-xs);
+  background: #F8FCFC;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  display: block;
 }
 
 .screenshot-caption {
   font-family: var(--font-family-body);
-  font-size: 0.82rem;
-  color: var(--text-body);
-  margin-top: 8px;
-  line-height: 1.4;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-headline);
+  margin-top: 12px;
+  line-height: 1.48;
 }
 
 /* --------------------------------------------------------------------------
