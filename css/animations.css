@@ -1,0 +1,149 @@
+/* ==========================================================================
+   MedZen Writes — Micro-Animations & Dynamic Motion
+   ========================================================================== */
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(34, 204, 242, 0.3), 0 0 30px rgba(25, 118, 210, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(34, 204, 242, 0.6), 0 0 45px rgba(25, 118, 210, 0.4);
+  }
+}
+
+@keyframes floatElement {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+.float-slow {
+  animation: floatElement 5s infinite ease-in-out;
+}
+
+.interactive-hover-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.interactive-hover-lift:hover {
+  transform: translateY(-6px);
+}
+
+/* Toast Notification Styles */
+.toast-container {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast {
+  background: var(--blue-950);
+  color: #FFFFFF;
+  padding: 14px 24px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid var(--cyan-300);
+  animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  pointer-events: auto;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Seamless Page Navigation Transformations (View Transitions API)
+   ========================================================================== */
+
+@view-transition {
+  navigation: auto;
+}
+
+/* Keep sticky header and floating WhatsApp button anchored & rock-solid */
+::view-transition-group(site-header) {
+  animation-duration: 0s;
+  z-index: 1000;
+}
+
+::view-transition-group(site-whatsapp-btn) {
+  animation-duration: 0s;
+  z-index: 999;
+}
+
+/* Seamless cross-fade between old and new pages */
+::view-transition-old(root) {
+  animation: pageViewFadeOut 0.18s cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+::view-transition-new(root) {
+  animation: pageViewFadeIn 0.22s cubic-bezier(0, 0, 0.2, 1) both;
+}
+
+@keyframes pageViewFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes pageViewFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Page Entry Soft Fade: Eliminates hard, instantaneous pop-in */
+@media (prefers-reduced-motion: no-preference) {
+  main {
+    animation: pageMainFadeIn 0.24s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+@keyframes pageMainFadeIn {
+  0% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+

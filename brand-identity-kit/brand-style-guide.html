@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedZen Writes — Interactive Brand & Visual Identity Style Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens/brand-tokens.css">
+  <style>
+    :root {
+      --sidebar-width: 260px;
+    }
+    body {
+      background: var(--bg-alt);
+      color: var(--text-body);
+      margin: 0;
+      display: flex;
+      min-height: 100vh;
+      font-family: var(--font-family-body);
+    }
+    /* Sidebar Navigation */
+    .sidebar {
+      width: var(--sidebar-width);
+      background: var(--teal-hero);
+      color: #ffffff;
+      padding: 32px 20px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      overflow-y: auto;
+      box-shadow: 4px 0 20px rgba(0, 35, 39, 0.15);
+      z-index: 100;
+    }
+    .sidebar-brand {
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .sidebar-logo {
+      height: 38px;
+      width: auto;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .sidebar-title {
+      font-family: var(--font-family-heading);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mint-primary);
+    }
+    .sidebar-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .sidebar-link {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all var(--transition-fast);
+    }
+    .sidebar-link:hover, .sidebar-link.active {
+      background: rgba(0, 194, 178, 0.2);
+      color: #ffffff;
+    }
+    .sidebar-link .material-symbols-outlined {
+      font-size: 20px;
+      color: var(--mint-primary);
+    }
+
+    /* Main Content Area */
+    .main-content {
+      margin-left: var(--sidebar-width);
+      flex: 1;
+      padding: 48px 48px 80px;
+      max-width: 1200px;
+    }
+    .section-card {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 36px;
+      margin-bottom: 40px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+    }
+    .section-title {
+      font-family: var(--font-family-heading);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-headline);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    /* Swatches Grid */
+    .swatches-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    .swatch-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      position: relative;
+    }
+    .swatch-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .swatch-color {
+      height: 90px;
+      width: 100%;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    .swatch-info {
+      padding: 12px;
+    }
+    .swatch-name {
+      font-family: var(--font-family-heading);
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--text-headline);
+      margin-bottom: 4px;
+    }
+    .swatch-hex {
+      font-size: 0.82rem;
+      font-family: monospace;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .copy-hint {
+      font-size: 11px;
+      color: var(--mint-primary);
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+    }
+    .swatch-card:hover .copy-hint {
+      opacity: 1;
+    }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--teal-hero);
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: var(--radius-full);
+      font-family: var(--font-family-heading);
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid var(--mint-primary);
+      display: none;
+      z-index: 999;
+      animation: fadeIn 0.2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Logo Box */
+    .logo-display-box {
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .logo-dark-box {
+      background: var(--teal-hero);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .logo-light-box {
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* Icon Grid */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 14px;
+    }
+    .icon-card {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .icon-card:hover {
+      background: var(--bg-soft-mint);
+      border-color: var(--mint-primary);
+      transform: translateY(-2px);
+    }
+    .icon-card .material-symbols-outlined {
+      font-size: 32px;
+      color: var(--teal-hero);
+      margin-bottom: 8px;
+    }
+    .icon-name {
+      font-size: 0.75rem;
+      font-family: monospace;
+      color: var(--text-muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <img src="logos/medzen-writes-logo-light.png" alt="MedZen Writes" class="sidebar-logo">
+      <div class="sidebar-title">Brand Identity Kit</div>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="#colors" class="sidebar-link active"><span class="material-symbols-outlined">palette</span> Colors</a></li>
+      <li><a href="#typography" class="sidebar-link"><span class="material-symbols-outlined">text_fields</span> Typography</a></li>
+      <li><a href="#logos" class="sidebar-link"><span class="material-symbols-outlined">verified</span> Logos</a></li>
+      <li><a href="#components" class="sidebar-link"><span class="material-symbols-outlined">smart_button</span> Components</a></li>
+      <li><a href="#icons" class="sidebar-link"><span class="material-symbols-outlined">interests</span> Icon Library</a></li>
+      <li><a href="templates/carousel-slide-templates.html" class="sidebar-link" target="_blank"><span class="material-symbols-outlined">auto_stories</span> View Slides ↗</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Header Intro -->
+    <header style="margin-bottom: 40px;">
+      <span class="eyebrow-badge eyebrow-badge-mint" style="margin-bottom: 12px;">
+        <span class="material-symbols-outlined">science</span>
+        Novadent Medical Design System
+      </span>
+      <h1 style="font-family: var(--font-family-heading); font-size: 2.5rem; font-weight: 900; color: var(--text-headline); margin: 0 0 10px;">
+        MedZen Writes Brand &amp; Visual Identity
+      </h1>
+      <p style="color: var(--text-muted); font-size: 1.15rem; margin: 0;">
+        Interactive style guide and design token reference for creating high-converting social carousels and medical publications.
+      </p>
+    </header>
+
+    <!-- SECTION 1: COLORS -->
+    <section class="section-card" id="colors">
+      <div class="section-title">
+        <span class="material-symbols-outlined" style="color: var(--teal-hero);">palette</span>
+        <span>1. Color Palette (Click swatch to copy HEX)</span>
+      </div>
+      <p class="section-desc">
+        The core brand anchored by Oceanic Deep Teal (`#004E57`), Fresh Mint (`#00C2B2`), and soft clinical sage surfaces.
+      </p>
+
+      <!-- Primary Teal Swatches -->
+      <h3 style="font-size: 1.1rem; color: var(--teal-hero); margin-bottom: 14px;">Primary Oceanic Teal</h3>
+      <div class="swatches-grid">
+        <div class="swatch-card" onclick="copyHex('#004e57', 'Teal Primary')">
+          <div class="swatch-color" style="background: #004e57;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Teal Primary</div>
+            <div class="swatch-hex"><span>#004E57</span><span class="copy-hint">Copy</span></div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyHex('#003f47', 'Teal Hover')">
+          <div class="swatch-color" style="background: #003f47;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Teal Hover</div>
+            <div class="swatch-hex"><span>#003F47</span><span class="copy-hint">Copy</span></div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyHex('#002d33', 'Teal Dark')">
+          <div class="swatch-color" style="background: #002d33;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Teal Dark</div>
+            <div class="swatch-hex"><span>#002D33</span><span class="copy-hint">Copy</span></div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyHex('#007c8a', 'Teal 500')">
+          <div class="swatch-color" style="background: #007c8a;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Teal 500</div>
+            <div class="swatch-hex"><span>#007C8A</span><span class="copy-hint">Copy</span></div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyHex('#74dae5', 'Teal 200')">
+          <div class="swatch-color" style="background: #74dae5;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Teal 200</div>
+            <div class="swatch-hex"><span>#74DAE5</span><span class="copy-hint">Copy</span></div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyHex('#ebf8f9', 'Teal 50')">
+          <div class="swatch-color" style="background: #ebf8f9;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Teal 50</div>
+            <div class="swatch-hex"><span>#EBF8F9</span><span class="copy-hint">Copy</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accent Mint Swatches -->
+      <h3 style="font-size: 1.1rem; color: var(--teal-hero); margin-bottom: 14px; margin-top: 24px;">Accent Fresh Mint / Turquoise</h3>
+      <div class="swatches-grid">
+        <div class="swatch-card" onclick="copyHex('#00c2b2', 'Mint Primary')">
+          <div class="swatch-color" style="background: #00c2b2;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Mint Primary</div>
+            <div class="swatch-hex"><span>#00C2B2</span><span class="copy-hint">Copy</span></div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyHex('#00aa9c', 'Mint Hover')">
+          <div class="swatch-color" style="background: #00aa9c;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Mint Hover</div>
+            <div class="swatch-hex"><span>#00AA9C</span><span class="copy-hint">Copy</span></div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyHex('#54e3d6', 'Mint 300')">
+          <div class="swatch-color" style="background: #54e3d6;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Mint 300</div>
+            <div class="swatch-hex"><span>#54E3D6</span><span class="copy-hint">Copy</span></div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyHex('#ccf8f4', 'Mint 100')">
+          <div class="swatch-color" style="background: #ccf8f4;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Mint 100</div>
+            <div class="swatch-hex"><span>#CCF8F4</span><span class="copy-hint">Copy</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Surfaces Swatches -->
+      <h3 style="font-size: 1.1rem; color: var(--teal-hero); margin-bottom: 14px; margin-top: 24px;">Surfaces &amp; Backgrounds</h3>
+      <div class="swatches-grid">
+        <div class="swatch-card" onclick="copyHex('#ffffff', 'Clinical White')">
+          <div class="swatch-color" style="background: #ffffff;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Clinical White</div>
+            <div class="swatch-hex"><span>#FFFFFF</span><span class="copy-hint">Copy</span></div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyHex('#edf5f4', 'Soft Sage Surface')">
+          <div class="swatch-color" style="background: #edf5f4;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Soft Sage Mint</div>
+            <div class="swatch-hex"><span>#EDF5F4</span><span class="copy-hint">Copy</span></div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyHex('#f3f8f8', 'Cool Tint Surface')">
+          <div class="swatch-color" style="background: #f3f8f8;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Cool Alt Tint</div>
+            <div class="swatch-hex"><span>#F3F8F8</span><span class="copy-hint">Copy</span></div>
+          </div>
+        </div>
+        <div class="swatch-card" onclick="copyHex('#003238', 'Deep Footer Teal')">
+          <div class="swatch-color" style="background: #003238;"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Deep Footer Teal</div>
+            <div class="swatch-hex"><span>#003238</span><span class="copy-hint">Copy</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: LOGOS -->
+    <section class="section-card" id="logos">
+      <div class="section-title">
+        <span class="material-symbols-outlined" style="color: var(--teal-hero);">verified</span>
+        <span>2. Brand Logos &amp; Clear Space</span>
+      </div>
+      <p class="section-desc">
+        Light logo for dark teal surfaces; Dark logo for white &amp; soft sage surfaces.
+      </p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+        <!-- Light Logo on Dark -->
+        <div>
+          <div class="logo-display-box logo-dark-box">
+            <img src="logos/medzen-writes-logo-light.png" alt="Light Logo" style="height: 52px; width: auto;">
+          </div>
+          <div style="font-weight: 700; color: var(--text-headline); margin-bottom: 4px;">Light Logo (`medzen-writes-logo-light.png`)</div>
+          <div style="font-size: 0.88rem; color: var(--text-muted);">For Dark Oceanic Teal (`#004E57`), Hero Gradients, and Dark Carousel Covers.</div>
+        </div>
+
+        <!-- Dark Logo on Light -->
+        <div>
+          <div class="logo-display-box logo-light-box">
+            <img src="logos/medzen-writes-logo-dark.png" alt="Dark Logo" style="height: 52px; width: auto;">
+          </div>
+          <div style="font-weight: 700; color: var(--text-headline); margin-bottom: 4px;">Dark Logo (`medzen-writes-logo-dark.png`)</div>
+          <div style="font-size: 0.88rem; color: var(--text-muted);">For Pure White (`#FFFFFF`), Soft Sage (`#EDF5F4`), and Light Slide Backgrounds.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: TYPOGRAPHY -->
+    <section class="section-card" id="typography">
+      <div class="section-title">
+        <span class="material-symbols-outlined" style="color: var(--teal-hero);">text_fields</span>
+        <span>3. Typography Standards</span>
+      </div>
+      <p class="section-desc">
+        Headlines: <strong>Plus Jakarta Sans</strong> | Body: <strong>Inter &amp; Plus Jakarta Sans</strong>
+      </p>
+
+      <div style="border-left: 4px solid var(--mint-primary); padding-left: 20px; margin-bottom: 24px;">
+        <div style="font-family: var(--font-family-heading); font-size: 2.2rem; font-weight: 900; line-height: 1.15; color: var(--text-headline); margin-bottom: 8px;">
+          From PG Protocol to PubMed Indexed in 90 Days
+        </div>
+        <p style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: var(--text-body); line-height: 1.6; margin: 0;">
+          Our academic panel of medical writing specialists and PhD biostatisticians structure thesis dissertations and journal manuscripts to match stringent ICMJE and university criteria.
+        </p>
+      </div>
+
+      <div style="display: flex; gap: 16px;">
+        <a href="fonts/font-specimen.html" target="_blank" class="btn btn-teal">
+          <span class="material-symbols-outlined">visibility</span>
+          <span>Open Full Font Specimen ↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- SECTION 4: COMPONENTS -->
+    <section class="section-card" id="components">
+      <div class="section-title">
+        <span class="material-symbols-outlined" style="color: var(--teal-hero);">smart_button</span>
+        <span>4. Component Styles (Pills, Badges &amp; Buttons)</span>
+      </div>
+      <p class="section-desc">
+        Pill geometry for eyebrow badges and status labels; 10px–14px rounded corners for clinical action buttons.
+      </p>
+
+      <!-- Eyebrow Badges -->
+      <h3 style="font-size: 1.1rem; color: var(--teal-hero); margin-bottom: 14px;">Eyebrow Badges (Pill Geometry)</h3>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px;">
+        <span class="eyebrow-badge">
+          <span class="material-symbols-outlined">school</span>
+          PG Thesis Framework
+        </span>
+        <span class="eyebrow-badge eyebrow-badge-mint">
+          <span class="material-symbols-outlined">verified</span>
+          PubMed Indexed
+        </span>
+        <span class="eyebrow-badge" style="background: #004e57; color: #ffffff; border-color: #004e57;">
+          <span class="material-symbols-outlined" style="color: var(--mint-primary);">calendar_month</span>
+          Free Consultation
+        </span>
+      </div>
+
+      <!-- Buttons -->
+      <h3 style="font-size: 1.1rem; color: var(--teal-hero); margin-bottom: 14px;">Buttons &amp; CTAs</h3>
+      <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center;">
+        <button class="btn btn-teal">
+          <span class="material-symbols-outlined">calendar_month</span>
+          <span>Book Consultation</span>
+        </button>
+
+        <button class="btn btn-mint">
+          <span class="material-symbols-outlined">chat</span>
+          <span>WhatsApp Inquiry</span>
+        </button>
+
+        <button class="btn btn-white">
+          <span class="material-symbols-outlined">download</span>
+          <span>Download Checklist</span>
+        </button>
+
+        <button class="btn btn-outline-teal">
+          <span class="material-symbols-outlined">arrow_forward</span>
+          <span>Read Framework</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- SECTION 5: ICONS -->
+    <section class="section-card" id="icons">
+      <div class="section-title">
+        <span class="material-symbols-outlined" style="color: var(--teal-hero);">interests</span>
+        <span>5. Brand Icons Library (Click to Copy Glyph Name)</span>
+      </div>
+      <p class="section-desc">
+        Material Symbols Outlined icons used across medical writing, biostatistics, trust proof, and carousel swipe prompts.
+      </p>
+
+      <div class="icon-grid" id="iconGridContainer">
+        <!-- Icons populated by JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <div id="toast">Copied to clipboard!</div>
+
+  <script>
+    function copyHex(hex, name) {
+      navigator.clipboard.writeText(hex);
+      showToast('Copied ' + name + ' (' + hex + ')');
+    }
+
+    function copyIcon(iconName) {
+      navigator.clipboard.writeText(iconName);
+      showToast('Copied icon name: ' + iconName);
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 2000);
+    }
+
+    // Populate icon library
+    const sampleIcons = [
+      'medical_services', 'stethoscope', 'clinical_notes', 'medical_information', 'pill', 'health_and_safety',
+      'school', 'menu_book', 'auto_stories', 'description', 'checklist', 'rate_review',
+      'analytics', 'bar_chart', 'timeline', 'insights', 'science', 'fact_check',
+      'verified', 'check_circle', 'star', 'reviews', 'military_tech', 'handshake',
+      'arrow_forward', 'download', 'calendar_month', 'chat', 'schedule', 'support_agent'
+    ];
+
+    const container = document.getElementById('iconGridContainer');
+    sampleIcons.forEach(icon => {
+      const card = document.createElement('div');
+      card.className = 'icon-card';
+      card.onclick = () => copyIcon(icon);
+      card.innerHTML = `
+        <span class="material-symbols-outlined">${icon}</span>
+        <div class="icon-name">${icon}</div>
+      `;
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>

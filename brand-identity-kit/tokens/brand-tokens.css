@@ -1,0 +1,421 @@
+/* ==========================================================================
+   MedZen Writes — Master Brand & Carousel Design Tokens
+   Novadent-Inspired Medical & Clinical Research Design System
+   Primary: Oceanic Deep Teal (#004E57) | Accent: Fresh Mint (#00C2B2)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+:root {
+  /* --------------------------------------------------------------------------
+     1. Primary Color Scale: Oceanic Deep Teal
+     -------------------------------------------------------------------------- */
+  --teal-hero: #004e57;
+  --teal-primary: #004e57;
+  --teal-primary-hover: #003f47;
+  --teal-primary-dark: #002d33;
+  --teal-950: #00161a;
+  --teal-900: #002227;
+  --teal-850: #002e35;
+  --teal-800: #003b44;
+  --teal-700: #004e57;
+  --teal-600: #00646f;
+  --teal-500: #007c8a;
+  --teal-400: #0099a8;
+  --teal-300: #1ab8c9;
+  --teal-200: #74dae5;
+  --teal-100: #c0eff4;
+  --teal-50:  #ebf8f9;
+  --teal-25:  #f4fbfb;
+
+  /* --------------------------------------------------------------------------
+     2. Accent Scale: Fresh Mint / Vibrant Turquoise
+     -------------------------------------------------------------------------- */
+  --mint-primary: #00c2b2;
+  --mint-hover: #00aa9c;
+  --mint-active: #008f83;
+  --mint-500: #00c2b2;
+  --mint-400: #1ed0c1;
+  --mint-300: #54e3d6;
+  --mint-200: #99f0e8;
+  --mint-100: #ccf8f4;
+  --mint-50:  #edfbf9;
+  --mint-25:  #f5fcfb;
+
+  /* --------------------------------------------------------------------------
+     3. Surfaces & Backgrounds
+     -------------------------------------------------------------------------- */
+  --bg-body: #ffffff;
+  --bg-page: #ffffff;
+  --bg-alt: #f3f8f8;
+  --bg-soft-mint: #edf5f4;
+  --bg-card: #ffffff;
+  --bg-card-subtle: #f9fcfc;
+  --bg-dark-teal: #004e57;
+  --bg-deep-footer: #003238;
+  --bg-glass: rgba(255, 255, 255, 0.95);
+  --bg-glass-dark: rgba(0, 45, 51, 0.85);
+
+  /* --------------------------------------------------------------------------
+     4. Typography Neutrals & Accents
+     -------------------------------------------------------------------------- */
+  --text-headline: #002b30;
+  --text-body: #395256;
+  --text-muted: #5f7d81;
+  --text-light: #8ca4a8;
+  --text-inverted: #ffffff;
+  --text-mint: #00c2b2;
+
+  /* --------------------------------------------------------------------------
+     5. Borders & Dividers
+     -------------------------------------------------------------------------- */
+  --border-subtle: #e2ecec;
+  --border-card: #e8f2f2;
+  --border-teal: rgba(0, 78, 87, 0.16);
+  --border-mint: rgba(0, 194, 178, 0.35);
+  --border-active: #00c2b2;
+
+  /* --------------------------------------------------------------------------
+     6. Drop Shadows & Glows
+     -------------------------------------------------------------------------- */
+  --shadow-xs: 0 1px 3px rgba(0, 43, 48, 0.04);
+  --shadow-sm: 0 4px 12px rgba(0, 43, 48, 0.05);
+  --shadow-md: 0 10px 25px -4px rgba(0, 43, 48, 0.07), 0 4px 10px -2px rgba(0, 194, 178, 0.04);
+  --shadow-lg: 0 20px 40px -8px rgba(0, 43, 48, 0.10), 0 8px 20px -4px rgba(0, 194, 178, 0.06);
+  --shadow-xl: 0 30px 60px -12px rgba(0, 43, 48, 0.16), 0 12px 28px -4px rgba(0, 194, 178, 0.10);
+  --shadow-hover: 0 24px 50px -8px rgba(0, 78, 87, 0.18);
+  --shadow-mint-glow: 0 8px 25px rgba(0, 194, 178, 0.35);
+
+  /* --------------------------------------------------------------------------
+     7. Gradients
+     -------------------------------------------------------------------------- */
+  --grad-hero: linear-gradient(135deg, #00434b 0%, #004e57 55%, #003b42 100%);
+  --grad-primary: linear-gradient(135deg, #004e57 0%, #006874 50%, #00c2b2 100%);
+  --grad-mint: linear-gradient(135deg, #00c2b2 0%, #1ed0c1 100%);
+  --grad-soft: linear-gradient(135deg, #edf5f4 0%, #f4fbfb 100%);
+  --grad-dark-teal: linear-gradient(135deg, #002b30 0%, #003e46 100%);
+  --grad-badge: linear-gradient(135deg, #edfbf9 0%, #ccf8f4 100%);
+  --grad-portrait: linear-gradient(180deg, #d3eeec 0%, #bde4e2 100%);
+
+  /* --------------------------------------------------------------------------
+     8. Radii
+     -------------------------------------------------------------------------- */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 36px;
+  --radius-full: 9999px;
+
+  /* --------------------------------------------------------------------------
+     9. Font Families
+     -------------------------------------------------------------------------- */
+  --font-family-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-body: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* --------------------------------------------------------------------------
+     10. Transitions
+     -------------------------------------------------------------------------- */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   Google Material Symbols Icon Standard
+   ========================================================================== */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+}
+
+/* ==========================================================================
+   Typography Utility Classes
+   ========================================================================== */
+.font-heading { font-family: var(--font-family-heading); }
+.font-body { font-family: var(--font-family-body); }
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--teal-hero) 0%, var(--mint-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.text-mint { color: var(--mint-primary) !important; }
+.text-teal { color: var(--teal-primary) !important; }
+.text-headline { color: var(--text-headline) !important; }
+.text-muted { color: var(--text-muted) !important; }
+.text-white { color: #ffffff !important; }
+
+/* ==========================================================================
+   Pill Eyebrow Badges
+   ========================================================================== */
+.eyebrow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  font-family: var(--font-family-heading);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  background: var(--bg-soft-mint);
+  color: var(--teal-hero);
+  border: 1px solid var(--border-mint);
+}
+
+.eyebrow-badge-white {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.eyebrow-badge-mint {
+  background: rgba(0, 194, 178, 0.15);
+  color: var(--mint-primary);
+  border-color: rgba(0, 194, 178, 0.4);
+}
+
+.eyebrow-badge .material-symbols-outlined {
+  font-size: 17px;
+}
+
+/* ==========================================================================
+   Buttons (Novadent Clinical Rounded Geometry)
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-family-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-base);
+  position: relative;
+  white-space: nowrap;
+}
+
+.btn-white {
+  background: #ffffff;
+  color: #004d56;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.btn-white:hover {
+  background: #edf8f9;
+  color: #00333a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+.btn-teal {
+  background: var(--teal-hero);
+  color: #ffffff;
+  border: 1px solid var(--teal-hero);
+  box-shadow: 0 4px 14px rgba(0, 78, 87, 0.25);
+}
+
+.btn-teal:hover {
+  background: var(--teal-primary-hover);
+  transform: translateY(-2px);
+}
+
+.btn-mint {
+  background: var(--mint-primary);
+  color: #00333a;
+  box-shadow: var(--shadow-mint-glow);
+}
+
+.btn-mint:hover {
+  background: var(--mint-hover);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-outline-white {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+}
+
+.btn-outline-teal {
+  background: transparent;
+  color: var(--teal-hero);
+  border: 1.5px solid var(--teal-hero);
+}
+
+/* ==========================================================================
+   Elevated Clinical Cards & Modules
+   ========================================================================== */
+.card-medical {
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-card);
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-smooth);
+}
+
+.card-medical-tinted {
+  background: var(--bg-soft-mint);
+  border: 1px solid var(--border-subtle);
+}
+
+.card-medical:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--mint-primary);
+}
+
+/* Numbered Step Badge for Carousels */
+.step-number-badge {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: var(--mint-primary);
+  color: #00333a;
+  font-family: var(--font-family-heading);
+  font-weight: 800;
+  font-size: 1.3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 194, 178, 0.3);
+}
+
+/* ==========================================================================
+   Carousel Master Slide Structure (1080x1350 & 1080x1080)
+   ========================================================================== */
+.carousel-canvas-portrait {
+  width: 1080px;
+  height: 1350px;
+  box-sizing: border-box;
+  padding: 96px 88px 100px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: var(--font-family-body);
+}
+
+.carousel-canvas-square {
+  width: 1080px;
+  height: 1080px;
+  box-sizing: border-box;
+  padding: 80px 80px 88px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: var(--font-family-body);
+}
+
+/* Slide Background Variants */
+.slide-bg-teal {
+  background: var(--grad-hero);
+  color: #ffffff;
+}
+
+.slide-bg-light {
+  background: #ffffff;
+  color: var(--text-body);
+}
+
+.slide-bg-sage {
+  background: var(--bg-soft-mint);
+  color: var(--text-body);
+}
+
+/* Carousel Header & Footer Navigation */
+.carousel-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.carousel-logo {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+.carousel-slide-counter {
+  font-family: var(--font-family-heading);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+}
+
+.slide-bg-teal .carousel-slide-counter {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+.slide-bg-light .carousel-slide-counter,
+.slide-bg-sage .carousel-slide-counter {
+  background: var(--teal-50);
+  color: var(--teal-hero);
+  border: 1px solid var(--border-subtle);
+}
+
+.carousel-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 24px;
+}
+
+.slide-bg-teal .carousel-bottom-bar {
+  border-top-color: rgba(255, 255, 255, 0.14);
+}
+
+.carousel-handle {
+  font-family: var(--font-family-heading);
+  font-weight: 700;
+  font-size: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.carousel-swipe-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-family-heading);
+  font-size: 20px;
+  font-weight: 700;
+}

@@ -1,0 +1,441 @@
+/* ==========================================================================
+   MedZen Writes — Modern Medical & Research Design System
+   Novadent-Inspired Theme: Deep Oceanic Teal (#004e57), Fresh Mint (#00c2b2),
+   Soft Sage Surfaces (#edf5f4), Pill Geometry, & Micro-Interactions
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+:root {
+  /* Theme Primary Colors — Oceanic Deep Teal */
+  --teal-hero: #004e57;
+  --teal-primary: #004e57;
+  --teal-primary-hover: #003f47;
+  --teal-primary-dark: #002d33;
+  --teal-950: #00161a;
+  --teal-900: #002227;
+  --teal-850: #002e35;
+  --teal-800: #003b44;
+  --teal-700: #004e57;
+  --teal-600: #00646f;
+  --teal-500: #007c8a;
+  --teal-400: #0099a8;
+  --teal-300: #1ab8c9;
+  --teal-200: #74dae5;
+  --teal-100: #c0eff4;
+  --teal-50:  #ebf8f9;
+  --teal-25:  #f4fbfb;
+
+  /* Accent Mint / Vibrant Turquoise Scale */
+  --mint-primary: #00c2b2;
+  --mint-hover: #00aa9c;
+  --mint-active: #008f83;
+  --mint-500: #00c2b2;
+  --mint-400: #1ed0c1;
+  --mint-300: #54e3d6;
+  --mint-200: #99f0e8;
+  --mint-100: #ccf8f4;
+  --mint-50:  #edfbf9;
+  --mint-25:  #f5fcfb;
+
+  /* Surfaces & Backgrounds */
+  --bg-body: #FFFFFF;
+  --bg-page: #FFFFFF;
+  --bg-alt: #F3F8F8;
+  --bg-soft-mint: #EDF5F4;
+  --bg-card: #FFFFFF;
+  --bg-card-subtle: #F9FCFC;
+  --bg-glass: rgba(255, 255, 255, 0.95);
+  --bg-dark-teal: #004E57;
+  --bg-deep-footer: #003238;
+
+  /* Typography & Neutrals */
+  --text-headline: #002B30;
+  --text-body: #395256;
+  --text-muted: #5F7D81;
+  --text-light: #8CA4A8;
+  --text-inverted: #FFFFFF;
+  --text-mint: #00C2B2;
+
+  /* Borders & Dividers */
+  --border-subtle: #E2ECEC;
+  --border-card: #E8F2F2;
+  --border-teal: rgba(0, 78, 87, 0.16);
+  --border-mint: rgba(0, 194, 178, 0.35);
+  --border-active: #00C2B2;
+
+  /* Drop Shadows & Glows */
+  --shadow-xs: 0 1px 3px rgba(0, 43, 48, 0.04);
+  --shadow-sm: 0 4px 12px rgba(0, 43, 48, 0.05);
+  --shadow-md: 0 10px 25px -4px rgba(0, 43, 48, 0.07), 0 4px 10px -2px rgba(0, 194, 178, 0.04);
+  --shadow-lg: 0 20px 40px -8px rgba(0, 43, 48, 0.10), 0 8px 20px -4px rgba(0, 194, 178, 0.06);
+  --shadow-xl: 0 30px 60px -12px rgba(0, 43, 48, 0.16), 0 12px 28px -4px rgba(0, 194, 178, 0.10);
+  --shadow-hover: 0 24px 50px -8px rgba(0, 78, 87, 0.18);
+  --shadow-mint-glow: 0 8px 25px rgba(0, 194, 178, 0.35);
+
+  /* Gradients */
+  --grad-hero: linear-gradient(135deg, #00434b 0%, #004e57 55%, #003b42 100%);
+  --grad-primary: linear-gradient(135deg, #004e57 0%, #006874 50%, #00c2b2 100%);
+  --grad-mint: linear-gradient(135deg, #00c2b2 0%, #1ed0c1 100%);
+  --grad-soft: linear-gradient(135deg, #edf5f4 0%, #f4fbfb 100%);
+  --grad-dark-teal: linear-gradient(135deg, #002b30 0%, #003e46 100%);
+  --grad-badge: linear-gradient(135deg, #edfbf9 0%, #ccf8f4 100%);
+  --grad-portrait: linear-gradient(180deg, #d3eeec 0%, #bde4e2 100%);
+
+  /* Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 48px;
+  --space-12: 64px;
+  --space-16: 96px;
+  --space-20: 120px;
+  --space-24: 144px;
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 36px;
+  --radius-full: 9999px;
+
+  /* Typography Scale */
+  --font-family-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-body: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Brand Accents */
+  --brand-writes-mint: #00C2B2;
+  --brand-writes-teal: #004E57;
+}
+
+/* ==========================================================================
+   CSS Reset & Base Setup
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-family-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-body);
+  background-color: var(--bg-body);
+  overflow-x: hidden;
+  position: relative;
+}
+
+img, picture, svg, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+a {
+  color: var(--teal-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--mint-primary);
+}
+
+ul, ol {
+  list-style-position: inside;
+}
+
+/* ==========================================================================
+   Ambient Clean Accents & Watermarks
+   ========================================================================== */
+.ambient-decor-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.side-accent-left {
+  position: absolute;
+  left: -90px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: var(--teal-primary);
+  opacity: 0.15;
+  z-index: 1;
+}
+
+.side-accent-right {
+  position: absolute;
+  right: -90px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: var(--mint-primary);
+  opacity: 0.15;
+  z-index: 1;
+}
+
+.side-accent-soft-left {
+  position: absolute;
+  left: -120px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: rgba(0, 194, 178, 0.05);
+  z-index: 1;
+}
+
+.side-accent-soft-right {
+  position: absolute;
+  right: -120px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: rgba(0, 78, 87, 0.05);
+  z-index: 1;
+}
+
+/* ==========================================================================
+   Typography Standards
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  color: var(--text-headline);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: clamp(2.3rem, 4.4vw, 3.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  font-size: clamp(1.85rem, 3.2vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+h3 {
+  font-size: clamp(1.3rem, 2.2vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--teal-hero) 0%, var(--mint-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.text-mint {
+  color: var(--mint-primary) !important;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.text-white {
+  color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   Layout Containers & Grid System (Slightly Broad Balanced Layout)
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: 1380px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(18px, 3vw, 36px);
+  padding-right: clamp(18px, 3vw, 36px);
+  position: relative;
+  z-index: 2;
+}
+
+.container-sm {
+  max-width: 1040px;
+}
+
+.container-xs {
+  max-width: 820px;
+}
+
+.container-wide {
+  max-width: 1480px;
+}
+
+.container-fluid {
+  width: 100%;
+  max-width: 100%;
+  padding-left: clamp(18px, 3vw, 36px);
+  padding-right: clamp(18px, 3vw, 36px);
+  position: relative;
+  z-index: 2;
+}
+
+.section {
+  padding-top: clamp(32px, 3.6vw, 50px);
+  padding-bottom: clamp(32px, 3.6vw, 50px);
+  position: relative;
+  z-index: 2;
+}
+
+.section-sm {
+  padding-top: clamp(20px, 2.2vw, 30px);
+  padding-bottom: clamp(20px, 2.2vw, 30px);
+  position: relative;
+  z-index: 2;
+}
+
+.section-alt {
+  background-color: var(--bg-alt);
+  background-image: 
+    radial-gradient(circle at 92% 12%, rgba(0, 194, 178, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 8% 88%, rgba(0, 77, 86, 0.05) 0%, transparent 45%);
+}
+
+.section-mint-soft {
+  background-color: var(--bg-soft-mint);
+  background-image: 
+    radial-gradient(circle at 88% 15%, rgba(0, 194, 178, 0.09) 0%, transparent 50%),
+    radial-gradient(circle at 12% 85%, rgba(0, 77, 86, 0.06) 0%, transparent 50%);
+}
+
+.section-teal-dark {
+  background: 
+    linear-gradient(135deg, rgba(0, 48, 54, 0.90) 0%, rgba(0, 77, 86, 0.85) 50%, rgba(0, 32, 36, 0.94) 100%),
+    url('../assets/images/stethoscope-research-bg.jpg') center center / cover no-repeat;
+  color: #FFFFFF;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 880px;
+  margin: 0 auto clamp(32px, 4vw, 48px);
+}
+
+.section-header-wide {
+  max-width: 1120px;
+}
+
+.section-header-left {
+  text-align: left;
+  margin-left: 0;
+}
+
+.section-title {
+  margin-top: 12px;
+  margin-bottom: 14px;
+}
+
+.section-subtitle {
+  font-size: clamp(1.05rem, 1.4vw, 1.18rem);
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.section-teal-dark .section-subtitle {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Grids */
+.grid {
+  display: grid;
+  gap: clamp(24px, 2.5vw, 36px);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Google Fonts Icon Utilities */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+}

@@ -1,0 +1,80 @@
+{
+  "brand": "MedZen Writes",
+  "theme": "Novadent-Inspired Medical & Clinical Research Design System",
+  "version": "1.0.0",
+  "palette": {
+    "primary_teal": {
+      "name": "Oceanic Deep Teal",
+      "description": "Primary brand anchor conveying clinical rigor, medical authority, and academic credibility.",
+      "shades": {
+        "teal_950": { "hex": "#00161a", "rgb": "rgb(0, 22, 26)", "hsl": "hsl(189, 100%, 5%)", "css_var": "--teal-950" },
+        "teal_900": { "hex": "#002227", "rgb": "rgb(0, 34, 39)", "hsl": "hsl(192, 100%, 8%)", "css_var": "--teal-900" },
+        "teal_850": { "hex": "#002e35", "rgb": "rgb(0, 46, 53)", "hsl": "hsl(188, 100%, 10%)", "css_var": "--teal-850" },
+        "teal_800": { "hex": "#003b44", "rgb": "rgb(0, 59, 68)", "hsl": "hsl(188, 100%, 13%)", "css_var": "--teal-800" },
+        "teal_700": { "hex": "#004e57", "rgb": "rgb(0, 78, 87)", "hsl": "hsl(186, 100%, 17%)", "css_var": "--teal-700", "is_primary": true },
+        "teal_primary": { "hex": "#004e57", "rgb": "rgb(0, 78, 87)", "hsl": "hsl(186, 100%, 17%)", "css_var": "--teal-primary", "is_primary": true },
+        "teal_primary_hover": { "hex": "#003f47", "rgb": "rgb(0, 63, 71)", "hsl": "hsl(187, 100%, 14%)", "css_var": "--teal-primary-hover" },
+        "teal_primary_dark": { "hex": "#002d33", "rgb": "rgb(0, 45, 51)", "hsl": "hsl(187, 100%, 10%)", "css_var": "--teal-primary-dark" },
+        "teal_600": { "hex": "#00646f", "rgb": "rgb(0, 100, 111)", "hsl": "hsl(186, 100%, 22%)", "css_var": "--teal-600" },
+        "teal_500": { "hex": "#007c8a", "rgb": "rgb(0, 124, 138)", "hsl": "hsl(186, 100%, 27%)", "css_var": "--teal-500" },
+        "teal_400": { "hex": "#0099a8", "rgb": "rgb(0, 153, 168)", "hsl": "hsl(185, 100%, 33%)", "css_var": "--teal-400" },
+        "teal_300": { "hex": "#1ab8c9", "rgb": "rgb(26, 184, 201)", "hsl": "hsl(186, 77%, 45%)", "css_var": "--teal-300" },
+        "teal_200": { "hex": "#74dae5", "rgb": "rgb(116, 218, 229)", "hsl": "hsl(186, 68%, 68%)", "css_var": "--teal-200" },
+        "teal_100": { "hex": "#c0eff4", "rgb": "rgb(192, 239, 244)", "hsl": "hsl(186, 69%, 85%)", "css_var": "--teal-100" },
+        "teal_50":  { "hex": "#ebf8f9", "rgb": "rgb(235, 248, 249)", "hsl": "hsl(184, 52%, 95%)", "css_var": "--teal-50" },
+        "teal_25":  { "hex": "#f4fbfb", "rgb": "rgb(244, 251, 251)", "hsl": "hsl(180, 41%, 97%)", "css_var": "--teal-25" }
+      }
+    },
+    "accent_mint": {
+      "name": "Fresh Mint / Vibrant Turquoise",
+      "description": "High-energy medical accent used for CTAs, active highlights, key metrics, and pill badge accents.",
+      "shades": {
+        "mint_primary": { "hex": "#00c2b2", "rgb": "rgb(0, 194, 178)", "hsl": "hsl(175, 100%, 38%)", "css_var": "--mint-primary", "is_accent": true },
+        "mint_hover":   { "hex": "#00aa9c", "rgb": "rgb(0, 170, 156)", "hsl": "hsl(175, 100%, 33%)", "css_var": "--mint-hover" },
+        "mint_active":  { "hex": "#008f83", "rgb": "rgb(0, 143, 131)", "hsl": "hsl(175, 100%, 28%)", "css_var": "--mint-active" },
+        "mint_500":     { "hex": "#00c2b2", "rgb": "rgb(0, 194, 178)", "hsl": "hsl(175, 100%, 38%)", "css_var": "--mint-500" },
+        "mint_400":     { "hex": "#1ed0c1", "rgb": "rgb(30, 208, 193)", "hsl": "hsl(175, 75%, 47%)", "css_var": "--mint-400" },
+        "mint_300":     { "hex": "#54e3d6", "rgb": "rgb(84, 227, 214)", "hsl": "hsl(175, 72%, 61%)", "css_var": "--mint-300" },
+        "mint_200":     { "hex": "#99f0e8", "rgb": "rgb(153, 240, 232)", "hsl": "hsl(175, 73%, 77%)", "css_var": "--mint-200" },
+        "mint_100":     { "hex": "#ccf8f4", "rgb": "rgb(204, 248, 244)", "hsl": "hsl(175, 73%, 89%)", "css_var": "--mint-100" },
+        "mint_50":      { "hex": "#edfbf9", "rgb": "rgb(237, 251, 249)", "hsl": "hsl(171, 64%, 96%)", "css_var": "--mint-50" },
+        "mint_25":      { "hex": "#f5fcfb", "rgb": "rgb(245, 252, 251)", "hsl": "hsl(171, 54%, 97%)", "css_var": "--mint-25" }
+      }
+    },
+    "surfaces": {
+      "bg_body":         { "hex": "#ffffff", "description": "Clinical pure white canvas", "css_var": "--bg-body" },
+      "bg_alt":          { "hex": "#f3f8f8", "description": "Cool clinical tinted section background", "css_var": "--bg-alt" },
+      "bg_soft_mint":    { "hex": "#edf5f4", "description": "Soft sage / mint tint for card backgrounds & badges", "css_var": "--bg-soft-mint" },
+      "bg_card":         { "hex": "#ffffff", "description": "Standard card background", "css_var": "--bg-card" },
+      "bg_card_subtle":  { "hex": "#f9fcfc", "description": "Secondary subtle card background", "css_var": "--bg-card-subtle" },
+      "bg_dark_teal":    { "hex": "#004e57", "description": "Hero & banner dark background", "css_var": "--bg-dark-teal" },
+      "bg_deep_footer":  { "hex": "#003238", "description": "Deepest dark teal surface", "css_var": "--bg-deep-footer" },
+      "bg_glass":        { "rgba": "rgba(255, 255, 255, 0.95)", "description": "Frosted glass header and modals", "css_var": "--bg-glass" }
+    },
+    "typography_colors": {
+      "headline":   { "hex": "#002b30", "description": "Deep teal-charcoal for maximum readability and prestige", "css_var": "--text-headline" },
+      "body":       { "hex": "#395256", "description": "Balanced slate-teal for body text", "css_var": "--text-body" },
+      "muted":      { "hex": "#5f7d81", "description": "Secondary explanatory text, subtitles, metadata", "css_var": "--text-muted" },
+      "light":      { "hex": "#8ca4a8", "description": "Subtle captions, timestamps, disclaimers", "css_var": "--text-light" },
+      "inverted":   { "hex": "#ffffff", "description": "Pure white text on dark teal slides & buttons", "css_var": "--text-inverted" },
+      "mint":       { "hex": "#00c2b2", "description": "Accent keywords and bullet highlights", "css_var": "--text-mint" }
+    },
+    "borders": {
+      "subtle":     { "hex": "#e2ecec", "css_var": "--border-subtle" },
+      "card":       { "hex": "#e8f2f2", "css_var": "--border-card" },
+      "teal_tint":  { "rgba": "rgba(0, 78, 87, 0.16)", "css_var": "--border-teal" },
+      "mint_tint":  { "rgba": "rgba(0, 194, 178, 0.35)", "css_var": "--border-mint" },
+      "active":     { "hex": "#00c2b2", "css_var": "--border-active" }
+    },
+    "gradients": {
+      "hero":       { "css": "linear-gradient(135deg, #00434b 0%, #004e57 55%, #003b42 100%)", "css_var": "--grad-hero" },
+      "primary":    { "css": "linear-gradient(135deg, #004e57 0%, #006874 50%, #00c2b2 100%)", "css_var": "--grad-primary" },
+      "mint":       { "css": "linear-gradient(135deg, #00c2b2 0%, #1ed0c1 100%)", "css_var": "--grad-mint" },
+      "soft":       { "css": "linear-gradient(135deg, #edf5f4 0%, #f4fbfb 100%)", "css_var": "--grad-soft" },
+      "dark_teal":  { "css": "linear-gradient(135deg, #002b30 0%, #003e46 100%)", "css_var": "--grad-dark-teal" },
+      "badge":      { "css": "linear-gradient(135deg, #edfbf9 0%, #ccf8f4 100%)", "css_var": "--grad-badge" },
+      "portrait":   { "css": "linear-gradient(180deg, #d3eeec 0%, #bde4e2 100%)", "css_var": "--grad-portrait" },
+      "text":       { "css": "linear-gradient(135deg, #004e57 0%, #00c2b2 100%)", "css_var": "--text-gradient" }
+    }
+  }
+}

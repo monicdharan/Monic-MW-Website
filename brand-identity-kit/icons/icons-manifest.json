@@ -1,0 +1,74 @@
+{
+  "icon_font": "Google Material Symbols Outlined",
+  "font_family": "Material Symbols Outlined",
+  "optical_size": 24,
+  "weight_default": 400,
+  "fill_default": 0,
+  "categories": {
+    "clinical_and_medical": {
+      "description": "Medical domain icons for specialties, doctor profiles, clinical trials, and ethics",
+      "icons": [
+        { "name": "medical_services", "use_case": "Clinical writing, hospital services" },
+        { "name": "medical_information", "use_case": "Patient charts, case histories, clinical records" },
+        { "name": "clinical_notes", "use_case": "Case reports, CARE guidelines, observational studies" },
+        { "name": "stethoscope", "use_case": "Clinician consultation, resident advisory" },
+        { "name": "pill", "use_case": "Pharmacology, clinical trial protocols, therapeutics" },
+        { "name": "health_and_safety", "use_case": "Institutional ethics committee (IEC), bio-safety" },
+        { "name": "psychology", "use_case": "Neurology, psychiatry, cognitive research" },
+        { "name": "biotech", "use_case": "Laboratory research, molecular medicine, biochemistry" }
+      ]
+    },
+    "academic_and_research": {
+      "description": "Thesis, dissertations, literature reviews, and journal publication",
+      "icons": [
+        { "name": "school", "use_case": "MD/MS/DNB postgraduate thesis and university requirements" },
+        { "name": "menu_book", "use_case": "Original research manuscripts, textbook chapters" },
+        { "name": "auto_stories", "use_case": "Narrative review articles (SANRA guidelines)" },
+        { "name": "description", "use_case": "Research protocol, synopsis, ethics submission" },
+        { "name": "edit_document", "use_case": "Manuscript proofreading, thesis editing" },
+        { "name": "checklist", "use_case": "Thesis submission checklist, PRISMA protocol" },
+        { "name": "collections_bookmark", "use_case": "Reference management (EndNote, Mendeley, Zotero)" },
+        { "name": "rate_review", "use_case": "Peer-review response, journal revision management" }
+      ]
+    },
+    "data_and_statistics": {
+      "description": "Biostatistics, sample size calculation, meta-analysis, and data visualization",
+      "icons": [
+        { "name": "analytics", "use_case": "Biostatistical analysis overview" },
+        { "name": "bar_chart", "use_case": "SPSS, R, STATA data interpretation" },
+        { "name": "timeline", "use_case": "Survival curves, Kaplan-Meier plots, longitudinal data" },
+        { "name": "insights", "use_case": "Forest plots in meta-analyses, odds ratios" },
+        { "name": "science", "use_case": "Hypothesis testing, p-values, confidence intervals" },
+        { "name": "fact_check", "use_case": "Data validation, statistical power verification" }
+      ]
+    },
+    "trust_and_credibility": {
+      "description": "Badges, guarantees, success metrics, and testimonials",
+      "icons": [
+        { "name": "verified", "use_case": "Indexed publication badge (PubMed / Scopus)" },
+        { "name": "check_circle", "use_case": "Step completed, guaranteed approval, guideline compliance" },
+        { "name": "star", "use_case": "Doctor rating, 4.9/5 star Google review" },
+        { "name": "reviews", "use_case": "Resident testimonial quote" },
+        { "name": "military_tech", "use_case": "Award-winning academic excellence" },
+        { "name": "handshake", "use_case": "Dedicated academic guide partnership" },
+        { "name": "groups", "use_case": "Multidisciplinary editorial panel" }
+      ]
+    },
+    "ui_and_carousel_navigation": {
+      "description": "Action cues, swipe indicators, downloads, and calls to action",
+      "icons": [
+        { "name": "arrow_forward", "use_case": "Swipe cue (👉 Swipe for Step 2)" },
+        { "name": "arrow_downward", "use_case": "Scroll or read caption prompt" },
+        { "name": "arrow_upward", "use_case": "Back to top or link in bio cue" },
+        { "name": "download", "use_case": "Save post / Download PDF master checklist" },
+        { "name": "chat", "use_case": "Comment / WhatsApp CTA" },
+        { "name": "calendar_month", "use_case": "Book a 1-on-1 consultation" },
+        { "name": "schedule", "use_case": "Turnaround time guarantee (e.g. 14-day draft)" },
+        { "name": "support_agent", "use_case": "24/7 Academic coordinator support" },
+        { "name": "open_in_new", "use_case": "Visit link in bio / medzenwrites.in" },
+        { "name": "touch_app", "use_case": "Tap to view full carousel" },
+        { "name": "all_inclusive", "use_case": "Unlimited revisions until guide approval" }
+      ]
+    }
+  }
+}

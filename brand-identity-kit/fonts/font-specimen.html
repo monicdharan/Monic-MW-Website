@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedZen Writes — Font Specimen & Typography System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../tokens/brand-tokens.css">
+  <style>
+    body {
+      background-color: var(--bg-alt);
+      color: var(--text-headline);
+      padding: 40px 24px;
+      font-family: var(--font-family-body);
+    }
+    .specimen-container {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+    .specimen-header {
+      background: var(--teal-hero);
+      color: #ffffff;
+      padding: 40px;
+      border-radius: var(--radius-xl);
+      margin-bottom: 40px;
+      box-shadow: var(--shadow-lg);
+    }
+    .card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-bottom: 28px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+    }
+    .row-weight {
+      display: flex;
+      align-items: baseline;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border-card);
+    }
+    .row-weight:last-child { border-bottom: none; }
+    .label-weight {
+      width: 220px;
+      flex-shrink: 0;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .sample-text {
+      flex-grow: 1;
+      font-size: 1.5rem;
+      color: var(--text-headline);
+    }
+    .carousel-scale-box {
+      background: var(--bg-soft-mint);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="specimen-container">
+    <header class="specimen-header">
+      <span class="eyebrow-badge eyebrow-badge-mint" style="margin-bottom: 12px;">
+        <span class="material-symbols-outlined">text_fields</span>
+        Official Typography System
+      </span>
+      <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 8px;">MedZen Writes — Font Specimen</h1>
+      <p style="color: rgba(255,255,255,0.85); font-size: 1.1rem; max-width: 720px;">
+        Primary Headline Font: <strong>Plus Jakarta Sans</strong> | Body Font: <strong>Inter &amp; Plus Jakarta Sans</strong> | Iconography: <strong>Material Symbols Outlined</strong>
+      </p>
+    </header>
+
+    <!-- Heading Font Specimen -->
+    <section class="card">
+      <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--teal-hero); margin-bottom: 8px;">
+        1. Plus Jakarta Sans (Headlines, Stats &amp; Accents)
+      </h2>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">
+        A geometric neo-grotesque sans-serif conveying modern scientific precision, clinical excellence, and high-impact authority.
+      </p>
+
+      <div class="row-weight">
+        <div class="label-weight"><strong>900 Black</strong> (Cover Hooks)</div>
+        <div class="sample-text" style="font-family: var(--font-family-heading); font-weight: 900;">
+          From PG Protocol to PubMed Indexed in 90 Days
+        </div>
+      </div>
+      <div class="row-weight">
+        <div class="label-weight"><strong>800 ExtraBold</strong> (Slide H1)</div>
+        <div class="sample-text" style="font-family: var(--font-family-heading); font-weight: 800;">
+          Statistical Rigor Meets Medical Academic Writing
+        </div>
+      </div>
+      <div class="row-weight">
+        <div class="label-weight"><strong>700 Bold</strong> (Buttons &amp; Badges)</div>
+        <div class="sample-text" style="font-family: var(--font-family-heading); font-weight: 700;">
+          PRISMA 2020 Protocol &amp; Meta-Analysis
+        </div>
+      </div>
+      <div class="row-weight">
+        <div class="label-weight"><strong>600 SemiBold</strong> (Card Titles)</div>
+        <div class="sample-text" style="font-family: var(--font-family-heading); font-weight: 600;">
+          Dr. Aravind Sundararajan, MD Internal Medicine
+        </div>
+      </div>
+      <div class="row-weight">
+        <div class="label-weight"><strong>500 Medium</strong> (Intro Texts)</div>
+        <div class="sample-text" style="font-family: var(--font-family-heading); font-weight: 500;">
+          Over 1,200+ postgraduate doctors successfully published across Scopus, PubMed, and Web of Science.
+        </div>
+      </div>
+    </section>
+
+    <!-- Body Font Specimen -->
+    <section class="card">
+      <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--teal-hero); margin-bottom: 8px;">
+        2. Inter (Body Copy &amp; Micro-Explanations)
+      </h2>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">
+        High-clarity, tall x-height sans-serif designed for effortless mobile reading on multi-slide carousels.
+      </p>
+
+      <div class="row-weight">
+        <div class="label-weight"><strong>600 SemiBold</strong></div>
+        <div class="sample-text" style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1.15rem;">
+          ICMJE Guideline Compliance &amp; Plagiarism-Free Academic Integrity
+        </div>
+      </div>
+      <div class="row-weight">
+        <div class="label-weight"><strong>500 Medium</strong></div>
+        <div class="sample-text" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 1.15rem;">
+          Every manuscript undergoes three rounds of peer-level review: clinical validation, biostatistical audit, and native English editorial polishing.
+        </div>
+      </div>
+      <div class="row-weight">
+        <div class="label-weight"><strong>400 Regular</strong></div>
+        <div class="sample-text" style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 1.15rem; line-height: 1.6;">
+          Our medical writing specialists and PhD biostatisticians collaborate directly with your departmental guide’s requirements, structuring synopses, sample size calculations, and dissertations to match strict NMC and university guidelines.
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Carousel Scale Simulation -->
+    <section class="card">
+      <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--teal-hero); margin-bottom: 8px;">
+        3. Social Carousel Live Typography Scale (1080px Slide Reference)
+      </h2>
+      <div class="carousel-scale-box">
+        <div class="eyebrow-badge eyebrow-badge-mint" style="margin-bottom: 16px;">
+          <span class="material-symbols-outlined">menu_book</span>
+          7-Step Residency Framework
+        </div>
+        <div style="font-family: var(--font-family-heading); font-weight: 800; font-size: 2.2rem; line-height: 1.2; margin-bottom: 12px; color: var(--text-headline);">
+          Why 78% of PG Theses Get Rejected (And the 3 Fixes)
+        </div>
+        <p style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: var(--text-body); line-height: 1.6; margin-bottom: 20px;">
+          Most residents lose crucial months rewriting methodology sections because sample size power calculations weren't grounded in pilot data.
+        </p>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <span class="step-number-badge">01</span>
+          <div>
+            <div style="font-weight: 700; font-size: 1.1rem; color: var(--text-headline);">Pre-specify statistical hypotheses before ethics board review.</div>
+            <div style="font-size: 0.95rem; color: var(--text-muted);">Reduces protocol revision iterations by up to 60%.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+/* ==========================================================================
+   MedZen Writes — Design Tokens (Calm, Editorial Medical Consultancy)
+   ========================================================================== */
+
+:root {
+  /* Color Palette */
+  --color-ink: #173234;
+  --color-ink-soft: #40575a;
+  --color-teal: #07545a;
+  --color-teal-dark: #063d42;
+  --color-teal-deep: #03272b;
+  --color-mint: #1aa99c;
+  --color-mint-hover: #148b80;
+  --color-mint-soft: #e8f4f1;
+  --color-mint-pale: #f2f9f7;
+  --color-paper: #fbfaf6;
+  --color-sand: #eee9df;
+  --color-white: #ffffff;
+  --color-line: #dce6e3;
+  --color-line-dark: #c5d5d0;
+  --color-muted: #6c7d7e;
+  --color-muted-light: #94a5a6;
+
+  /* Typography */
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Elevation & Shadows (Restrained, subtle) */
+  --shadow-subtle: 0 2px 8px rgba(23, 50, 52, 0.04);
+  --shadow-soft: 0 8px 24px rgba(23, 50, 52, 0.08);
+  --shadow-elevated: 0 16px 36px rgba(23, 50, 52, 0.12);
+
+  /* Radii (Moderate, clinical) */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  /* Layout & Spacing */
+  --max-width: 1180px;
+  --max-width-narrow: 840px;
+  --max-width-wide: 1280px;
+  --section-padding: clamp(64px, 8vw, 104px);
+  --section-padding-sm: clamp(40px, 5vw, 64px);
+
+  /* Transitions */
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}

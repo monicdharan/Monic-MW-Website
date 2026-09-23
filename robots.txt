@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /privacy-policy
+Disallow: /refund-policy
+Disallow: /terms-conditions
+Disallow: /shipping-policy
+
+Sitemap: https://medzenwrites.in/sitemap.xml

@@ -1,0 +1,105 @@
+{
+  "brand": "MedZen Writes",
+  "version": "1.0.0",
+  "font_families": {
+    "heading": {
+      "name": "Plus Jakarta Sans",
+      "google_font_family": "Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900",
+      "css_stack": "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+      "role": "Primary headline, slide title, big statistics, badges, button CTAs, navigation links"
+    },
+    "body": {
+      "name": "Plus Jakarta Sans / Inter",
+      "google_font_family": "Inter:wght@300;400;500;600;700",
+      "css_stack": "'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+      "role": "Body paragraphs, explanations, bullet points, citations, testimonials"
+    },
+    "icons": {
+      "name": "Material Symbols Outlined",
+      "google_font_family": "Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200",
+      "css_stack": "'Material Symbols Outlined'",
+      "role": "Clinical, academic, verification, and UI iconography"
+    }
+  },
+  "weights": {
+    "light": 300,
+    "regular": 400,
+    "medium": 500,
+    "semibold": 600,
+    "bold": 700,
+    "extrabold": 800,
+    "black": 900
+  },
+  "carousel_scales_1080": {
+    "description": "Recommended typography scale when generating social carousel slides at 1080x1080 or 1080x1350 resolution",
+    "slide_super_title": {
+      "font_size": "72px",
+      "line_height": "1.12",
+      "font_weight": 800,
+      "letter_spacing": "-0.035em",
+      "usage": "Slide 1 Hook / Cover Main Title"
+    },
+    "slide_h1": {
+      "font_size": "56px",
+      "line_height": "1.2",
+      "font_weight": 800,
+      "letter_spacing": "-0.03em",
+      "usage": "Slide Header Title on Content Slides"
+    },
+    "slide_h2": {
+      "font_size": "42px",
+      "line_height": "1.25",
+      "font_weight": 700,
+      "letter_spacing": "-0.025em",
+      "usage": "Step / Subpoint Header or Card Heading"
+    },
+    "slide_body_large": {
+      "font_size": "32px",
+      "line_height": "1.5",
+      "font_weight": 500,
+      "letter_spacing": "-0.01em",
+      "usage": "Primary body sentences on slides (keep concise, 2-3 lines max)"
+    },
+    "slide_body_regular": {
+      "font_size": "26px",
+      "line_height": "1.55",
+      "font_weight": 400,
+      "letter_spacing": "0",
+      "usage": "Bullet points, sub-explanations, quotes"
+    },
+    "slide_eyebrow_badge": {
+      "font_size": "20px",
+      "line_height": "1",
+      "font_weight": 700,
+      "letter_spacing": "0.08em",
+      "text_transform": "uppercase",
+      "usage": "Pill badge above main title (e.g., 'PG THESIS MASTERY', 'PUBMED STRATEGY')"
+    },
+    "slide_stat_number": {
+      "font_size": "96px",
+      "line_height": "1",
+      "font_weight": 800,
+      "letter_spacing": "-0.04em",
+      "usage": "Impact metrics (e.g., '1,200+', '98.6%', '01')"
+    },
+    "slide_caption_footer": {
+      "font_size": "18px",
+      "line_height": "1.4",
+      "font_weight": 600,
+      "letter_spacing": "0.02em",
+      "usage": "Slide footer handle (@medzenwrites), swipe indicator, page numbers (02/07)"
+    }
+  },
+  "web_scales": {
+    "h1": { "font_size": "clamp(2.3rem, 4.4vw, 3.6rem)", "font_weight": 800, "line_height": "1.15", "letter_spacing": "-0.035em" },
+    "h2": { "font_size": "clamp(1.85rem, 3.2vw, 2.6rem)", "font_weight": 800, "line_height": "1.2", "letter_spacing": "-0.03em" },
+    "h3": { "font_size": "clamp(1.3rem, 2.2vw, 1.75rem)", "font_weight": 700, "line_height": "1.3" },
+    "h4": { "font_size": "1.15rem", "font_weight": 700, "line_height": "1.4" },
+    "body": { "font_size": "1rem", "font_weight": 400, "line_height": "1.65" },
+    "small": { "font_size": "0.88rem", "font_weight": 400, "line_height": "1.5" }
+  },
+  "embed_snippets": {
+    "html_link": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap\" rel=\"stylesheet\">",
+    "css_import": "@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');\n@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');"
+  }
+}
