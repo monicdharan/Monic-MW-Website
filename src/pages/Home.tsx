@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useModal } from '../context/ModalContext';
 import { servicesData } from '../data/services';
-import { targetJournalLogos } from '../data/publications';
+import { targetJournalLogos, publicationsData } from '../data/publications';
+import { PublicationCard } from '../components/cards/PublicationCard';
 import { googleReviews } from '../data/testimonials';
 import { GoogleReviewCard } from '../components/cards/GoogleReviewCard';
 import { faqsData } from '../data/faqs';
@@ -11,6 +12,12 @@ import { CtaBanner } from '../components/sections/CtaBanner';
 
 export const Home: React.FC = () => {
   const { openConsultation } = useModal();
+  const [pubFilter, setPubFilter] = useState<'all' | 'original' | 'case'>('all');
+
+  const filteredPubs = publicationsData.filter((p) => {
+    if (pubFilter === 'all') return true;
+    return p.category === pubFilter;
+  });
 
   return (
     <div className="page-home">
@@ -138,7 +145,63 @@ export const Home: React.FC = () => {
       </section>
 
       {/* ===================================================================
-          3. INDEXING FRAMEWORKS & TARGET DATABASES (6 in Row 1, 5 in Row 2)
+          3. VERIFIED PUBLICATION RECORDS SECTION (Screenshot Replication)
+          =================================================================== */}
+      <section className="editorial-section section-bg-white" aria-labelledby="home-portfolio-heading">
+        <div className="site-container">
+          {/* Header & Filter Controls */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', marginBottom: '20px' }}>
+            <div>
+              <span className="section-header-eyebrow">DOCUMENT ARCHIVE</span>
+              <h2 id="home-portfolio-heading" style={{ fontSize: 'clamp(1.5rem, 2.5vw, 1.9rem)', margin: 0, fontWeight: 700 }}>
+                Verified Publication Records
+              </h2>
+            </div>
+
+            {/* Filter Pills */}
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              <button
+                type="button"
+                className={`btn btn-sm ${pubFilter === 'all' ? 'btn-primary' : 'btn-secondary'}`}
+                onClick={() => setPubFilter('all')}
+              >
+                All Documents ({publicationsData.length})
+              </button>
+              <button
+                type="button"
+                className={`btn btn-sm ${pubFilter === 'original' ? 'btn-primary' : 'btn-secondary'}`}
+                onClick={() => setPubFilter('original')}
+              >
+                Original Research
+              </button>
+              <button
+                type="button"
+                className={`btn btn-sm ${pubFilter === 'case' ? 'btn-primary' : 'btn-secondary'}`}
+                onClick={() => setPubFilter('case')}
+              >
+                Case Reports
+              </button>
+            </div>
+          </div>
+
+          {/* Cards Grid */}
+          <div className="publications-archive-grid">
+            {filteredPubs.map((pub) => (
+              <PublicationCard key={pub.id} publication={pub} />
+            ))}
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: '28px' }}>
+            <Link to="/publications" className="btn btn-outline btn-md">
+              <span>View Full Publications Portfolio</span>
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_forward</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================================================================
+          4. INDEXING FRAMEWORKS & TARGET DATABASES (6 in Row 1, 5 in Row 2)
           =================================================================== */}
       <section className="editorial-section indexing-frameworks-section" aria-label="Target Databases and International Standards">
         <div className="site-container">
@@ -188,7 +251,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* ===================================================================
-          4. VERIFIED GOOGLE REVIEWS
+          5. VERIFIED GOOGLE REVIEWS
           =================================================================== */}
       <section className="editorial-section section-bg-paper" aria-labelledby="google-reviews-heading">
         <div className="site-container">
