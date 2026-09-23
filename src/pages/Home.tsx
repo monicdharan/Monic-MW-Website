@@ -89,7 +89,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* ===================================================================
-          2. CORE SERVICES CATALOG (9 Specialties)
+          2. CORE SERVICES CATALOG (3 Featured Specialties)
           =================================================================== */}
       <section className="editorial-section" style={{ backgroundColor: 'var(--bg-alt)' }} aria-label="Our Medical Writing Services">
         <div className="site-container">
@@ -105,7 +105,11 @@ export const Home: React.FC = () => {
           </div>
 
           <div className="services-grid-cards">
-            {servicesData.map((s) => (
+            {[
+              servicesData[0], // 01. Original Research Articles
+              servicesData[1], // 02. Systematic Reviews & Meta-Analyses
+              { ...servicesData[3], number: '03' }, // 03. Thesis & Dissertation Writing
+            ].map((s) => (
               <div key={s.id} className="service-card-clean">
                 <div className="service-card-top">
                   <span className="service-card-num">{s.number}</span>
@@ -122,6 +126,13 @@ export const Home: React.FC = () => {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: '28px' }}>
+            <Link to="/services" className="btn btn-outline btn-md">
+              <span>View All 9 Specialized Services</span>
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_forward</span>
+            </Link>
           </div>
         </div>
       </section>
