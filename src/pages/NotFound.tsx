@@ -6,7 +6,7 @@ export const NotFound: React.FC = () => {
   return (
     <div className="page-not-found" style={{ padding: '100px 0', textAlign: 'center' }}>
       <div className="site-container" style={{ maxWidth: '600px' }}>
-        <span style={{ fontFamily: 'var(--font-serif)', fontSize: '4rem', fontWeight: 700, color: 'var(--color-teal)' }}>
+        <span style={{ fontFamily: 'var(--font-family-heading)', fontSize: '4rem', fontWeight: 800, color: 'var(--color-teal)' }}>
           404
         </span>
         <h1 style={{ fontSize: '2rem', marginBottom: '14px' }}>Page Not Found</h1>

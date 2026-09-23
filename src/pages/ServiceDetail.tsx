@@ -118,7 +118,7 @@ export const ServiceDetail: React.FC = () => {
                       key={p.step}
                       style={{ display: 'flex', gap: '20px', padding: '20px', background: 'var(--color-white)', border: '1px solid var(--color-line)', borderRadius: 'var(--radius-sm)' }}
                     >
-                      <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.4rem', fontWeight: 700, color: 'var(--color-teal)' }}>
+                      <span style={{ fontFamily: 'var(--font-family-heading)', fontSize: '1.4rem', fontWeight: 700, color: 'var(--color-teal)' }}>
                         0{p.step}
                       </span>
                       <div>
