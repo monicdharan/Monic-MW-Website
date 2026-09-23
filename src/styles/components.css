@@ -1393,45 +1393,57 @@
 
 .pub-card-preview {
   position: relative;
-  background: var(--bg-alt);
+  background: #FFFFFF;
   border-bottom: 1px solid var(--border-subtle);
-  aspect-ratio: 16 / 10;
+  height: 230px;
   overflow: hidden;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 6px;
 }
 
 .pub-card-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  padding: 8px;
-  transition: transform var(--transition-fast);
+  object-position: top center;
+  background-color: #FFFFFF;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  transform: none;
 }
 
 .pub-card-preview:hover .pub-card-img {
-  transform: scale(1.02);
+  transform: none;
 }
 
 .pub-card-zoom-overlay {
   position: absolute;
-  inset: 0;
-  background: rgba(0, 78, 87, 0.65);
+  bottom: 12px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(6px);
   color: #FFFFFF;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  font-size: 0.8rem;
-  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 600;
   opacity: 0;
-  transition: opacity var(--transition-fast);
+  transform: translateY(4px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
 }
 
 .pub-card-preview:hover .pub-card-zoom-overlay {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .pub-card-body {
