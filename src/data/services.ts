@@ -6,7 +6,7 @@ export const servicesData: ServiceItem[] = [
     slug: "original-research",
     number: "01",
     title: "Original Research Articles",
-    shortDesc: "End-to-end manuscript writing from raw clinical datasets, structured according to target journal guidelines and IMRaD standards.",
+    shortDesc: "Transform clinical data and study findings into structured, journal-ready manuscripts with clear scientific narrative and reporting discipline.",
     heroSubtitle: "Transform observational studies, randomized trials, and retrospective clinical audits into rigorous, publication-ready research manuscripts.",
     iconName: "article",
     whoItsFor: [
@@ -50,8 +50,8 @@ export const servicesData: ServiceItem[] = [
     id: "systematic-review",
     slug: "systematic-review",
     number: "02",
-    title: "Systematic Review & Meta-Analysis",
-    shortDesc: "Comprehensive evidence synthesis adhering to PRISMA 2020 guidelines, PROSPERO protocol registration, and RevMan / R pooled effect modeling.",
+    title: "Systematic Reviews & Meta-Analyses",
+    shortDesc: "Develop rigorous evidence syntheses with structured search strategy, screening support, PRISMA-aligned reporting, and quantitative analysis where appropriate.",
     heroSubtitle: "Methodologically sound systematic reviews and quantitative meta-analyses designed to meet stringent indexing benchmarks.",
     iconName: "join_inner",
     whoItsFor: [
@@ -95,7 +95,7 @@ export const servicesData: ServiceItem[] = [
     slug: "case-report",
     number: "03",
     title: "Medical Case Reports & Case Series",
-    shortDesc: "Clinical case presentations formatted under CARE guidelines, with comprehensive differential diagnosis tables and literature context.",
+    shortDesc: "Present meaningful clinical observations with clarity, literature context, and adherence to recognised case-reporting standards.",
     heroSubtitle: "Transform rare clinical anomalies, novel diagnostic findings, and unexpected therapeutic outcomes into indexed case publications.",
     iconName: "medical_services",
     whoItsFor: [
@@ -139,7 +139,7 @@ export const servicesData: ServiceItem[] = [
     slug: "thesis",
     number: "04",
     title: "Thesis & Dissertation Writing",
-    shortDesc: "Complete postgraduate medical dissertation drafting following university guidelines, NMC requirements, and strict academic standards.",
+    shortDesc: "Receive structured support for postgraduate dissertations—from protocol and chapter planning to data presentation, discussion, and formatting.",
     heroSubtitle: "Methodical academic support for MD, MS, DNB, DM, and MCh residents balancing demanding clinical duties with mandatory thesis deadlines.",
     iconName: "fact_check",
     whoItsFor: [
@@ -184,7 +184,7 @@ export const servicesData: ServiceItem[] = [
     slug: "statistical-analysis",
     number: "05",
     title: "Medical Statistical Analysis",
-    shortDesc: "Clinical biostatistics powered by SPSS, R, and Prism. Sample size estimation, parametric/non-parametric hypothesis testing, and regression modeling.",
+    shortDesc: "Make confident decisions with accurate statistical planning, analysis, interpretation, and clearly presented tables, figures, and findings.",
     heroSubtitle: "Statistically robust, verifiable analytical support tailored specifically for medical and biomedical research datasets.",
     iconName: "bar_chart",
     whoItsFor: [
@@ -228,7 +228,7 @@ export const servicesData: ServiceItem[] = [
     slug: "review-article",
     number: "06",
     title: "Narrative & Scoping Reviews",
-    shortDesc: "Authoritative medical review articles exploring disease pathogenesis, updated clinical management guidelines, and emerging therapeutic paradigms.",
+    shortDesc: "Build authoritative review articles that organise complex literature into a coherent, clinically relevant academic narrative.",
     heroSubtitle: "Synthesize extensive literature into coherent, highly citable medical review articles providing clinical clarity on critical healthcare themes.",
     iconName: "science",
     whoItsFor: [
@@ -271,7 +271,7 @@ export const servicesData: ServiceItem[] = [
     slug: "protocol",
     number: "07",
     title: "Research Protocols & Synopsis",
-    shortDesc: "Structured synopsis writing for Institutional Ethics Committee (IEC) clearance, scientific advisory boards, and grant funding applications.",
+    shortDesc: "Prepare focused, ethically sound research protocols and synopses for academic review, institutional approvals, and project planning.",
     heroSubtitle: "Methodologically sound, ethics-compliant research proposals designed for first-round institutional approvals.",
     iconName: "checklist",
     whoItsFor: [
@@ -314,8 +314,8 @@ export const servicesData: ServiceItem[] = [
     id: "thesis-to-manuscript",
     slug: "thesis-to-manuscript",
     number: "08",
-    title: "Thesis to Manuscript Conversion",
-    shortDesc: "Transforming 100–200 page postgraduate dissertations into concise, high-impact 3,500-word peer-reviewed journal manuscripts.",
+    title: "Thesis-to-Manuscript Conversion",
+    shortDesc: "Convert dissertation work into concise, publication-focused manuscripts while retaining the research value and academic ownership of the original study.",
     heroSubtitle: "Do not let your hard-earned postgraduate research sit on an archive shelf. Convert your dissertation into indexed journal publications.",
     iconName: "swap_horiz",
     whoItsFor: [
@@ -359,7 +359,7 @@ export const servicesData: ServiceItem[] = [
     slug: "abstract-poster",
     number: "09",
     title: "Abstract & E-Poster Design",
-    shortDesc: "Conference abstract drafting and professional high-resolution scientific E-Poster design for national and international medical summits.",
+    shortDesc: "Prepare conference-ready abstracts and professional scientific posters that communicate your research with clarity and credibility.",
     heroSubtitle: "Deliver engaging conference presentations with clear visual hierarchy, concise abstracts, and high-resolution digital posters.",
     iconName: "hub",
     whoItsFor: [

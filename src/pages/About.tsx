@@ -16,10 +16,10 @@ export const About: React.FC = () => {
           <div style={{ maxWidth: '780px' }}>
             <span className="hero-eyebrow">About MedZen Writes</span>
             <h1 className="hero-title" style={{ maxWidth: '740px' }}>
-              Bridging the gap between clinical excellence and publication standards.
+              Academic Support for Research With Clinical Purpose
             </h1>
             <p className="hero-lead" style={{ maxWidth: '680px' }}>
-              Founded as an academic medical consultancy division of MedZen Innovations Pvt. Ltd., MedZen Writes provides structured methodological and editorial support for clinicians, postgraduates, and researchers across India and internationally.
+              MedZen Writes is the academic medical consultancy division of MedZen Innovations Pvt. Ltd. We support clinicians, postgraduates, and researchers in presenting their work with clarity, methodological discipline, and respect for publication ethics.
             </p>
           </div>
         </div>
@@ -30,18 +30,21 @@ export const About: React.FC = () => {
         <div className="site-container">
           <div className="hero-grid" style={{ alignItems: 'flex-start', gap: 'clamp(24px, 4vw, 48px)' }}>
             <div style={{ maxWidth: '620px' }}>
-              <span className="section-header-eyebrow">Our Foundation</span>
+              <span className="section-header-eyebrow">Our Purpose</span>
               <h2 id="origin-heading" style={{ marginBottom: '14px' }}>
-                Why MedZen Writes Exists
+                Good Clinical Research Should Not Remain Unseen
               </h2>
               <p style={{ marginBottom: '14px', lineHeight: '1.65' }}>
-                Postgraduate residency and hospital practice place immense cognitive and physical demands on doctors. Between long emergency duties, patient care rounds, and surgical procedures, finding uninterrupted weeks to conduct comprehensive literature searches, perform advanced statistical modeling in SPSS, and format manuscripts to strict journal specifications is a formidable barrier.
+                Doctors and researchers often work under intense professional demands. Clinical responsibilities, hospital schedules, academic deadlines, and patient care can leave little time for the detailed work required to structure a thesis, interpret data, prepare a manuscript, or respond to publication requirements.
               </p>
               <p style={{ marginBottom: '14px', lineHeight: '1.65' }}>
-                Consequently, hundreds of well-executed observational studies and postgraduate theses end up shelved indefinitely in hospital libraries without ever reaching peer-reviewed indexed databases.
+                As a result, valuable research can remain incomplete, unpublished, or difficult to communicate clearly.
+              </p>
+              <p style={{ marginBottom: '14px', lineHeight: '1.65' }}>
+                MedZen Writes exists to provide dependable academic support around that challenge. We help researchers organise their work, strengthen its presentation, and navigate the practical demands of medical writing and publication preparation.
               </p>
               <p style={{ margin: 0, lineHeight: '1.65' }}>
-                MedZen Writes was established to provide a methodical, ethical academic partnership. We take on the heavy structural, biostatistical, and formatting workloads so that clinical findings are communicated clearly, accurately, and without unnecessary delay.
+                Our role is not to replace the researcher’s contribution. It is to support the process with structure, clarity, and responsible academic guidance.
               </p>
             </div>
 
@@ -59,10 +62,10 @@ export const About: React.FC = () => {
 
               <div style={{ background: 'var(--color-sand)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid #e0dad0', width: '100%' }}>
                 <h4 style={{ fontSize: '1rem', color: 'var(--color-ink)', marginBottom: '6px' }}>
-                  Our Ethical Foundation
+                  Built on Academic Integrity
                 </h4>
                 <p style={{ fontSize: '0.86rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
-                  We operate strictly in alignment with the International Committee of Medical Journal Editors (ICMJE) and Committee on Publication Ethics (COPE). We do not provide ghost authorships or fabricate clinical data under any circumstances.
+                  We believe credible research support must be transparent, ethical, and respectful of authorship. Our work is guided by recognised publication principles, including ICMJE and COPE standards. We do not fabricate data, misrepresent findings, provide ghost authorship, or promise publication outcomes. Editorial and peer-review decisions remain independent.
                 </p>
               </div>
             </div>
@@ -74,8 +77,8 @@ export const About: React.FC = () => {
       <section className="editorial-section section-bg-paper section-border-top" aria-labelledby="principles-heading">
         <div className="site-container">
           <SectionHeading
-            eyebrow="Our Commitments"
-            title="How We Maintain Quality &amp; Transparency"
+            eyebrow="How We Work"
+            title="A Clear, Responsible Approach to Every Project"
             subtitle="Clear principles that guide our interactions with authors, mentors, and academic institutions."
           />
 
@@ -86,7 +89,7 @@ export const About: React.FC = () => {
               </span>
               <h3 style={{ fontSize: '1.15rem', marginBottom: '6px' }}>Medical Accuracy</h3>
               <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
-                All writing is reviewed by experienced medical editors with advanced biomedical backgrounds. We ensure clinical terminologies, anatomical definitions, and diagnostic criteria are technically precise.
+                Medical writing demands precision. We focus on clear terminology, sound interpretation, and a presentation that remains faithful to the clinical and scientific context of the work.
               </p>
             </div>
 
@@ -94,9 +97,9 @@ export const About: React.FC = () => {
               <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--color-teal)', marginBottom: '10px' }}>
                 lock
               </span>
-              <h3 style={{ fontSize: '1.15rem', marginBottom: '6px' }}>Complete Confidentiality</h3>
+              <h3 style={{ fontSize: '1.15rem', marginBottom: '6px' }}>Confidentiality</h3>
               <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
-                Your clinical datasets, patient case proformas, and draft manuscripts are treated with strict confidentiality under enforceable Non-Disclosure Agreements (NDAs). De-identification is verified before processing.
+                Research data, patient-related documentation, study materials, and drafts are handled with care. Confidentiality and responsible data handling are central to every engagement.
               </p>
             </div>
 
@@ -106,7 +109,7 @@ export const About: React.FC = () => {
               </span>
               <h3 style={{ fontSize: '1.15rem', marginBottom: '6px' }}>Honest Expectations</h3>
               <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
-                We promise methodological rigor, prompt milestone delivery, and comprehensive revision support. We never promise guaranteed journal acceptance, as editorial decisions rest solely with independent peer reviewers.
+                We communicate clearly about scope, timelines, revision support, and the realities of academic publishing. We do not make promises that cannot be ethically guaranteed.
               </p>
             </div>
           </div>
@@ -117,8 +120,8 @@ export const About: React.FC = () => {
       <section className="editorial-section section-bg-white section-border-top" aria-labelledby="promises-heading">
         <div className="site-container">
           <SectionHeading
-            eyebrow="Academic Standards"
-            title="What We Do &amp; Do Not Promise"
+            eyebrow="Our Standards"
+            title="What You Can Expect From Us"
             subtitle="Clear boundaries that protect both the author's academic integrity and the consultancy's reputation."
           />
 
@@ -126,24 +129,28 @@ export const About: React.FC = () => {
             <div className="solution-box" style={{ background: 'var(--color-paper)', border: '1px solid var(--color-line)', display: 'flex', flexDirection: 'column' }}>
               <h3 style={{ color: 'var(--color-teal-dark)', fontSize: '1.2rem', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span className="material-symbols-outlined" style={{ color: 'var(--color-teal)' }}>check_circle</span>
-                What We Guarantee
+                What You Can Expect From Us
               </h3>
               <ul className="editorial-point-list" style={{ marginTop: 0 }}>
                 <li className="editorial-point-item">
                   <span className="material-symbols-outlined point-icon-check">check</span>
-                  <span>100% human-crafted medical drafting adhering to STROBE, PRISMA, CARE, and ICMJE guidelines.</span>
+                  <span>Structured support for medical theses, manuscripts, reviews, protocols, and statistical reporting.</span>
                 </li>
                 <li className="editorial-point-item">
                   <span className="material-symbols-outlined point-icon-check">check</span>
-                  <span>Accurate statistical computations with reproducible SPSS/R outputs and formatted data tables.</span>
+                  <span>Clear, academically appropriate writing aligned with the needs of the research project.</span>
                 </li>
                 <li className="editorial-point-item">
                   <span className="material-symbols-outlined point-icon-check">check</span>
-                  <span>Turnitin similarity reports verifying authentic academic prose.</span>
+                  <span>Careful attention to recognised reporting frameworks and journal or institutional requirements.</span>
                 </li>
                 <li className="editorial-point-item">
                   <span className="material-symbols-outlined point-icon-check">check</span>
-                  <span>Responsive post-delivery revisions based on mentor, guide, or reviewer feedback.</span>
+                  <span>Transparent communication throughout the project.</span>
+                </li>
+                <li className="editorial-point-item">
+                  <span className="material-symbols-outlined point-icon-check">check</span>
+                  <span>Revision support based on academic, mentor, or reviewer feedback where agreed.</span>
                 </li>
               </ul>
             </div>
@@ -151,20 +158,24 @@ export const About: React.FC = () => {
             <div className="problem-box" style={{ background: '#fdf7f2', border: '1px solid #f2dfd1', display: 'flex', flexDirection: 'column' }}>
               <h3 style={{ color: '#9a3412', fontSize: '1.2rem', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span className="material-symbols-outlined" style={{ color: '#c25e00' }}>cancel</span>
-                What We Will Never Promise
+                What We Will Never Compromise
               </h3>
               <ul className="editorial-point-list" style={{ marginTop: 0 }}>
                 <li className="editorial-point-item">
                   <span className="material-symbols-outlined point-icon-warn">close</span>
-                  <span>We do not guarantee publication in specific journals or indexings, as peer review is independent.</span>
+                  <span>We will not fabricate, manipulate, or alter research data.</span>
                 </li>
                 <li className="editorial-point-item">
                   <span className="material-symbols-outlined point-icon-warn">close</span>
-                  <span>We will not fabricate, falsify, or alter raw clinical data points to achieve statistical significance.</span>
+                  <span>We will not guarantee publication, indexing, or editorial acceptance.</span>
                 </li>
                 <li className="editorial-point-item">
                   <span className="material-symbols-outlined point-icon-warn">close</span>
-                  <span>We do not sell author positions or provide surrogate examination submissions.</span>
+                  <span>We will not sell authorship positions or misrepresent contribution.</span>
+                </li>
+                <li className="editorial-point-item">
+                  <span className="material-symbols-outlined point-icon-warn">close</span>
+                  <span>We will not support work that compromises academic or clinical integrity.</span>
                 </li>
               </ul>
             </div>
@@ -190,7 +201,12 @@ export const About: React.FC = () => {
         </div>
       </section>
 
-      <CtaBanner />
+      {/* Final CTA Banner */}
+      <CtaBanner
+        title="Discuss Your Research With Our Team"
+        subtitle="Tell us where you are in your research journey, and we will help you understand the next practical step."
+        buttonText="Schedule an Academic Consultation"
+      />
     </div>
   );
 };

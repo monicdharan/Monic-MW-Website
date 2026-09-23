@@ -14,7 +14,7 @@ export const Home: React.FC = () => {
   return (
     <div className="page-home">
       {/* ===================================================================
-          1. HERO SECTION (Screenshot 1)
+          1. HERO SECTION
           =================================================================== */}
       <section className="screenshot-hero" aria-label="Introduction to MedZen Writes">
         <div className="hero-bg-overlay" />
@@ -27,17 +27,17 @@ export const Home: React.FC = () => {
                 <span className="material-symbols-outlined" style={{ fontSize: '18px', color: 'var(--mint-primary)' }}>
                   verified_user
                 </span>
-                <span>100% HUMAN MEDICAL EXPERTS · 0% AI SHORTCUTS</span>
+                <span>Medical Research &amp; Academic Writing Support</span>
               </div>
 
               {/* Main Headline */}
               <h1 className="hero-main-title">
-                Medical Research Paper Publication &amp; Thesis Writing Services
+                Turn Clinical Research Into Clear, Publication-Ready Work
               </h1>
 
               {/* Subtitle */}
               <p className="hero-main-lead">
-                MedZen Writes is your partner in medical progress — offering end-to-end medical research paper publication and thesis writing services that simplify thesis writing, research publishing, and statistical analysis, so you can focus on saving lives.
+                MedZen Writes supports clinicians, postgraduate students, and researchers with structured medical writing, biostatistics, and publication preparation. We help bring clarity to complex research while respecting academic standards, confidentiality, and authorship integrity.
               </p>
 
               {/* Action Buttons */}
@@ -50,37 +50,42 @@ export const Home: React.FC = () => {
                   <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>
                     calendar_month
                   </span>
-                  <span>Book Free Consultation</span>
+                  <span>Book a Consultation</span>
                 </button>
 
-                <a
-                  href="/services"
+                <Link
+                  to="/services"
                   className="btn btn-outline-hero btn-lg"
                 >
                   <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>
-                    download
+                    arrow_forward
                   </span>
-                  <span>Download Thesis Checklist</span>
-                </a>
+                  <span>Explore Our Services</span>
+                </Link>
               </div>
 
-              {/* Contact Information Pills Bar */}
-              <div className="hero-contact-pills-row">
-                <div className="hero-info-pill">
-                  <span className="material-symbols-outlined pill-icon">call</span>
-                  <span>{companyData.phoneDisplay}</span>
-                </div>
-                <div className="hero-info-pill">
-                  <span className="material-symbols-outlined pill-icon">location_on</span>
-                  <span>{companyData.address.locality}, {companyData.address.city} – {companyData.address.pincode}</span>
-                </div>
-                <div className="hero-info-pill">
-                  <span className="material-symbols-outlined pill-icon">mail</span>
-                  <span>{companyData.email}</span>
-                </div>
-                <div className="hero-info-pill">
-                  <span className="material-symbols-outlined pill-icon">schedule</span>
-                  <span>{companyData.workingHours}</span>
+              {/* Trust Line & Contact Information Pills */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <p style={{ fontSize: '0.86rem', color: 'rgba(255, 255, 255, 0.88)', margin: 0, fontWeight: 500 }}>
+                  Ethical academic support • Medical research expertise • Confidential collaboration
+                </p>
+                <div className="hero-contact-pills-row">
+                  <div className="hero-info-pill">
+                    <span className="material-symbols-outlined pill-icon">call</span>
+                    <span>{companyData.phoneDisplay}</span>
+                  </div>
+                  <div className="hero-info-pill">
+                    <span className="material-symbols-outlined pill-icon">location_on</span>
+                    <span>{companyData.address.locality}, {companyData.address.city} – {companyData.address.pincode}</span>
+                  </div>
+                  <div className="hero-info-pill">
+                    <span className="material-symbols-outlined pill-icon">mail</span>
+                    <span>{companyData.email}</span>
+                  </div>
+                  <div className="hero-info-pill">
+                    <span className="material-symbols-outlined pill-icon">schedule</span>
+                    <span>{companyData.workingHours}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -90,8 +95,11 @@ export const Home: React.FC = () => {
               <div className="hero-portrait-card">
                 <img
                   src="/assets/images/hero_doctor.jpg"
-                  alt="Medical Research Specialist Dr. at MedZen Writes"
+                  alt="Medical Research Specialist at MedZen Writes"
                   className="hero-portrait-img"
+                  width="380"
+                  height="380"
+                  loading="eager"
                 />
               </div>
             </div>
@@ -100,21 +108,24 @@ export const Home: React.FC = () => {
       </section>
 
       {/* ===================================================================
-          2. ACADEMIC RIGOR & EXPERTISE SECTION (Screenshot 2)
+          2. ACADEMIC RIGOR & EXPERTISE INTRODUCTION SECTION
           =================================================================== */}
-      <section className="editorial-section section-bg-white" aria-label="Academic Rigor and Medical Writing Experts">
+      <section className="editorial-section section-bg-white" aria-label="Academic Support Built for Clinical Professionals">
         <div className="site-container">
           {/* Centered Section Header */}
           <div className="section-header text-center">
             <div className="pill-eyebrow-badge">
               <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>verified_user</span>
-              <span>ACADEMIC RIGOR</span>
+              <span>Academic Support Built for Clinical Professionals</span>
             </div>
             <h2 className="section-header-title" style={{ fontSize: 'clamp(1.9rem, 3.2vw, 2.6rem)' }}>
-              Trusted Medical Thesis Writing &amp; Research Publication Experts
+              Focused Support for Research That Deserves to Be Seen
             </h2>
             <p className="section-header-subtitle">
-              Whether you're a postgraduate student, fellow, senior clinician, or life sciences researcher, our medical research paper publication and thesis writing services are tailored to your level and specialty.
+              Clinical research often begins with strong questions, valuable observations, and demanding timelines. Turning that work into a well-structured thesis, manuscript, or evidence synthesis requires time, methodological care, and attention to detail.
+            </p>
+            <p className="section-header-subtitle" style={{ marginTop: '8px' }}>
+              MedZen Writes helps researchers move from data and drafts to clear, academically sound deliverables—without compromising the ownership, integrity, or clinical relevance of their work.
             </p>
           </div>
 
@@ -127,9 +138,21 @@ export const Home: React.FC = () => {
                   <span className="material-symbols-outlined">description</span>
                 </div>
                 <div>
-                  <h3 className="rigor-card-title">Custom Academic Writing — No Templates</h3>
+                  <h3 className="rigor-card-title">Custom Academic Writing</h3>
                   <p className="rigor-card-desc">
-                    Your content is crafted from scratch to meet journal standards, university formats, and discipline-specific requirements with zero generic templating.
+                    Every project is approached individually. We work around your study design, institutional requirements, specialty, and target journal expectations rather than applying generic templates.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rigor-feature-card">
+                <div className="rigor-icon-box">
+                  <span className="material-symbols-outlined">analytics</span>
+                </div>
+                <div>
+                  <h3 className="rigor-card-title">Methodological &amp; Statistical Clarity</h3>
+                  <p className="rigor-card-desc">
+                    From study planning and sample-size calculations to data interpretation and reporting, our team helps present results in a way that is accurate, transparent, and easy to defend.
                   </p>
                 </div>
               </div>
@@ -139,21 +162,9 @@ export const Home: React.FC = () => {
                   <span className="material-symbols-outlined">security</span>
                 </div>
                 <div>
-                  <h3 className="rigor-card-title">Ethical &amp; Plagiarism Controlled</h3>
+                  <h3 className="rigor-card-title">Ethical, Confidential Collaboration</h3>
                   <p className="rigor-card-desc">
-                    All deliverables are strictly under 10% similarity, verified by Turnitin certificate, and 100% human-written — no AI shortcuts, no ethical compromises.
-                  </p>
-                </div>
-              </div>
-
-              <div className="rigor-feature-card">
-                <div className="rigor-icon-box">
-                  <span className="material-symbols-outlined">biotech</span>
-                </div>
-                <div>
-                  <h3 className="rigor-card-title">Biostatistical Precision &amp; Modeling</h3>
-                  <p className="rigor-card-desc">
-                    From sample size calculations to multivariable regression, survival analyses, and meta-analyses using SPSS, R, and STATA.
+                    Your work remains your work. We support responsible research communication, protect confidential information, and work within established academic and publication standards.
                   </p>
                 </div>
               </div>
@@ -163,14 +174,17 @@ export const Home: React.FC = () => {
             <div className="rigor-image-wrapper">
               <img
                 src="/assets/images/doctor-resident-mentorship.jpg"
-                alt="Two doctors in library discussing medical research publication poster"
+                alt="Doctors reviewing medical research manuscript"
                 className="rigor-photo"
+                width="500"
+                height="340"
+                loading="lazy"
               />
               <div className="rigor-floating-badge">
                 <span className="material-symbols-outlined" style={{ fontSize: '18px', color: 'var(--mint-primary)' }}>
                   verified
                 </span>
-                <span>ICMJE &amp; PRISMA Compliant Academic Rigor</span>
+                <span>ICMJE &amp; COPE Compliant Academic Support</span>
               </div>
             </div>
           </div>
@@ -185,11 +199,11 @@ export const Home: React.FC = () => {
           <div className="section-header text-center">
             <div className="pill-eyebrow-badge">
               <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>school</span>
-              <span>SPECIALIZED DIVISIONS</span>
+              <span>Specialised Research Support</span>
             </div>
-            <h2 className="section-header-title">Comprehensive Academic &amp; Research Services</h2>
+            <h2 className="section-header-title">Medical Writing Services Across the Research Journey</h2>
             <p className="section-header-subtitle">
-              End-to-end medical research solutions structured around strict university dissertation deadlines and peer-reviewed journal criteria.
+              Whether you are developing a dissertation, preparing a manuscript, analysing clinical data, or responding to reviewer comments, MedZen Writes offers focused support at every stage.
             </p>
           </div>
 
@@ -216,20 +230,20 @@ export const Home: React.FC = () => {
       </section>
 
       {/* ===================================================================
-          4. DOCTOR REVIEWS & TESTIMONIALS (Screenshot 3)
+          4. DOCTOR REVIEWS & TESTIMONIALS
           =================================================================== */}
       <section className="editorial-section screenshot-testimonials-section" aria-label="Doctor Reviews and Client Testimonials">
         <div className="site-container">
           <div className="section-header text-center">
             <div className="pill-eyebrow-badge">
               <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>chat</span>
-              <span>DOCTOR FEEDBACK</span>
+              <span>Researcher Experiences</span>
             </div>
             <h2 className="section-header-title">
-              What Our Clients Say About Our Medical Writing Services
+              Trusted by Clinicians, Postgraduates, and Research Teams
             </h2>
             <p className="section-header-subtitle">
-              Trusted by researchers, postgraduate students, and healthcare professionals across premier medical institutions.
+              Our work is built around clear communication, dependable process, and respect for the research behind every project.
             </p>
           </div>
 
@@ -242,6 +256,9 @@ export const Home: React.FC = () => {
                     src={item.avatarImage}
                     alt={item.doctorName}
                     className="card-author-avatar"
+                    width="44"
+                    height="44"
+                    loading="lazy"
                   />
                   <div>
                     <h4 className="card-author-name">{item.doctorName}</h4>
@@ -267,11 +284,11 @@ export const Home: React.FC = () => {
           <div className="section-header text-center">
             <div className="pill-eyebrow-badge">
               <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>help</span>
-              <span>FAQ &amp; SUPPORT</span>
+              <span>Frequently Asked Questions</span>
             </div>
-            <h2 className="section-header-title">Frequently Asked Questions</h2>
+            <h2 className="section-header-title">Clear Answers Before You Begin</h2>
             <p className="section-header-subtitle">
-              Clear answers regarding thesis confidentiality, Turnitin compliance, revisions, and biostatistics workflows.
+              Understand how we approach confidentiality, academic integrity, timelines, revisions, and statistical support before starting your project.
             </p>
           </div>
 
@@ -280,9 +297,13 @@ export const Home: React.FC = () => {
       </section>
 
       {/* ===================================================================
-          6. SCHEDULE CONSULTATION CTA BANNER (Screenshot 4)
+          6. SCHEDULE CONSULTATION CTA BANNER
           =================================================================== */}
-      <CtaBanner />
+      <CtaBanner
+        title="Ready to Move Your Research Forward?"
+        subtitle="Book a confidential consultation to discuss your research stage, requirements, and the support that would be most useful to you."
+        buttonText="Schedule a Consultation"
+      />
     </div>
   );
 };
