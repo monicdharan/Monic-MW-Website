@@ -46,14 +46,15 @@ export const publicationsData: PublicationItem[] = [
     category: "original",
   },
   {
-    id: "clinical-case-series-ent",
-    title: "Rare Presentations of Parapharyngeal Space Lesions: Diagnostic Dilemmas and Surgical Outcomes",
-    type: "Case Report",
-    specialty: "Otorhinolaryngology (ENT) & Head-Neck Surgery",
-    journalOrIndexing: "Peer-Reviewed Surgical Journal",
+    id: "semaglutide-t2d-ckd-effectiveness",
+    title: "Comparative Effectiveness of Once-Weekly Semaglutide Versus Sulfonylureas, DPP4 Inhibitors, and Thiazolidinediones in Patients with Type 2 Diabetes and Chronic Kidney Disease",
+    type: "Original Research",
+    specialty: "Endocrinology & Nephrology",
+    journalOrIndexing: "Diabetes Therapy / Springer / PubMed Indexed",
     year: "2024",
-    image: "/assets/images/pub_card_4_uploaded.png",
-    category: "case",
+    image: "/assets/images/pub_card_4_uploaded.svg",
+    articleUrl: "https://doi.org/10.1007/s13300-024-01630-3",
+    category: "original",
   },
 ];
 

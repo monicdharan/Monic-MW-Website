@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="1200" height="820" style="background:#ffffff; font-family:'Times New Roman', Times, 'Plus Jakarta Sans', serif;">
+  <style>
+    .bg { fill: #ffffff; }
+    .header-bar { fill: #f3f4f6; }
+    .badge { fill: #94a3b8; }
+    .badge-text { fill: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.08em; }
+    .journal-meta { fill: #64748b; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; font-weight: 600; }
+    .title { fill: #0f172a; font-family: 'Times New Roman', Times, Georgia, serif; font-size: 30px; font-weight: 700; line-height: 1.25; }
+    .authors { fill: #334155; font-family: 'Times New Roman', Times, Georgia, serif; font-size: 15px; font-weight: 500; }
+    .dates { fill: #64748b; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; }
+    .abstract-heading { fill: #0f172a; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 15px; font-weight: 800; letter-spacing: 0.06em; }
+    .body-text { fill: #1e293b; font-family: 'Times New Roman', Times, Georgia, serif; font-size: 14px; line-height: 1.5; }
+    .lead-label { font-weight: bold; font-style: italic; font-family: 'Times New Roman', Times, Georgia, serif; }
+  </style>
+
+  <!-- Clean Paper Container -->
+  <rect width="1200" height="820" class="bg" />
+
+  <!-- Top Decorative Header Strip -->
+  <rect x="40" y="32" width="1120" height="4" fill="#004e57" />
+
+  <!-- Journal Meta & Badge -->
+  <text x="40" y="60" class="journal-meta">Diabetes Therapy (2024) 15:1821–1839 | https://doi.org/10.1007/s13300-024-01630-3</text>
+  <rect x="40" y="74" width="170" height="24" rx="3" fill="#004e57" />
+  <text x="50" y="90" class="badge-text">ORIGINAL RESEARCH</text>
+
+  <!-- Publication Title -->
+  <text x="40" y="145" class="title">Comparative Effectiveness of Once-Weekly Semaglutide Versus</text>
+  <text x="40" y="183" class="title">Sulfonylureas, DPP4 Inhibitors, and Thiazolidinediones in Patients</text>
+  <text x="40" y="221" class="title">with Type 2 Diabetes and Chronic Kidney Disease</text>
+
+  <!-- Authors Line -->
+  <text x="40" y="265" class="authors">James Almanao · Jian Wang · Hongdao Liu · Anamoul Sundar · Yan Song · Lin Xie ·</text>
+  <text x="40" y="288" class="authors">Sherif Mehanam · Josh Noone · Caroline Swift · Matthew R. Weir</text>
+
+  <!-- Dates & Open Access Copyright -->
+  <text x="40" y="325" class="dates">Received: April 10, 2024 / Accepted: July 31, 2024 / Published online: August 20, 2024</text>
+  <text x="40" y="343" class="dates">© The Author(s) 2024. Open Access article under CC BY-NC 4.0 license</text>
+
+  <!-- Divider Line -->
+  <line x1="40" y1="362" x2="1160" y2="362" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Abstract Heading -->
+  <text x="40" y="395" class="abstract-heading">ABSTRACT</text>
+
+  <!-- Column 1: Introduction & Objectives -->
+  <text x="40" y="425" class="body-text">
+    <tspan class="lead-label">Introduction: </tspan>
+    <tspan>Once-weekly (OW) semaglutide has shown robust renal and cardiovascular</tspan>
+  </text>
+  <text x="40" y="449" class="body-text">benefits in clinical trials for patients with type 2 diabetes (T2D) and chronic kidney</text>
+  <text x="40" y="473" class="body-text">disease (CKD). This real-world comparative effectiveness study assessed clinical</text>
+  <text x="40" y="497" class="body-text">outcomes between OW semaglutide and alternative oral glucose-lowering drugs.</text>
+
+  <text x="40" y="535" class="body-text">
+    <tspan class="lead-label">Methods: </tspan>
+    <tspan>Adults with T2D and CKD stages 1–4 were identified from the Optum®</tspan>
+  </text>
+  <text x="40" y="559" class="body-text">de-identified Clinformatics Data Mart Database (2016–2023). Two distinct cohorts</text>
+  <text x="40" y="583" class="body-text">were analyzed: patients receiving OW semaglutide versus DPP4 inhibitors (DPP4i),</text>
+  <text x="40" y="607" class="body-text">sulfonylureas (SU), or thiazolidinediones (TZD). Multivariable Cox proportional</text>
+  <text x="40" y="631" class="body-text">hazards and propensity-score matching balanced baseline clinical covariates.</text>
+
+  <!-- Column 2: Results & Conclusion -->
+  <text x="620" y="425" class="body-text">
+    <tspan class="lead-label">Results: </tspan>
+    <tspan>A total of 14,892 matched patient pairs were evaluated. OW semaglutide</tspan>
+  </text>
+  <text x="620" y="449" class="body-text">was associated with a significantly reduced rate of estimated glomerular filtration</text>
+  <text x="620" y="473" class="body-text">rate (eGFR) decline compared with active comparators (-1.24 vs. -2.85 mL/min/</text>
+  <text x="620" y="497" class="body-text">1.73m²/year; p &lt; 0.001). Risk of progression to end-stage renal disease (ESRD)</text>
+  <text x="620" y="521" class="body-text">or 50% eGFR sustained decline was reduced by 34% (HR 0.66; 95% CI 0.58–0.75).</text>
+
+  <text x="620" y="559" class="body-text">Significant reductions were also observed in all-cause hospitalizations, composite</text>
+  <text x="620" y="583" class="body-text">cardiovascular endpoints (MACE-3), and mean HbA1c (-0.82% reduction).</text>
+
+  <text x="620" y="621" class="body-text">
+    <tspan class="lead-label">Conclusion: </tspan>
+    <tspan>In routine clinical practice, once-weekly semaglutide conferred superior</tspan>
+  </text>
+  <text x="620" y="645" class="body-text">kidney and metabolic protective benefits compared to traditional oral regimens.</text>
+
+  <!-- Bottom Indexing & Keywords Tag Bar -->
+  <rect x="40" y="695" width="1120" height="85" rx="6" fill="#f8fafc" stroke="#e2e8f0" />
+  <text x="60" y="725" class="journal-meta">Keywords: Glucagon-like peptide-1 receptor agonist · Semaglutide · Chronic kidney disease · Type 2 diabetes · eGFR</text>
+  <text x="60" y="755" class="dates">Indexing: PubMed / MEDLINE Indexed · Scopus Q1 · SpringerLink Verified Publication Record</text>
+</svg>
