@@ -6,6 +6,7 @@ import { doctorTestimonials } from '../data/testimonials';
 import { faqsData } from '../data/faqs';
 import { companyData } from '../data/company';
 import { FaqAccordion } from '../components/interactive/FaqAccordion';
+import { CtaBanner } from '../components/sections/CtaBanner';
 
 export const Home: React.FC = () => {
   const { openConsultation } = useModal();
@@ -259,56 +260,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* ===================================================================
-          5. SCHEDULE CONSULTATION CTA BANNER (Screenshot 4)
-          =================================================================== */}
-      <section className="screenshot-cta-banner" aria-label="Schedule Your Research and Thesis Consultation">
-        <div className="cta-bg-overlay" />
-        <div className="site-container" style={{ position: 'relative', zIndex: 2 }}>
-          <div className="cta-grid">
-            {/* Left CTA Text & Button */}
-            <div>
-              <h2 className="cta-main-title">
-                Schedule Your Research &amp; Thesis Consultation
-              </h2>
-              <p className="cta-main-lead">
-                Connect with our medical writing coordinators today and ensure your research meets world-class publication standards with customized guidance.
-              </p>
-              <button
-                type="button"
-                className="btn btn-white btn-lg"
-                onClick={() => openConsultation()}
-              >
-                <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>
-                  calendar_month
-                </span>
-                <span>Book Consultation</span>
-              </button>
-            </div>
-
-            {/* Right Verified Authors Stat Card */}
-            <div className="cta-stat-card-wrap">
-              <div className="cta-stat-card">
-                <div className="stat-card-pill">
-                  <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>verified_user</span>
-                  <span>VERIFIED AUTHORS</span>
-                </div>
-                <div className="stat-card-number">98%</div>
-                <div className="stat-card-label">Satisfied Medical Researchers</div>
-                <div className="stat-card-rating">
-                  <span className="stat-stars">★★★★★</span>
-                  <span className="stat-reviews-count">315+ Reviews</span>
-                </div>
-                <Link to="/testimonials" className="btn btn-secondary btn-sm" style={{ width: '100%', marginTop: '16px', borderRadius: '8px' }}>
-                  Read Client Reviews
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===================================================================
-          6. FREQUENTLY ASKED QUESTIONS (FAQ)
+          5. FREQUENTLY ASKED QUESTIONS (FAQ)
           =================================================================== */}
       <section id="faq" className="editorial-section section-bg-white" aria-label="Frequently Asked Questions">
         <div className="site-container site-container-narrow">
@@ -326,6 +278,11 @@ export const Home: React.FC = () => {
           <FaqAccordion items={faqsData} />
         </div>
       </section>
+
+      {/* ===================================================================
+          6. SCHEDULE CONSULTATION CTA BANNER (Screenshot 4)
+          =================================================================== */}
+      <CtaBanner />
     </div>
   );
 };

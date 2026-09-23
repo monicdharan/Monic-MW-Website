@@ -1,6 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useModal } from '../../context/ModalContext';
-import { Button } from '../buttons/Button';
 
 interface CtaBannerProps {
   title?: string;
@@ -9,29 +9,54 @@ interface CtaBannerProps {
 }
 
 export const CtaBanner: React.FC<CtaBannerProps> = ({
-  title = "Tell us where your research is today, and we'll help you identify the next practical step.",
-  subtitle = "Whether you need a full manuscript draft, biostatistical analysis, or thesis formatting, our academic coordinators provide a customized milestone roadmap.",
-  buttonText = "Book a consultation",
+  title = "Schedule Your Research & Thesis Consultation",
+  subtitle = "Connect with our medical writing coordinators today and ensure your research meets world-class publication standards with customized guidance.",
+  buttonText = "Book Consultation",
 }) => {
   const { openConsultation } = useModal();
 
   return (
-    <section className="editorial-cta-banner" aria-label="Closing Consultation Call to Action">
-      <div className="site-container">
-        <div className="cta-banner-inner">
-          <div style={{ maxWidth: '640px' }}>
-            <h2 style={{ fontSize: 'clamp(1.5rem, 2.5vw, 1.95rem)', marginBottom: '10px', color: 'var(--color-ink)' }}>
+    <section className="screenshot-cta-banner" aria-label="Schedule Your Research and Thesis Consultation">
+      <div className="cta-bg-overlay" />
+      <div className="site-container" style={{ position: 'relative', zIndex: 2 }}>
+        <div className="cta-grid">
+          {/* Left CTA Text & Button */}
+          <div>
+            <h2 className="cta-main-title">
               {title}
             </h2>
-            <p style={{ fontSize: '0.96rem', color: 'var(--color-ink-soft)', lineHeight: '1.6', margin: 0 }}>
+            <p className="cta-main-lead">
               {subtitle}
             </p>
+            <button
+              type="button"
+              className="btn btn-white btn-lg"
+              onClick={() => openConsultation()}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>
+                calendar_month
+              </span>
+              <span>{buttonText}</span>
+            </button>
           </div>
 
-          <div>
-            <Button variant="primary" size="lg" onClick={() => openConsultation()}>
-              {buttonText}
-            </Button>
+          {/* Right Verified Authors Stat Card */}
+          <div className="cta-stat-card-wrap">
+            <div className="cta-stat-card">
+              <div className="stat-card-pill">
+                <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>verified_user</span>
+                <span>VERIFIED AUTHORS</span>
+              </div>
+              <div className="stat-card-number">98%</div>
+              <div className="stat-card-label">Satisfied Medical Researchers</div>
+              <div className="stat-card-rating">
+                <span className="stat-stars">★★★★★</span>
+                <span className="stat-reviews-count">315+ Reviews</span>
+              </div>
+              <Link to="/testimonials" className="btn btn-secondary btn-sm" style={{ width: '100%', marginTop: '16px', borderRadius: '8px' }}>
+                Read Client Reviews
+              </Link>
+            </div>
           </div>
         </div>
       </div>
