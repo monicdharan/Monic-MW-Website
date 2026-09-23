@@ -53,14 +53,6 @@ export const SiteHeader: React.FC = () => {
               <NavLink to="/journal" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
                 Blog
               </NavLink>
-              <a href="#faq" className="nav-link" onClick={(e) => {
-                if (window.location.pathname === '/') {
-                  e.preventDefault();
-                  document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}>
-                FAQ
-              </a>
               <NavLink to="/contact" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
                 Contact
               </NavLink>
