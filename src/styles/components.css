@@ -535,110 +535,62 @@
 }
 
 /* --------------------------------------------------------------------------
-   6. Academic Rigor 2-Column Section (Screenshot 2)
+/* --------------------------------------------------------------------------
+   6. Academic Support 3-Column Square Cards (Screenshot 3 Layout)
    -------------------------------------------------------------------------- */
-.rigor-grid {
+.rigor-square-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(16px, 2.5vw, 28px);
-  align-items: center;
-  margin-top: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.5vw, 24px);
+  margin-top: 24px;
 }
 
-@media (max-width: 900px) {
-  .rigor-grid {
+@media (max-width: 860px) {
+  .rigor-square-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
-.rigor-cards-column {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.rigor-feature-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
+.rigor-square-card {
   background: #FFFFFF;
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
-  padding: 14px 16px;
-  box-shadow: var(--shadow-subtle);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.rigor-feature-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-soft);
-}
-
-.rigor-icon-box {
-  width: 38px;
-  height: 38px;
-  background-color: #E2F4F2;
-  color: var(--teal-primary);
-  border-radius: var(--radius-sm);
+  padding: clamp(22px, 2.8vw, 28px);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  flex-direction: column;
+  box-shadow: var(--shadow-subtle);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
 }
 
-.rigor-icon-box .material-symbols-outlined {
-  font-size: 20px;
+.rigor-square-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+  border-color: var(--mint-primary);
 }
 
-.rigor-card-title {
+.rigor-square-icon {
+  color: var(--teal-primary);
+  font-size: 32px;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.rigor-square-title {
   font-family: var(--font-family-heading);
-  font-size: 1rem;
+  font-size: 1.12rem;
   font-weight: 700;
   color: var(--text-headline);
-  margin-bottom: 3px;
+  margin-bottom: 10px;
+  line-height: 1.35;
 }
 
-.rigor-card-desc {
+.rigor-square-desc {
   font-family: var(--font-family-body);
-  font-size: 0.86rem;
+  font-size: 0.9rem;
   color: var(--text-body);
-  line-height: 1.45;
+  line-height: 1.58;
   margin: 0;
-}
-
-.rigor-image-wrapper {
-  position: relative;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  border: 1px solid var(--border-card);
-}
-
-.rigor-photo {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  display: block;
-}
-
-.rigor-floating-badge {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  right: 12px;
-  background-color: rgba(0, 43, 48, 0.92);
-  color: #FFFFFF;
-  border: 1px solid rgba(0, 194, 178, 0.35);
-  border-radius: var(--radius-pill);
-  padding: 6px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-family: var(--font-family-heading);
-  font-size: 0.78rem;
-  font-weight: 700;
-  backdrop-filter: blur(8px);
 }
 
 /* --------------------------------------------------------------------------

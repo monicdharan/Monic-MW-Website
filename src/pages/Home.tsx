@@ -110,63 +110,36 @@ export const Home: React.FC = () => {
             </p>
           </div>
 
-          {/* 2-Column Content Grid */}
-          <div className="rigor-grid">
-            {/* Left Column: Stack of 3 Feature Cards */}
-            <div className="rigor-cards-column">
-              <div className="rigor-feature-card">
-                <div className="rigor-icon-box">
-                  <span className="material-symbols-outlined">description</span>
-                </div>
-                <div>
-                  <h3 className="rigor-card-title">Custom Academic Writing</h3>
-                  <p className="rigor-card-desc">
-                    Every project is approached individually. We work around your study design, institutional requirements, specialty, and target journal expectations rather than applying generic templates.
-                  </p>
-                </div>
-              </div>
-
-              <div className="rigor-feature-card">
-                <div className="rigor-icon-box">
-                  <span className="material-symbols-outlined">analytics</span>
-                </div>
-                <div>
-                  <h3 className="rigor-card-title">Methodological &amp; Statistical Clarity</h3>
-                  <p className="rigor-card-desc">
-                    From study planning and sample-size calculations to data interpretation and reporting, our team helps present results in a way that is accurate, transparent, and easy to defend.
-                  </p>
-                </div>
-              </div>
-
-              <div className="rigor-feature-card">
-                <div className="rigor-icon-box">
-                  <span className="material-symbols-outlined">security</span>
-                </div>
-                <div>
-                  <h3 className="rigor-card-title">Ethical, Confidential Collaboration</h3>
-                  <p className="rigor-card-desc">
-                    Your work remains your work. We support responsible research communication, protect confidential information, and work within established academic and publication standards.
-                  </p>
-                </div>
-              </div>
+          {/* 3-Column Square Cards Grid */}
+          <div className="rigor-square-grid">
+            <div className="rigor-square-card">
+              <span className="material-symbols-outlined rigor-square-icon">
+                description
+              </span>
+              <h3 className="rigor-square-title">Custom Academic Writing</h3>
+              <p className="rigor-square-desc">
+                Every project is approached individually. We work around your study design, institutional requirements, specialty, and target journal expectations rather than applying generic templates.
+              </p>
             </div>
 
-            {/* Right Column: Doctor Mentorship Image with Floating Badge */}
-            <div className="rigor-image-wrapper">
-              <img
-                src="/assets/images/doctor-resident-mentorship.jpg"
-                alt="Doctors reviewing medical research manuscript"
-                className="rigor-photo"
-                width="500"
-                height="340"
-                loading="lazy"
-              />
-              <div className="rigor-floating-badge">
-                <span className="material-symbols-outlined" style={{ fontSize: '18px', color: 'var(--mint-primary)' }}>
-                  verified
-                </span>
-                <span>ICMJE &amp; COPE Compliant Academic Support</span>
-              </div>
+            <div className="rigor-square-card">
+              <span className="material-symbols-outlined rigor-square-icon">
+                analytics
+              </span>
+              <h3 className="rigor-square-title">Methodological &amp; Statistical Clarity</h3>
+              <p className="rigor-square-desc">
+                From study planning and sample-size calculations to data interpretation and reporting, our team helps present results in a way that is accurate, transparent, and easy to defend.
+              </p>
+            </div>
+
+            <div className="rigor-square-card">
+              <span className="material-symbols-outlined rigor-square-icon">
+                security
+              </span>
+              <h3 className="rigor-square-title">Ethical, Confidential Collaboration</h3>
+              <p className="rigor-square-desc">
+                Your work remains your work. We support responsible research communication, protect confidential information, and work within established academic and publication standards.
+              </p>
             </div>
           </div>
         </div>
