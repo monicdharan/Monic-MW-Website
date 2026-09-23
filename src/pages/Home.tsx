@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useModal } from '../context/ModalContext';
 import { servicesData } from '../data/services';
+import { targetJournalLogos } from '../data/publications';
 import { doctorTestimonials } from '../data/testimonials';
 import { faqsData } from '../data/faqs';
 import { FaqAccordion } from '../components/interactive/FaqAccordion';
@@ -209,7 +210,57 @@ export const Home: React.FC = () => {
       </section>
 
       {/* ===================================================================
-          4. DOCTOR REVIEWS & TESTIMONIALS
+          4. INDEXING FRAMEWORKS & TARGET DATABASES (6 in Row 1, 5 in Row 2)
+          =================================================================== */}
+      <section className="editorial-section indexing-frameworks-section" aria-label="Target Databases and International Standards">
+        <div className="site-container">
+          <div className="section-header text-center">
+            <div className="pill-eyebrow-badge">
+              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>verified_user</span>
+              <span>INDEXING FRAMEWORKS</span>
+            </div>
+            <h2 className="section-header-title">
+              Target Databases &amp; International Standards
+            </h2>
+            <p className="section-header-subtitle">
+              We prepare manuscripts and structured synopses complying strictly with international bibliographic databases.
+            </p>
+          </div>
+
+          <div className="indexing-logos-wrapper">
+            {/* Line 1: First 6 Logos */}
+            <div className="indexing-logos-row indexing-logos-row-1">
+              {targetJournalLogos.slice(0, 6).map((item) => (
+                <div key={item.name} className="indexing-logo-card" title={item.name}>
+                  <img
+                    src={item.logo}
+                    alt={item.name}
+                    className="indexing-logo-img"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Line 2: Next 5 Logos */}
+            <div className="indexing-logos-row indexing-logos-row-2">
+              {targetJournalLogos.slice(6, 11).map((item) => (
+                <div key={item.name} className="indexing-logo-card" title={item.name}>
+                  <img
+                    src={item.logo}
+                    alt={item.name}
+                    className="indexing-logo-img"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================================================================
+          5. DOCTOR REVIEWS & TESTIMONIALS
           =================================================================== */}
       <section className="editorial-section screenshot-testimonials-section" aria-label="Doctor Reviews and Client Testimonials">
         <div className="site-container">

@@ -58,15 +58,15 @@ export const publicationsData: PublicationItem[] = [
 ];
 
 export const targetJournalLogos = [
-  { name: "PubMed / MEDLINE", logo: "/Journal Logos/Pubmed.png" },
-  { name: "Scopus", logo: "/Journal Logos/Scopus.png" },
-  { name: "Web of Science", logo: "/Journal Logos/Web of Science.png" },
-  { name: "Clarivate", logo: "/Journal Logos/Clarivate.png" },
-  { name: "Cochrane Library", logo: "/Journal Logos/Cochrane.png" },
-  { name: "Springer", logo: "/Journal Logos/Springer.png" },
-  { name: "Wiley", logo: "/Journal Logos/Wiley.png" },
-  { name: "Wolters Kluwer", logo: "/Journal Logos/Wolters Kluwer.png" },
-  { name: "Taylor & Francis", logo: "/Journal Logos/Taylor & Frances.png" },
-  { name: "DOAJ", logo: "/Journal Logos/DOAJ.png" },
-  { name: "Google Scholar", logo: "/Journal Logos/Google Scholar.png" },
+  { name: "PubMed / MEDLINE", logo: "/assets/images/journals/pubmed.png" },
+  { name: "Scopus", logo: "/assets/images/journals/scopus.png" },
+  { name: "Web of Science", logo: "/assets/images/journals/web-of-science.png" },
+  { name: "Clarivate", logo: "/assets/images/journals/clarivate.png" },
+  { name: "Cochrane Library", logo: "/assets/images/journals/cochrane.png" },
+  { name: "Springer", logo: "/assets/images/journals/springer.png" },
+  { name: "Wiley", logo: "/assets/images/journals/wiley.png" },
+  { name: "Wolters Kluwer", logo: "/assets/images/journals/wolters-kluwer.png" },
+  { name: "Taylor & Francis", logo: "/assets/images/journals/taylor-and-frances.png" },
+  { name: "DOAJ", logo: "/assets/images/journals/doaj.png" },
+  { name: "Google Scholar", logo: "/assets/images/journals/google-scholar.png" },
 ];

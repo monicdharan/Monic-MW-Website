@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { publicationsData, targetJournalLogos } from '../data/publications';
+import { publicationsData } from '../data/publications';
 import { PublicationCard } from '../components/cards/PublicationCard';
-import { SectionHeading } from '../components/layout/SectionHeading';
 import { CtaBanner } from '../components/sections/CtaBanner';
 
 export const Publications: React.FC = () => {
@@ -70,29 +69,6 @@ export const Publications: React.FC = () => {
             {filteredPubs.map((pub) => (
               <PublicationCard key={pub.id} publication={pub} />
             ))}
-          </div>
-
-          {/* Target Journal Indexing Databases */}
-          <div style={{ marginTop: '28px', paddingTop: '18px', borderTop: '1px solid var(--color-line)' }}>
-            <SectionHeading
-              eyebrow="Indexing Frameworks"
-              title="Target Databases &amp; International Standards"
-              subtitle="We prepare manuscripts and structured synopses complying strictly with international bibliographic databases."
-              centered={true}
-            />
-
-            <div className="journal-logos-ribbon">
-              {targetJournalLogos.map((j) => (
-                <img
-                  key={j.name}
-                  src={j.logo}
-                  alt={j.name}
-                  title={j.name}
-                  className="journal-logo-item"
-                  loading="lazy"
-                />
-              ))}
-            </div>
           </div>
         </div>
       </section>

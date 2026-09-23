@@ -1877,3 +1877,114 @@
   padding: 16px;
   color: var(--teal-primary-dark);
 }
+
+/* --------------------------------------------------------------------------
+   18. Indexing Frameworks / Database Logos Section (Screenshot Replication)
+   -------------------------------------------------------------------------- */
+.indexing-frameworks-section {
+  background-color: #FFFFFF;
+  padding: 56px 0 60px;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.indexing-logos-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  margin-top: 36px;
+  width: 100%;
+}
+
+.indexing-logos-row {
+  width: 100%;
+}
+
+.indexing-logos-row-1 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+  justify-items: center;
+  max-width: 1140px;
+  gap: 20px;
+}
+
+.indexing-logos-row-2 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  justify-items: center;
+  max-width: 950px;
+  gap: 20px;
+}
+
+.indexing-logo-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 52px;
+  padding: 6px 12px;
+  transition: transform var(--transition-fast);
+}
+
+.indexing-logo-card:hover {
+  transform: translateY(-2px);
+}
+
+.indexing-logo-img {
+  max-height: 38px;
+  max-width: 135px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.78;
+  transition: filter var(--transition-fast), opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.indexing-logo-card:hover .indexing-logo-img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+@media (max-width: 960px) {
+  .indexing-frameworks-section {
+    padding: 44px 0 48px;
+  }
+  .indexing-logos-wrapper {
+    gap: 20px;
+    margin-top: 24px;
+  }
+  .indexing-logos-row-1 {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 680px;
+    gap: 16px;
+  }
+  .indexing-logos-row-2 {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 680px;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  .indexing-logos-row-1 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .indexing-logos-row-2 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .indexing-logo-card {
+    height: 44px;
+    padding: 4px 8px;
+  }
+  .indexing-logo-img {
+    max-height: 30px;
+    max-width: 110px;
+  }
+}
+
