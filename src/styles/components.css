@@ -400,6 +400,20 @@
   margin-bottom: 18px;
 }
 
+@media (max-width: 560px) {
+  .hero-cta-buttons,
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .hero-cta-buttons .btn,
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 .hero-contact-pills-row,
 .hero-proof-strip {
   display: flex;
@@ -1569,6 +1583,15 @@
   color: #FFFFFF;
 }
 
+@media (max-width: 560px) {
+  .floating-whatsapp-btn {
+    bottom: 14px;
+    right: 14px;
+    padding: 8px 14px;
+    font-size: 0.82rem;
+  }
+}
+
 /* --------------------------------------------------------------------------
    15. Modals & Lightbox
    -------------------------------------------------------------------------- */
@@ -1604,6 +1627,13 @@
   position: relative;
   transform: translateY(16px);
   transition: transform var(--transition-base);
+}
+
+@media (max-width: 560px) {
+  .modal-dialog {
+    padding: 20px 16px;
+    max-height: 94vh;
+  }
 }
 
 .modal-backdrop.is-open .modal-dialog {
