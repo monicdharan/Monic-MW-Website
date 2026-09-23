@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { journalArticlesData } from '../data/articles';
+import { useAdminData } from '../context/AdminDataContext';
 import { ArticleCard } from '../components/cards/ArticleCard';
 import { CtaBanner } from '../components/sections/CtaBanner';
 
-
 export const Journal: React.FC = () => {
+  const { articles } = useAdminData();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedTopic, setSelectedTopic] = useState<string>('all');
 
-  const categories = Array.from(new Set(journalArticlesData.map((a) => a.category)));
-  const topics = Array.from(new Set(journalArticlesData.map((a) => a.topic)));
+  const categories = Array.from(new Set(articles.map((a) => a.category)));
+  const topics = Array.from(new Set(articles.map((a) => a.topic).filter(Boolean)));
 
-  const filteredArticles = journalArticlesData.filter((art) => {
+  const filteredArticles = articles.filter((art) => {
     const matchCat = selectedCategory === 'all' || art.category === selectedCategory;
     const matchTop = selectedTopic === 'all' || art.topic === selectedTopic;
     return matchCat && matchTop;

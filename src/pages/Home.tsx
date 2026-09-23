@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useModal } from '../context/ModalContext';
+import { useAdminData } from '../context/AdminDataContext';
 import { servicesData } from '../data/services';
-import { targetJournalLogos, publicationsData } from '../data/publications';
+import { targetJournalLogos } from '../data/publications';
 import { PublicationCard } from '../components/cards/PublicationCard';
-import { googleReviews } from '../data/testimonials';
 import { GoogleReviewCard } from '../components/cards/GoogleReviewCard';
-import { faqsData } from '../data/faqs';
 import { FaqAccordion } from '../components/interactive/FaqAccordion';
 import { CtaBanner } from '../components/sections/CtaBanner';
 
 export const Home: React.FC = () => {
   const { openConsultation } = useModal();
+  const { publications, testimonials, faqs, visualContent } = useAdminData();
+  const googleList = testimonials.filter((t) => t.type === 'google');
 
   return (
     <div className="page-home">
@@ -26,17 +27,17 @@ export const Home: React.FC = () => {
             <div className="hero-v2-content">
               {/* Understated Eyebrow Badge */}
               <div className="hero-v2-badge">
-                <span>Medical Research &amp; Publication Support</span>
+                <span>{visualContent.heroBadge || 'Medical Research & Publication Support'}</span>
               </div>
 
               {/* Main Headline */}
               <h1 className="hero-v2-title">
-                Turn Complex Medical Research Into Clear, Publication-Ready Work
+                {visualContent.heroTitle || 'Turn Complex Medical Research Into Clear, Publication-Ready Work'}
               </h1>
 
               {/* Subtitle */}
               <p className="hero-v2-lead">
-                Medical writing, biostatistics, and publication support for clinicians, postgraduate doctors, researchers, and medical faculty — delivered with academic integrity and confidentiality.
+                {visualContent.heroLead || 'Medical writing, biostatistics, and publication support for clinicians, postgraduate doctors, researchers, and medical faculty — delivered with academic integrity and confidentiality.'}
               </p>
 
               {/* Action Buttons */}
@@ -157,7 +158,7 @@ export const Home: React.FC = () => {
 
           {/* Cards Grid: Top 3 Cards */}
           <div className="publications-archive-grid">
-            {publicationsData.slice(0, 3).map((pub) => (
+            {publications.slice(0, 3).map((pub) => (
               <PublicationCard key={pub.id} publication={pub} />
             ))}
           </div>
@@ -240,7 +241,7 @@ export const Home: React.FC = () => {
           </div>
 
           <div className="screenshot-proof-grid">
-            {googleReviews.map((rev) => (
+            {googleList.map((rev) => (
               <GoogleReviewCard key={rev.id} review={rev} />
             ))}
           </div>
@@ -263,7 +264,7 @@ export const Home: React.FC = () => {
             </p>
           </div>
 
-          <FaqAccordion items={faqsData} />
+          <FaqAccordion items={faqs} />
         </div>
       </section>
 

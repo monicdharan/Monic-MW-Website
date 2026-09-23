@@ -1,9 +1,10 @@
 import React from 'react';
-import { publicationsData } from '../data/publications';
+import { useAdminData } from '../context/AdminDataContext';
 import { PublicationCard } from '../components/cards/PublicationCard';
 import { CtaBanner } from '../components/sections/CtaBanner';
 
 export const Publications: React.FC = () => {
+  const { publications } = useAdminData();
   return (
     <div className="page-publications">
       {/* Hero Header */}
@@ -32,7 +33,7 @@ export const Publications: React.FC = () => {
 
           {/* Cards Grid */}
           <div className="publications-archive-grid">
-            {publicationsData.map((pub) => (
+            {publications.map((pub) => (
               <PublicationCard key={pub.id} publication={pub} />
             ))}
           </div>

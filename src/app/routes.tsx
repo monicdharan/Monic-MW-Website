@@ -11,6 +11,7 @@ import { JournalArticle } from '../pages/JournalArticle';
 import { Contact } from '../pages/Contact';
 import { LegalPage } from '../pages/LegalPage';
 import { Sitemap } from '../pages/Sitemap';
+import { AdminDashboard } from '../pages/AdminDashboard';
 import { NotFound } from '../pages/NotFound';
 
 export const AppRoutes: React.FC = () => {
@@ -26,6 +27,10 @@ export const AppRoutes: React.FC = () => {
       <Route path="/journal/:slug" element={<JournalArticle />} />
       <Route path="/contact" element={<Contact />} />
       
+      {/* Admin Panel Routes */}
+      <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/dashboard" element={<AdminDashboard />} />
+
       {/* Legal & Policy Routes */}
       <Route path="/privacy-policy" element={<LegalPage pageSlug="privacy-policy" />} />
       <Route path="/refund-policy" element={<LegalPage pageSlug="refund-policy" />} />

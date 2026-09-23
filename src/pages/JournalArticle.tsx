@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { journalArticlesData } from '../data/articles';
+import { useAdminData } from '../context/AdminDataContext';
 import { useModal } from '../context/ModalContext';
 import { Button } from '../components/buttons/Button';
 import { CtaBanner } from '../components/sections/CtaBanner';
@@ -8,8 +8,9 @@ import { CtaBanner } from '../components/sections/CtaBanner';
 export const JournalArticle: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const { openConsultation } = useModal();
+  const { articles } = useAdminData();
 
-  const article = journalArticlesData.find((a) => a.slug === slug);
+  const article = articles.find((a) => a.slug === slug);
 
   if (!article) {
     return <Navigate to="/journal" replace />;

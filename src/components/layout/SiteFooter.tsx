@@ -185,6 +185,10 @@ export const SiteFooter: React.FC = () => {
             <Link to="/sitemap" className="footer-link" style={{ fontSize: '0.84rem' }}>
               Sitemap
             </Link>
+            <Link to="/admin" className="footer-link" style={{ fontSize: '0.84rem', color: '#93c5fd', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>admin_panel_settings</span>
+              <span>Admin Panel</span>
+            </Link>
           </div>
         </div>
       </div>
