@@ -165,7 +165,7 @@ export const Home: React.FC = () => {
                 className={`btn btn-sm ${pubFilter === 'all' ? 'btn-primary' : 'btn-secondary'}`}
                 onClick={() => setPubFilter('all')}
               >
-                All Documents ({publicationsData.length})
+                All Documents
               </button>
               <button
                 type="button"
@@ -184,9 +184,9 @@ export const Home: React.FC = () => {
             </div>
           </div>
 
-          {/* Cards Grid */}
+          {/* Cards Grid: Only 3 Cards */}
           <div className="publications-archive-grid">
-            {filteredPubs.map((pub) => (
+            {filteredPubs.slice(0, 3).map((pub) => (
               <PublicationCard key={pub.id} publication={pub} />
             ))}
           </div>
