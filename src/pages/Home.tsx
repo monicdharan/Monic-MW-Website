@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { useModal } from '../context/ModalContext';
 import { servicesData } from '../data/services';
 import { targetJournalLogos } from '../data/publications';
-import { doctorTestimonials } from '../data/testimonials';
+import { googleReviews } from '../data/testimonials';
+import { GoogleReviewCard } from '../components/cards/GoogleReviewCard';
 import { faqsData } from '../data/faqs';
 import { FaqAccordion } from '../components/interactive/FaqAccordion';
 import { CtaBanner } from '../components/sections/CtaBanner';
@@ -260,47 +261,26 @@ export const Home: React.FC = () => {
       </section>
 
       {/* ===================================================================
-          5. DOCTOR REVIEWS & TESTIMONIALS
+          5. VERIFIED GOOGLE REVIEWS
           =================================================================== */}
-      <section className="editorial-section screenshot-testimonials-section" aria-label="Doctor Reviews and Client Testimonials">
+      <section className="editorial-section section-bg-paper" aria-labelledby="google-reviews-heading">
         <div className="site-container">
           <div className="section-header text-center">
             <div className="pill-eyebrow-badge">
-              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>chat</span>
-              <span>Researcher Experiences</span>
+              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>star</span>
+              <span>Public Ratings</span>
             </div>
-            <h2 className="section-header-title">
-              Trusted by Clinicians, Postgraduates, and Research Teams
+            <h2 id="google-reviews-heading" className="section-header-title">
+              Verified Google Reviews
             </h2>
             <p className="section-header-subtitle">
-              Our work is built around clear communication, dependable process, and respect for the research behind every project.
+              Direct screenshot captures from our public Google Business review profile.
             </p>
           </div>
 
-          {/* 3 Testimonial Cards in a Row */}
-          <div className="testimonials-row-grid">
-            {doctorTestimonials.slice(0, 3).map((item) => (
-              <div key={item.id} className="screenshot-testimonial-card">
-                <div className="card-author-header">
-                  <img
-                    src={item.avatarImage}
-                    alt={item.doctorName}
-                    className="card-author-avatar"
-                    width="44"
-                    height="44"
-                    loading="lazy"
-                  />
-                  <div>
-                    <h4 className="card-author-name">{item.doctorName}</h4>
-                    <div className="card-star-rating">
-                      ★★★★★
-                    </div>
-                  </div>
-                </div>
-                <p className="card-quote-content">
-                  “{item.quote}”
-                </p>
-              </div>
+          <div className="screenshot-proof-grid">
+            {googleReviews.map((rev) => (
+              <GoogleReviewCard key={rev.id} review={rev} />
             ))}
           </div>
         </div>
