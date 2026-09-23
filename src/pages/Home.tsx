@@ -130,7 +130,7 @@ export const Home: React.FC = () => {
 
           <div style={{ textAlign: 'center', marginTop: '28px' }}>
             <Link to="/services" className="btn btn-outline btn-md">
-              <span>View All 9 Specialized Services</span>
+              <span>View All Specialized Services</span>
               <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_forward</span>
             </Link>
           </div>
