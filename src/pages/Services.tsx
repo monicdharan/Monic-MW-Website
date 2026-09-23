@@ -31,7 +31,7 @@ export const Services: React.FC = () => {
             subtitle="Click any service below to review full scope, deliverables, client prerequisites, and working methodology."
           />
 
-          <div className="services-editorial-list">
+          <div className="services-grid-cards services-square-grid">
             {servicesData.map((service) => (
               <ServiceListItem key={service.id} service={service} />
             ))}
