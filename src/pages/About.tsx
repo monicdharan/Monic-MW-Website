@@ -76,33 +76,33 @@ export const About: React.FC = () => {
             subtitle="Clear principles that guide our interactions with authors, mentors, and academic institutions."
           />
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '28px' }}>
-            <div style={{ background: 'var(--color-white)', padding: '32px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)' }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '32px', color: 'var(--color-teal)', marginBottom: '14px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
+            <div style={{ background: 'var(--color-white)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--color-teal)', marginBottom: '10px' }}>
                 biotech
               </span>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '10px' }}>Medical Accuracy</h3>
-              <p style={{ fontSize: '0.92rem', color: 'var(--color-ink-soft)', lineHeight: '1.6', margin: 0 }}>
+              <h3 style={{ fontSize: '1.15rem', marginBottom: '6px' }}>Medical Accuracy</h3>
+              <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
                 All writing is reviewed by experienced medical editors with advanced biomedical backgrounds. We ensure clinical terminologies, anatomical definitions, and diagnostic criteria are technically precise.
               </p>
             </div>
 
-            <div style={{ background: 'var(--color-white)', padding: '32px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)' }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '32px', color: 'var(--color-teal)', marginBottom: '14px' }}>
+            <div style={{ background: 'var(--color-white)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--color-teal)', marginBottom: '10px' }}>
                 lock
               </span>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '10px' }}>Complete Confidentiality</h3>
-              <p style={{ fontSize: '0.92rem', color: 'var(--color-ink-soft)', lineHeight: '1.6', margin: 0 }}>
+              <h3 style={{ fontSize: '1.15rem', marginBottom: '6px' }}>Complete Confidentiality</h3>
+              <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
                 Your clinical datasets, patient case proformas, and draft manuscripts are treated with strict confidentiality under enforceable Non-Disclosure Agreements (NDAs). De-identification is verified before processing.
               </p>
             </div>
 
-            <div style={{ background: 'var(--color-white)', padding: '32px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)' }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '32px', color: 'var(--color-teal)', marginBottom: '14px' }}>
+            <div style={{ background: 'var(--color-white)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--color-teal)', marginBottom: '10px' }}>
                 verified
               </span>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '10px' }}>Honest Expectations</h3>
-              <p style={{ fontSize: '0.92rem', color: 'var(--color-ink-soft)', lineHeight: '1.6', margin: 0 }}>
+              <h3 style={{ fontSize: '1.15rem', marginBottom: '6px' }}>Honest Expectations</h3>
+              <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
                 We promise methodological rigor, prompt milestone delivery, and comprehensive revision support. We never promise guaranteed journal acceptance, as editorial decisions rest solely with independent peer reviewers.
               </p>
             </div>

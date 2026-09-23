@@ -18,13 +18,13 @@ export const SiteFooter: React.FC = () => {
               <img
                 src="/assets/images/medzen-writes-logo.png"
                 alt="MedZen Writes"
-                style={{ height: '38px', width: 'auto', marginBottom: '18px' }}
+                style={{ height: '32px', width: 'auto', marginBottom: '10px' }}
               />
             </Link>
-            <p style={{ fontSize: '0.92rem', color: 'rgba(255, 255, 255, 0.78)', lineHeight: '1.65', marginBottom: '22px' }}>
+            <p style={{ fontSize: '0.86rem', color: 'rgba(255, 255, 255, 0.78)', lineHeight: '1.5', marginBottom: '12px' }}>
               Publishing isn't just an academic milestone — it's a gateway to global recognition, clinical impact, and career advancement.
             </p>
-            <div className="footer-social-row" style={{ display: 'flex', gap: '10px' }}>
+            <div className="footer-social-row" style={{ display: 'flex', gap: '8px' }}>
               <a
                 href="https://linkedin.com"
                 target="_blank"
@@ -57,7 +57,7 @@ export const SiteFooter: React.FC = () => {
                 className="footer-social-btn"
                 aria-label="Email Us"
               >
-                <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>mail</span>
+                <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>mail</span>
               </a>
             </div>
           </div>
@@ -121,21 +121,21 @@ export const SiteFooter: React.FC = () => {
           {/* Column 4: Contact Info */}
           <div style={{ position: 'relative' }}>
             <h4 className="footer-heading">Contact Info</h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '0.88rem', color: 'rgba(255, 255, 255, 0.78)' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                <span className="material-symbols-outlined" style={{ fontSize: '18px', color: 'var(--mint-primary)', marginTop: '2px' }}>location_on</span>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.84rem', color: 'rgba(255, 255, 255, 0.78)' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                <span className="material-symbols-outlined" style={{ fontSize: '16px', color: 'var(--mint-primary)', marginTop: '2px' }}>location_on</span>
                 <span>{companyData.address.line1}, {companyData.address.locality}, {companyData.address.city} {companyData.address.pincode}</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <span className="material-symbols-outlined" style={{ fontSize: '18px', color: 'var(--mint-primary)' }}>call</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span className="material-symbols-outlined" style={{ fontSize: '16px', color: 'var(--mint-primary)' }}>call</span>
                 <a href={`tel:${companyData.phone}`} style={{ color: 'rgba(255, 255, 255, 0.88)' }}>{companyData.phoneDisplay}</a>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <span className="material-symbols-outlined" style={{ fontSize: '18px', color: 'var(--mint-primary)' }}>mail</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span className="material-symbols-outlined" style={{ fontSize: '16px', color: 'var(--mint-primary)' }}>mail</span>
                 <a href={`mailto:${companyData.email}`} style={{ color: 'rgba(255, 255, 255, 0.88)' }}>{companyData.email}</a>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <span className="material-symbols-outlined" style={{ fontSize: '18px', color: 'var(--mint-primary)' }}>schedule</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span className="material-symbols-outlined" style={{ fontSize: '16px', color: 'var(--mint-primary)' }}>schedule</span>
                 <span>{companyData.workingHours}</span>
               </div>
             </div>
@@ -147,7 +147,7 @@ export const SiteFooter: React.FC = () => {
               onClick={scrollToTop}
               aria-label="Scroll back to top"
             >
-              <span className="material-symbols-outlined">arrow_upward</span>
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_upward</span>
             </button>
           </div>
         </div>

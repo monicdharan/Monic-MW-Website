@@ -52,13 +52,13 @@ export const ServiceDetail: React.FC = () => {
       {/* Main Content Body with Sidebar Layout */}
       <section className="editorial-section section-bg-white" aria-labelledby="service-spec-heading">
         <div className="site-container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: 'clamp(32px, 5vw, 64px)', alignItems: 'flex-start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: 'clamp(20px, 3.5vw, 36px)', alignItems: 'flex-start' }}>
             {/* Main Content Column */}
             <div>
               {/* Section 1: Who it is for */}
-              <div style={{ marginBottom: '48px' }}>
+              <div style={{ marginBottom: '24px' }}>
                 <span className="section-header-eyebrow">Audience &amp; Scope</span>
-                <h2 id="service-spec-heading" style={{ fontSize: '1.75rem', marginBottom: '16px' }}>
+                <h2 id="service-spec-heading" style={{ fontSize: '1.5rem', marginBottom: '10px' }}>
                   Who This Service Is For
                 </h2>
                 <ul className="editorial-point-list">
@@ -72,9 +72,9 @@ export const ServiceDetail: React.FC = () => {
               </div>
 
               {/* Section 2: What is included */}
-              <div style={{ marginBottom: '48px', padding: '32px', background: 'var(--color-paper)', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)' }}>
+              <div style={{ marginBottom: '24px', padding: '20px', background: 'var(--color-paper)', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)' }}>
                 <span className="section-header-eyebrow">Deliverables &amp; Inclusions</span>
-                <h2 style={{ fontSize: '1.75rem', marginBottom: '16px' }}>
+                <h2 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>
                   What Is Included
                 </h2>
                 <ul className="editorial-point-list">
@@ -88,12 +88,12 @@ export const ServiceDetail: React.FC = () => {
               </div>
 
               {/* Section 3: What the client provides */}
-              <div style={{ marginBottom: '48px' }}>
+              <div style={{ marginBottom: '24px' }}>
                 <span className="section-header-eyebrow">Prerequisites</span>
-                <h2 style={{ fontSize: '1.75rem', marginBottom: '16px' }}>
+                <h2 style={{ fontSize: '1.5rem', marginBottom: '10px' }}>
                   What You Provide
                 </h2>
-                <p style={{ fontSize: '0.94rem', color: 'var(--color-ink-soft)', marginBottom: '16px' }}>
+                <p style={{ fontSize: '0.9rem', color: 'var(--color-ink-soft)', marginBottom: '10px' }}>
                   To ensure smooth execution and ethical compliance, we request the following source materials at project kick-off:
                 </p>
                 <ul className="editorial-point-list">
@@ -107,25 +107,25 @@ export const ServiceDetail: React.FC = () => {
               </div>
 
               {/* Section 4: Process */}
-              <div style={{ marginBottom: '48px' }}>
+              <div style={{ marginBottom: '24px' }}>
                 <span className="section-header-eyebrow">Methodology</span>
-                <h2 style={{ fontSize: '1.75rem', marginBottom: '20px' }}>
+                <h2 style={{ fontSize: '1.5rem', marginBottom: '14px' }}>
                   Working Process
                 </h2>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {service.process.map((p) => (
                     <div
                       key={p.step}
-                      style={{ display: 'flex', gap: '20px', padding: '20px', background: 'var(--color-white)', border: '1px solid var(--color-line)', borderRadius: 'var(--radius-sm)' }}
+                      style={{ display: 'flex', gap: '14px', padding: '14px 16px', background: 'var(--color-white)', border: '1px solid var(--color-line)', borderRadius: 'var(--radius-sm)' }}
                     >
-                      <span style={{ fontFamily: 'var(--font-family-heading)', fontSize: '1.4rem', fontWeight: 700, color: 'var(--color-teal)' }}>
+                      <span style={{ fontFamily: 'var(--font-family-heading)', fontSize: '1.25rem', fontWeight: 700, color: 'var(--color-teal)' }}>
                         0{p.step}
                       </span>
                       <div>
-                        <h4 style={{ fontSize: '1.05rem', color: 'var(--color-ink)', marginBottom: '4px' }}>
+                        <h4 style={{ fontSize: '0.98rem', color: 'var(--color-ink)', marginBottom: '3px' }}>
                           {p.title}
                         </h4>
-                        <p style={{ fontSize: '0.9rem', color: 'var(--color-ink-soft)', margin: 0 }}>
+                        <p style={{ fontSize: '0.86rem', color: 'var(--color-ink-soft)', margin: 0 }}>
                           {p.desc}
                         </p>
                       </div>
@@ -135,8 +135,8 @@ export const ServiceDetail: React.FC = () => {
               </div>
 
               {/* Section 5: Deliverables Summary */}
-              <div style={{ padding: '28px', background: 'var(--color-mint-soft)', borderRadius: 'var(--radius-md)', border: '1px solid #cce8e2', marginBottom: '32px' }}>
-                <h3 style={{ fontSize: '1.25rem', color: 'var(--color-teal-dark)', marginBottom: '12px' }}>
+              <div style={{ padding: '20px', background: 'var(--color-mint-soft)', borderRadius: 'var(--radius-md)', border: '1px solid #cce8e2', marginBottom: '20px' }}>
+                <h3 style={{ fontSize: '1.15rem', color: 'var(--color-teal-dark)', marginBottom: '8px' }}>
                   Final Deliverables Package
                 </h3>
                 <ul className="editorial-point-list">
@@ -152,18 +152,18 @@ export const ServiceDetail: React.FC = () => {
 
             {/* Sidebar Column: Services Directory & Consultation Widget */}
             <aside style={{ position: 'sticky', top: '96px' }}>
-              <div style={{ background: 'var(--color-paper)', border: '1px solid var(--color-line)', borderRadius: 'var(--radius-md)', padding: '24px', marginBottom: '24px' }}>
-                <h4 style={{ fontSize: '1rem', color: 'var(--color-ink)', marginBottom: '14px', borderBottom: '1px solid var(--color-line)', paddingBottom: '8px' }}>
+              <div style={{ background: 'var(--color-paper)', border: '1px solid var(--color-line)', borderRadius: 'var(--radius-md)', padding: '18px', marginBottom: '16px' }}>
+                <h4 style={{ fontSize: '0.96rem', color: 'var(--color-ink)', marginBottom: '10px', borderBottom: '1px solid var(--color-line)', paddingBottom: '6px' }}>
                   All Services
                 </h4>
-                <nav style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <nav style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   {servicesData.map((s) => (
                     <Link
                       key={s.id}
                       to={`/services/${s.slug}`}
                       style={{
-                        fontSize: '0.88rem',
-                        padding: '6px 10px',
+                        fontSize: '0.84rem',
+                        padding: '5px 8px',
                         borderRadius: 'var(--radius-xs)',
                         textDecoration: 'none',
                         color: s.slug === slug ? 'var(--color-teal)' : 'var(--color-ink-soft)',
@@ -176,18 +176,18 @@ export const ServiceDetail: React.FC = () => {
                       }}
                     >
                       <span>{s.title}</span>
-                      {s.slug === slug && <span style={{ fontSize: '0.75rem', color: 'var(--color-mint)' }}>●</span>}
+                      {s.slug === slug && <span style={{ fontSize: '0.72rem', color: 'var(--mint-primary)' }}>●</span>}
                     </Link>
                   ))}
                 </nav>
               </div>
 
               {/* Consultation Card Widget */}
-              <div style={{ background: 'var(--color-teal-dark)', color: 'var(--color-white)', borderRadius: 'var(--radius-md)', padding: '24px' }}>
-                <h4 style={{ color: 'var(--color-white)', fontSize: '1.1rem', marginBottom: '8px' }}>
+              <div style={{ background: 'var(--color-teal-dark)', color: 'var(--color-white)', borderRadius: 'var(--radius-md)', padding: '18px' }}>
+                <h4 style={{ color: 'var(--color-white)', fontSize: '1.02rem', marginBottom: '6px' }}>
                   Need Guidance?
                 </h4>
-                <p style={{ fontSize: '0.86rem', color: 'rgba(255, 255, 255, 0.8)', lineHeight: '1.5', marginBottom: '18px' }}>
+                <p style={{ fontSize: '0.84rem', color: 'rgba(255, 255, 255, 0.8)', lineHeight: '1.45', marginBottom: '14px' }}>
                   Our academic coordinators can review your study protocol and provide a milestone roadmap.
                 </p>
                 <Button variant="white" size="sm" onClick={() => openConsultation(service.title)} style={{ width: '100%' }}>

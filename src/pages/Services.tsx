@@ -42,43 +42,43 @@ export const Services: React.FC = () => {
       {/* Quality Guarantees Strip */}
       <section className="editorial-section section-bg-paper section-border-top">
         <div className="site-container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px' }}>
-            <div style={{ padding: '24px', background: 'var(--color-white)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-line)' }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--color-teal)', marginBottom: '10px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
+            <div style={{ padding: '16px 18px', background: 'var(--color-white)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-line)' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '24px', color: 'var(--color-teal)', marginBottom: '8px' }}>
                 menu_book
               </span>
-              <h4 style={{ fontSize: '1.05rem', marginBottom: '6px' }}>Target Journal Compliance</h4>
-              <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
+              <h4 style={{ fontSize: '0.98rem', marginBottom: '4px' }}>Target Journal Compliance</h4>
+              <p style={{ fontSize: '0.86rem', color: 'var(--color-ink-soft)', lineHeight: '1.45', margin: 0 }}>
                 Every manuscript is formatted strictly according to author guidelines and word counts.
               </p>
             </div>
 
-            <div style={{ padding: '24px', background: 'var(--color-white)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-line)' }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--color-teal)', marginBottom: '10px' }}>
+            <div style={{ padding: '16px 18px', background: 'var(--color-white)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-line)' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '24px', color: 'var(--color-teal)', marginBottom: '8px' }}>
                 bar_chart
               </span>
-              <h4 style={{ fontSize: '1.05rem', marginBottom: '6px' }}>Verified Biostatistics</h4>
-              <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
+              <h4 style={{ fontSize: '0.98rem', marginBottom: '4px' }}>Verified Biostatistics</h4>
+              <p style={{ fontSize: '0.86rem', color: 'var(--color-ink-soft)', lineHeight: '1.45', margin: 0 }}>
                 Computations in SPSS/R with reproducible outputs, exact p-values, and publication tables.
               </p>
             </div>
 
-            <div style={{ padding: '24px', background: 'var(--color-white)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-line)' }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--color-teal)', marginBottom: '10px' }}>
+            <div style={{ padding: '16px 18px', background: 'var(--color-white)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-line)' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '24px', color: 'var(--color-teal)', marginBottom: '8px' }}>
                 edit_note
               </span>
-              <h4 style={{ fontSize: '1.05rem', marginBottom: '6px' }}>Revision Support</h4>
-              <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
+              <h4 style={{ fontSize: '0.98rem', marginBottom: '4px' }}>Revision Support</h4>
+              <p style={{ fontSize: '0.86rem', color: 'var(--color-ink-soft)', lineHeight: '1.45', margin: 0 }}>
                 Post-delivery revisions to address guide, mentor, or journal peer-review feedback.
               </p>
             </div>
 
-            <div style={{ padding: '24px', background: 'var(--color-white)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-line)' }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--color-teal)', marginBottom: '10px' }}>
+            <div style={{ padding: '16px 18px', background: 'var(--color-white)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--color-line)' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '24px', color: 'var(--color-teal)', marginBottom: '8px' }}>
                 lock
               </span>
-              <h4 style={{ fontSize: '1.05rem', marginBottom: '6px' }}>Strict Confidentiality</h4>
-              <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
+              <h4 style={{ fontSize: '0.98rem', marginBottom: '4px' }}>Strict Confidentiality</h4>
+              <p style={{ fontSize: '0.86rem', color: 'var(--color-ink-soft)', lineHeight: '1.45', margin: 0 }}>
                 Enforceable Non-Disclosure Agreements (NDAs) to protect unpublished research findings.
               </p>
             </div>

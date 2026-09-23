@@ -71,24 +71,24 @@
   --font-sans: var(--font-family-body);
 
   /* Elevation & Shadows */
-  --shadow-subtle: 0 2px 8px rgba(0, 43, 48, 0.04);
-  --shadow-soft: 0 10px 25px -4px rgba(0, 43, 48, 0.07);
-  --shadow-elevated: 0 20px 40px -8px rgba(0, 43, 48, 0.14);
+  --shadow-subtle: 0 2px 6px rgba(0, 43, 48, 0.04);
+  --shadow-soft: 0 6px 18px -3px rgba(0, 43, 48, 0.06);
+  --shadow-elevated: 0 14px 28px -6px rgba(0, 43, 48, 0.12);
 
   /* Radii */
   --radius-xs: 6px;
   --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
   --radius-pill: 9999px;
 
-  /* Layout */
+  /* Layout & Tight Balanced Spacing */
   --max-width: 1240px;
   --max-width-narrow: 860px;
   --max-width-wide: 1320px;
-  --section-padding: clamp(40px, 4.5vw, 64px);
-  --section-padding-sm: clamp(24px, 2.8vw, 36px);
+  --section-padding: clamp(20px, 2.5vw, 32px);
+  --section-padding-sm: clamp(14px, 1.8vw, 22px);
 
   /* Transitions */
   --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);

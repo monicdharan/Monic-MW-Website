@@ -35,10 +35,10 @@ export const Journal: React.FC = () => {
       {/* Articles Grid & Filtering */}
       <section className="editorial-section section-bg-white" aria-labelledby="journal-articles-heading">
         <div className="site-container">
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px', marginBottom: '36px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', marginBottom: '16px' }}>
             <div>
               <span className="section-header-eyebrow">Latest Academic Guides</span>
-              <h2 id="journal-articles-heading" style={{ fontSize: '1.85rem', margin: 0 }}>
+              <h2 id="journal-articles-heading" style={{ fontSize: '1.7rem', margin: 0 }}>
                 Research &amp; Writing Guides
               </h2>
             </div>
@@ -90,7 +90,7 @@ export const Journal: React.FC = () => {
 
           {/* Cards */}
           {filteredArticles.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '60px 20px', background: 'var(--color-paper)', borderRadius: 'var(--radius-md)', border: '1px dashed var(--color-line)' }}>
+            <div style={{ textAlign: 'center', padding: '36px 16px', background: 'var(--color-paper)', borderRadius: 'var(--radius-md)', border: '1px dashed var(--color-line)' }}>
               <p style={{ color: 'var(--color-muted)', marginBottom: '16px' }}>No articles match your selected filters.</p>
               <button
                 type="button"

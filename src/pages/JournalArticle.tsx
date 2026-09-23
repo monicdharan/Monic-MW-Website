@@ -52,16 +52,16 @@ export const JournalArticle: React.FC = () => {
         <div className="site-container" style={{ maxWidth: '780px' }}>
           {/* Key Takeaways Box */}
           {article.keyTakeaways && article.keyTakeaways.length > 0 && (
-            <div style={{ background: 'var(--color-sand)', padding: '28px', borderRadius: 'var(--radius-md)', border: '1px solid #e0dad0', marginBottom: '36px' }}>
-              <h3 style={{ fontSize: '1.15rem', color: 'var(--color-ink)', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div style={{ background: 'var(--color-sand)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid #e0dad0', marginBottom: '20px' }}>
+              <h3 style={{ fontSize: '1.08rem', color: 'var(--color-ink)', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span className="material-symbols-outlined" style={{ color: 'var(--color-teal)' }}>lightbulb</span>
                 Key Clinical Takeaways
               </h3>
-              <ul className="editorial-point-list" style={{ marginTop: '8px' }}>
+              <ul className="editorial-point-list" style={{ marginTop: '6px' }}>
                 {article.keyTakeaways.map((k, i) => (
                   <li key={i} className="editorial-point-item">
                     <span className="material-symbols-outlined point-icon-check" style={{ fontSize: '18px' }}>arrow_right</span>
-                    <span style={{ fontSize: '0.94rem' }}>{k}</span>
+                    <span style={{ fontSize: '0.9rem' }}>{k}</span>
                   </li>
                 ))}
               </ul>
@@ -69,19 +69,19 @@ export const JournalArticle: React.FC = () => {
           )}
 
           {/* Paragraphs */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', fontSize: '1.05rem', lineHeight: '1.75', color: 'var(--color-ink)' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontSize: '1rem', lineHeight: '1.68', color: 'var(--color-ink)' }}>
             {article.content.map((paragraph, index) => (
-              <p key={index} style={{ fontSize: '1.05rem', lineHeight: '1.75' }}>
+              <p key={index} style={{ fontSize: '1rem', lineHeight: '1.68' }}>
                 {paragraph}
               </p>
             ))}
           </div>
 
           {/* Related Support Box */}
-          <div style={{ marginTop: '56px', padding: '32px', background: 'var(--color-paper)', border: '1px solid var(--color-line)', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '24px', flexWrap: 'wrap' }}>
+          <div style={{ marginTop: '28px', padding: '20px', background: 'var(--color-paper)', border: '1px solid var(--color-line)', borderRadius: 'var(--radius-md)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '18px', flexWrap: 'wrap' }}>
             <div>
-              <h4 style={{ fontSize: '1.15rem', marginBottom: '6px' }}>Need assistance implementing this in your research?</h4>
-              <p style={{ fontSize: '0.9rem', color: 'var(--color-ink-soft)', margin: 0 }}>
+              <h4 style={{ fontSize: '1.08rem', marginBottom: '4px' }}>Need assistance implementing this in your research?</h4>
+              <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', margin: 0 }}>
                 Our medical writing specialists and biostatisticians can guide your study from protocol to submission.
               </p>
             </div>

@@ -31,10 +31,10 @@ export const Publications: React.FC = () => {
       <section className="editorial-section section-bg-white" aria-labelledby="portfolio-heading">
         <div className="site-container">
           {/* Header & Filter Controls */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px', marginBottom: '36px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', marginBottom: '16px' }}>
             <div>
               <span className="section-header-eyebrow">Document Archive</span>
-              <h2 id="portfolio-heading" style={{ fontSize: '1.85rem', margin: 0 }}>
+              <h2 id="portfolio-heading" style={{ fontSize: '1.7rem', margin: 0 }}>
                 Verified Publication Records
               </h2>
             </div>
@@ -73,7 +73,7 @@ export const Publications: React.FC = () => {
           </div>
 
           {/* Target Journal Indexing Databases */}
-          <div style={{ marginTop: '72px', paddingTop: '40px', borderTop: '1px solid var(--color-line)' }}>
+          <div style={{ marginTop: '28px', paddingTop: '18px', borderTop: '1px solid var(--color-line)' }}>
             <SectionHeading
               eyebrow="Indexing Frameworks"
               title="Target Databases &amp; International Standards"
