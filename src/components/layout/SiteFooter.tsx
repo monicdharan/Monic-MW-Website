@@ -1,12 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAdminData } from '../../context/AdminDataContext';
 import { companyData } from '../../data/company';
 import { servicesData } from '../../data/services';
 
 export const SiteFooter: React.FC = () => {
+  const { visualContent } = useAdminData();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  const currentPhone = visualContent.phone || companyData.phoneDisplay;
+  const currentEmail = visualContent.email || companyData.email;
 
   return (
     <footer className="site-footer" role="contentinfo">
@@ -140,11 +146,11 @@ export const SiteFooter: React.FC = () => {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span className="material-symbols-outlined" style={{ fontSize: '16px', color: 'var(--mint-primary)' }}>call</span>
-                <a href={`tel:${companyData.phone}`} style={{ color: 'rgba(255, 255, 255, 0.88)' }}>{companyData.phoneDisplay}</a>
+                <a href={`tel:${currentPhone.replace(/[^0-9+]/g, '')}`} style={{ color: 'rgba(255, 255, 255, 0.88)' }}>{currentPhone}</a>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span className="material-symbols-outlined" style={{ fontSize: '16px', color: 'var(--mint-primary)' }}>mail</span>
-                <a href={`mailto:${companyData.email}`} style={{ color: 'rgba(255, 255, 255, 0.88)' }}>{companyData.email}</a>
+                <a href={`mailto:${currentEmail}`} style={{ color: 'rgba(255, 255, 255, 0.88)' }}>{currentEmail}</a>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span className="material-symbols-outlined" style={{ fontSize: '16px', color: 'var(--mint-primary)' }}>schedule</span>

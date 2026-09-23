@@ -1,9 +1,12 @@
 import React from 'react';
+import { useAdminData } from '../context/AdminDataContext';
 import { companyData } from '../data/company';
 import { ConsultationForm } from '../components/forms/ConsultationForm';
 
-
 export const Contact: React.FC = () => {
+  const { visualContent } = useAdminData();
+  const currentPhone = visualContent.phone || companyData.phoneDisplay;
+  const currentEmail = visualContent.email || companyData.email;
   return (
     <div className="page-contact">
       {/* Hero Header */}
@@ -51,8 +54,8 @@ export const Contact: React.FC = () => {
                       Email Inquiries
                     </span>
                     <p style={{ margin: '2px 0 0', fontWeight: 600 }}>
-                      <a href={`mailto:${companyData.email}`} style={{ color: 'var(--color-ink)', fontSize: '0.96rem' }}>
-                        {companyData.email}
+                      <a href={`mailto:${currentEmail}`} style={{ color: 'var(--color-ink)', fontSize: '0.96rem' }}>
+                        {currentEmail}
                       </a>
                     </p>
                     <span style={{ fontSize: '0.78rem', color: 'var(--color-muted)' }}>Response time: within 12 hours</span>
@@ -63,8 +66,8 @@ export const Contact: React.FC = () => {
                       Telephone &amp; WhatsApp
                     </span>
                     <p style={{ margin: '2px 0 0', fontWeight: 600 }}>
-                      <a href={`tel:${companyData.phone}`} style={{ color: 'var(--color-ink)', fontSize: '0.96rem' }}>
-                        {companyData.phoneDisplay}
+                      <a href={`tel:${currentPhone.replace(/[^0-9+]/g, '')}`} style={{ color: 'var(--color-ink)', fontSize: '0.96rem' }}>
+                        {currentPhone}
                       </a>
                     </p>
                     <span style={{ fontSize: '0.78rem', color: 'var(--color-muted)' }}>Direct line for academic coordinators</span>

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { PublicationItem, ReviewScreenshot, DoctorTestimonial, JournalArticleItem, FaqItem } from '../types';
 import { publicationsData as initialPublications } from '../data/publications';
 import { googleReviews, whatsappReviews, doctorTestimonials as initialDoctorReviews } from '../data/testimonials';
@@ -61,7 +61,7 @@ export interface AdminDataContextType {
   updateVisualContent: (updated: Partial<VisualContentState>) => void;
 
   // FAQs
-  faqs: typeof initialFaqs;
+  faqs: FaqItem[];
   addFaq: (faq: { question: string; answer: string; category?: any }) => void;
   deleteFaq: (id: string) => void;
 
@@ -69,7 +69,7 @@ export interface AdminDataContextType {
   resetToDefaults: () => void;
 }
 
-const STORAGE_KEY = 'medzen_admin_data_v2';
+const STORAGE_KEY = 'medzen_admin_data_v3';
 
 const initialCategories = [
   'Research Batch Publications',
@@ -98,235 +98,282 @@ const initialVisualContent: VisualContentState = {
   email: 'support@medzenwrites.com',
 };
 
+const combinedInitialTestimonials: ReviewScreenshot[] = [
+  ...googleReviews,
+  ...whatsappReviews,
+];
+
 const AdminDataContext = createContext<AdminDataContextType | undefined>(undefined);
 
+// Helper to safely read from localStorage
+const getStored = <T,>(key: string, fallback: T): T => {
+  try {
+    const item = localStorage.getItem(`${STORAGE_KEY}_${key}`);
+    return item ? JSON.parse(item) : fallback;
+  } catch {
+    return fallback;
+  }
+};
+
+// Helper to safely write to localStorage and notify other tabs
+const setStored = <T,>(key: string, value: T) => {
+  try {
+    localStorage.setItem(`${STORAGE_KEY}_${key}`, JSON.stringify(value));
+    // Trigger custom event for same-tab updates
+    window.dispatchEvent(new CustomEvent('medzen_local_sync', { detail: { key, value } }));
+  } catch (e) {
+    console.warn(`LocalStorage write error for ${key}:`, e);
+  }
+};
+
 export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Combine all initial testimonials
-  const combinedInitialTestimonials: ReviewScreenshot[] = [
-    ...googleReviews,
-    ...whatsappReviews,
-  ];
+  const [publications, setPublications] = useState<PublicationItem[]>(() => getStored('pubs', initialPublications));
+  const [testimonials, setTestimonials] = useState<ReviewScreenshot[]>(() => getStored('testimonials', combinedInitialTestimonials));
+  const [doctorReviews, setDoctorReviews] = useState<DoctorTestimonial[]>(() => getStored('doctor_reviews', initialDoctorReviews));
+  const [articles, setArticles] = useState<JournalArticleItem[]>(() => getStored('articles', initialArticles));
+  const [blogCategories, setBlogCategories] = useState<string[]>(() => getStored('categories', initialCategories));
+  const [authors, setAuthors] = useState<BlogAuthor[]>(() => getStored('authors', initialAuthorsList));
+  const [visualContent, setVisualContent] = useState<VisualContentState>(() => getStored('visual', initialVisualContent));
+  const [faqs, setFaqs] = useState<FaqItem[]>(() => getStored('faqs', initialFaqs));
 
-  const [publications, setPublications] = useState<PublicationItem[]>(() => {
-    try {
-      const saved = localStorage.getItem(`${STORAGE_KEY}_pubs`);
-      return saved ? JSON.parse(saved) : initialPublications;
-    } catch {
-      return initialPublications;
-    }
-  });
+  // Reload all states from localStorage
+  const syncFromStorage = useCallback(() => {
+    setPublications(getStored('pubs', initialPublications));
+    setTestimonials(getStored('testimonials', combinedInitialTestimonials));
+    setDoctorReviews(getStored('doctor_reviews', initialDoctorReviews));
+    setArticles(getStored('articles', initialArticles));
+    setBlogCategories(getStored('categories', initialCategories));
+    setAuthors(getStored('authors', initialAuthorsList));
+    setVisualContent(getStored('visual', initialVisualContent));
+    setFaqs(getStored('faqs', initialFaqs));
+  }, []);
 
-  const [testimonials, setTestimonials] = useState<ReviewScreenshot[]>(() => {
-    try {
-      const saved = localStorage.getItem(`${STORAGE_KEY}_testimonials`);
-      return saved ? JSON.parse(saved) : combinedInitialTestimonials;
-    } catch {
-      return combinedInitialTestimonials;
-    }
-  });
-
-  const [doctorReviews, setDoctorReviews] = useState<DoctorTestimonial[]>(() => {
-    try {
-      const saved = localStorage.getItem(`${STORAGE_KEY}_doctor_reviews`);
-      return saved ? JSON.parse(saved) : initialDoctorReviews;
-    } catch {
-      return initialDoctorReviews;
-    }
-  });
-
-  const [articles, setArticles] = useState<JournalArticleItem[]>(() => {
-    try {
-      const saved = localStorage.getItem(`${STORAGE_KEY}_articles`);
-      return saved ? JSON.parse(saved) : initialArticles;
-    } catch {
-      return initialArticles;
-    }
-  });
-
-  const [blogCategories, setBlogCategories] = useState<string[]>(() => {
-    try {
-      const saved = localStorage.getItem(`${STORAGE_KEY}_categories`);
-      return saved ? JSON.parse(saved) : initialCategories;
-    } catch {
-      return initialCategories;
-    }
-  });
-
-  const [authors, setAuthors] = useState<BlogAuthor[]>(() => {
-    try {
-      const saved = localStorage.getItem(`${STORAGE_KEY}_authors`);
-      return saved ? JSON.parse(saved) : initialAuthorsList;
-    } catch {
-      return initialAuthorsList;
-    }
-  });
-
-  const [visualContent, setVisualContent] = useState<VisualContentState>(() => {
-    try {
-      const saved = localStorage.getItem(`${STORAGE_KEY}_visual`);
-      return saved ? JSON.parse(saved) : initialVisualContent;
-    } catch {
-      return initialVisualContent;
-    }
-  });
-
-  const [faqs, setFaqs] = useState<FaqItem[]>(() => {
-    try {
-      const saved = localStorage.getItem(`${STORAGE_KEY}_faqs`);
-      return saved ? JSON.parse(saved) : initialFaqs;
-    } catch {
-      return initialFaqs;
-    }
-  });
-
-  // Save to localStorage upon change
+  // Listen for storage events across tabs & local window sync
   useEffect(() => {
-    try {
-      localStorage.setItem(`${STORAGE_KEY}_pubs`, JSON.stringify(publications));
-    } catch (e) {
-      console.warn('LocalStorage limit reached for publications', e);
-    }
-  }, [publications]);
+    const handleStorageEvent = (e: StorageEvent) => {
+      if (e.key && e.key.startsWith(STORAGE_KEY)) {
+        syncFromStorage();
+      }
+    };
 
-  useEffect(() => {
-    try {
-      localStorage.setItem(`${STORAGE_KEY}_testimonials`, JSON.stringify(testimonials));
-    } catch (e) {
-      console.warn('LocalStorage limit reached for testimonials', e);
-    }
-  }, [testimonials]);
+    const handleLocalSync = () => {
+      syncFromStorage();
+    };
 
-  useEffect(() => {
-    try {
-      localStorage.setItem(`${STORAGE_KEY}_doctor_reviews`, JSON.stringify(doctorReviews));
-    } catch (e) {
-      console.warn('LocalStorage limit reached for doctor reviews', e);
-    }
-  }, [doctorReviews]);
+    window.addEventListener('storage', handleStorageEvent);
+    window.addEventListener('medzen_local_sync', handleLocalSync);
 
-  useEffect(() => {
+    // Setup BroadcastChannel for modern zero-latency tab sync
+    let bc: BroadcastChannel | null = null;
     try {
-      localStorage.setItem(`${STORAGE_KEY}_articles`, JSON.stringify(articles));
-    } catch (e) {
-      console.warn('LocalStorage limit reached for articles', e);
-    }
-  }, [articles]);
+      if (typeof BroadcastChannel !== 'undefined') {
+        bc = new BroadcastChannel('medzen_admin_channel');
+        bc.onmessage = () => {
+          syncFromStorage();
+        };
+      }
+    } catch {}
 
-  useEffect(() => {
+    return () => {
+      window.removeEventListener('storage', handleStorageEvent);
+      window.removeEventListener('medzen_local_sync', handleLocalSync);
+      if (bc) bc.close();
+    };
+  }, [syncFromStorage]);
+
+  const notifyAllTabs = () => {
     try {
-      localStorage.setItem(`${STORAGE_KEY}_categories`, JSON.stringify(blogCategories));
-    } catch (e) {}
-  }, [blogCategories]);
+      if (typeof BroadcastChannel !== 'undefined') {
+        const bc = new BroadcastChannel('medzen_admin_channel');
+        bc.postMessage({ type: 'sync', timestamp: Date.now() });
+        bc.close();
+      }
+    } catch {}
+  };
 
-  useEffect(() => {
-    try {
-      localStorage.setItem(`${STORAGE_KEY}_authors`, JSON.stringify(authors));
-    } catch (e) {}
-  }, [authors]);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(`${STORAGE_KEY}_visual`, JSON.stringify(visualContent));
-    } catch (e) {}
-  }, [visualContent]);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(`${STORAGE_KEY}_faqs`, JSON.stringify(faqs));
-    } catch (e) {}
-  }, [faqs]);
-
-  // Methods
+  // Publications
   const addPublication = (item: Omit<PublicationItem, 'id'>) => {
     const newItem: PublicationItem = {
       ...item,
       id: `pub-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
     };
-    setPublications((prev) => [newItem, ...prev]);
+    setPublications((prev) => {
+      const next = [newItem, ...prev];
+      setStored('pubs', next);
+      notifyAllTabs();
+      return next;
+    });
   };
 
   const deletePublication = (id: string) => {
-    setPublications((prev) => prev.filter((p) => p.id !== id));
+    setPublications((prev) => {
+      const next = prev.filter((p) => p.id !== id);
+      setStored('pubs', next);
+      notifyAllTabs();
+      return next;
+    });
   };
 
   const updatePublication = (id: string, updated: Partial<PublicationItem>) => {
-    setPublications((prev) => prev.map((p) => (p.id === id ? { ...p, ...updated } : p)));
+    setPublications((prev) => {
+      const next = prev.map((p) => (p.id === id ? { ...p, ...updated } : p));
+      setStored('pubs', next);
+      notifyAllTabs();
+      return next;
+    });
   };
 
+  // Testimonials
   const addTestimonial = (item: Omit<ReviewScreenshot, 'id'>) => {
     const newItem: ReviewScreenshot = {
       ...item,
       id: `testi-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
     };
-    setTestimonials((prev) => [newItem, ...prev]);
+    setTestimonials((prev) => {
+      const next = [newItem, ...prev];
+      setStored('testimonials', next);
+      notifyAllTabs();
+      return next;
+    });
   };
 
   const deleteTestimonial = (id: string) => {
-    setTestimonials((prev) => prev.filter((t) => t.id !== id));
+    setTestimonials((prev) => {
+      const next = prev.filter((t) => t.id !== id);
+      setStored('testimonials', next);
+      notifyAllTabs();
+      return next;
+    });
   };
 
+  // Doctor Reviews
   const addDoctorReview = (item: Omit<DoctorTestimonial, 'id'>) => {
     const newItem: DoctorTestimonial = {
       ...item,
       id: `doc-rev-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
     };
-    setDoctorReviews((prev) => [newItem, ...prev]);
+    setDoctorReviews((prev) => {
+      const next = [newItem, ...prev];
+      setStored('doctor_reviews', next);
+      notifyAllTabs();
+      return next;
+    });
   };
 
   const deleteDoctorReview = (id: string) => {
-    setDoctorReviews((prev) => prev.filter((r) => r.id !== id));
+    setDoctorReviews((prev) => {
+      const next = prev.filter((r) => r.id !== id);
+      setStored('doctor_reviews', next);
+      notifyAllTabs();
+      return next;
+    });
   };
 
+  // Articles
   const addArticle = (item: Omit<JournalArticleItem, 'id'>) => {
     const newItem: JournalArticleItem = {
       ...item,
       id: `art-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
     };
-    setArticles((prev) => [newItem, ...prev]);
+    setArticles((prev) => {
+      const next = [newItem, ...prev];
+      setStored('articles', next);
+      notifyAllTabs();
+      return next;
+    });
   };
 
   const updateArticle = (id: string, updated: Partial<JournalArticleItem>) => {
-    setArticles((prev) => prev.map((a) => (a.id === id ? { ...a, ...updated } : a)));
+    setArticles((prev) => {
+      const next = prev.map((a) => (a.id === id ? { ...a, ...updated } : a));
+      setStored('articles', next);
+      notifyAllTabs();
+      return next;
+    });
   };
 
   const deleteArticle = (id: string) => {
-    setArticles((prev) => prev.filter((a) => a.id !== id));
+    setArticles((prev) => {
+      const next = prev.filter((a) => a.id !== id);
+      setStored('articles', next);
+      notifyAllTabs();
+      return next;
+    });
   };
 
+  // Categories & Authors
   const addCategory = (cat: string) => {
     if (cat.trim() && !blogCategories.includes(cat.trim())) {
-      setBlogCategories((prev) => [...prev, cat.trim()]);
+      setBlogCategories((prev) => {
+        const next = [...prev, cat.trim()];
+        setStored('categories', next);
+        notifyAllTabs();
+        return next;
+      });
     }
   };
 
   const deleteCategory = (cat: string) => {
-    setBlogCategories((prev) => prev.filter((c) => c !== cat));
+    setBlogCategories((prev) => {
+      const next = prev.filter((c) => c !== cat);
+      setStored('categories', next);
+      notifyAllTabs();
+      return next;
+    });
   };
 
   const addAuthor = (author: BlogAuthor) => {
-    setAuthors((prev) => [...prev, author]);
+    setAuthors((prev) => {
+      const next = [...prev, author];
+      setStored('authors', next);
+      notifyAllTabs();
+      return next;
+    });
   };
 
   const deleteAuthor = (id: string) => {
-    setAuthors((prev) => prev.filter((a) => a.id !== id));
+    setAuthors((prev) => {
+      const next = prev.filter((a) => a.id !== id);
+      setStored('authors', next);
+      notifyAllTabs();
+      return next;
+    });
   };
 
+  // Visual content
   const updateVisualContent = (updated: Partial<VisualContentState>) => {
-    setVisualContent((prev) => ({ ...prev, ...updated }));
+    setVisualContent((prev) => {
+      const next = { ...prev, ...updated };
+      setStored('visual', next);
+      notifyAllTabs();
+      return next;
+    });
   };
 
+  // FAQs
   const addFaq = (faq: { question: string; answer: string; category?: any }) => {
-    const newFaq = {
+    const newFaq: FaqItem = {
       id: `faq-${Date.now()}`,
       ...faq,
     };
-    setFaqs((prev) => [...prev, newFaq]);
+    setFaqs((prev) => {
+      const next = [...prev, newFaq];
+      setStored('faqs', next);
+      notifyAllTabs();
+      return next;
+    });
   };
 
   const deleteFaq = (id: string) => {
-    setFaqs((prev) => prev.filter((f) => f.id !== id));
+    setFaqs((prev) => {
+      const next = prev.filter((f) => f.id !== id);
+      setStored('faqs', next);
+      notifyAllTabs();
+      return next;
+    });
   };
 
+  // Reset to Defaults
   const resetToDefaults = () => {
     setPublications(initialPublications);
     setTestimonials(combinedInitialTestimonials);
@@ -336,6 +383,7 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     setAuthors(initialAuthorsList);
     setVisualContent(initialVisualContent);
     setFaqs(initialFaqs);
+
     localStorage.removeItem(`${STORAGE_KEY}_pubs`);
     localStorage.removeItem(`${STORAGE_KEY}_testimonials`);
     localStorage.removeItem(`${STORAGE_KEY}_doctor_reviews`);
@@ -344,6 +392,7 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     localStorage.removeItem(`${STORAGE_KEY}_authors`);
     localStorage.removeItem(`${STORAGE_KEY}_visual`);
     localStorage.removeItem(`${STORAGE_KEY}_faqs`);
+    notifyAllTabs();
   };
 
   return (
