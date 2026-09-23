@@ -87,8 +87,8 @@
   --max-width: 1240px;
   --max-width-narrow: 860px;
   --max-width-wide: 1320px;
-  --section-padding: clamp(64px, 7vw, 100px);
-  --section-padding-sm: clamp(36px, 4vw, 56px);
+  --section-padding: clamp(40px, 4.5vw, 64px);
+  --section-padding-sm: clamp(24px, 2.8vw, 36px);
 
   /* Transitions */
   --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
