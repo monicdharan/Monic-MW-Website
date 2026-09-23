@@ -33,18 +33,6 @@ export const ServiceDetail: React.FC = () => {
 
             <h1 className="hero-title">{service.title}</h1>
             <p className="hero-lead">{service.heroSubtitle}</p>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
-              <Button variant="white" size="lg" onClick={() => openConsultation(service.title)}>
-                Request Consultation for this Service
-              </Button>
-              {service.turnaroundTime && (
-                <span style={{ fontSize: '0.88rem', color: 'rgba(255, 255, 255, 0.72)', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: '18px', color: 'var(--color-mint)' }}>schedule</span>
-                  <span>Typical Timeline: {service.turnaroundTime}</span>
-                </span>
-              )}
-            </div>
           </div>
         </div>
       </section>
