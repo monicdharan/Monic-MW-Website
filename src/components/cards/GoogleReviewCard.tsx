@@ -31,7 +31,6 @@ export const GoogleReviewCard: React.FC<{ review: ReviewScreenshot }> = ({ revie
         className="screenshot-card-img"
         loading="lazy"
       />
-      <p className="screenshot-caption">{review.caption}</p>
     </div>
   );
 };

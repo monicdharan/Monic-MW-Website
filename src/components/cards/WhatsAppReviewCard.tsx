@@ -31,7 +31,6 @@ export const WhatsAppReviewCard: React.FC<{ review: ReviewScreenshot }> = ({ rev
         className="screenshot-card-img"
         loading="lazy"
       />
-      <p className="screenshot-caption">{review.caption}</p>
     </div>
   );
 };
