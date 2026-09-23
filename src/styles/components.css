@@ -305,10 +305,309 @@
   transform: translateX(4px);
 }
 
+/* ==========================================================================
+   4. Homepage Editorial Medical Research Hero (V2)
+   ========================================================================== */
+.editorial-hero-v2 {
+  position: relative;
+  background-color: #00363C;
+  color: #FFFFFF;
+  padding: clamp(64px, 7vw, 96px) 0 clamp(60px, 6.5vw, 88px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Layered Atmosphere Background (Dark Teal Gradient Overlay + Softened Clinical Image) */
+.hero-v2-bg-layer {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(105deg, rgba(0, 34, 38, 0.94) 0%, rgba(0, 48, 54, 0.88) 50%, rgba(0, 78, 87, 0.72) 100%),
+    url('/assets/images/stethoscope-research-bg.jpg');
+  background-size: cover;
+  background-position: center 35%;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* Outer Container - Max width 1440px */
+.hero-v2-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(20px, 4vw, 48px);
+  padding-right: clamp(20px, 4vw, 48px);
+  position: relative;
+  z-index: 2;
+}
+
+/* 2-Column Desktop Layout (55% / 45%, 70-90px gap) */
+.hero-v2-grid {
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  gap: clamp(48px, 5.5vw, 84px);
+  align-items: center;
+}
+
+/* Left Content Column */
+.hero-v2-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 720px;
+}
+
+/* Subtle Understated Eyebrow Badge */
+.hero-v2-badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0, 194, 178, 0.12);
+  border: 1px solid rgba(0, 194, 178, 0.28);
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-family-body);
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #E2FBF8;
+  margin-bottom: 20px; /* Badge to H1: 18-20px */
+}
+
+/* Main H1 Headline: Plus Jakarta Sans, 52-58px, tight 1.08 line-height */
+.hero-v2-title {
+  font-family: var(--font-family-heading);
+  font-size: clamp(2.35rem, 3.8vw, 3.45rem); /* ~52-56px on desktop */
+  line-height: 1.08;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.03em;
+  margin-bottom: 22px; /* H1 to paragraph: 22-24px */
+  max-width: 700px;
+}
+
+/* Body Copy: Inter, 1.55 line-height */
+.hero-v2-lead {
+  font-family: var(--font-family-body);
+  font-size: clamp(1rem, 1.15vw, 1.12rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 32px; /* Paragraph to CTAs: 30-32px */
+  max-width: 660px;
+  font-weight: 400;
+}
+
+/* Action Buttons Container */
+.hero-v2-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 26px; /* CTAs to trust indicators: 24-28px */
+}
+
+/* Primary CTA Button: Clean White Background, Dark Teal Text, 10-12px radius */
+.hero-v2-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #FFFFFF;
+  color: #004E57;
+  font-family: var(--font-family-heading);
+  font-size: 0.98rem;
+  font-weight: 700;
+  padding: 13px 26px;
+  border-radius: 11px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-v2-btn-primary:hover {
+  background-color: #F3F8F8;
+  color: #00383F;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+.hero-v2-btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary CTA Button: Subtle Ghost Button */
+.hero-v2-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent;
+  color: #FFFFFF;
+  font-family: var(--font-family-heading);
+  font-size: 0.98rem;
+  font-weight: 600;
+  padding: 13px 22px;
+  border-radius: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.hero-v2-btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.hero-v2-arrow {
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.hero-v2-btn-primary:hover .hero-v2-arrow,
+.hero-v2-btn-secondary:hover .hero-v2-arrow {
+  transform: translateX(3px);
+}
+
+/* Trust Indicators Row: 14-15px Inter, Medium Weight */
+.hero-v2-trust-row {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 24px);
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+
+.hero-v2-trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-family-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.01em;
+}
+
+.hero-v2-trust-check {
+  color: var(--mint-primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+/* Right Media Column */
+.hero-v2-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-v2-image-frame {
+  width: 100%;
+  max-width: 480px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+  background-color: rgba(0, 48, 54, 0.4);
+}
+
+.hero-v2-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 4.4;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .hero-v2-grid {
+    gap: 36px;
+  }
+  .hero-v2-title {
+    font-size: clamp(2.1rem, 3.5vw, 2.75rem);
+  }
+  .hero-v2-image-frame {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 860px) {
+  .editorial-hero-v2 {
+    padding: 56px 0 48px;
+  }
+  .hero-v2-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .hero-v2-content {
+    max-width: 100%;
+  }
+  .hero-v2-title {
+    font-size: clamp(2rem, 5.5vw, 2.5rem);
+    line-height: 1.12;
+  }
+  .hero-v2-media {
+    justify-content: flex-start;
+  }
+  .hero-v2-image-frame {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 560px) {
+  .editorial-hero-v2 {
+    padding: 44px 0 36px;
+  }
+  .hero-v2-badge {
+    font-size: 0.78rem;
+    padding: 5px 12px;
+    margin-bottom: 16px;
+  }
+  .hero-v2-title {
+    font-size: 1.95rem;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .hero-v2-lead {
+    font-size: 0.94rem;
+    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+  .hero-v2-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .hero-v2-btn-primary,
+  .hero-v2-btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 20px;
+  }
+  .hero-v2-trust-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .hero-v2-image-frame {
+    max-width: 100%;
+    border-radius: 16px;
+  }
+}
+
 /* --------------------------------------------------------------------------
-   4. Hero Section (Screenshot 1 & All Subpages)
+   4b. Subpage Editorial Hero Sections
    -------------------------------------------------------------------------- */
-.screenshot-hero,
 .editorial-hero {
   background-color: var(--teal-hero);
   color: var(--text-inverted);

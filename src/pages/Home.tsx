@@ -22,71 +22,75 @@ export const Home: React.FC = () => {
   return (
     <div className="page-home">
       {/* ===================================================================
-          1. HERO SECTION
+          1. HERO SECTION (Editorial Medical Research & Academic Publication)
           =================================================================== */}
-      <section className="screenshot-hero" aria-label="Introduction to MedZen Writes">
-        <div className="hero-bg-overlay" />
-        <div className="site-container" style={{ position: 'relative', zIndex: 2 }}>
-          <div className="hero-grid">
+      <section className="editorial-hero-v2" aria-label="Introduction to MedZen Writes">
+        <div className="hero-v2-bg-layer" />
+        <div className="hero-v2-container">
+          <div className="hero-v2-grid">
             {/* Left Content Column */}
-            <div>
-              {/* Eyebrow Pill */}
-              <div className="hero-pill-badge">
-                <span className="material-symbols-outlined" style={{ fontSize: '18px', color: 'var(--mint-primary)' }}>
-                  verified_user
-                </span>
-                <span>Medical Research &amp; Academic Writing Support</span>
+            <div className="hero-v2-content">
+              {/* Understated Eyebrow Badge */}
+              <div className="hero-v2-badge">
+                <span>Medical Research &amp; Publication Support</span>
               </div>
 
               {/* Main Headline */}
-              <h1 className="hero-main-title">
-                Turn Clinical Research Into Clear, Publication-Ready Work
+              <h1 className="hero-v2-title">
+                Turn Complex Medical Research Into Clear, Publication-Ready Work
               </h1>
 
               {/* Subtitle */}
-              <p className="hero-main-lead">
-                MedZen Writes supports clinicians, postgraduate students, and researchers with structured medical writing, biostatistics, and publication preparation. We help bring clarity to complex research while respecting academic standards, confidentiality, and authorship integrity.
+              <p className="hero-v2-lead">
+                Medical writing, biostatistics, and publication support for clinicians, postgraduate doctors, researchers, and medical faculty — delivered with academic integrity and confidentiality.
               </p>
 
               {/* Action Buttons */}
-              <div className="hero-cta-buttons">
+              <div className="hero-v2-actions">
                 <button
                   type="button"
-                  className="btn btn-white btn-lg"
+                  className="hero-v2-btn-primary"
                   onClick={() => openConsultation()}
                 >
-                  <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>
-                    calendar_month
-                  </span>
                   <span>Book a Consultation</span>
+                  <span className="hero-v2-arrow" aria-hidden="true">→</span>
                 </button>
 
                 <Link
                   to="/services"
-                  className="btn btn-outline-hero btn-lg"
+                  className="hero-v2-btn-secondary"
                 >
-                  <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>
-                    arrow_forward
-                  </span>
-                  <span>Explore Our Services</span>
+                  <span>Explore Services</span>
+                  <span className="hero-v2-arrow" aria-hidden="true">→</span>
                 </Link>
               </div>
 
-              {/* Trust Line */}
-              <p style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.9)', margin: 0, fontWeight: 500, letterSpacing: '0.01em' }}>
-                Ethical academic support • Medical research expertise • Confidential collaboration
-              </p>
+              {/* Trust Indicators */}
+              <div className="hero-v2-trust-row" aria-label="Key Commitments">
+                <div className="hero-v2-trust-item">
+                  <span className="hero-v2-trust-check" aria-hidden="true">✓</span>
+                  <span>Academic integrity</span>
+                </div>
+                <div className="hero-v2-trust-item">
+                  <span className="hero-v2-trust-check" aria-hidden="true">✓</span>
+                  <span>Research confidentiality</span>
+                </div>
+                <div className="hero-v2-trust-item">
+                  <span className="hero-v2-trust-check" aria-hidden="true">✓</span>
+                  <span>Medical-domain expertise</span>
+                </div>
+              </div>
             </div>
 
             {/* Right Doctor Portrait Card */}
-            <div className="hero-portrait-container">
-              <div className="hero-portrait-card">
+            <div className="hero-v2-media">
+              <div className="hero-v2-image-frame">
                 <img
                   src="/assets/images/hero_doctor.jpg"
-                  alt="Medical Research Specialist at MedZen Writes"
-                  className="hero-portrait-img"
-                  width="380"
-                  height="380"
+                  alt="Medical writing and biostatistics specialist at MedZen Writes"
+                  className="hero-v2-photo"
+                  width="480"
+                  height="520"
                   loading="eager"
                 />
               </div>
