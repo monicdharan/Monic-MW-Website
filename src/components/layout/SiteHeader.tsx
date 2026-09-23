@@ -62,7 +62,7 @@ export const SiteHeader: React.FC = () => {
             <div className="header-actions">
               <button
                 type="button"
-                className="btn btn-mint btn-sm"
+                className="btn btn-primary btn-sm"
                 onClick={() => openConsultation()}
                 aria-label="Book an academic consultation"
               >

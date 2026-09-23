@@ -73,7 +73,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose, onO
         <div style={{ marginTop: 'auto', paddingTop: '24px' }}>
           <button
             type="button"
-            className="btn btn-mint"
+            className="btn btn-primary"
             style={{ width: '100%' }}
             onClick={onOpenConsultation}
           >

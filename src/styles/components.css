@@ -193,52 +193,54 @@
   transform: translateY(1px);
 }
 
-/* Primary Button (Mint accent block with crisp headline text) */
+/* Primary Button (Dark Green with crisp White text) */
 .btn-primary {
-  background-color: var(--mint-primary);
-  color: var(--text-headline);
-  border: 1px solid var(--mint-primary);
+  background-color: var(--teal-primary);
+  color: var(--text-inverted);
+  border: 1px solid var(--teal-primary);
   font-weight: 700;
 }
 
 .btn-primary:hover {
-  background-color: var(--mint-hover);
-  border-color: var(--mint-hover);
-  color: var(--text-headline);
+  background-color: var(--teal-primary-hover);
+  border-color: var(--teal-primary-hover);
+  color: var(--text-inverted);
 }
 
-/* Mint Highlight Button */
+/* Mint Highlight Button -> Also mapped to Dark Green / Mint Border for clinical consistency */
 .btn-mint {
-  background-color: var(--mint-primary);
-  color: var(--text-headline);
-  border: 1px solid var(--mint-primary);
+  background-color: var(--teal-primary);
+  color: var(--text-inverted);
+  border: 1px solid var(--teal-primary);
   font-weight: 700;
 }
 
 .btn-mint:hover {
-  background-color: var(--mint-hover);
-  border-color: var(--mint-hover);
+  background-color: var(--teal-primary-hover);
+  border-color: var(--teal-primary-hover);
 }
 
 /* Secondary / Outline Button */
 .btn-secondary {
   background-color: transparent;
-  color: var(--text-headline);
-  border: 1px solid var(--border-subtle);
+  color: var(--teal-primary);
+  border: 1px solid var(--teal-primary);
+  font-weight: 600;
 }
 
 .btn-secondary:hover {
-  background-color: var(--bg-card-subtle);
-  border-color: var(--text-muted);
-  color: var(--text-headline);
+  background-color: var(--bg-soft-mint);
+  border-color: var(--teal-primary-hover);
+  color: var(--teal-primary-dark);
 }
 
-/* White Solid Button (for high contrast on Dark Teal backgrounds) */
+/* White Solid Button (High Contrast White on Dark Green Hero / CTA) */
 .btn-white {
   background-color: #FFFFFF;
   color: var(--teal-primary);
   border: 1px solid #FFFFFF;
-  font-weight: 600;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 }
 
 .btn-white:hover {

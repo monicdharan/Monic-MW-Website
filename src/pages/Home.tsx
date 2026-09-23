@@ -35,7 +35,7 @@ export const Home: React.FC = () => {
               </p>
 
               <div className="hero-actions">
-                <Button variant="mint" size="lg" onClick={() => openConsultation()}>
+                <Button variant="white" size="lg" onClick={() => openConsultation()}>
                   Book a consultation
                 </Button>
                 <Link to="/services" className="editorial-link" style={{ color: 'var(--color-white)' }}>

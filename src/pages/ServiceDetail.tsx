@@ -35,7 +35,7 @@ export const ServiceDetail: React.FC = () => {
             <p className="hero-lead">{service.heroSubtitle}</p>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
-              <Button variant="mint" size="lg" onClick={() => openConsultation(service.title)}>
+              <Button variant="white" size="lg" onClick={() => openConsultation(service.title)}>
                 Request Consultation for this Service
               </Button>
               {service.turnaroundTime && (
@@ -190,7 +190,7 @@ export const ServiceDetail: React.FC = () => {
                 <p style={{ fontSize: '0.86rem', color: 'rgba(255, 255, 255, 0.8)', lineHeight: '1.5', marginBottom: '18px' }}>
                   Our academic coordinators can review your study protocol and provide a milestone roadmap.
                 </p>
-                <Button variant="mint" size="sm" onClick={() => openConsultation(service.title)} style={{ width: '100%' }}>
+                <Button variant="white" size="sm" onClick={() => openConsultation(service.title)} style={{ width: '100%' }}>
                   Book Consultation
                 </Button>
               </div>

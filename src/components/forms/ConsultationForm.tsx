@@ -263,7 +263,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap', marginTop: '6px' }}>
         <button
           type="submit"
-          className="btn btn-mint"
+          className="btn btn-primary"
           disabled={isSubmitting}
           style={{ minWidth: '180px' }}
         >

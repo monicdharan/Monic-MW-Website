@@ -29,7 +29,7 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({
           </div>
 
           <div>
-            <Button variant="mint" size="lg" onClick={() => openConsultation()}>
+            <Button variant="primary" size="lg" onClick={() => openConsultation()}>
               {buttonText}
             </Button>
           </div>
