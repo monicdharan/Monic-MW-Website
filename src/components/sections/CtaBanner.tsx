@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useModal } from '../../context/ModalContext';
 
 interface CtaBannerProps {
@@ -21,7 +20,7 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({
       <div className="site-container" style={{ position: 'relative', zIndex: 2 }}>
         <div className="cta-grid">
           {/* Left CTA Text & Button */}
-          <div>
+          <div style={{ maxWidth: '720px' }}>
             <h2 className="cta-main-title">
               {title}
             </h2>
@@ -40,24 +39,8 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({
             </button>
           </div>
 
-          {/* Right Verified Authors Stat Card */}
-          <div className="cta-stat-card-wrap">
-            <div className="cta-stat-card">
-              <div className="stat-card-pill">
-                <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>verified_user</span>
-                <span>VERIFIED AUTHORS</span>
-              </div>
-              <div className="stat-card-number">98%</div>
-              <div className="stat-card-label">Satisfied Medical Researchers</div>
-              <div className="stat-card-rating">
-                <span className="stat-stars">★★★★★</span>
-                <span className="stat-reviews-count">315+ Reviews</span>
-              </div>
-              <Link to="/testimonials" className="btn btn-secondary btn-sm" style={{ width: '100%', marginTop: '16px', borderRadius: '8px' }}>
-                Read Client Reviews
-              </Link>
-            </div>
-          </div>
+          {/* Blank space on right */}
+          <div className="cta-stat-card-wrap" aria-hidden="true" />
         </div>
       </div>
     </section>
