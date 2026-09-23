@@ -1240,14 +1240,6 @@
   height: 26px;
   width: auto;
   object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.7;
-  transition: filter var(--transition-fast), opacity var(--transition-fast);
-}
-
-.journal-logo-item:hover {
-  filter: grayscale(0%);
-  opacity: 1;
 }
 
 /* --------------------------------------------------------------------------
@@ -1926,11 +1918,6 @@
   width: 100%;
   height: 52px;
   padding: 6px 12px;
-  transition: transform var(--transition-fast);
-}
-
-.indexing-logo-card:hover {
-  transform: translateY(-2px);
 }
 
 .indexing-logo-img {
@@ -1939,14 +1926,6 @@
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: grayscale(100%);
-  opacity: 0.78;
-  transition: filter var(--transition-fast), opacity var(--transition-fast), transform var(--transition-fast);
-}
-
-.indexing-logo-card:hover .indexing-logo-img {
-  filter: grayscale(0%);
-  opacity: 1;
 }
 
 @media (max-width: 960px) {
