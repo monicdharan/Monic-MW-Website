@@ -13,12 +13,12 @@ export const About: React.FC = () => {
       {/* Hero Header */}
       <section className="editorial-hero" aria-label="About MedZen Writes">
         <div className="site-container">
-          <div style={{ maxWidth: '820px' }}>
+          <div style={{ maxWidth: '780px' }}>
             <span className="hero-eyebrow">About MedZen Writes</span>
-            <h1 className="hero-title">
+            <h1 className="hero-title" style={{ maxWidth: '740px' }}>
               Bridging the gap between clinical excellence and publication standards.
             </h1>
-            <p className="hero-lead">
+            <p className="hero-lead" style={{ maxWidth: '680px' }}>
               Founded as an academic medical consultancy division of MedZen Innovations Pvt. Ltd., MedZen Writes provides structured methodological and editorial support for clinicians, postgraduates, and researchers across India and internationally.
             </p>
           </div>
@@ -28,37 +28,40 @@ export const About: React.FC = () => {
       {/* Origin & Purpose Section */}
       <section className="editorial-section section-bg-white" aria-labelledby="origin-heading">
         <div className="site-container">
-          <div className="hero-grid" style={{ alignItems: 'flex-start' }}>
-            <div>
+          <div className="hero-grid" style={{ alignItems: 'flex-start', gap: 'clamp(24px, 4vw, 48px)' }}>
+            <div style={{ maxWidth: '620px' }}>
               <span className="section-header-eyebrow">Our Foundation</span>
-              <h2 id="origin-heading" style={{ marginBottom: '18px' }}>
+              <h2 id="origin-heading" style={{ marginBottom: '14px' }}>
                 Why MedZen Writes Exists
               </h2>
-              <p style={{ marginBottom: '16px' }}>
+              <p style={{ marginBottom: '14px', lineHeight: '1.65' }}>
                 Postgraduate residency and hospital practice place immense cognitive and physical demands on doctors. Between long emergency duties, patient care rounds, and surgical procedures, finding uninterrupted weeks to conduct comprehensive literature searches, perform advanced statistical modeling in SPSS, and format manuscripts to strict journal specifications is a formidable barrier.
               </p>
-              <p style={{ marginBottom: '16px' }}>
+              <p style={{ marginBottom: '14px', lineHeight: '1.65' }}>
                 Consequently, hundreds of well-executed observational studies and postgraduate theses end up shelved indefinitely in hospital libraries without ever reaching peer-reviewed indexed databases.
               </p>
-              <p>
+              <p style={{ margin: 0, lineHeight: '1.65' }}>
                 MedZen Writes was established to provide a methodical, ethical academic partnership. We take on the heavy structural, biostatistical, and formatting workloads so that clinical findings are communicated clearly, accurately, and without unnecessary delay.
               </p>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              <div style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid var(--color-line)' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}>
+              <div style={{ borderRadius: 'var(--radius-md)', overflow: 'hidden', border: '1px solid var(--color-line)', width: '100%', height: '240px' }}>
                 <img
                   src="/assets/images/doctor-stethoscope-research.jpg"
                   alt="Medical research review session"
-                  style={{ width: '100%', height: '260px', objectFit: 'cover' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  width="500"
+                  height="240"
+                  loading="lazy"
                 />
               </div>
 
-              <div style={{ background: 'var(--color-sand)', padding: '24px', borderRadius: 'var(--radius-md)', border: '1px solid #e0dad0' }}>
-                <h4 style={{ fontSize: '1.05rem', color: 'var(--color-ink)', marginBottom: '8px' }}>
+              <div style={{ background: 'var(--color-sand)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid #e0dad0', width: '100%' }}>
+                <h4 style={{ fontSize: '1rem', color: 'var(--color-ink)', marginBottom: '6px' }}>
                   Our Ethical Foundation
                 </h4>
-                <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', lineHeight: '1.55', margin: 0 }}>
+                <p style={{ fontSize: '0.86rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
                   We operate strictly in alignment with the International Committee of Medical Journal Editors (ICMJE) and Committee on Publication Ethics (COPE). We do not provide ghost authorships or fabricate clinical data under any circumstances.
                 </p>
               </div>
@@ -77,7 +80,7 @@ export const About: React.FC = () => {
           />
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
-            <div style={{ background: 'var(--color-white)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)' }}>
+            <div style={{ background: 'var(--color-white)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)', display: 'flex', flexDirection: 'column' }}>
               <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--color-teal)', marginBottom: '10px' }}>
                 biotech
               </span>
@@ -87,7 +90,7 @@ export const About: React.FC = () => {
               </p>
             </div>
 
-            <div style={{ background: 'var(--color-white)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)' }}>
+            <div style={{ background: 'var(--color-white)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)', display: 'flex', flexDirection: 'column' }}>
               <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--color-teal)', marginBottom: '10px' }}>
                 lock
               </span>
@@ -97,7 +100,7 @@ export const About: React.FC = () => {
               </p>
             </div>
 
-            <div style={{ background: 'var(--color-white)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)' }}>
+            <div style={{ background: 'var(--color-white)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)', display: 'flex', flexDirection: 'column' }}>
               <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--color-teal)', marginBottom: '10px' }}>
                 verified
               </span>
@@ -120,12 +123,12 @@ export const About: React.FC = () => {
           />
 
           <div className="problem-solution-grid">
-            <div className="solution-box" style={{ background: 'var(--color-paper)', border: '1px solid var(--color-line)' }}>
-              <h3 style={{ color: 'var(--color-teal-dark)', fontSize: '1.3rem', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div className="solution-box" style={{ background: 'var(--color-paper)', border: '1px solid var(--color-line)', display: 'flex', flexDirection: 'column' }}>
+              <h3 style={{ color: 'var(--color-teal-dark)', fontSize: '1.2rem', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span className="material-symbols-outlined" style={{ color: 'var(--color-teal)' }}>check_circle</span>
                 What We Guarantee
               </h3>
-              <ul className="editorial-point-list">
+              <ul className="editorial-point-list" style={{ marginTop: 0 }}>
                 <li className="editorial-point-item">
                   <span className="material-symbols-outlined point-icon-check">check</span>
                   <span>100% human-crafted medical drafting adhering to STROBE, PRISMA, CARE, and ICMJE guidelines.</span>
@@ -145,12 +148,12 @@ export const About: React.FC = () => {
               </ul>
             </div>
 
-            <div className="problem-box" style={{ background: '#fdf7f2', border: '1px solid #f2dfd1' }}>
-              <h3 style={{ color: '#9a3412', fontSize: '1.3rem', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div className="problem-box" style={{ background: '#fdf7f2', border: '1px solid #f2dfd1', display: 'flex', flexDirection: 'column' }}>
+              <h3 style={{ color: '#9a3412', fontSize: '1.2rem', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span className="material-symbols-outlined" style={{ color: '#c25e00' }}>cancel</span>
                 What We Will Never Promise
               </h3>
-              <ul className="editorial-point-list">
+              <ul className="editorial-point-list" style={{ marginTop: 0 }}>
                 <li className="editorial-point-item">
                   <span className="material-symbols-outlined point-icon-warn">close</span>
                   <span>We do not guarantee publication in specific journals or indexings, as peer review is independent.</span>
@@ -171,12 +174,12 @@ export const About: React.FC = () => {
 
       {/* Corporate Registration Details */}
       <section className="editorial-section section-bg-paper section-border-top">
-        <div className="site-container" style={{ maxWidth: '840px', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '1.35rem', marginBottom: '12px' }}>Corporate &amp; Academic Entity</h3>
-          <p style={{ fontSize: '0.94rem', color: 'var(--color-ink-soft)', lineHeight: '1.6', marginBottom: '24px' }}>
+        <div className="site-container" style={{ maxWidth: '800px', textAlign: 'center' }}>
+          <h3 style={{ fontSize: '1.25rem', marginBottom: '10px' }}>Corporate &amp; Academic Entity</h3>
+          <p style={{ fontSize: '0.92rem', color: 'var(--color-ink-soft)', lineHeight: '1.55', marginBottom: '18px', marginLeft: 'auto', marginRight: 'auto' }}>
             {companyData.name} operates as a specialized division of {companyData.parentCompany}, registered in Chennai, Tamil Nadu, India.
           </p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
             <Button variant="primary" onClick={() => openConsultation()}>
               Schedule an Academic Consultation
             </Button>

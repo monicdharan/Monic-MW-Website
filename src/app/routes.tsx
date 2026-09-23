@@ -10,6 +10,7 @@ import { Journal } from '../pages/Journal';
 import { JournalArticle } from '../pages/JournalArticle';
 import { Contact } from '../pages/Contact';
 import { LegalPage } from '../pages/LegalPage';
+import { Sitemap } from '../pages/Sitemap';
 import { NotFound } from '../pages/NotFound';
 
 export const AppRoutes: React.FC = () => {
@@ -30,6 +31,7 @@ export const AppRoutes: React.FC = () => {
       <Route path="/refund-policy" element={<LegalPage pageSlug="refund-policy" />} />
       <Route path="/terms-conditions" element={<LegalPage pageSlug="terms-conditions" />} />
       <Route path="/shipping-policy" element={<LegalPage pageSlug="shipping-policy" />} />
+      <Route path="/sitemap" element={<Sitemap />} />
 
       {/* Fallback */}
       <Route path="*" element={<NotFound />} />
