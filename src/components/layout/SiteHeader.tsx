@@ -27,7 +27,7 @@ export const SiteHeader: React.FC = () => {
           <div className="header-inner">
             <Link to="/" className="header-brand" title="MedZen Writes - Medical Research Consultancy">
               <img
-                src="/assets/images/medzen-writes-logo-dark.png"
+                src="/assets/images/medzen-writes-logo.png"
                 alt="MedZen Writes"
                 className="header-brand-logo"
               />
@@ -51,22 +51,33 @@ export const SiteHeader: React.FC = () => {
                 Testimonials
               </NavLink>
               <NavLink to="/journal" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
-                Journal
+                Blog
               </NavLink>
+              <a href="#faq" className="nav-link" onClick={(e) => {
+                if (window.location.pathname === '/') {
+                  e.preventDefault();
+                  document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}>
+                FAQ
+              </a>
               <NavLink to="/contact" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
                 Contact
               </NavLink>
             </nav>
 
-            {/* Action */}
+            {/* Header Action Button */}
             <div className="header-actions">
               <button
                 type="button"
-                className="btn btn-primary btn-sm"
+                className="btn btn-white btn-sm"
                 onClick={() => openConsultation()}
                 aria-label="Book an academic consultation"
               >
-                Book a consultation
+                <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>
+                  calendar_month
+                </span>
+                <span>Book Consultation</span>
               </button>
 
               <button

@@ -2,210 +2,330 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useModal } from '../context/ModalContext';
 import { servicesData } from '../data/services';
-import { publicationsData, targetJournalLogos } from '../data/publications';
 import { doctorTestimonials } from '../data/testimonials';
 import { faqsData } from '../data/faqs';
-import { TrustStrip } from '../components/sections/TrustStrip';
-import { ProblemSolution } from '../components/sections/ProblemSolution';
-import { ProcessTimeline } from '../components/sections/ProcessTimeline';
-import { CtaBanner } from '../components/sections/CtaBanner';
-import { ServiceListItem } from '../components/cards/ServiceListItem';
-import { PublicationCard } from '../components/cards/PublicationCard';
-import { TestimonialQuote } from '../components/cards/TestimonialQuote';
+import { companyData } from '../data/company';
 import { FaqAccordion } from '../components/interactive/FaqAccordion';
-import { SectionHeading } from '../components/layout/SectionHeading';
-import { Button } from '../components/buttons/Button';
 
 export const Home: React.FC = () => {
   const { openConsultation } = useModal();
 
   return (
     <div className="page-home">
-      {/* 1. Hero Section (Calm, Editorial 2-Column) */}
-      <section className="editorial-hero" aria-label="Introduction to MedZen Writes">
-        <div className="site-container">
+      {/* ===================================================================
+          1. HERO SECTION (Screenshot 1)
+          =================================================================== */}
+      <section className="screenshot-hero" aria-label="Introduction to MedZen Writes">
+        <div className="hero-bg-overlay" />
+        <div className="site-container" style={{ position: 'relative', zIndex: 2 }}>
           <div className="hero-grid">
+            {/* Left Content Column */}
             <div>
-              <span className="hero-eyebrow">Medical Research Support for Clinicians &amp; Residents</span>
-              <h1 className="hero-title">
-                Move your research from draft to submission with confidence.
+              {/* Eyebrow Pill */}
+              <div className="hero-pill-badge">
+                <span className="material-symbols-outlined" style={{ fontSize: '18px', color: 'var(--mint-primary)' }}>
+                  verified_user
+                </span>
+                <span>100% HUMAN MEDICAL EXPERTS · 0% AI SHORTCUTS</span>
+              </div>
+
+              {/* Main Headline */}
+              <h1 className="hero-main-title">
+                Medical Research Paper Publication &amp; Thesis Writing Services
               </h1>
-              <p className="hero-lead">
-                Specialized academic medical writing, biostatistical analysis, and manuscript preparation tailored to postgraduate medical residents, clinical faculty, and biomedical researchers.
+
+              {/* Subtitle */}
+              <p className="hero-main-lead">
+                MedZen Writes is your partner in medical progress — offering end-to-end medical research paper publication and thesis writing services that simplify thesis writing, research publishing, and statistical analysis, so you can focus on saving lives.
               </p>
 
-              <div className="hero-actions">
-                <Button variant="white" size="lg" onClick={() => openConsultation()}>
-                  Book a consultation
-                </Button>
-                <Link to="/services" className="editorial-link" style={{ color: 'var(--color-white)' }}>
-                  <span>Explore 9 Specialties</span>
-                  <span className="material-symbols-outlined">arrow_forward</span>
+              {/* Action Buttons */}
+              <div className="hero-cta-buttons">
+                <button
+                  type="button"
+                  className="btn btn-white btn-lg"
+                  onClick={() => openConsultation()}
+                >
+                  <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>
+                    calendar_month
+                  </span>
+                  <span>Book Free Consultation</span>
+                </button>
+
+                <a
+                  href="/services"
+                  className="btn btn-outline-hero btn-lg"
+                >
+                  <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>
+                    download
+                  </span>
+                  <span>Download Thesis Checklist</span>
+                </a>
+              </div>
+
+              {/* Contact Information Pills Bar */}
+              <div className="hero-contact-pills-row">
+                <div className="hero-info-pill">
+                  <span className="material-symbols-outlined pill-icon">call</span>
+                  <span>{companyData.phoneDisplay}</span>
+                </div>
+                <div className="hero-info-pill">
+                  <span className="material-symbols-outlined pill-icon">location_on</span>
+                  <span>{companyData.address.locality}, {companyData.address.city} – {companyData.address.pincode}</span>
+                </div>
+                <div className="hero-info-pill">
+                  <span className="material-symbols-outlined pill-icon">mail</span>
+                  <span>{companyData.email}</span>
+                </div>
+                <div className="hero-info-pill">
+                  <span className="material-symbols-outlined pill-icon">schedule</span>
+                  <span>{companyData.workingHours}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Doctor Portrait Card */}
+            <div className="hero-portrait-container">
+              <div className="hero-portrait-card">
+                <img
+                  src="/assets/images/hero_doctor.jpg"
+                  alt="Medical Research Specialist Dr. at MedZen Writes"
+                  className="hero-portrait-img"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================================================================
+          2. ACADEMIC RIGOR & EXPERTISE SECTION (Screenshot 2)
+          =================================================================== */}
+      <section className="editorial-section section-bg-white" aria-label="Academic Rigor and Medical Writing Experts">
+        <div className="site-container">
+          {/* Centered Section Header */}
+          <div className="section-header text-center">
+            <div className="pill-eyebrow-badge">
+              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>verified_user</span>
+              <span>ACADEMIC RIGOR</span>
+            </div>
+            <h2 className="section-header-title" style={{ fontSize: 'clamp(1.9rem, 3.2vw, 2.6rem)' }}>
+              Trusted Medical Thesis Writing &amp; Research Publication Experts
+            </h2>
+            <p className="section-header-subtitle">
+              Whether you're a postgraduate student, fellow, senior clinician, or life sciences researcher, our medical research paper publication and thesis writing services are tailored to your level and specialty.
+            </p>
+          </div>
+
+          {/* 2-Column Content Grid */}
+          <div className="rigor-grid">
+            {/* Left Column: Stack of 3 Feature Cards */}
+            <div className="rigor-cards-column">
+              <div className="rigor-feature-card">
+                <div className="rigor-icon-box">
+                  <span className="material-symbols-outlined">description</span>
+                </div>
+                <div>
+                  <h3 className="rigor-card-title">Custom Academic Writing — No Templates</h3>
+                  <p className="rigor-card-desc">
+                    Your content is crafted from scratch to meet journal standards, university formats, and discipline-specific requirements with zero generic templating.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rigor-feature-card">
+                <div className="rigor-icon-box">
+                  <span className="material-symbols-outlined">security</span>
+                </div>
+                <div>
+                  <h3 className="rigor-card-title">Ethical &amp; Plagiarism Controlled</h3>
+                  <p className="rigor-card-desc">
+                    All deliverables are strictly under 10% similarity, verified by Turnitin certificate, and 100% human-written — no AI shortcuts, no ethical compromises.
+                  </p>
+                </div>
+              </div>
+
+              <div className="rigor-feature-card">
+                <div className="rigor-icon-box">
+                  <span className="material-symbols-outlined">biotech</span>
+                </div>
+                <div>
+                  <h3 className="rigor-card-title">Biostatistical Precision &amp; Modeling</h3>
+                  <p className="rigor-card-desc">
+                    From sample size calculations to multivariable regression, survival analyses, and meta-analyses using SPSS, R, and STATA.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Doctor Mentorship Image with Floating Badge */}
+            <div className="rigor-image-wrapper">
+              <img
+                src="/assets/images/doctor-resident-mentorship.jpg"
+                alt="Two doctors in library discussing medical research publication poster"
+                className="rigor-photo"
+              />
+              <div className="rigor-floating-badge">
+                <span className="material-symbols-outlined" style={{ fontSize: '18px', color: 'var(--mint-primary)' }}>
+                  verified
+                </span>
+                <span>ICMJE &amp; PRISMA Compliant Academic Rigor</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================================================================
+          3. CORE SERVICES CATALOG (9 Specialties)
+          =================================================================== */}
+      <section className="editorial-section" style={{ backgroundColor: 'var(--bg-alt)' }} aria-label="Our Medical Writing Services">
+        <div className="site-container">
+          <div className="section-header text-center">
+            <div className="pill-eyebrow-badge">
+              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>school</span>
+              <span>SPECIALIZED DIVISIONS</span>
+            </div>
+            <h2 className="section-header-title">Comprehensive Academic &amp; Research Services</h2>
+            <p className="section-header-subtitle">
+              End-to-end medical research solutions structured around strict university dissertation deadlines and peer-reviewed journal criteria.
+            </p>
+          </div>
+
+          <div className="services-grid-cards">
+            {servicesData.map((s) => (
+              <div key={s.id} className="service-card-clean">
+                <div className="service-card-top">
+                  <span className="service-card-num">{s.number}</span>
+                  <Link to={`/services/${s.slug}`} className="service-card-title-link">
+                    <h3>{s.title}</h3>
+                  </Link>
+                </div>
+                <p className="service-card-body-text">{s.shortDesc}</p>
+                <div className="service-card-action">
+                  <Link to={`/services/${s.slug}`} className="editorial-link">
+                    <span>Learn more</span>
+                    <span className="material-symbols-outlined">arrow_forward</span>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===================================================================
+          4. DOCTOR REVIEWS & TESTIMONIALS (Screenshot 3)
+          =================================================================== */}
+      <section className="editorial-section screenshot-testimonials-section" aria-label="Doctor Reviews and Client Testimonials">
+        <div className="site-container">
+          <div className="section-header text-center">
+            <div className="pill-eyebrow-badge">
+              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>chat</span>
+              <span>DOCTOR FEEDBACK</span>
+            </div>
+            <h2 className="section-header-title">
+              What Our Clients Say About Our Medical Writing Services
+            </h2>
+            <p className="section-header-subtitle">
+              Trusted by researchers, postgraduate students, and healthcare professionals across premier medical institutions.
+            </p>
+          </div>
+
+          {/* 3 Testimonial Cards in a Row */}
+          <div className="testimonials-row-grid">
+            {doctorTestimonials.slice(0, 3).map((item) => (
+              <div key={item.id} className="screenshot-testimonial-card">
+                <div className="card-author-header">
+                  <img
+                    src={item.avatarImage}
+                    alt={item.doctorName}
+                    className="card-author-avatar"
+                  />
+                  <div>
+                    <h4 className="card-author-name">{item.doctorName}</h4>
+                    <div className="card-star-rating">
+                      ★★★★★
+                    </div>
+                  </div>
+                </div>
+                <p className="card-quote-content">
+                  “{item.quote}”
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===================================================================
+          5. SCHEDULE CONSULTATION CTA BANNER (Screenshot 4)
+          =================================================================== */}
+      <section className="screenshot-cta-banner" aria-label="Schedule Your Research and Thesis Consultation">
+        <div className="cta-bg-overlay" />
+        <div className="site-container" style={{ position: 'relative', zIndex: 2 }}>
+          <div className="cta-grid">
+            {/* Left CTA Text & Button */}
+            <div>
+              <h2 className="cta-main-title">
+                Schedule Your Research &amp; Thesis Consultation
+              </h2>
+              <p className="cta-main-lead">
+                Connect with our medical writing coordinators today and ensure your research meets world-class publication standards with customized guidance.
+              </p>
+              <button
+                type="button"
+                className="btn btn-white btn-lg"
+                onClick={() => openConsultation()}
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>
+                  calendar_month
+                </span>
+                <span>Book Consultation</span>
+              </button>
+            </div>
+
+            {/* Right Verified Authors Stat Card */}
+            <div className="cta-stat-card-wrap">
+              <div className="cta-stat-card">
+                <div className="stat-card-pill">
+                  <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>verified_user</span>
+                  <span>VERIFIED AUTHORS</span>
+                </div>
+                <div className="stat-card-number">98%</div>
+                <div className="stat-card-label">Satisfied Medical Researchers</div>
+                <div className="stat-card-rating">
+                  <span className="stat-stars">★★★★★</span>
+                  <span className="stat-reviews-count">315+ Reviews</span>
+                </div>
+                <Link to="/testimonials" className="btn btn-secondary btn-sm" style={{ width: '100%', marginTop: '16px', borderRadius: '8px' }}>
+                  Read Client Reviews
                 </Link>
               </div>
-
-              <div className="hero-proof-strip">
-                <span className="hero-proof-item">
-                  <span className="material-symbols-outlined" style={{ fontSize: '18px', color: 'var(--color-mint)' }}>check</span>
-                  <span>Thesis Support</span>
-                </span>
-                <span>·</span>
-                <span className="hero-proof-item">
-                  <span className="material-symbols-outlined" style={{ fontSize: '18px', color: 'var(--color-mint)' }}>check</span>
-                  <span>Manuscript Preparation</span>
-                </span>
-                <span>·</span>
-                <span className="hero-proof-item">
-                  <span className="material-symbols-outlined" style={{ fontSize: '18px', color: 'var(--color-mint)' }}>check</span>
-                  <span>Biostatistics</span>
-                </span>
-              </div>
-            </div>
-
-            <div className="hero-image-wrap">
-              <img
-                src="/assets/images/hero_doctor.jpg"
-                alt="Doctor reviewing clinical data on laptop in hospital research library"
-                className="hero-image"
-                loading="eager"
-              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. Compact Trust Strip */}
-      <TrustStrip />
-
-      {/* 3. Problem and Solution Section */}
-      <ProblemSolution />
-
-      {/* 4. Services Section (Numbered Editorial List) */}
-      <section className="editorial-section section-bg-paper" aria-labelledby="services-heading">
-        <div className="site-container">
-          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', marginBottom: '36px' }}>
-            <div>
-              <span className="section-header-eyebrow">Academic Scope</span>
-              <h2 id="services-heading" style={{ fontSize: '2.2rem', margin: '4px 0 0' }}>
-                Specialized Medical Writing Services
-              </h2>
+      {/* ===================================================================
+          6. FREQUENTLY ASKED QUESTIONS (FAQ)
+          =================================================================== */}
+      <section id="faq" className="editorial-section section-bg-white" aria-label="Frequently Asked Questions">
+        <div className="site-container site-container-narrow">
+          <div className="section-header text-center">
+            <div className="pill-eyebrow-badge">
+              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>help</span>
+              <span>FAQ &amp; SUPPORT</span>
             </div>
-            <Link to="/services" className="editorial-link">
-              <span>View detailed specifications</span>
-              <span className="material-symbols-outlined">arrow_forward</span>
-            </Link>
-          </div>
-
-          <div className="services-editorial-list">
-            {servicesData.map((service) => (
-              <ServiceListItem key={service.id} service={service} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Four-Step Process Timeline */}
-      <ProcessTimeline />
-
-      {/* 6. Publication Proof & Journal Targets */}
-      <section className="editorial-section section-bg-white section-border-top" aria-labelledby="publications-heading">
-        <div className="site-container">
-          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', marginBottom: '36px' }}>
-            <div>
-              <span className="section-header-eyebrow">Evidence &amp; Portfolio</span>
-              <h2 id="publications-heading" style={{ fontSize: '2.2rem', margin: '4px 0 0' }}>
-                Recent Publication Documents
-              </h2>
-              <p style={{ fontSize: '0.96rem', color: 'var(--color-ink-soft)', marginTop: '6px' }}>
-                Representative published manuscripts and clinical case studies supported by our team.
-              </p>
-            </div>
-            <Link to="/publications" className="editorial-link">
-              <span>View complete portfolio</span>
-              <span className="material-symbols-outlined">arrow_forward</span>
-            </Link>
-          </div>
-
-          <div className="publications-archive-grid">
-            {publicationsData.slice(0, 3).map((pub) => (
-              <PublicationCard key={pub.id} publication={pub} />
-            ))}
-          </div>
-
-          {/* Target Journal Indexing Showcase */}
-          <div style={{ marginTop: '56px', paddingTop: '36px', borderTop: '1px solid var(--color-line)' }}>
-            <p style={{ fontSize: '0.84rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--color-muted)', textAlign: 'center', marginBottom: '20px' }}>
-              We format and prepare manuscripts adhering to international database guidelines
+            <h2 className="section-header-title">Frequently Asked Questions</h2>
+            <p className="section-header-subtitle">
+              Clear answers regarding thesis confidentiality, Turnitin compliance, revisions, and biostatistics workflows.
             </p>
-            <div className="journal-logos-ribbon">
-              {targetJournalLogos.map((j) => (
-                <img
-                  key={j.name}
-                  src={j.logo}
-                  alt={j.name}
-                  title={j.name}
-                  className="journal-logo-item"
-                  loading="lazy"
-                />
-              ))}
-            </div>
           </div>
+
+          <FaqAccordion items={faqsData} />
         </div>
       </section>
-
-      {/* 7. Verified Doctor Testimonials */}
-      <section className="editorial-section section-bg-paper section-border-top" aria-labelledby="testimonials-heading">
-        <div className="site-container">
-          <SectionHeading
-            eyebrow="Clinician Feedback"
-            title="What Doctors Say About Working With Us"
-            subtitle="Authentic feedback from postgraduates, clinical fellows, and department faculty."
-          />
-
-          <div className="testimonials-featured-grid">
-            <TestimonialQuote testimonial={doctorTestimonials[0]} featured={true} />
-
-            <div className="testimonial-side-column">
-              {doctorTestimonials.slice(1, 3).map((t) => (
-                <TestimonialQuote key={t.id} testimonial={t} />
-              ))}
-            </div>
-          </div>
-
-          <div style={{ marginTop: '28px', textAlign: 'center' }}>
-            <Link to="/testimonials" className="editorial-link">
-              <span>View all verified Google reviews &amp; feedback</span>
-              <span className="material-symbols-outlined">arrow_forward</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Accessible FAQ Accordion */}
-      <section className="editorial-section section-bg-white section-border-top" aria-labelledby="faq-heading">
-        <div className="site-container" style={{ maxWidth: '840px' }}>
-          <SectionHeading
-            eyebrow="Clarity on Process &amp; Ethics"
-            title="Frequently Asked Questions"
-            subtitle="Straightforward answers regarding our services, data handling, and working methodology."
-            centered={true}
-          />
-
-          <FaqAccordion items={faqsData.slice(0, 5)} />
-
-          <div style={{ marginTop: '32px', textAlign: 'center' }}>
-            <p style={{ fontSize: '0.94rem', color: 'var(--color-ink-soft)', marginBottom: '14px' }}>
-              Have a specific question about your study dataset or protocol?
-            </p>
-            <Button variant="secondary" size="sm" onClick={() => openConsultation()}>
-              Speak with an academic coordinator
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* 9. Final Consultation CTA Banner */}
-      <CtaBanner />
     </div>
   );
 };

@@ -6,6 +6,7 @@ import { SiteFooter } from '../components/layout/SiteFooter';
 import { ConsultationModal } from '../components/modals/ConsultationModal';
 import { LightboxModal } from '../components/modals/LightboxModal';
 import { ScrollToTop } from '../components/common/ScrollToTop';
+import { FloatingWhatsApp } from '../components/common/FloatingWhatsApp';
 import { AppRoutes } from './routes';
 
 export const App: React.FC = () => {
@@ -21,9 +22,10 @@ export const App: React.FC = () => {
           <SiteFooter />
         </div>
 
-        {/* Global Accessible Modals */}
+        {/* Global Accessible Modals & Floating Tools */}
         <ConsultationModal />
         <LightboxModal />
+        <FloatingWhatsApp />
       </ModalProvider>
     </BrowserRouter>
   );
