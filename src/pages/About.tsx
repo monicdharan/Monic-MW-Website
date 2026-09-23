@@ -79,7 +79,7 @@ export const About: React.FC = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '28px' }}>
             <div style={{ background: 'var(--color-white)', padding: '32px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)' }}>
               <span className="material-symbols-outlined" style={{ fontSize: '32px', color: 'var(--color-teal)', marginBottom: '14px' }}>
-                biotechnology
+                biotech
               </span>
               <h3 style={{ fontSize: '1.25rem', marginBottom: '10px' }}>Medical Accuracy</h3>
               <p style={{ fontSize: '0.92rem', color: 'var(--color-ink-soft)', lineHeight: '1.6', margin: 0 }}>
