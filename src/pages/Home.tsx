@@ -4,7 +4,6 @@ import { useModal } from '../context/ModalContext';
 import { servicesData } from '../data/services';
 import { doctorTestimonials } from '../data/testimonials';
 import { faqsData } from '../data/faqs';
-import { companyData } from '../data/company';
 import { FaqAccordion } from '../components/interactive/FaqAccordion';
 import { CtaBanner } from '../components/sections/CtaBanner';
 
@@ -64,30 +63,10 @@ export const Home: React.FC = () => {
                 </Link>
               </div>
 
-              {/* Trust Line & Contact Information Pills */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <p style={{ fontSize: '0.86rem', color: 'rgba(255, 255, 255, 0.88)', margin: 0, fontWeight: 500 }}>
-                  Ethical academic support • Medical research expertise • Confidential collaboration
-                </p>
-                <div className="hero-contact-pills-row">
-                  <div className="hero-info-pill">
-                    <span className="material-symbols-outlined pill-icon">call</span>
-                    <span>{companyData.phoneDisplay}</span>
-                  </div>
-                  <div className="hero-info-pill">
-                    <span className="material-symbols-outlined pill-icon">location_on</span>
-                    <span>{companyData.address.locality}, {companyData.address.city} – {companyData.address.pincode}</span>
-                  </div>
-                  <div className="hero-info-pill">
-                    <span className="material-symbols-outlined pill-icon">mail</span>
-                    <span>{companyData.email}</span>
-                  </div>
-                  <div className="hero-info-pill">
-                    <span className="material-symbols-outlined pill-icon">schedule</span>
-                    <span>{companyData.workingHours}</span>
-                  </div>
-                </div>
-              </div>
+              {/* Trust Line */}
+              <p style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.9)', margin: 0, fontWeight: 500, letterSpacing: '0.01em' }}>
+                Ethical academic support • Medical research expertise • Confidential collaboration
+              </p>
             </div>
 
             {/* Right Doctor Portrait Card */}
