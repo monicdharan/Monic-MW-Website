@@ -7,7 +7,7 @@ export const GoogleReviewCard: React.FC<{ review: ReviewScreenshot }> = ({ revie
 
   return (
     <div
-      className="screenshot-card"
+      className="screenshot-card google-review-card"
       onClick={() => openLightbox(review.image, `Google Review by ${review.authorName}`, review.caption)}
       role="button"
       tabIndex={0}

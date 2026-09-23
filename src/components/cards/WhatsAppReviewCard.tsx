@@ -7,7 +7,7 @@ export const WhatsAppReviewCard: React.FC<{ review: ReviewScreenshot }> = ({ rev
 
   return (
     <div
-      className="screenshot-card"
+      className="screenshot-card whatsapp-review-card"
       onClick={() => openLightbox(review.image, `WhatsApp Feedback - ${review.authorName}`, review.caption)}
       role="button"
       tabIndex={0}
