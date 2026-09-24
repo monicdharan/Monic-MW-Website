@@ -126,12 +126,23 @@ export async function loadStateFromDisk(): Promise<any | null> {
     });
     if (res.ok) {
       const data = await res.json();
-      return data;
+      if (data && typeof data === 'object') return data;
     }
-    return null;
-  } catch {
-    return null;
-  }
+  } catch {}
+
+  // Fallback for live production static hosting (e.g. Vercel, Netlify, GitHub Pages)
+  try {
+    const staticRes = await fetch('/data/persistedContent.json', {
+      method: 'GET',
+      headers: { 'Cache-Control': 'no-cache' },
+    });
+    if (staticRes.ok) {
+      const staticData = await staticRes.json();
+      if (staticData && typeof staticData === 'object') return staticData;
+    }
+  } catch {}
+
+  return null;
 }
 
 export async function uploadImageToDisk(fileData: string, filename: string): Promise<{ success: boolean; url?: string; error?: string }> {
