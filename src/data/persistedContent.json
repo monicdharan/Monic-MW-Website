@@ -828,8 +828,8 @@
       "section": "Hero Section",
       "tagType": "h1",
       "label": "Testimonials Hero Title (H1)",
-      "text": "Doctor Reviews & Testimonials",
-      "subtext": "Verified feedback, Google reviews, WhatsApp conversations, and written testimonials from clinicians, postgraduate candidates, and department faculty across India and abroad.",
+      "text": "Reviews & Testimonials",
+      "subtext": "Verified feedback, Google reviews, WhatsApp conversations, and written testimonials from valued clients.",
       "defaultText": "Doctor Reviews & Testimonials",
       "defaultSubtext": "Verified feedback, Google reviews, WhatsApp conversations, and written testimonials from clinicians, postgraduate candidates, and department faculty across India and abroad."
     },
@@ -976,8 +976,8 @@
       "section": "Hero Section",
       "tagType": "h1",
       "label": "Contact Hero Title (H1)",
-      "text": "Contact Our Academic Editorial Team",
-      "subtext": "Discuss your medical manuscript, thesis, or biostatistics requirements directly with our senior research specialists. Confidential, structured, and prompt.",
+      "text": "Contact Us",
+      "subtext": "Discuss your medical manuscript, thesis, with our senior research specialists. ",
       "defaultText": "Contact Our Academic Editorial Team",
       "defaultSubtext": "Discuss your medical manuscript, thesis, or biostatistics requirements directly with our senior research specialists. Confidential, structured, and prompt."
     },
@@ -1121,6 +1121,6 @@
       "defaultText": "Governed under the laws of Tamil Nadu and the Republic of India"
     }
   ],
-  "lastSavedTime": "12:53:20",
-  "savedAt": "2026-09-24T07:23:20.743Z"
+  "lastSavedTime": "13:00:42",
+  "savedAt": "2026-09-24T07:30:42.487Z"
 }
