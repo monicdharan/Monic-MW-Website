@@ -1,5 +1,6 @@
 import React from 'react';
 import { useModal } from '../context/ModalContext';
+import { useAdminData } from '../context/AdminDataContext';
 import { SectionHeading } from '../components/layout/SectionHeading';
 import { Button } from '../components/buttons/Button';
 import { CtaBanner } from '../components/sections/CtaBanner';
@@ -7,6 +8,7 @@ import { companyData } from '../data/company';
 
 export const About: React.FC = () => {
   const { openConsultation } = useModal();
+  const { getHeader, getEyebrow, getHeaderSubtext } = useAdminData();
 
   return (
     <div className="page-about">
@@ -14,12 +16,12 @@ export const About: React.FC = () => {
       <section className="editorial-hero" aria-label="About MedZen Writes">
         <div className="site-container">
           <div style={{ maxWidth: '780px' }}>
-            <span className="hero-eyebrow">About MedZen Writes</span>
+            <span className="hero-eyebrow">{getEyebrow('about-hero-eyebrow', 'About MedZen Writes')}</span>
             <h1 className="hero-title" style={{ maxWidth: '740px' }}>
-              Academic Support for Research With Clinical Purpose
+              {getHeader('about-hero-h1', 'Academic Support for Research With Clinical Purpose')}
             </h1>
             <p className="hero-lead" style={{ maxWidth: '680px' }}>
-              MedZen Writes is the academic medical consultancy division of MedZen Innovations Pvt. Ltd. We support clinicians, postgraduates, and researchers in presenting their work with clarity, methodological discipline, and respect for publication ethics.
+              {getHeaderSubtext('about-hero-h1', 'MedZen Writes is the academic medical consultancy division of MedZen Innovations Pvt. Ltd. We support clinicians, postgraduates, and researchers in presenting their work with clarity, methodological discipline, and respect for publication ethics.')}
             </p>
           </div>
         </div>
@@ -30,9 +32,9 @@ export const About: React.FC = () => {
         <div className="site-container">
           <div className="hero-grid" style={{ alignItems: 'flex-start', gap: 'clamp(24px, 4vw, 48px)' }}>
             <div style={{ maxWidth: '620px' }}>
-              <span className="section-header-eyebrow">Our Purpose</span>
+              <span className="section-header-eyebrow">{getEyebrow('about-purpose-eyebrow', 'Our Purpose')}</span>
               <h2 id="origin-heading" style={{ marginBottom: '14px' }}>
-                Good Clinical Research Should Not Remain Unseen
+                {getHeader('about-purpose-h2', 'Good Clinical Research Should Not Remain Unseen')}
               </h2>
               <p style={{ marginBottom: '14px', lineHeight: '1.65' }}>
                 Doctors and researchers often work under intense professional demands. Clinical responsibilities, hospital schedules, academic deadlines, and patient care can leave little time for the detailed work required to structure a thesis, interpret data, prepare a manuscript, or respond to publication requirements.
@@ -62,7 +64,7 @@ export const About: React.FC = () => {
 
               <div style={{ background: 'var(--color-sand)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid #e0dad0', width: '100%' }}>
                 <h4 style={{ fontSize: '1rem', color: 'var(--color-ink)', marginBottom: '6px' }}>
-                  Built on Academic Integrity
+                  {getHeader('about-integrity-h4', 'Built on Academic Integrity')}
                 </h4>
                 <p style={{ fontSize: '0.86rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
                   We believe credible research support must be transparent, ethical, and respectful of authorship. Our work is guided by recognised publication principles, including ICMJE and COPE standards. We do not fabricate data, misrepresent findings, provide ghost authorship, or promise publication outcomes. Editorial and peer-review decisions remain independent.
@@ -77,9 +79,9 @@ export const About: React.FC = () => {
       <section className="editorial-section section-bg-paper section-border-top" aria-labelledby="principles-heading">
         <div className="site-container">
           <SectionHeading
-            eyebrow="How We Work"
-            title="A Clear, Responsible Approach to Every Project"
-            subtitle="Clear principles that guide our interactions with authors, mentors, and academic institutions."
+            eyebrow={getEyebrow('about-principles-eyebrow', 'How We Work')}
+            title={getHeader('about-principles-h2', 'A Clear, Responsible Approach to Every Project')}
+            subtitle={getHeaderSubtext('about-principles-h2', 'Clear principles that guide our interactions with authors, mentors, and academic institutions.')}
           />
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
@@ -87,7 +89,9 @@ export const About: React.FC = () => {
               <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--color-teal)', marginBottom: '10px' }}>
                 biotech
               </span>
-              <h3 style={{ fontSize: '1.15rem', marginBottom: '6px' }}>Medical Accuracy</h3>
+              <h3 style={{ fontSize: '1.15rem', marginBottom: '6px' }}>
+                {getHeader('about-principle1-h3', 'Medical Accuracy')}
+              </h3>
               <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
                 Medical writing demands precision. We focus on clear terminology, sound interpretation, and a presentation that remains faithful to the clinical and scientific context of the work.
               </p>
@@ -97,7 +101,9 @@ export const About: React.FC = () => {
               <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--color-teal)', marginBottom: '10px' }}>
                 lock
               </span>
-              <h3 style={{ fontSize: '1.15rem', marginBottom: '6px' }}>Confidentiality</h3>
+              <h3 style={{ fontSize: '1.15rem', marginBottom: '6px' }}>
+                {getHeader('about-principle2-h3', 'Confidentiality')}
+              </h3>
               <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
                 Research data, patient-related documentation, study materials, and drafts are handled with care. Confidentiality and responsible data handling are central to every engagement.
               </p>
@@ -105,11 +111,25 @@ export const About: React.FC = () => {
 
             <div style={{ background: 'var(--color-white)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)', display: 'flex', flexDirection: 'column' }}>
               <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--color-teal)', marginBottom: '10px' }}>
-                verified
+                analytics
               </span>
-              <h3 style={{ fontSize: '1.15rem', marginBottom: '6px' }}>Honest Expectations</h3>
+              <h3 style={{ fontSize: '1.15rem', marginBottom: '6px' }}>
+                {getHeader('about-principle3-h3', 'Statistical Rigour')}
+              </h3>
               <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
                 We communicate clearly about scope, timelines, revision support, and the realities of academic publishing. We do not make promises that cannot be ethically guaranteed.
+              </p>
+            </div>
+
+            <div style={{ background: 'var(--color-white)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)', display: 'flex', flexDirection: 'column' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--color-teal)', marginBottom: '10px' }}>
+                verified
+              </span>
+              <h3 style={{ fontSize: '1.15rem', marginBottom: '6px' }}>
+                {getHeader('about-principle4-h3', 'Ethical Publication Guidance')}
+              </h3>
+              <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
+                Adherence to ICMJE guidelines, COPE standards, and transparent authorship frameworks across every manuscript.
               </p>
             </div>
           </div>
@@ -186,7 +206,9 @@ export const About: React.FC = () => {
       {/* Corporate Registration Details */}
       <section className="editorial-section section-bg-paper section-border-top">
         <div className="site-container" style={{ maxWidth: '800px', textAlign: 'center' }}>
-          <h3 style={{ fontSize: '1.25rem', marginBottom: '10px' }}>Corporate &amp; Academic Entity</h3>
+          <h5 style={{ fontSize: '1.25rem', marginBottom: '10px', color: 'var(--color-ink)' }}>
+            {getHeader('about-governance-h5', 'Corporate & Academic Entity')}
+          </h5>
           <p style={{ fontSize: '0.92rem', color: 'var(--color-ink-soft)', lineHeight: '1.55', marginBottom: '18px', marginLeft: 'auto', marginRight: 'auto' }}>
             {companyData.name} operates as a specialized division of {companyData.parentCompany}, registered in Chennai, Tamil Nadu, India.
           </p>

@@ -4,7 +4,7 @@ import { ArticleCard } from '../components/cards/ArticleCard';
 import { CtaBanner } from '../components/sections/CtaBanner';
 
 export const Journal: React.FC = () => {
-  const { articles } = useAdminData();
+  const { articles, getHeader, getEyebrow, getHeaderSubtext } = useAdminData();
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedTopic, setSelectedTopic] = useState<string>('all');
 
@@ -23,10 +23,12 @@ export const Journal: React.FC = () => {
       <section className="editorial-hero" aria-label="Research Journal">
         <div className="site-container">
           <div style={{ maxWidth: '820px' }}>
-            <span className="hero-eyebrow">Academic Knowledge Hub</span>
-            <h1 className="hero-title">Medical Research &amp; Publishing Journal</h1>
+            <span className="hero-eyebrow">{getEyebrow('journal-hero-eyebrow', 'Academic Knowledge Hub')}</span>
+            <h1 className="hero-title">
+              {getHeader('journal-hero-h1', 'Medical Research & Publishing Journal')}
+            </h1>
             <p className="hero-lead">
-              Practical guides on study methodology, IMRaD structuring, biostatistical analysis, and journal submission strategies for postgraduate residents and clinical authors.
+              {getHeaderSubtext('journal-hero-h1', 'Practical guides on study methodology, IMRaD structuring, biostatistical analysis, and journal submission strategies for postgraduate residents and clinical authors.')}
             </p>
           </div>
         </div>
@@ -37,9 +39,9 @@ export const Journal: React.FC = () => {
         <div className="site-container">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', marginBottom: '16px' }}>
             <div>
-              <span className="section-header-eyebrow">Latest Academic Guides</span>
+              <span className="section-header-eyebrow">{getEyebrow('journal-list-eyebrow', 'Latest Academic Guides')}</span>
               <h2 id="journal-articles-heading" style={{ fontSize: '1.7rem', margin: 0 }}>
-                Research &amp; Writing Guides
+                {getHeader('journal-list-h2', 'Explore Medical Writing & Publishing Insights')}
               </h2>
             </div>
 

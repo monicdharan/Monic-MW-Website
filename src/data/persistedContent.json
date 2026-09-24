@@ -1,0 +1,1126 @@
+{
+  "publications": [
+    {
+      "id": "ra-ild-machine-learning",
+      "title": "A Multi-Biomarker Machine Learning Approach for Early Prediction of Interstitial Lung Disease in Rheumatoid Arthritis",
+      "type": "Original Research",
+      "specialty": "Rheumatology & Pulmonology",
+      "journalOrIndexing": "PubMed Indexed / Peer-Reviewed",
+      "year": "2024",
+      "image": "/assets/images/prepared_ra_ild_paper_hd.png",
+      "articleUrl": "https://pubmed.ncbi.nlm.nih.gov/40814094/",
+      "category": "original"
+    },
+    {
+      "id": "osteochondroma-calcaneum",
+      "title": "Solitary Osteochondroma of the Calcaneum: A Rare Case Report and Review of Surgical Approaches",
+      "type": "Case Report",
+      "specialty": "Orthopaedics & Musculoskeletal Radiology",
+      "journalOrIndexing": "Journal of Clinical & Diagnostic Research (JCDR) / Scopus Indexed",
+      "year": "2026",
+      "image": "/assets/images/pub_card_2_osteochondroma_hd.png",
+      "articleUrl": "https://www.jcdr.net/article_abstract.asp?issn=0973-709x&year=2026&month=September&volume=20&issue=9&page=AC01-AC04&id=24287",
+      "category": "case"
+    },
+    {
+      "id": "failed-induction-labour",
+      "title": "Clinical Determinants of Failed Induction of Labour in Women with Unfavourable Cervix: A Multivariable Analysis",
+      "type": "Original Research",
+      "specialty": "Obstetrics & Gynaecology",
+      "journalOrIndexing": "Annals of Medicine & Medical Sciences / PubMed Central",
+      "year": "2023",
+      "image": "/assets/images/pub_card_3_failed_induction_hd.png",
+      "articleUrl": "https://doi.org/10.4103/amms.amms_11_20",
+      "category": "original"
+    },
+    {
+      "id": "preeclampsia-biomarkers",
+      "title": "Predictive Efficacy of First-Trimester Serum Biomarkers in Early-Onset Preeclampsia",
+      "type": "Thesis Conversion",
+      "specialty": "Obstetrics & Maternal-Fetal Medicine",
+      "journalOrIndexing": "Indexed Medical Journal",
+      "year": "2023",
+      "image": "/assets/images/pub_card_1_preeclampsia.png",
+      "articleUrl": "https://pubmed.ncbi.nlm.nih.gov/",
+      "category": "original"
+    },
+    {
+      "id": "semaglutide-t2d-ckd-effectiveness",
+      "title": "Comparative Effectiveness of Once-Weekly Semaglutide Versus Sulfonylureas, DPP4 Inhibitors, and Thiazolidinediones in Patients with Type 2 Diabetes and Chronic Kidney Disease",
+      "type": "Original Research",
+      "specialty": "Endocrinology & Nephrology",
+      "journalOrIndexing": "Diabetes Therapy / Springer / PubMed Indexed",
+      "year": "2024",
+      "image": "/assets/images/pub_card_4_uploaded.svg",
+      "articleUrl": "https://doi.org/10.1007/s13300-024-01630-3",
+      "category": "original"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "google-avi-shah",
+      "image": "/assets/images/google-reviews/google-review-avi-shah.png",
+      "authorName": "Dr. Avi Shah",
+      "caption": "Google Review: Verified feedback on research publication and editorial quality.",
+      "type": "google",
+      "stars": 5
+    },
+    {
+      "id": "google-bharath",
+      "image": "/assets/images/google-reviews/google-review-bharath.png",
+      "authorName": "Bharath Ranadeepan",
+      "caption": "Google Review: Timely delivery and meticulous thesis formatting.",
+      "type": "google",
+      "stars": 5
+    },
+    {
+      "id": "google-sinjith",
+      "image": "/assets/images/google-reviews/google-review-sinjith.png",
+      "authorName": "sinjith J",
+      "caption": "Google Review: Medical postgraduate thesis assistance and statistics clarity.",
+      "type": "google",
+      "stars": 5
+    },
+    {
+      "id": "whatsapp-feedback-1",
+      "image": "/assets/images/testimonials/whatsapp_feedback_card_1.png",
+      "authorName": "PG Resident Client",
+      "caption": "Thesis editing, plagiarism check, and prompt delivery.",
+      "type": "whatsapp"
+    },
+    {
+      "id": "whatsapp-feedback-2",
+      "image": "/assets/images/testimonials/whatsapp_feedback_card_2.png",
+      "authorName": "Clinical Author",
+      "caption": "Appreciation for writing quality and quick turnaround.",
+      "type": "whatsapp"
+    },
+    {
+      "id": "whatsapp-feedback-3",
+      "image": "/assets/images/testimonials/whatsapp_feedback_card_3.png",
+      "authorName": "ENT Department Fellow",
+      "caption": "Departmental presentation & hard copy thesis formatting.",
+      "type": "whatsapp"
+    }
+  ],
+  "doctorReviews": [],
+  "articles": [
+    {
+      "id": "journal-selection-guide",
+      "slug": "how-to-choose-the-right-journal",
+      "title": "How to Choose the Right Journal for Your First Medical Research Paper",
+      "category": "Publishing Strategy",
+      "topic": "Journal Selection",
+      "readTime": "5 min read",
+      "date": "September 2024",
+      "summary": "A methodical framework for evaluating journal scope, impact metrics, PubMed and Scopus indexing status, publication fees (APCs), and peer review timelines.",
+      "content": [
+        "Selecting the appropriate journal before drafting your final manuscript is one of the most effective ways to avoid immediate desk rejections. Medical journals receive hundreds of submissions every month, and more than 40% of immediate rejections occur simply because the study falls outside the journal's stated editorial scope.",
+        "When evaluating journals, begin by checking their primary indexing in databases such as PubMed / MEDLINE, Web of Science (SCIE), and Scopus. Verify that the journal is indexed directly on the National Library of Medicine (NLM) catalog rather than relying solely on the journal's own website claims.",
+        "Examine recent issues to assess whether the editorial board prioritizes basic science, clinical trials, or health services research. Cross-reference their average turnaround times and Article Processing Charges (APCs) with your institution's funding timeline."
+      ],
+      "keyTakeaways": [
+        "Check indexing directly on PubMed/NLM and DOAJ to confirm legitimate peer-reviewed standing.",
+        "Read the Aims & Scope page carefully: align your study design with previously published topics.",
+        "Review the journal's reference formatting style and word count limits before finalizing your draft."
+      ]
+    },
+    {
+      "id": "imrad-structure-guide",
+      "slug": "imrad-format-explained",
+      "title": "IMRaD Format Masterclass: Structuring Medical Manuscripts for Clarity",
+      "category": "Manuscript Writing",
+      "topic": "Structure & Style",
+      "readTime": "7 min read",
+      "date": "August 2024",
+      "summary": "Deconstructing the Introduction, Methods, Results, and Discussion format to craft cohesive scientific narratives without redundant reporting.",
+      "content": [
+        "The IMRaD format (Introduction, Methods, Results, and Discussion) represents the standard architecture of biomedical research writing. While seemingly straightforward, many early-career researchers struggle with boundary blurring between sections.",
+        "The Introduction should function as an inverted funnel: starting with the broad clinical burden, narrowing to current literature consensus, pinpointing the specific unresolved question, and ending with your explicit study hypothesis.",
+        "The Methods section must be reproducible: detail your ethical approval, inclusion/exclusion criteria, measurement protocols, and statistical tests. The Results should present data objectively through organized tables, leaving interpretation exclusively to the Discussion."
+      ],
+      "keyTakeaways": [
+        "Keep the Introduction focused on the exact knowledge gap your study addresses.",
+        "State sample size power calculations and exact statistical tests clearly in Methods.",
+        "Do not repeat identical numbers in text that are already presented clearly in tables."
+      ]
+    },
+    {
+      "id": "systematic-review-prospero-prisma",
+      "slug": "prospero-registration-prisma-guide",
+      "title": "PROSPERO Registration and PRISMA 2020: Essential Steps for Review Success",
+      "category": "Evidence Synthesis",
+      "topic": "Systematic Reviews",
+      "readTime": "8 min read",
+      "date": "July 2024",
+      "summary": "Why prospectively registering your systematic review protocol in PROSPERO prevents methodological disputes and fulfills high-tier journal requirements.",
+      "content": [
+        "Systematic reviews and meta-analyses occupy the apex of evidence-based healthcare. However, the surge in low-quality review submissions has prompted leading medical journals to enforce stringent protocol transparency rules.",
+        "Registering your review protocol on PROSPERO prior to initiating formal data extraction is now mandatory for most indexed journals. A registered protocol establishes your PICO parameters, planned subgroup analyses, and risk-of-bias tools, preventing post-hoc outcome switching.",
+        "Ensure your final manuscript adheres to the 27 items of the PRISMA 2020 checklist, including a detailed 4-phase flow diagram detailing records identified, screened, assessed for eligibility, and ultimately included."
+      ],
+      "keyTakeaways": [
+        "Register your protocol in PROSPERO before completing study screening and data extraction.",
+        "Document the complete Boolean search string for at least one major database in supplementary files.",
+        "Include a structured Risk of Bias assessment using validated tools (RoB 2, ROBINS-I, or NOS)."
+      ]
+    },
+    {
+      "id": "thesis-to-manuscript-conversion",
+      "slug": "converting-thesis-to-published-paper",
+      "title": "Thesis to Manuscript: Converting a 150-Page Dissertation into a 3,500-Word Paper",
+      "category": "Thesis Conversion",
+      "topic": "Academic Publishing",
+      "readTime": "6 min read",
+      "date": "June 2024",
+      "summary": "Practical condensation strategies to extract your primary clinical finding, reformat complex tables, and update literature for peer review.",
+      "content": [
+        "A postgraduate thesis is written to demonstrate exhaustive academic thoroughness to university examiners, often resulting in 100 to 200 pages of comprehensive background and extensive sub-tables. In contrast, a journal manuscript is written for busy clinicians and must deliver a focused message within 3,000–3,500 words.",
+        "To convert a thesis successfully, you must discard peripheral secondary questions and isolate one primary clinical storyline. Reduce 25+ dissertation tables into 4 or 5 high-yield comparative tables with clear clinical annotations.",
+        "Update your literature review to incorporate studies published during the 2–3 years you spent completing clinical data collection."
+      ],
+      "keyTakeaways": [
+        "Select one primary clinical question rather than attempting to report every thesis sub-variable.",
+        "Consolidate multiple demographic and outcome tables into unified composite tables.",
+        "Ensure all references are updated to reflect the most recent 3 years of clinical publications."
+      ]
+    },
+    {
+      "id": "sample-size-and-biostatistics",
+      "slug": "sample-size-calculation-medical-research",
+      "title": "Sample Size Calculation and Statistical Power: A Practical Guide for Clinicians",
+      "category": "Biostatistics",
+      "topic": "Study Design",
+      "readTime": "6 min read",
+      "date": "May 2024",
+      "summary": "Demystifying alpha levels, statistical power, effect sizes, and formulas for observational studies, clinical trials, and diagnostic accuracy research.",
+      "content": [
+        "An underpowered study risks failing to detect a true clinical difference, wasting institutional resources and raising ethical concerns. Conversely, an excessively large sample size exposes unnecessary patients to experimental interventions.",
+        "Sample size estimation requires four foundational parameters: Type I error rate (alpha, typically 0.05), Statistical power (1 - beta, typically 80% to 90%), expected effect size based on pilot or published literature, and estimated standard deviation or baseline proportion.",
+        "Always account for an anticipated 10% to 15% patient loss to follow-up when finalizing the target enrollment number in your ethics protocol."
+      ],
+      "keyTakeaways": [
+        "Derive your expected effect size from verified pilot data or landmark published literature.",
+        "Document the exact mathematical formula or software tool used in your methodology.",
+        "Adjust your final recruitment target to accommodate potential attrition and dropout rates."
+      ]
+    },
+    {
+      "id": "care-guidelines-case-reports",
+      "slug": "care-guidelines-medical-case-reports",
+      "title": "Writing High-Yield Medical Case Reports Under the 2024 CARE Guidelines",
+      "category": "Clinical Reporting",
+      "topic": "Case Reports",
+      "readTime": "5 min read",
+      "date": "April 2024",
+      "summary": "Transforming rare clinical presentations, atypical drug reactions, and diagnostic dilemmas into peer-reviewed published case series.",
+      "content": [
+        "While randomized trials provide high-level evidence, well-documented case reports remain crucial for alerting the medical community to novel drug adverse effects, rare clinical syndromes, and unique diagnostic dilemmas.",
+        "The CARE (CAse REport) guidelines establish an international 13-item consensus for case reporting. Key requirements include a chronological diagnostic timeline, explicit patient perspective, and comprehensive discussion of differential diagnoses.",
+        "Always secure signed patient informed consent for publication prior to drafting, and ensure all radiological and histological images are strictly de-identified."
+      ],
+      "keyTakeaways": [
+        "Structure your case presentation around a clear chronological clinical timeline.",
+        "Highlight the universal clinical lesson or diagnostic takeaway for practicing physicians.",
+        "Obtain explicit written patient consent and verify full radiological de-identification."
+      ]
+    }
+  ],
+  "blogCategories": [
+    "Research Batch Publications",
+    "Original Research",
+    "Case Reports",
+    "Systematic Reviews",
+    "Thesis Conversions",
+    "Publishing Strategy",
+    "Manuscript Writing",
+    "Evidence Synthesis",
+    "Biostatistics",
+    "Clinical Reporting"
+  ],
+  "authors": [
+    {
+      "id": "auth-1",
+      "name": "Dr. Ananya Sharma",
+      "role": "Lead Medical Editor & Writer",
+      "avatar": "/assets/images/team_doctor_1.jpg"
+    },
+    {
+      "id": "auth-2",
+      "name": "Dr. Rajesh Kumar",
+      "role": "Senior Biostatistician",
+      "avatar": "/assets/images/team_doctor_2.jpg"
+    },
+    {
+      "id": "auth-3",
+      "name": "MedZen Research Editorial Team",
+      "role": "Scientific Editorial Board"
+    }
+  ],
+  "visualContent": {
+    "heroBadge": "Medical Research & Publication Support",
+    "heroTitle": "Turn Complex Medical Research Into Clear, Publication-Ready Work",
+    "heroLead": "Medical writing, biostatistics, and publication support for clinicians, postgraduate doctors, researchers, and medical faculty — delivered with academic integrity and confidentiality.",
+    "phone": "+91 88079 09503",
+    "email": "support@medzenwrites.com"
+  },
+  "faqs": [
+    {
+      "id": "faq-services-scope",
+      "question": "What types of academic and medical writing projects do you support?",
+      "answer": "We support the full spectrum of academic medical documentation: Original Research Manuscripts, Systematic Reviews & Meta-Analyses (PRISMA 2020), Medical Case Reports, Postgraduate Medical Dissertations (MD, MS, DNB, DM, MCh), Clinical Biostatistical Reports (SPSS/R), Literature Reviews, Research Protocols/Synopses, and Conference Abstracts & E-Posters.",
+      "category": "general"
+    },
+    {
+      "id": "faq-acceptance-guarantee",
+      "question": "Do you guarantee journal acceptance or indexing?",
+      "answer": "No ethical academic writing consultancy can or should guarantee journal acceptance, as editorial decisions rest solely with independent peer-reviewers and journal editors. What we guarantee is rigorous adherence to ICMJE authorship guidelines, target journal formatting compliance, sound biostatistical methodology, and comprehensive support addressing peer-review comments during revision rounds.",
+      "category": "ethics"
+    },
+    {
+      "id": "faq-confidentiality",
+      "question": "How do you protect patient data and research confidentiality?",
+      "answer": "We treat all clinical datasets, patient records, and research synopses with strict confidentiality. All shared patient identifiers must be de-identified prior to analysis. We sign Non-Disclosure Agreements (NDAs) on request, and your raw data is never shared, archived publicly, or reused in any manner.",
+      "category": "ethics"
+    },
+    {
+      "id": "faq-statistics",
+      "question": "Can you assist solely with the statistical analysis part of our study?",
+      "answer": "Yes. Many clinicians collect their own data but require professional biostatistical evaluation. Our medical statisticians perform sample size power calculations, normality assessments, parametric/non-parametric tests, multivariable regression modeling, and ROC curve analyses, delivering a complete publication-ready report with formatted tables and exact p-values.",
+      "category": "process"
+    },
+    {
+      "id": "faq-information-needed",
+      "question": "What information is needed to get started on a manuscript or thesis?",
+      "answer": "To begin, we typically require: (1) your study protocol or synopsis with primary objectives, (2) Institutional Ethics Committee (IEC/IRB) approval letter, (3) raw clinical dataset or collected master chart in Excel/CSV, and (4) target journal or university thesis guidelines. During our initial consultation, we audit your material and provide a milestone roadmap.",
+      "category": "process"
+    },
+    {
+      "id": "faq-turnaround",
+      "question": "What are your standard turnaround timelines?",
+      "answer": "Timelines depend on the scope and complexity of the project. Statistical analysis reports typically require 5–7 working days; Case Reports take 10–14 days; Original Research manuscripts and Thesis conversions take 2–4 weeks; and comprehensive Systematic Reviews take 4–6 weeks. We establish concrete milestone dates prior to project commencement.",
+      "category": "process"
+    },
+    {
+      "id": "faq-revisions",
+      "question": "Are revisions included if my guide or journal reviewers request changes?",
+      "answer": "Yes. All our engagements include milestone review cycles and post-delivery revision support to incorporate mentor, guide, or peer-reviewer feedback within the originally agreed scope of the study.",
+      "category": "general"
+    }
+  ],
+  "headerTags": [
+    {
+      "id": "home-hero-eyebrow",
+      "page": "home",
+      "section": "Hero Section",
+      "tagType": "eyebrow",
+      "label": "Hero Eyebrow Pill / Badge",
+      "text": "Medical Research & Publication Support",
+      "defaultText": "Medical Research & Publication Support"
+    },
+    {
+      "id": "home-hero-h1",
+      "page": "home",
+      "section": "Hero Section",
+      "tagType": "h1",
+      "label": "Hero Main Title (H1)",
+      "text": "Turn Complex Medical Research Into Clear, Publication-Ready Work",
+      "subtext": "Medical writing, biostatistics, and publication support for clinicians, postgraduate doctors, researchers, and medical faculty — delivered with academic integrity and confidentiality.",
+      "defaultText": "Turn Complex Medical Research Into Clear, Publication-Ready Work",
+      "defaultSubtext": "Medical writing, biostatistics, and publication support for clinicians, postgraduate doctors, researchers, and medical faculty — delivered with academic integrity and confidentiality."
+    },
+    {
+      "id": "home-services-eyebrow",
+      "page": "home",
+      "section": "Services Overview Section",
+      "tagType": "eyebrow",
+      "label": "Services Section Eyebrow",
+      "text": "Specialised Research Support",
+      "defaultText": "Specialised Research Support"
+    },
+    {
+      "id": "home-services-h2",
+      "page": "home",
+      "section": "Services Overview Section",
+      "tagType": "h2",
+      "label": "Services Section Title (H2)",
+      "text": "Medical Writing Services Across the Research Journey",
+      "subtext": "Whether you are developing a dissertation, preparing a manuscript, analysing clinical data, or responding to reviewer comments, MedZen Writes offers focused support at every stage.",
+      "defaultText": "Medical Writing Services Across the Research Journey",
+      "defaultSubtext": "Whether you are developing a dissertation, preparing a manuscript, analysing clinical data, or responding to reviewer comments, MedZen Writes offers focused support at every stage."
+    },
+    {
+      "id": "home-service1-h3",
+      "page": "home",
+      "section": "Services Overview Section",
+      "tagType": "h3",
+      "label": "Service Card 1 Title (H3)",
+      "text": "Original Research Articles",
+      "defaultText": "Original Research Articles"
+    },
+    {
+      "id": "home-service2-h3",
+      "page": "home",
+      "section": "Services Overview Section",
+      "tagType": "h3",
+      "label": "Service Card 2 Title (H3)",
+      "text": "Systematic Reviews & Meta-Analyses",
+      "defaultText": "Systematic Reviews & Meta-Analyses"
+    },
+    {
+      "id": "home-service3-h3",
+      "page": "home",
+      "section": "Services Overview Section",
+      "tagType": "h3",
+      "label": "Service Card 3 Title (H3)",
+      "text": "Thesis & Dissertation Writing",
+      "defaultText": "Thesis & Dissertation Writing"
+    },
+    {
+      "id": "home-pubs-eyebrow",
+      "page": "home",
+      "section": "Publications Section",
+      "tagType": "eyebrow",
+      "label": "Publications Section Eyebrow",
+      "text": "Verified Research Portfolio",
+      "defaultText": "Verified Research Portfolio"
+    },
+    {
+      "id": "home-pubs-h2",
+      "page": "home",
+      "section": "Publications Section",
+      "tagType": "h2",
+      "label": "Publications Section Title (H2)",
+      "text": "Recent Peer-Reviewed Publications & Accepted Manuscripts",
+      "subtext": "A curated selection of published original studies, systematic reviews, and clinical papers developed with our academic support.",
+      "defaultText": "Recent Peer-Reviewed Publications & Accepted Manuscripts",
+      "defaultSubtext": "A curated selection of published original studies, systematic reviews, and clinical papers developed with our academic support."
+    },
+    {
+      "id": "home-journals-eyebrow",
+      "page": "home",
+      "section": "Target Journals Section",
+      "tagType": "eyebrow",
+      "label": "Target Journals Eyebrow",
+      "text": "Indexed Venues",
+      "defaultText": "Indexed Venues"
+    },
+    {
+      "id": "home-journals-h2",
+      "page": "home",
+      "section": "Target Journals Section",
+      "tagType": "h2",
+      "label": "Target Journals Section Title (H2)",
+      "text": "Publication Pathways in High-Impact Indexed Journals",
+      "defaultText": "Publication Pathways in High-Impact Indexed Journals"
+    },
+    {
+      "id": "home-reviews-eyebrow",
+      "page": "home",
+      "section": "Testimonials Section",
+      "tagType": "eyebrow",
+      "label": "Reviews Section Eyebrow",
+      "text": "Verified Feedback",
+      "defaultText": "Verified Feedback"
+    },
+    {
+      "id": "home-reviews-h2",
+      "page": "home",
+      "section": "Testimonials Section",
+      "tagType": "h2",
+      "label": "Reviews Section Title (H2)",
+      "text": "What Researchers & Clinicians Say About Our Work",
+      "subtext": "Read authentic experiences and direct feedback from clinicians, postgraduate residents, and researchers who entrusted their manuscripts to MedZen Writes.",
+      "defaultText": "What Researchers & Clinicians Say About Our Work",
+      "defaultSubtext": "Read authentic experiences and direct feedback from clinicians, postgraduate residents, and researchers who entrusted their manuscripts to MedZen Writes."
+    },
+    {
+      "id": "home-faqs-eyebrow",
+      "page": "home",
+      "section": "FAQ Section",
+      "tagType": "eyebrow",
+      "label": "FAQ Section Eyebrow",
+      "text": "Frequently Asked Questions",
+      "defaultText": "Frequently Asked Questions"
+    },
+    {
+      "id": "home-faqs-h2",
+      "page": "home",
+      "section": "FAQ Section",
+      "tagType": "h2",
+      "label": "FAQ Section Title (H2)",
+      "text": "Clear Answers Before You Begin",
+      "subtext": "Common questions regarding confidentiality, timelines, authorship ethics, and the manuscript review process.",
+      "defaultText": "Clear Answers Before You Begin",
+      "defaultSubtext": "Common questions regarding confidentiality, timelines, authorship ethics, and the manuscript review process."
+    },
+    {
+      "id": "home-trust-item1-h4",
+      "page": "home",
+      "section": "Hero Trust Row",
+      "tagType": "h4",
+      "label": "Hero Trust Item 1 (H4)",
+      "text": "Academic integrity",
+      "defaultText": "Academic integrity"
+    },
+    {
+      "id": "home-trust-item2-h4",
+      "page": "home",
+      "section": "Hero Trust Row",
+      "tagType": "h4",
+      "label": "Hero Trust Item 2 (H4)",
+      "text": "Research confidentiality",
+      "defaultText": "Research confidentiality"
+    },
+    {
+      "id": "home-trust-item3-h4",
+      "page": "home",
+      "section": "Hero Trust Row",
+      "tagType": "h4",
+      "label": "Hero Trust Item 3 (H4)",
+      "text": "Medical-domain expertise",
+      "defaultText": "Medical-domain expertise"
+    },
+    {
+      "id": "about-hero-eyebrow",
+      "page": "about",
+      "section": "Hero Section",
+      "tagType": "eyebrow",
+      "label": "About Hero Eyebrow",
+      "text": "About MedZen Writes",
+      "defaultText": "About MedZen Writes"
+    },
+    {
+      "id": "about-hero-h1",
+      "page": "about",
+      "section": "Hero Section",
+      "tagType": "h1",
+      "label": "About Hero Title (H1)",
+      "text": "Academic Support for Research With Clinical Purpose",
+      "subtext": "MedZen Writes is the academic medical consultancy division of MedZen Innovations Pvt. Ltd. We support clinicians, postgraduates, and researchers in presenting their work with clarity, methodological discipline, and respect for publication ethics.",
+      "defaultText": "Academic Support for Research With Clinical Purpose",
+      "defaultSubtext": "MedZen Writes is the academic medical consultancy division of MedZen Innovations Pvt. Ltd. We support clinicians, postgraduates, and researchers in presenting their work with clarity, methodological discipline, and respect for publication ethics."
+    },
+    {
+      "id": "about-purpose-eyebrow",
+      "page": "about",
+      "section": "Purpose & Mission Section",
+      "tagType": "eyebrow",
+      "label": "Purpose Section Eyebrow",
+      "text": "Our Purpose",
+      "defaultText": "Our Purpose"
+    },
+    {
+      "id": "about-purpose-h2",
+      "page": "about",
+      "section": "Purpose & Mission Section",
+      "tagType": "h2",
+      "label": "Purpose Section Title (H2)",
+      "text": "Good Clinical Research Should Not Remain Unseen",
+      "defaultText": "Good Clinical Research Should Not Remain Unseen"
+    },
+    {
+      "id": "about-integrity-h4",
+      "page": "about",
+      "section": "Integrity Callout Box",
+      "tagType": "h4",
+      "label": "Integrity Box Title (H4)",
+      "text": "Built on Academic Integrity",
+      "defaultText": "Built on Academic Integrity"
+    },
+    {
+      "id": "about-principles-eyebrow",
+      "page": "about",
+      "section": "Principles Section",
+      "tagType": "eyebrow",
+      "label": "Principles Section Eyebrow",
+      "text": "How We Work",
+      "defaultText": "How We Work"
+    },
+    {
+      "id": "about-principles-h2",
+      "page": "about",
+      "section": "Principles Section",
+      "tagType": "h2",
+      "label": "Principles Section Title (H2)",
+      "text": "A Clear, Responsible Approach to Every Project",
+      "subtext": "Clear principles that guide our interactions with authors, mentors, and academic institutions.",
+      "defaultText": "A Clear, Responsible Approach to Every Project",
+      "defaultSubtext": "Clear principles that guide our interactions with authors, mentors, and academic institutions."
+    },
+    {
+      "id": "about-principle1-h3",
+      "page": "about",
+      "section": "Principles Cards",
+      "tagType": "h3",
+      "label": "Principle 1 Title (H3)",
+      "text": "Medical Accuracy",
+      "defaultText": "Medical Accuracy"
+    },
+    {
+      "id": "about-principle2-h3",
+      "page": "about",
+      "section": "Principles Cards",
+      "tagType": "h3",
+      "label": "Principle 2 Title (H3)",
+      "text": "Confidentiality",
+      "defaultText": "Confidentiality"
+    },
+    {
+      "id": "about-principle3-h3",
+      "page": "about",
+      "section": "Principles Cards",
+      "tagType": "h3",
+      "label": "Principle 3 Title (H3)",
+      "text": "Statistical Rigour",
+      "defaultText": "Statistical Rigour"
+    },
+    {
+      "id": "about-principle4-h3",
+      "page": "about",
+      "section": "Principles Cards",
+      "tagType": "h3",
+      "label": "Principle 4 Title (H3)",
+      "text": "Ethical Publication Guidance",
+      "defaultText": "Ethical Publication Guidance"
+    },
+    {
+      "id": "about-stats-eyebrow",
+      "page": "about",
+      "section": "Statistics / Impact Section",
+      "tagType": "eyebrow",
+      "label": "Impact Eyebrow",
+      "text": "By The Numbers",
+      "defaultText": "By The Numbers"
+    },
+    {
+      "id": "about-stats-h2",
+      "page": "about",
+      "section": "Statistics / Impact Section",
+      "tagType": "h2",
+      "label": "Impact Section Title (H2)",
+      "text": "Academic Track Record & Clinical Reach",
+      "defaultText": "Academic Track Record & Clinical Reach"
+    },
+    {
+      "id": "about-stat1-h3",
+      "page": "about",
+      "section": "Statistics Grid",
+      "tagType": "h3",
+      "label": "Stat 1 Counter (H3)",
+      "text": "500+ Manuscripts Supported",
+      "defaultText": "500+ Manuscripts Supported"
+    },
+    {
+      "id": "about-stat2-h3",
+      "page": "about",
+      "section": "Statistics Grid",
+      "tagType": "h3",
+      "label": "Stat 2 Counter (H3)",
+      "text": "98.2% Peer Review Progress Rate",
+      "defaultText": "98.2% Peer Review Progress Rate"
+    },
+    {
+      "id": "about-stat3-h3",
+      "page": "about",
+      "section": "Statistics Grid",
+      "tagType": "h3",
+      "label": "Stat 3 Counter (H3)",
+      "text": "40+ Medical Specialties",
+      "defaultText": "40+ Medical Specialties"
+    },
+    {
+      "id": "about-stat4-h3",
+      "page": "about",
+      "section": "Statistics Grid",
+      "tagType": "h3",
+      "label": "Stat 4 Counter (H3)",
+      "text": "100% Confidentiality",
+      "defaultText": "100% Confidentiality"
+    },
+    {
+      "id": "about-governance-h5",
+      "page": "about",
+      "section": "Governance & Registration",
+      "tagType": "h5",
+      "label": "Governance Title (H5)",
+      "text": "Academic Editorial Consultancy Group — MedZen Innovations",
+      "defaultText": "Academic Editorial Consultancy Group — MedZen Innovations"
+    },
+    {
+      "id": "about-compliance-h6",
+      "page": "about",
+      "section": "Compliance Footnote",
+      "tagType": "h6",
+      "label": "Compliance Level (H6)",
+      "text": "Compliant with ICMJE, COPE, STROBE & PRISMA standards",
+      "defaultText": "Compliant with ICMJE, COPE, STROBE & PRISMA standards"
+    },
+    {
+      "id": "services-hero-eyebrow",
+      "page": "services",
+      "section": "Hero Section",
+      "tagType": "eyebrow",
+      "label": "Services Hero Eyebrow",
+      "text": "Comprehensive Research Solutions",
+      "defaultText": "Comprehensive Research Solutions"
+    },
+    {
+      "id": "services-hero-h1",
+      "page": "services",
+      "section": "Hero Section",
+      "tagType": "h1",
+      "label": "Services Hero Title (H1)",
+      "text": "Academic Writing & Editorial Services for Medical Researchers",
+      "subtext": "From initial protocol formulation to journal publication, we offer focused, high-precision academic writing, biostatistics, and editorial support across 9 key medical specialties.",
+      "defaultText": "Academic Writing & Editorial Services for Medical Researchers",
+      "defaultSubtext": "From initial protocol formulation to journal publication, we offer focused, high-precision academic writing, biostatistics, and editorial support across 9 key medical specialties."
+    },
+    {
+      "id": "services-list-eyebrow",
+      "page": "services",
+      "section": "Services Grid",
+      "tagType": "eyebrow",
+      "label": "Services Grid Eyebrow",
+      "text": "Service Portfolio",
+      "defaultText": "Service Portfolio"
+    },
+    {
+      "id": "services-list-h2",
+      "page": "services",
+      "section": "Services Grid",
+      "tagType": "h2",
+      "label": "Services Grid Title (H2)",
+      "text": "9 Specialised Medical Writing & Biostatistics Services",
+      "defaultText": "9 Specialised Medical Writing & Biostatistics Services"
+    },
+    {
+      "id": "services-feat1-h4",
+      "page": "services",
+      "section": "Services Feature Strip",
+      "tagType": "h4",
+      "label": "Feature Strip Item 1 (H4)",
+      "text": "Target Journal Compliance",
+      "defaultText": "Target Journal Compliance"
+    },
+    {
+      "id": "services-feat2-h4",
+      "page": "services",
+      "section": "Services Feature Strip",
+      "tagType": "h4",
+      "label": "Feature Strip Item 2 (H4)",
+      "text": "Verified Biostatistics",
+      "defaultText": "Verified Biostatistics"
+    },
+    {
+      "id": "services-feat3-h4",
+      "page": "services",
+      "section": "Services Feature Strip",
+      "tagType": "h4",
+      "label": "Feature Strip Item 3 (H4)",
+      "text": "Revision Support",
+      "defaultText": "Revision Support"
+    },
+    {
+      "id": "services-feat4-h4",
+      "page": "services",
+      "section": "Services Feature Strip",
+      "tagType": "h4",
+      "label": "Feature Strip Item 4 (H4)",
+      "text": "Strict Confidentiality",
+      "defaultText": "Strict Confidentiality"
+    },
+    {
+      "id": "services-guarantee-h5",
+      "page": "services",
+      "section": "Delivery Framework",
+      "tagType": "h5",
+      "label": "Delivery Standards (H5)",
+      "text": "Standard Turnaround: 7 to 21 Business Days with Staged Milestones",
+      "defaultText": "Standard Turnaround: 7 to 21 Business Days with Staged Milestones"
+    },
+    {
+      "id": "services-guidelines-h6",
+      "page": "services",
+      "section": "Methodological Adherence",
+      "tagType": "h6",
+      "label": "Reporting Guideline Compliance (H6)",
+      "text": "Full reporting compliance: STROBE, PRISMA, CARE, CONSORT, SAMPL, SQUIRE 2.0",
+      "defaultText": "Full reporting compliance: STROBE, PRISMA, CARE, CONSORT, SAMPL, SQUIRE 2.0"
+    },
+    {
+      "id": "pubs-hero-eyebrow",
+      "page": "publications",
+      "section": "Hero Section",
+      "tagType": "eyebrow",
+      "label": "Publications Hero Eyebrow",
+      "text": "Peer-Reviewed Archive",
+      "defaultText": "Peer-Reviewed Archive"
+    },
+    {
+      "id": "pubs-hero-h1",
+      "page": "publications",
+      "section": "Hero Section",
+      "tagType": "h1",
+      "label": "Publications Hero Title (H1)",
+      "text": "Medical Publications Portfolio",
+      "subtext": "A curated showcase of original clinical studies, systematic reviews, and accepted manuscripts supported by MedZen Writes across indexed national and international medical journals.",
+      "defaultText": "Medical Publications Portfolio",
+      "defaultSubtext": "A curated showcase of original clinical studies, systematic reviews, and accepted manuscripts supported by MedZen Writes across indexed national and international medical journals."
+    },
+    {
+      "id": "pubs-grid-eyebrow",
+      "page": "publications",
+      "section": "Portfolio Filter",
+      "tagType": "eyebrow",
+      "label": "Portfolio Filter Eyebrow",
+      "text": "Published Works",
+      "defaultText": "Published Works"
+    },
+    {
+      "id": "pubs-grid-h2",
+      "page": "publications",
+      "section": "Portfolio Grid",
+      "tagType": "h2",
+      "label": "Portfolio Grid Title (H2)",
+      "text": "Recent Accepted Papers & Published Articles",
+      "defaultText": "Recent Accepted Papers & Published Articles"
+    },
+    {
+      "id": "pubs-indexing-h4",
+      "page": "publications",
+      "section": "Indexing Header",
+      "tagType": "h4",
+      "label": "Indexing Coverage (H4)",
+      "text": "Indexed in PubMed / Medline, Scopus, Web of Science, Embase, DOAJ, EMBASE",
+      "defaultText": "Indexed in PubMed / Medline, Scopus, Web of Science, Embase, DOAJ, EMBASE"
+    },
+    {
+      "id": "pubs-doi-h5",
+      "page": "publications",
+      "section": "Verification Tag",
+      "tagType": "h5",
+      "label": "Verification Level (H5)",
+      "text": "Author-Authorized Published DOI & PubMed Central Cross-References",
+      "defaultText": "Author-Authorized Published DOI & PubMed Central Cross-References"
+    },
+    {
+      "id": "pubs-disclaimer-h6",
+      "page": "publications",
+      "section": "Ethical Note",
+      "tagType": "h6",
+      "label": "Authorship Disclaimer (H6)",
+      "text": "All publication entries respect client privacy agreements and copyright permissions",
+      "defaultText": "All publication entries respect client privacy agreements and copyright permissions"
+    },
+    {
+      "id": "testi-hero-eyebrow",
+      "page": "testimonials",
+      "section": "Hero Section",
+      "tagType": "eyebrow",
+      "label": "Testimonials Hero Eyebrow",
+      "text": "Client Feedback & Verifications",
+      "defaultText": "Client Feedback & Verifications"
+    },
+    {
+      "id": "testi-hero-h1",
+      "page": "testimonials",
+      "section": "Hero Section",
+      "tagType": "h1",
+      "label": "Testimonials Hero Title (H1)",
+      "text": "Doctor Reviews & Testimonials",
+      "subtext": "Verified feedback, Google reviews, WhatsApp conversations, and written testimonials from clinicians, postgraduate candidates, and department faculty across India and abroad.",
+      "defaultText": "Doctor Reviews & Testimonials",
+      "defaultSubtext": "Verified feedback, Google reviews, WhatsApp conversations, and written testimonials from clinicians, postgraduate candidates, and department faculty across India and abroad."
+    },
+    {
+      "id": "testi-screens-eyebrow",
+      "page": "testimonials",
+      "section": "Review Screenshots Section",
+      "tagType": "eyebrow",
+      "label": "Review Screenshots Eyebrow",
+      "text": "Direct Screenshots",
+      "defaultText": "Direct Screenshots"
+    },
+    {
+      "id": "testi-screens-h2",
+      "page": "testimonials",
+      "section": "Review Screenshots Section",
+      "tagType": "h2",
+      "label": "Review Screenshots Title (H2)",
+      "text": "Google Reviews & WhatsApp Feedback Screenshots",
+      "defaultText": "Google Reviews & WhatsApp Feedback Screenshots"
+    },
+    {
+      "id": "testi-doc-eyebrow",
+      "page": "testimonials",
+      "section": "Doctor Testimonials Section",
+      "tagType": "eyebrow",
+      "label": "Doctor Testimonials Eyebrow",
+      "text": "Clinical Endorsements",
+      "defaultText": "Clinical Endorsements"
+    },
+    {
+      "id": "testi-doc-h2",
+      "page": "testimonials",
+      "section": "Doctor Testimonials Section",
+      "tagType": "h2",
+      "label": "Doctor Testimonials Title (H2)",
+      "text": "In-Depth Written Feedback from Medical Professionals",
+      "defaultText": "In-Depth Written Feedback from Medical Professionals"
+    },
+    {
+      "id": "testi-rating-h4",
+      "page": "testimonials",
+      "section": "Rating Overview",
+      "tagType": "h4",
+      "label": "Average Client Rating (H4)",
+      "text": "4.9 / 5.0 Average Rating Across 150+ Verified Academic Projects",
+      "defaultText": "4.9 / 5.0 Average Rating Across 150+ Verified Academic Projects"
+    },
+    {
+      "id": "testi-hospitals-h5",
+      "page": "testimonials",
+      "section": "Institutions",
+      "tagType": "h5",
+      "label": "Hospital Affiliations (H5)",
+      "text": "Clinicians from AIIMS, Apollo, Fortis, Manipal, CMC Vellore, JIPMER & PGIMER",
+      "defaultText": "Clinicians from AIIMS, Apollo, Fortis, Manipal, CMC Vellore, JIPMER & PGIMER"
+    },
+    {
+      "id": "testi-verif-h6",
+      "page": "testimonials",
+      "section": "Verification Seal",
+      "tagType": "h6",
+      "label": "Verification Note (H6)",
+      "text": "Every review screenshot is verified with client consent prior to publication",
+      "defaultText": "Every review screenshot is verified with client consent prior to publication"
+    },
+    {
+      "id": "journal-hero-eyebrow",
+      "page": "journal",
+      "section": "Hero Section",
+      "tagType": "eyebrow",
+      "label": "Journal Hero Eyebrow",
+      "text": "Academic Knowledge Base",
+      "defaultText": "Academic Knowledge Base"
+    },
+    {
+      "id": "journal-hero-h1",
+      "page": "journal",
+      "section": "Hero Section",
+      "tagType": "h1",
+      "label": "Journal Hero Title (H1)",
+      "text": "Medical Research & Publishing Journal",
+      "subtext": "Practical insights, biostatistical methodologies, manuscript preparation strategies, and journal selection advice for clinical researchers.",
+      "defaultText": "Medical Research & Publishing Journal",
+      "defaultSubtext": "Practical insights, biostatistical methodologies, manuscript preparation strategies, and journal selection advice for clinical researchers."
+    },
+    {
+      "id": "journal-list-eyebrow",
+      "page": "journal",
+      "section": "Articles Feed",
+      "tagType": "eyebrow",
+      "label": "Articles Feed Eyebrow",
+      "text": "All Articles",
+      "defaultText": "All Articles"
+    },
+    {
+      "id": "journal-list-h2",
+      "page": "journal",
+      "section": "Articles Feed",
+      "tagType": "h2",
+      "label": "Articles Feed Title (H2)",
+      "text": "Explore Medical Writing & Publishing Insights",
+      "defaultText": "Explore Medical Writing & Publishing Insights"
+    },
+    {
+      "id": "journal-editorial-h4",
+      "page": "journal",
+      "section": "Editorial Board",
+      "tagType": "h4",
+      "label": "Editorial Attribution (H4)",
+      "text": "Authored & Curated by the MedZen Research Editorial Team",
+      "defaultText": "Authored & Curated by the MedZen Research Editorial Team"
+    },
+    {
+      "id": "journal-topics-h5",
+      "page": "journal",
+      "section": "Topic Categories",
+      "tagType": "h5",
+      "label": "Core Journal Pillars (H5)",
+      "text": "Original Research • Systematic Reviews • Biostatistics • Thesis Strategy",
+      "defaultText": "Original Research • Systematic Reviews • Biostatistics • Thesis Strategy"
+    },
+    {
+      "id": "journal-cite-h6",
+      "page": "journal",
+      "section": "Academic Citation",
+      "tagType": "h6",
+      "label": "Citation Guideline (H6)",
+      "text": "Open-access educational materials intended for clinical and academic enhancement",
+      "defaultText": "Open-access educational materials intended for clinical and academic enhancement"
+    },
+    {
+      "id": "contact-hero-eyebrow",
+      "page": "contact",
+      "section": "Hero Section",
+      "tagType": "eyebrow",
+      "label": "Contact Hero Eyebrow",
+      "text": "Get In Touch",
+      "defaultText": "Get In Touch"
+    },
+    {
+      "id": "contact-hero-h1",
+      "page": "contact",
+      "section": "Hero Section",
+      "tagType": "h1",
+      "label": "Contact Hero Title (H1)",
+      "text": "Contact Our Academic Editorial Team",
+      "subtext": "Discuss your medical manuscript, thesis, or biostatistics requirements directly with our senior research specialists. Confidential, structured, and prompt.",
+      "defaultText": "Contact Our Academic Editorial Team",
+      "defaultSubtext": "Discuss your medical manuscript, thesis, or biostatistics requirements directly with our senior research specialists. Confidential, structured, and prompt."
+    },
+    {
+      "id": "contact-form-eyebrow",
+      "page": "contact",
+      "section": "Consultation Form",
+      "tagType": "eyebrow",
+      "label": "Form Eyebrow",
+      "text": "Confidential Consultation",
+      "defaultText": "Confidential Consultation"
+    },
+    {
+      "id": "contact-form-h2",
+      "page": "contact",
+      "section": "Consultation Form",
+      "tagType": "h2",
+      "label": "Form Heading (H2)",
+      "text": "Request an Academic Assessment",
+      "subtext": "Share your research objectives, current draft status, and timeline. Our team will review and respond within 24 hours.",
+      "defaultText": "Request an Academic Assessment",
+      "defaultSubtext": "Share your research objectives, current draft status, and timeline. Our team will review and respond within 24 hours."
+    },
+    {
+      "id": "contact-channels-h3",
+      "page": "contact",
+      "section": "Direct Information",
+      "tagType": "h3",
+      "label": "Direct Channels Heading (H3)",
+      "text": "Direct Communication Channels",
+      "defaultText": "Direct Communication Channels"
+    },
+    {
+      "id": "contact-office-h4",
+      "page": "contact",
+      "section": "Contact Card 1",
+      "tagType": "h4",
+      "label": "Office Card Title (H4)",
+      "text": "Consultation Office",
+      "defaultText": "Consultation Office"
+    },
+    {
+      "id": "contact-email-h4",
+      "page": "contact",
+      "section": "Contact Card 2",
+      "tagType": "h4",
+      "label": "Email Card Title (H4)",
+      "text": "Email Inquiries",
+      "defaultText": "Email Inquiries"
+    },
+    {
+      "id": "contact-phone-h4",
+      "page": "contact",
+      "section": "Contact Card 3",
+      "tagType": "h4",
+      "label": "Phone Card Title (H4)",
+      "text": "WhatsApp & Direct Call",
+      "defaultText": "WhatsApp & Direct Call"
+    },
+    {
+      "id": "contact-hours-h4",
+      "page": "contact",
+      "section": "Contact Card 4",
+      "tagType": "h4",
+      "label": "Hours Card Title (H4)",
+      "text": "Working Hours",
+      "defaultText": "Working Hours"
+    },
+    {
+      "id": "contact-loc-h5",
+      "page": "contact",
+      "section": "Location Detail",
+      "tagType": "h5",
+      "label": "Headquarters Location (H5)",
+      "text": "Chennai, Tamil Nadu, India — Global Academic Delivery",
+      "defaultText": "Chennai, Tamil Nadu, India — Global Academic Delivery"
+    },
+    {
+      "id": "contact-nda-h6",
+      "page": "contact",
+      "section": "NDA Clause",
+      "tagType": "h6",
+      "label": "Non-Disclosure Assurance (H6)",
+      "text": "Strict Non-Disclosure Guarantee: All manuscripts and datasets remain 100% confidential",
+      "defaultText": "Strict Non-Disclosure Guarantee: All manuscripts and datasets remain 100% confidential"
+    },
+    {
+      "id": "global-cta-eyebrow",
+      "page": "global",
+      "section": "Global CTA Banner",
+      "tagType": "eyebrow",
+      "label": "Global CTA Eyebrow",
+      "text": "Confidential Academic Consultation",
+      "defaultText": "Confidential Academic Consultation"
+    },
+    {
+      "id": "global-cta-h2",
+      "page": "global",
+      "section": "Global CTA Banner",
+      "tagType": "h2",
+      "label": "Global CTA Main Title (H2)",
+      "text": "Ready to Advance Your Medical Research?",
+      "subtext": "Schedule a confidential discussion with our editorial and biostatistics team. We review your draft, outline an academic plan, and provide clear timeline estimates.",
+      "defaultText": "Ready to Advance Your Medical Research?",
+      "defaultSubtext": "Schedule a confidential discussion with our editorial and biostatistics team. We review your draft, outline an academic plan, and provide clear timeline estimates."
+    },
+    {
+      "id": "global-cta-h3",
+      "page": "global",
+      "section": "Global CTA Banner",
+      "tagType": "h3",
+      "label": "Global CTA Secondary Prompt (H3)",
+      "text": "Direct Phone & WhatsApp Support: +91 88079 09503",
+      "defaultText": "Direct Phone & WhatsApp Support: +91 88079 09503"
+    },
+    {
+      "id": "legal-overview-h4",
+      "page": "legal",
+      "section": "Legal Pages Overview",
+      "tagType": "h4",
+      "label": "Legal Section Header (H4)",
+      "text": "Policy Overview & Academic Governance",
+      "defaultText": "Policy Overview & Academic Governance"
+    },
+    {
+      "id": "legal-contact-h5",
+      "page": "legal",
+      "section": "Legal Contact Section",
+      "tagType": "h5",
+      "label": "Legal Officer Contact (H5)",
+      "text": "Grievance & Data Protection Officer: legal@medzenwrites.com",
+      "defaultText": "Grievance & Data Protection Officer: legal@medzenwrites.com"
+    },
+    {
+      "id": "legal-jurisdiction-h6",
+      "page": "legal",
+      "section": "Jurisdiction Footnote",
+      "tagType": "h6",
+      "label": "Jurisdiction Notice (H6)",
+      "text": "Governed under the laws of Tamil Nadu and the Republic of India",
+      "defaultText": "Governed under the laws of Tamil Nadu and the Republic of India"
+    }
+  ],
+  "lastSavedTime": "12:53:20",
+  "savedAt": "2026-09-24T07:23:20.743Z"
+}

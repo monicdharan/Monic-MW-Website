@@ -38,11 +38,35 @@ class StudioRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps({
                 'status': 'online',
-                'version': '2.4',
+                'version': '2.5',
                 'base_dir': BASE_DIR,
                 'message': 'MedZen Studio Disk Server is active and saving to disk.'
             }).encode('utf-8'))
             return
+        elif self.path == '/api/load-state':
+            try:
+                target_path = os.path.join(BASE_DIR, 'src', 'data', 'persistedContent.json')
+                if os.path.exists(target_path):
+                    with open(target_path, 'r', encoding='utf-8') as f:
+                        content = f.read()
+                    self.send_response(200)
+                    self.send_header('Content-Type', 'application/json')
+                    self.send_header('Cache-Control', 'no-cache')
+                    self.end_headers()
+                    self.wfile.write(content.encode('utf-8'))
+                    return
+                else:
+                    self.send_response(404)
+                    self.send_header('Content-Type', 'application/json')
+                    self.end_headers()
+                    self.wfile.write(json.dumps({'exists': False, 'message': 'No persisted file'}).encode('utf-8'))
+                    return
+            except Exception as e:
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({'success': False, 'error': str(e)}).encode('utf-8'))
+                return
         super().do_GET()
 
     def do_POST(self):
@@ -52,11 +76,43 @@ class StudioRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps({
                 'status': 'online',
-                'version': '2.4',
+                'version': '2.5',
                 'base_dir': BASE_DIR,
                 'message': 'MedZen Studio Disk Server is active and saving to disk.'
             }).encode('utf-8'))
             return
+        elif self.path == '/api/save-state':
+            try:
+                content_length = int(self.headers.get('Content-Length', 0))
+                body = self.rfile.read(content_length).decode('utf-8')
+                data = json.loads(body)
+                
+                os.makedirs(os.path.join(BASE_DIR, 'src', 'data'), exist_ok=True)
+                os.makedirs(os.path.join(BASE_DIR, 'public', 'data'), exist_ok=True)
+                
+                p1 = os.path.join(BASE_DIR, 'src', 'data', 'persistedContent.json')
+                p2 = os.path.join(BASE_DIR, 'public', 'data', 'persistedContent.json')
+                
+                with open(p1, 'w', encoding='utf-8') as f:
+                    json.dump(data, f, indent=2)
+                with open(p2, 'w', encoding='utf-8') as f:
+                    json.dump(data, f, indent=2)
+                
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({
+                    'success': True,
+                    'message': 'Saved state to disk permanently!'
+                }).encode('utf-8'))
+                print(f"[Studio Live Server] Saved state to {p1} and {p2}")
+                return
+            except Exception as e:
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({'success': False, 'error': str(e)}).encode('utf-8'))
+                return
 
         elif self.path == '/api/save':
             try:

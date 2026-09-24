@@ -1,9 +1,19 @@
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
 import { PublicationItem, ReviewScreenshot, DoctorTestimonial, JournalArticleItem, FaqItem } from '../types';
 import { publicationsData as initialPublications } from '../data/publications';
 import { googleReviews, whatsappReviews, doctorTestimonials as initialDoctorReviews } from '../data/testimonials';
 import { journalArticlesData as initialArticles } from '../data/articles';
 import { faqsData as initialFaqs } from '../data/faqs';
+import { HeaderTagItem, initialHeaderTags } from '../data/headerTags';
+import {
+  idbGet,
+  idbSet,
+  localGet,
+  localSet,
+  saveStateToDisk,
+  loadStateFromDisk,
+  exportStateAsJsonFile,
+} from '../utils/storage';
 
 export interface BlogCategory {
   id: string;
@@ -65,11 +75,25 @@ export interface AdminDataContextType {
   addFaq: (faq: { question: string; answer: string; category?: any }) => void;
   deleteFaq: (id: string) => void;
 
-  // Reset
+  // Header Tags & Eyebrows
+  headerTags: HeaderTagItem[];
+  updateHeaderTag: (id: string, updated: Partial<HeaderTagItem>) => void;
+  addHeaderTag: (item: Omit<HeaderTagItem, 'id'>) => void;
+  deleteHeaderTag: (id: string) => void;
+  resetHeaderTags: () => void;
+  getHeader: (id: string, defaultFallback?: string) => string;
+  getHeaderSubtext: (id: string, defaultFallback?: string) => string;
+  getEyebrow: (id: string, defaultFallback?: string) => string;
+
+  // Persistence & Disk Sync
+  isSaving: boolean;
+  hasUnsavedChanges: boolean;
+  lastSavedTime: string | null;
+  saveAllToDisk: () => Promise<{ success: boolean; message: string }>;
+  exportBackup: () => void;
+  importBackup: (file: File) => Promise<boolean>;
   resetToDefaults: () => void;
 }
-
-const STORAGE_KEY = 'medzen_admin_data_v3';
 
 const initialCategories = [
   'Research Batch Publications',
@@ -105,271 +129,394 @@ const combinedInitialTestimonials: ReviewScreenshot[] = [
 
 const AdminDataContext = createContext<AdminDataContextType | undefined>(undefined);
 
-// Helper to safely read from localStorage
-const getStored = <T,>(key: string, fallback: T): T => {
-  try {
-    const item = localStorage.getItem(`${STORAGE_KEY}_${key}`);
-    return item ? JSON.parse(item) : fallback;
-  } catch {
-    return fallback;
-  }
-};
-
-// Helper to safely write to localStorage and notify other tabs
-const setStored = <T,>(key: string, value: T) => {
-  try {
-    localStorage.setItem(`${STORAGE_KEY}_${key}`, JSON.stringify(value));
-    // Trigger custom event for same-tab updates
-    window.dispatchEvent(new CustomEvent('medzen_local_sync', { detail: { key, value } }));
-  } catch (e) {
-    console.warn(`LocalStorage write error for ${key}:`, e);
-  }
-};
-
 export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [publications, setPublications] = useState<PublicationItem[]>(() => getStored('pubs', initialPublications));
-  const [testimonials, setTestimonials] = useState<ReviewScreenshot[]>(() => getStored('testimonials', combinedInitialTestimonials));
-  const [doctorReviews, setDoctorReviews] = useState<DoctorTestimonial[]>(() => getStored('doctor_reviews', initialDoctorReviews));
-  const [articles, setArticles] = useState<JournalArticleItem[]>(() => getStored('articles', initialArticles));
-  const [blogCategories, setBlogCategories] = useState<string[]>(() => getStored('categories', initialCategories));
-  const [authors, setAuthors] = useState<BlogAuthor[]>(() => getStored('authors', initialAuthorsList));
-  const [visualContent, setVisualContent] = useState<VisualContentState>(() => getStored('visual', initialVisualContent));
-  const [faqs, setFaqs] = useState<FaqItem[]>(() => getStored('faqs', initialFaqs));
+  const [publications, setPublications] = useState<PublicationItem[]>(() => localGet('pubs', initialPublications));
+  const [testimonials, setTestimonials] = useState<ReviewScreenshot[]>(() => localGet('testimonials', combinedInitialTestimonials));
+  const [doctorReviews, setDoctorReviews] = useState<DoctorTestimonial[]>(() => localGet('doctor_reviews', initialDoctorReviews));
+  const [articles, setArticles] = useState<JournalArticleItem[]>(() => localGet('articles', initialArticles));
+  const [blogCategories, setBlogCategories] = useState<string[]>(() => localGet('categories', initialCategories));
+  const [authors, setAuthors] = useState<BlogAuthor[]>(() => localGet('authors', initialAuthorsList));
+  const [visualContent, setVisualContent] = useState<VisualContentState>(() => localGet('visual', initialVisualContent));
+  const [faqs, setFaqs] = useState<FaqItem[]>(() => localGet('faqs', initialFaqs));
+  const [headerTags, setHeaderTags] = useState<HeaderTagItem[]>(() => localGet('headers', initialHeaderTags));
 
-  // Reload all states from localStorage
-  const syncFromStorage = useCallback(() => {
-    setPublications(getStored('pubs', initialPublications));
-    setTestimonials(getStored('testimonials', combinedInitialTestimonials));
-    setDoctorReviews(getStored('doctor_reviews', initialDoctorReviews));
-    setArticles(getStored('articles', initialArticles));
-    setBlogCategories(getStored('categories', initialCategories));
-    setAuthors(getStored('authors', initialAuthorsList));
-    setVisualContent(getStored('visual', initialVisualContent));
-    setFaqs(getStored('faqs', initialFaqs));
+  const [isSaving, setIsSaving] = useState(false);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const [lastSavedTime, setLastSavedTime] = useState<string | null>(() => localGet('last_saved', null));
+  const isInitialMount = useRef(true);
+
+  // --------------------------------------------------------------------------
+  // ASYNC INITIALIZATION FROM DISK & INDEXEDDB
+  // --------------------------------------------------------------------------
+  useEffect(() => {
+    let isMounted = true;
+
+    async function loadData() {
+      try {
+        // 1. First try loading directly from disk API
+        const diskState = await loadStateFromDisk();
+        if (diskState && typeof diskState === 'object') {
+          if (!isMounted) return;
+          if (diskState.publications) setPublications(diskState.publications);
+          if (diskState.testimonials) setTestimonials(diskState.testimonials);
+          if (diskState.doctorReviews) setDoctorReviews(diskState.doctorReviews);
+          if (diskState.articles) setArticles(diskState.articles);
+          if (diskState.blogCategories) setBlogCategories(diskState.blogCategories);
+          if (diskState.authors) setAuthors(diskState.authors);
+          if (diskState.visualContent) setVisualContent(diskState.visualContent);
+          if (diskState.faqs) setFaqs(diskState.faqs);
+          if (diskState.headerTags) setHeaderTags(diskState.headerTags);
+          if (diskState.lastSavedTime) setLastSavedTime(diskState.lastSavedTime);
+          return;
+        }
+
+        // 2. Otherwise load from IndexedDB
+        const idbState = await idbGet<any>('medzen_full_state');
+        if (idbState && isMounted) {
+          if (idbState.publications) setPublications(idbState.publications);
+          if (idbState.testimonials) setTestimonials(idbState.testimonials);
+          if (idbState.doctorReviews) setDoctorReviews(idbState.doctorReviews);
+          if (idbState.articles) setArticles(idbState.articles);
+          if (idbState.blogCategories) setBlogCategories(idbState.blogCategories);
+          if (idbState.authors) setAuthors(idbState.authors);
+          if (idbState.visualContent) setVisualContent(idbState.visualContent);
+          if (idbState.faqs) setFaqs(idbState.faqs);
+          if (idbState.headerTags) setHeaderTags(idbState.headerTags);
+        }
+      } catch (err) {
+        console.warn('[AdminDataContext] Load error:', err);
+      }
+    }
+
+    loadData();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
-  // Listen for storage events across tabs & local window sync
+  // --------------------------------------------------------------------------
+  // SYNC & TAB BROADCAST LISTENER
+  // --------------------------------------------------------------------------
   useEffect(() => {
-    const handleStorageEvent = (e: StorageEvent) => {
-      if (e.key && e.key.startsWith(STORAGE_KEY)) {
-        syncFromStorage();
-      }
-    };
-
-    const handleLocalSync = () => {
-      syncFromStorage();
-    };
-
-    window.addEventListener('storage', handleStorageEvent);
-    window.addEventListener('medzen_local_sync', handleLocalSync);
-
-    // Setup BroadcastChannel for modern zero-latency tab sync
     let bc: BroadcastChannel | null = null;
     try {
       if (typeof BroadcastChannel !== 'undefined') {
-        bc = new BroadcastChannel('medzen_admin_channel');
-        bc.onmessage = () => {
-          syncFromStorage();
+        bc = new BroadcastChannel('medzen_admin_channel_v4');
+        bc.onmessage = (event) => {
+          if (event.data?.type === 'full_sync' && event.data?.payload) {
+            const p = event.data.payload;
+            if (p.publications) setPublications(p.publications);
+            if (p.testimonials) setTestimonials(p.testimonials);
+            if (p.doctorReviews) setDoctorReviews(p.doctorReviews);
+            if (p.articles) setArticles(p.articles);
+            if (p.blogCategories) setBlogCategories(p.blogCategories);
+            if (p.authors) setAuthors(p.authors);
+            if (p.visualContent) setVisualContent(p.visualContent);
+            if (p.faqs) setFaqs(p.faqs);
+            if (p.headerTags) setHeaderTags(p.headerTags);
+            if (p.lastSavedTime) setLastSavedTime(p.lastSavedTime);
+            setHasUnsavedChanges(false);
+          }
         };
       }
     } catch {}
 
     return () => {
-      window.removeEventListener('storage', handleStorageEvent);
-      window.removeEventListener('medzen_local_sync', handleLocalSync);
       if (bc) bc.close();
     };
-  }, [syncFromStorage]);
+  }, []);
 
-  const notifyAllTabs = () => {
+  const notifyAllTabs = (fullPayload: any) => {
     try {
       if (typeof BroadcastChannel !== 'undefined') {
-        const bc = new BroadcastChannel('medzen_admin_channel');
-        bc.postMessage({ type: 'sync', timestamp: Date.now() });
+        const bc = new BroadcastChannel('medzen_admin_channel_v4');
+        bc.postMessage({ type: 'full_sync', payload: fullPayload });
         bc.close();
       }
     } catch {}
   };
 
-  // Publications
+  // --------------------------------------------------------------------------
+  // SAVE ALL TO DISK (DISK + INDEXEDDB + LOCALSTORAGE)
+  // --------------------------------------------------------------------------
+  const saveAllToDisk = useCallback(async (): Promise<{ success: boolean; message: string }> => {
+    setIsSaving(true);
+    const nowStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    const fullState = {
+      publications,
+      testimonials,
+      doctorReviews,
+      articles,
+      blogCategories,
+      authors,
+      visualContent,
+      faqs,
+      headerTags,
+      lastSavedTime: nowStr,
+      savedAt: new Date().toISOString(),
+    };
+
+    try {
+      // 1. LocalStorage
+      localSet('pubs', publications);
+      localSet('testimonials', testimonials);
+      localSet('doctor_reviews', doctorReviews);
+      localSet('articles', articles);
+      localSet('categories', blogCategories);
+      localSet('authors', authors);
+      localSet('visual', visualContent);
+      localSet('faqs', faqs);
+      localSet('headers', headerTags);
+      localSet('last_saved', nowStr);
+
+      // 2. IndexedDB
+      await idbSet('medzen_full_state', fullState);
+
+      // 3. Disk File API
+      const diskRes = await saveStateToDisk(fullState);
+
+      setLastSavedTime(nowStr);
+      setHasUnsavedChanges(false);
+      setIsSaving(false);
+
+      // 4. Notify all other open tabs
+      notifyAllTabs(fullState);
+
+      return {
+        success: true,
+        message: diskRes.success
+          ? `All changes permanently saved to disk at ${nowStr}!`
+          : `Saved to browser storage & cache at ${nowStr}!`,
+      };
+    } catch (err: any) {
+      setIsSaving(false);
+      return {
+        success: false,
+        message: `Save error: ${err?.message || 'Failed to save'}`,
+      };
+    }
+  }, [publications, testimonials, doctorReviews, articles, blogCategories, authors, visualContent, faqs, headerTags]);
+
+  // Mark unsaved changes on state modifications (skipping initial mount)
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    setHasUnsavedChanges(true);
+
+    // Save fast cache to local storage
+    localSet('pubs', publications);
+    localSet('testimonials', testimonials);
+    localSet('doctor_reviews', doctorReviews);
+    localSet('articles', articles);
+    localSet('categories', blogCategories);
+    localSet('authors', authors);
+    localSet('visual', visualContent);
+    localSet('faqs', faqs);
+    localSet('headers', headerTags);
+
+    // Auto-sync to IndexedDB
+    idbSet('medzen_full_state', {
+      publications,
+      testimonials,
+      doctorReviews,
+      articles,
+      blogCategories,
+      authors,
+      visualContent,
+      faqs,
+      headerTags,
+      lastSavedTime,
+    });
+  }, [publications, testimonials, doctorReviews, articles, blogCategories, authors, visualContent, faqs, headerTags]);
+
+  // --------------------------------------------------------------------------
+  // HEADER TAGS & EYEBROWS HELPERS
+  // --------------------------------------------------------------------------
+  const getHeader = useCallback(
+    (id: string, defaultFallback?: string): string => {
+      const match = headerTags.find((h) => h.id === id);
+      return match?.text || defaultFallback || '';
+    },
+    [headerTags]
+  );
+
+  const getHeaderSubtext = useCallback(
+    (id: string, defaultFallback?: string): string => {
+      const match = headerTags.find((h) => h.id === id);
+      return match?.subtext || defaultFallback || '';
+    },
+    [headerTags]
+  );
+
+  const getEyebrow = useCallback(
+    (id: string, defaultFallback?: string): string => {
+      const match = headerTags.find((h) => h.id === id);
+      return match?.text || defaultFallback || '';
+    },
+    [headerTags]
+  );
+
+  const updateHeaderTag = (id: string, updated: Partial<HeaderTagItem>) => {
+    setHeaderTags((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, ...updated } : item))
+    );
+  };
+
+  const addHeaderTag = (item: Omit<HeaderTagItem, 'id'>) => {
+    const newItem: HeaderTagItem = {
+      ...item,
+      id: `custom-hdr-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
+      defaultText: item.defaultText || item.text,
+    };
+    setHeaderTags((prev) => [newItem, ...prev]);
+  };
+
+  const deleteHeaderTag = (id: string) => {
+    setHeaderTags((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const resetHeaderTags = () => {
+    setHeaderTags(initialHeaderTags);
+  };
+
+  // --------------------------------------------------------------------------
+  // ENTITY MUTATIONS
+  // --------------------------------------------------------------------------
   const addPublication = (item: Omit<PublicationItem, 'id'>) => {
     const newItem: PublicationItem = {
       ...item,
       id: `pub-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
     };
-    setPublications((prev) => {
-      const next = [newItem, ...prev];
-      setStored('pubs', next);
-      notifyAllTabs();
-      return next;
-    });
+    setPublications((prev) => [newItem, ...prev]);
   };
 
   const deletePublication = (id: string) => {
-    setPublications((prev) => {
-      const next = prev.filter((p) => p.id !== id);
-      setStored('pubs', next);
-      notifyAllTabs();
-      return next;
-    });
+    setPublications((prev) => prev.filter((p) => p.id !== id));
   };
 
   const updatePublication = (id: string, updated: Partial<PublicationItem>) => {
-    setPublications((prev) => {
-      const next = prev.map((p) => (p.id === id ? { ...p, ...updated } : p));
-      setStored('pubs', next);
-      notifyAllTabs();
-      return next;
-    });
+    setPublications((prev) => prev.map((p) => (p.id === id ? { ...p, ...updated } : p)));
   };
 
-  // Testimonials
   const addTestimonial = (item: Omit<ReviewScreenshot, 'id'>) => {
     const newItem: ReviewScreenshot = {
       ...item,
       id: `testi-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
     };
-    setTestimonials((prev) => {
-      const next = [newItem, ...prev];
-      setStored('testimonials', next);
-      notifyAllTabs();
-      return next;
-    });
+    setTestimonials((prev) => [newItem, ...prev]);
   };
 
   const deleteTestimonial = (id: string) => {
-    setTestimonials((prev) => {
-      const next = prev.filter((t) => t.id !== id);
-      setStored('testimonials', next);
-      notifyAllTabs();
-      return next;
-    });
+    setTestimonials((prev) => prev.filter((t) => t.id !== id));
   };
 
-  // Doctor Reviews
   const addDoctorReview = (item: Omit<DoctorTestimonial, 'id'>) => {
     const newItem: DoctorTestimonial = {
       ...item,
       id: `doc-rev-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
     };
-    setDoctorReviews((prev) => {
-      const next = [newItem, ...prev];
-      setStored('doctor_reviews', next);
-      notifyAllTabs();
-      return next;
-    });
+    setDoctorReviews((prev) => [newItem, ...prev]);
   };
 
   const deleteDoctorReview = (id: string) => {
-    setDoctorReviews((prev) => {
-      const next = prev.filter((r) => r.id !== id);
-      setStored('doctor_reviews', next);
-      notifyAllTabs();
-      return next;
-    });
+    setDoctorReviews((prev) => prev.filter((r) => r.id !== id));
   };
 
-  // Articles
   const addArticle = (item: Omit<JournalArticleItem, 'id'>) => {
     const newItem: JournalArticleItem = {
       ...item,
       id: `art-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
     };
-    setArticles((prev) => {
-      const next = [newItem, ...prev];
-      setStored('articles', next);
-      notifyAllTabs();
-      return next;
-    });
+    setArticles((prev) => [newItem, ...prev]);
   };
 
   const updateArticle = (id: string, updated: Partial<JournalArticleItem>) => {
-    setArticles((prev) => {
-      const next = prev.map((a) => (a.id === id ? { ...a, ...updated } : a));
-      setStored('articles', next);
-      notifyAllTabs();
-      return next;
-    });
+    setArticles((prev) => prev.map((a) => (a.id === id ? { ...a, ...updated } : a)));
   };
 
   const deleteArticle = (id: string) => {
-    setArticles((prev) => {
-      const next = prev.filter((a) => a.id !== id);
-      setStored('articles', next);
-      notifyAllTabs();
-      return next;
-    });
+    setArticles((prev) => prev.filter((a) => a.id !== id));
   };
 
-  // Categories & Authors
   const addCategory = (cat: string) => {
     if (cat.trim() && !blogCategories.includes(cat.trim())) {
-      setBlogCategories((prev) => {
-        const next = [...prev, cat.trim()];
-        setStored('categories', next);
-        notifyAllTabs();
-        return next;
-      });
+      setBlogCategories((prev) => [...prev, cat.trim()]);
     }
   };
 
   const deleteCategory = (cat: string) => {
-    setBlogCategories((prev) => {
-      const next = prev.filter((c) => c !== cat);
-      setStored('categories', next);
-      notifyAllTabs();
-      return next;
-    });
+    setBlogCategories((prev) => prev.filter((c) => c !== cat));
   };
 
   const addAuthor = (author: BlogAuthor) => {
-    setAuthors((prev) => {
-      const next = [...prev, author];
-      setStored('authors', next);
-      notifyAllTabs();
-      return next;
-    });
+    setAuthors((prev) => [...prev, author]);
   };
 
   const deleteAuthor = (id: string) => {
-    setAuthors((prev) => {
-      const next = prev.filter((a) => a.id !== id);
-      setStored('authors', next);
-      notifyAllTabs();
-      return next;
-    });
+    setAuthors((prev) => prev.filter((a) => a.id !== id));
   };
 
-  // Visual content
   const updateVisualContent = (updated: Partial<VisualContentState>) => {
-    setVisualContent((prev) => {
-      const next = { ...prev, ...updated };
-      setStored('visual', next);
-      notifyAllTabs();
-      return next;
-    });
+    setVisualContent((prev) => ({ ...prev, ...updated }));
   };
 
-  // FAQs
   const addFaq = (faq: { question: string; answer: string; category?: any }) => {
     const newFaq: FaqItem = {
       id: `faq-${Date.now()}`,
       ...faq,
     };
-    setFaqs((prev) => {
-      const next = [...prev, newFaq];
-      setStored('faqs', next);
-      notifyAllTabs();
-      return next;
-    });
+    setFaqs((prev) => [...prev, newFaq]);
   };
 
   const deleteFaq = (id: string) => {
-    setFaqs((prev) => {
-      const next = prev.filter((f) => f.id !== id);
-      setStored('faqs', next);
-      notifyAllTabs();
-      return next;
+    setFaqs((prev) => prev.filter((f) => f.id !== id));
+  };
+
+  // --------------------------------------------------------------------------
+  // BACKUP EXPORT & IMPORT
+  // --------------------------------------------------------------------------
+  const exportBackup = () => {
+    exportStateAsJsonFile({
+      publications,
+      testimonials,
+      doctorReviews,
+      articles,
+      blogCategories,
+      authors,
+      visualContent,
+      faqs,
+      headerTags,
+      exportedAt: new Date().toISOString(),
+    });
+  };
+
+  const importBackup = async (file: File): Promise<boolean> => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = async (e) => {
+        try {
+          const json = JSON.parse(e.target?.result as string);
+          if (json.publications) setPublications(json.publications);
+          if (json.testimonials) setTestimonials(json.testimonials);
+          if (json.doctorReviews) setDoctorReviews(json.doctorReviews);
+          if (json.articles) setArticles(json.articles);
+          if (json.blogCategories) setBlogCategories(json.blogCategories);
+          if (json.authors) setAuthors(json.authors);
+          if (json.visualContent) setVisualContent(json.visualContent);
+          if (json.faqs) setFaqs(json.faqs);
+          if (json.headerTags) setHeaderTags(json.headerTags);
+
+          await saveAllToDisk();
+          resolve(true);
+        } catch (err) {
+          console.error('[Import] Failed to parse backup:', err);
+          resolve(false);
+        }
+      };
+      reader.readAsText(file);
     });
   };
 
@@ -383,16 +530,8 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     setAuthors(initialAuthorsList);
     setVisualContent(initialVisualContent);
     setFaqs(initialFaqs);
-
-    localStorage.removeItem(`${STORAGE_KEY}_pubs`);
-    localStorage.removeItem(`${STORAGE_KEY}_testimonials`);
-    localStorage.removeItem(`${STORAGE_KEY}_doctor_reviews`);
-    localStorage.removeItem(`${STORAGE_KEY}_articles`);
-    localStorage.removeItem(`${STORAGE_KEY}_categories`);
-    localStorage.removeItem(`${STORAGE_KEY}_authors`);
-    localStorage.removeItem(`${STORAGE_KEY}_visual`);
-    localStorage.removeItem(`${STORAGE_KEY}_faqs`);
-    notifyAllTabs();
+    setHeaderTags(initialHeaderTags);
+    setHasUnsavedChanges(true);
   };
 
   return (
@@ -423,6 +562,20 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         faqs,
         addFaq,
         deleteFaq,
+        headerTags,
+        updateHeaderTag,
+        addHeaderTag,
+        deleteHeaderTag,
+        resetHeaderTags,
+        getHeader,
+        getHeaderSubtext,
+        getEyebrow,
+        isSaving,
+        hasUnsavedChanges,
+        lastSavedTime,
+        saveAllToDisk,
+        exportBackup,
+        importBackup,
         resetToDefaults,
       }}
     >

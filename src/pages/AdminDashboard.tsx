@@ -1,14 +1,13 @@
-import React, { useState, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAdminData } from '../context/AdminDataContext';
-import { JournalArticleItem } from '../types';
+import { TagLevel, PageKey } from '../data/headerTags';
 import '../styles/admin.css';
 
 type AdminTab =
+  | 'header-tags'
   | 'publications'
   | 'testimonials'
-  | 'client-reviews'
-  | 'services-order'
   | 'blog-categories'
   | 'authors'
   | 'blog-posts'
@@ -25,12 +24,8 @@ export const AdminDashboard: React.FC = () => {
     testimonials,
     addTestimonial,
     deleteTestimonial,
-    doctorReviews,
-    addDoctorReview,
-    deleteDoctorReview,
     articles,
     addArticle,
-    updateArticle,
     deleteArticle,
     blogCategories,
     addCategory,
@@ -42,16 +37,103 @@ export const AdminDashboard: React.FC = () => {
     updateVisualContent,
     faqs,
     deleteFaq,
+    headerTags,
+    updateHeaderTag,
+    addHeaderTag,
+    deleteHeaderTag,
+    resetHeaderTags,
+    isSaving,
+    hasUnsavedChanges,
+    lastSavedTime,
+    saveAllToDisk,
+    exportBackup,
+    importBackup,
     resetToDefaults,
   } = useAdminData();
 
-  const [activeTab, setActiveTab] = useState<AdminTab>('publications');
+  const [activeTab, setActiveTab] = useState<AdminTab>('header-tags');
   const [successToast, setSuccessToast] = useState<string | null>(null);
+  const fileImportRef = useRef<HTMLInputElement>(null);
 
   const showToast = (msg: string) => {
     setSuccessToast(msg);
-    setTimeout(() => setSuccessToast(null), 3000);
+    setTimeout(() => setSuccessToast(null), 3500);
   };
+
+  // --------------------------------------------------------------------------
+  // GLOBAL SAVE HANDLER & SHORTCUT (CTRL + S)
+  // --------------------------------------------------------------------------
+  const handleSaveAll = async () => {
+    const res = await saveAllToDisk();
+    showToast(res.message);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+        e.preventDefault();
+        handleSaveAll();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleSaveAll]);
+
+  // --------------------------------------------------------------------------
+  // HEADER TAGS & EYEBROWS FILTER & SEARCH
+  // --------------------------------------------------------------------------
+  const [tagFilter, setTagFilter] = useState<TagLevel | 'all'>('all');
+  const [pageFilter, setPageFilter] = useState<PageKey | 'all'>('all');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showAddTagModal, setShowAddTagModal] = useState(false);
+
+  // New Tag Form State
+  const [newTagPage, setNewTagPage] = useState<PageKey>('home');
+  const [newTagLevel, setNewTagLevel] = useState<TagLevel>('h2');
+  const [newTagSection, setNewTagSection] = useState('');
+  const [newTagLabel, setNewTagLabel] = useState('');
+  const [newTagText, setNewTagText] = useState('');
+  const [newTagSubtext, setNewTagSubtext] = useState('');
+
+  const handleAddCustomTag = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newTagText.trim() || !newTagLabel.trim()) {
+      alert('Please fill in both Tag Label and Content Text.');
+      return;
+    }
+    addHeaderTag({
+      page: newTagPage,
+      tagType: newTagLevel,
+      section: newTagSection.trim() || 'Custom Section',
+      label: newTagLabel.trim(),
+      text: newTagText.trim(),
+      subtext: newTagSubtext.trim() || undefined,
+      defaultText: newTagText.trim(),
+    });
+    setNewTagSection('');
+    setNewTagLabel('');
+    setNewTagText('');
+    setNewTagSubtext('');
+    setShowAddTagModal(false);
+    showToast('New header tag added successfully!');
+  };
+
+  const filteredHeaderTags = headerTags.filter((item) => {
+    if (tagFilter !== 'all' && item.tagType !== tagFilter) return false;
+    if (pageFilter !== 'all' && item.page !== pageFilter) return false;
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      return (
+        item.label.toLowerCase().includes(q) ||
+        item.text.toLowerCase().includes(q) ||
+        item.section.toLowerCase().includes(q) ||
+        item.page.toLowerCase().includes(q) ||
+        item.tagType.toLowerCase().includes(q) ||
+        (item.subtext && item.subtext.toLowerCase().includes(q))
+      );
+    }
+    return true;
+  });
 
   // --------------------------------------------------------------------------
   // PUBLICATIONS STATE
@@ -60,13 +142,11 @@ export const AdminDashboard: React.FC = () => {
   const [pubUrl, setPubUrl] = useState('');
   const [pubCategory, setPubCategory] = useState('Research Batch Publications');
   const [pubImage, setPubImage] = useState<string | null>(null);
-  const [pubImageName, setPubImageName] = useState('No file chosen');
   const pubFileInputRef = useRef<HTMLInputElement>(null);
 
   const handlePubFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      setPubImageName(file.name);
       const reader = new FileReader();
       reader.onloadend = () => {
         setPubImage(reader.result as string);
@@ -96,7 +176,6 @@ export const AdminDashboard: React.FC = () => {
     setPubTitle('');
     setPubUrl('');
     setPubImage(null);
-    setPubImageName('No file chosen');
     if (pubFileInputRef.current) pubFileInputRef.current.value = '';
     showToast('Publication uploaded successfully!');
   };
@@ -105,7 +184,6 @@ export const AdminDashboard: React.FC = () => {
   // TESTIMONIALS STATE
   // --------------------------------------------------------------------------
   const [testiImage, setTestiImage] = useState<string | null>(null);
-  const [testiImageName, setTestiImageName] = useState('No file chosen');
   const [testiAuthor, setTestiAuthor] = useState('');
   const [testiCaption, setTestiCaption] = useState('');
   const testiFileInputRef = useRef<HTMLInputElement>(null);
@@ -113,7 +191,6 @@ export const AdminDashboard: React.FC = () => {
   const handleTestiFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      setTestiImageName(file.name);
       const reader = new FileReader();
       reader.onloadend = () => {
         setTestiImage(reader.result as string);
@@ -138,7 +215,6 @@ export const AdminDashboard: React.FC = () => {
     });
 
     setTestiImage(null);
-    setTestiImageName('No file chosen');
     setTestiAuthor('');
     setTestiCaption('');
     if (testiFileInputRef.current) testiFileInputRef.current.value = '';
@@ -146,184 +222,69 @@ export const AdminDashboard: React.FC = () => {
   };
 
   // --------------------------------------------------------------------------
-  // CLIENT TEXT REVIEWS STATE
+  // BLOG POSTS STATE
   // --------------------------------------------------------------------------
-  const [docName, setDocName] = useState('');
-  const [docQual, setDocQual] = useState('');
-  const [docSpecialty, setDocSpecialty] = useState('');
-  const [docCity, setDocCity] = useState('');
-  const [docQuote, setDocQuote] = useState('');
-  const [docService, setDocService] = useState('Systematic Review & Meta-Analysis');
-
-  const handleDocReviewSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!docName || !docQuote) {
-      alert('Please fill in Doctor Name and Quote.');
-      return;
-    }
-
-    addDoctorReview({
-      doctorName: docName,
-      qualification: docQual || 'MD, MS',
-      specialty: docSpecialty || 'Clinical Department',
-      cityOrInstitution: docCity || 'India',
-      quote: docQuote,
-      serviceType: docService,
-      verified: true,
-      avatarImage: '/assets/images/team_doctor_1.jpg',
-    });
-
-    setDocName('');
-    setDocQual('');
-    setDocSpecialty('');
-    setDocCity('');
-    setDocQuote('');
-    showToast('Doctor text review added!');
-  };
-
-  // --------------------------------------------------------------------------
-  // BLOG POSTS MODAL / FORM STATE
-  // --------------------------------------------------------------------------
-  const [isPostModalOpen, setIsPostModalOpen] = useState(false);
-  const [editingPostId, setEditingPostId] = useState<string | null>(null);
   const [postTitle, setPostTitle] = useState('');
-  const [postSlug, setPostSlug] = useState('');
-  const [postCategory, setPostCategory] = useState('Publishing Strategy');
-  const [postTopic, setPostTopic] = useState('Academic Publishing');
+  const [postExcerpt, setPostExcerpt] = useState('');
+  const [postCategory, setPostCategory] = useState(blogCategories[0] || 'Medical Research');
   const [postReadTime, setPostReadTime] = useState('5 min read');
-  const [postSummary, setPostSummary] = useState('');
   const [postContent, setPostContent] = useState('');
-  const [postStatus, setPostStatus] = useState<'published' | 'draft'>('published');
-  const [postFeatured, setPostFeatured] = useState(false);
-  const [postImage, setPostImage] = useState<string | null>(null);
-  const [postImageName, setPostImageName] = useState('No file chosen');
   const postFileInputRef = useRef<HTMLInputElement>(null);
 
-  const openNewPostModal = () => {
-    setEditingPostId(null);
-    setPostTitle('');
-    setPostSlug('');
-    setPostCategory(blogCategories[0] || 'Publishing Strategy');
-    setPostTopic('Academic Publishing');
-    setPostReadTime('5 min read');
-    setPostSummary('');
-    setPostContent('');
-    setPostStatus('published');
-    setPostFeatured(false);
-    setPostImage(null);
-    setPostImageName('No file chosen');
-    setIsPostModalOpen(true);
-  };
-
-  const openEditPostModal = (post: JournalArticleItem) => {
-    setEditingPostId(post.id);
-    setPostTitle(post.title);
-    setPostSlug(post.slug);
-    setPostCategory(post.category);
-    setPostTopic(post.topic || 'General');
-    setPostReadTime(post.readTime || '5 min read');
-    setPostSummary(post.summary);
-    setPostContent(post.content.join('\n\n'));
-    setPostStatus('published');
-    setPostFeatured(false);
-    setPostImage(null);
-    setPostImageName('Keep existing image');
-    setIsPostModalOpen(true);
-  };
-
-  const handlePostFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setPostImageName(file.name);
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPostImage(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const handlePostSave = (e: React.FormEvent) => {
+  const handlePostUpload = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!postTitle.trim()) {
-      alert('Please enter a blog post title.');
+    if (!postTitle || !postExcerpt) {
+      alert('Post Title and Excerpt are required.');
       return;
     }
 
-    const slug =
-      postSlug.trim() ||
-      postTitle
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/(^-|-$)+/g, '');
+    const slug = postTitle
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
 
-    const paragraphs = postContent
-      .split('\n\n')
-      .map((p) => p.trim())
-      .filter(Boolean);
-
-    const formattedDate = new Date().toLocaleDateString('en-GB', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric',
+    addArticle({
+      slug,
+      title: postTitle,
+      category: postCategory,
+      topic: postCategory,
+      readTime: postReadTime,
+      date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+      summary: postExcerpt,
+      content: [postContent || postExcerpt],
     });
 
-    if (editingPostId) {
-      updateArticle(editingPostId, {
-        title: postTitle,
-        slug,
-        category: postCategory,
-        topic: postTopic,
-        readTime: postReadTime,
-        summary: postSummary,
-        content: paragraphs.length > 0 ? paragraphs : [postSummary],
-      });
-      showToast('Blog post updated successfully!');
-    } else {
-      addArticle({
-        title: postTitle,
-        slug,
-        category: postCategory,
-        topic: postTopic,
-        readTime: postReadTime,
-        date: formattedDate,
-        summary: postSummary,
-        content: paragraphs.length > 0 ? paragraphs : [postSummary],
-        keyTakeaways: [
-          'Carefully plan your study methodology and adherence to guidelines.',
-          'Format tables and statistical data with standard academic rigor.',
-          'Partner with expert medical writers to accelerate peer acceptance.',
-        ],
-      });
-      showToast('New blog post published successfully!');
-    }
-
-    setIsPostModalOpen(false);
+    setPostTitle('');
+    setPostExcerpt('');
+    setPostContent('');
+    if (postFileInputRef.current) postFileInputRef.current.value = '';
+    showToast('Blog article published successfully!');
   };
 
   // --------------------------------------------------------------------------
   // CATEGORIES & AUTHORS STATE
   // --------------------------------------------------------------------------
-  const [newCatInput, setNewCatInput] = useState('');
+  const [newCatName, setNewCatName] = useState('');
   const [newAuthorName, setNewAuthorName] = useState('');
   const [newAuthorRole, setNewAuthorRole] = useState('');
 
   const handleAddCategory = (e: React.FormEvent) => {
     e.preventDefault();
-    if (newCatInput.trim()) {
-      addCategory(newCatInput.trim());
-      setNewCatInput('');
+    if (newCatName.trim()) {
+      addCategory(newCatName.trim());
+      setNewCatName('');
       showToast('Category added!');
     }
   };
 
   const handleAddAuthor = (e: React.FormEvent) => {
     e.preventDefault();
-    if (newAuthorName.trim()) {
+    if (newAuthorName.trim() && newAuthorRole.trim()) {
       addAuthor({
         id: `auth-${Date.now()}`,
         name: newAuthorName.trim(),
-        role: newAuthorRole.trim() || 'Medical Writer',
+        role: newAuthorRole.trim(),
+        avatar: '/assets/images/team_doctor_1.jpg',
       });
       setNewAuthorName('');
       setNewAuthorRole('');
@@ -331,45 +292,61 @@ export const AdminDashboard: React.FC = () => {
     }
   };
 
+  // --------------------------------------------------------------------------
+  // BACKUP IMPORT HANDLER
+  // --------------------------------------------------------------------------
+  const handleImportFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const ok = await importBackup(file);
+      if (ok) {
+        showToast('Backup restored and saved to disk successfully!');
+      } else {
+        alert('Failed to restore backup file. Please make sure it is a valid JSON backup.');
+      }
+      if (fileImportRef.current) fileImportRef.current.value = '';
+    }
+  };
+
   return (
     <div className="admin-layout">
-      {/* Toast Notification */}
-      {successToast && (
-        <div
-          style={{
-            position: 'fixed',
-            top: '20px',
-            right: '24px',
-            backgroundColor: '#10b981',
-            color: '#ffffff',
-            padding: '12px 20px',
-            borderRadius: '8px',
-            boxShadow: '0 4px 14px rgba(0,0,0,0.15)',
-            zIndex: 9999,
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            fontWeight: 600,
-            fontSize: '0.9rem',
-          }}
-        >
-          <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>check_circle</span>
-          <span>{successToast}</span>
-        </div>
-      )}
+      {/* Hidden File Input for Backup Restore */}
+      <input
+        type="file"
+        ref={fileImportRef}
+        style={{ display: 'none' }}
+        accept=".json"
+        onChange={handleImportFile}
+      />
 
-      {/* ===================================================================
-          LEFT SIDEBAR (Replicating Screenshots)
-          =================================================================== */}
-      <aside className="admin-sidebar" aria-label="Admin Navigation">
+      {/* =====================================================================
+          SIDEBAR NAVIGATION
+          ===================================================================== */}
+      <aside className="admin-sidebar">
         <div className="admin-sidebar-header">
           <div className="admin-sidebar-logo">
-            <span className="material-symbols-outlined" style={{ color: '#2563eb' }}>space_dashboard</span>
-            <span>Admin Panel</span>
+            <span className="material-symbols-outlined" style={{ color: '#2563eb', fontSize: '24px' }}>
+              admin_panel_settings
+            </span>
+            <span>MedZen Admin</span>
           </div>
         </div>
 
         <nav className="admin-sidebar-nav">
+          <div className="admin-nav-divider">CORE CONTENT EDITORS</div>
+
+          <button
+            type="button"
+            className={`admin-nav-item ${activeTab === 'header-tags' ? 'active' : ''}`}
+            onClick={() => setActiveTab('header-tags')}
+            style={activeTab === 'header-tags' ? { background: '#fdf4ff', color: '#a21caf', borderColor: '#f0abfc' } : {}}
+          >
+            <span className="material-symbols-outlined admin-nav-icon" style={{ color: activeTab === 'header-tags' ? '#a21caf' : undefined }}>
+              format_size
+            </span>
+            <span style={{ fontWeight: 700 }}>Headers &amp; Eyebrows (H1-H6)</span>
+          </button>
+
           <button
             type="button"
             className={`admin-nav-item ${activeTab === 'publications' ? 'active' : ''}`}
@@ -385,25 +362,16 @@ export const AdminDashboard: React.FC = () => {
             onClick={() => setActiveTab('testimonials')}
           >
             <span className="material-symbols-outlined admin-nav-icon">rate_review</span>
-            <span>Testimonials</span>
+            <span>Testimonial Screenshots</span>
           </button>
 
           <button
             type="button"
-            className={`admin-nav-item ${activeTab === 'client-reviews' ? 'active' : ''}`}
-            onClick={() => setActiveTab('client-reviews')}
+            className={`admin-nav-item ${activeTab === 'blog-posts' ? 'active' : ''}`}
+            onClick={() => setActiveTab('blog-posts')}
           >
-            <span className="material-symbols-outlined admin-nav-icon">forum</span>
-            <span>Client Text Reviews</span>
-          </button>
-
-          <button
-            type="button"
-            className={`admin-nav-item ${activeTab === 'services-order' ? 'active' : ''}`}
-            onClick={() => setActiveTab('services-order')}
-          >
-            <span className="material-symbols-outlined admin-nav-icon">format_list_bulleted</span>
-            <span>Services Order</span>
+            <span className="material-symbols-outlined admin-nav-icon">post_add</span>
+            <span>Blog &amp; Journal Posts</span>
           </button>
 
           <button
@@ -421,19 +389,10 @@ export const AdminDashboard: React.FC = () => {
             onClick={() => setActiveTab('authors')}
           >
             <span className="material-symbols-outlined admin-nav-icon">group</span>
-            <span>Authors</span>
+            <span>Authors &amp; Editors</span>
           </button>
 
-          <button
-            type="button"
-            className={`admin-nav-item ${activeTab === 'blog-posts' ? 'active' : ''}`}
-            onClick={() => setActiveTab('blog-posts')}
-          >
-            <span className="material-symbols-outlined admin-nav-icon">post_add</span>
-            <span>Blog Posts</span>
-          </button>
-
-          <div className="admin-nav-divider">VISUAL EDITORS</div>
+          <div className="admin-nav-divider">PAGE CONTENT</div>
 
           <button
             type="button"
@@ -468,744 +427,895 @@ export const AdminDashboard: React.FC = () => {
             type="button"
             className="admin-logout-btn"
             onClick={() => {
-              if (window.confirm('Are you sure you want to return to the public website?')) {
-                navigate('/');
-              }
+              navigate('/');
             }}
           >
             <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>logout</span>
-            <span>Logout</span>
+            <span>View Public Website</span>
           </button>
         </div>
       </aside>
 
-      {/* ===================================================================
-          MAIN CONTENT AREA
-          =================================================================== */}
+      {/* =====================================================================
+          MAIN DASHBOARD BODY & PERSISTENT STICKY TOP BAR
+          ===================================================================== */}
       <main className="admin-main">
-        {/* Top bar with quick navigation & tools */}
-        <div className="admin-main-header">
-          <div>
-            <h1 className="admin-page-title">
-              {activeTab === 'publications' && 'Manage Publications'}
-              {activeTab === 'testimonials' && 'Manage Testimonials'}
-              {activeTab === 'client-reviews' && 'Manage Client Text Reviews'}
-              {activeTab === 'services-order' && 'Manage Services Order'}
-              {activeTab === 'blog-categories' && 'Manage Blog Categories'}
-              {activeTab === 'authors' && 'Manage Authors'}
-              {activeTab === 'blog-posts' && 'Manage Blog Posts'}
-              {activeTab === 'home-content' && 'Home Page Content Editor'}
-              {activeTab === 'faq-content' && 'FAQ Page Content Editor'}
-              {activeTab === 'about-content' && 'About Page Content Editor'}
-            </h1>
+        {/* TOP STATUS & SAVE BAR */}
+        <div className="admin-top-bar">
+          <div className="admin-top-left">
+            {hasUnsavedChanges ? (
+              <span className="admin-save-badge unsaved">
+                <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>warning</span>
+                <span>Unsaved Changes Detected</span>
+              </span>
+            ) : isSaving ? (
+              <span className="admin-save-badge saving">
+                <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>sync</span>
+                <span>Saving to Disk...</span>
+              </span>
+            ) : (
+              <span className="admin-save-badge saved">
+                <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>check_circle</span>
+                <span>Saved Permanently to Disk {lastSavedTime ? `(${lastSavedTime})` : ''}</span>
+              </span>
+            )}
           </div>
 
-          <div className="admin-header-actions">
-            <Link to="/" className="admin-btn-secondary" target="_blank" rel="noopener noreferrer">
-              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>visibility</span>
-              <span>View Live Website</span>
-            </Link>
+          <div className="admin-top-right">
+            {/* Primary Save Button */}
             <button
               type="button"
-              className="admin-btn-secondary"
+              className="admin-btn-save-main"
+              onClick={handleSaveAll}
+              disabled={isSaving}
+              title="Save all changes to disk permanently (Ctrl + S)"
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>save</span>
+              <span>{isSaving ? 'Saving...' : 'Save All Changes to Disk'}</span>
+            </button>
+
+            {/* Export JSON Backup */}
+            <button
+              type="button"
+              className="admin-btn-secondary-action"
+              onClick={exportBackup}
+              title="Download full content backup JSON"
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>download</span>
+              <span>Export Backup</span>
+            </button>
+
+            {/* Import JSON Backup */}
+            <button
+              type="button"
+              className="admin-btn-secondary-action"
+              onClick={() => fileImportRef.current?.click()}
+              title="Restore content from a backup JSON file"
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>upload_file</span>
+              <span>Restore Backup</span>
+            </button>
+
+            {/* Reset to Defaults */}
+            <button
+              type="button"
+              className="admin-btn-secondary-action"
+              style={{ color: '#ef4444' }}
               onClick={() => {
-                if (window.confirm('Reset all demo data to default? Any added items will be reset.')) {
+                if (window.confirm('Reset all website customizations back to original defaults?')) {
                   resetToDefaults();
-                  showToast('Reset data to defaults!');
+                  showToast('Reset to original defaults!');
                 }
               }}
-              title="Reset test data to initial defaults"
             >
-              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>refresh</span>
-              <span>Reset Data</span>
+              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>restart_alt</span>
+              <span>Reset Defaults</span>
             </button>
           </div>
         </div>
 
-        {/* -----------------------------------------------------------------
-            TAB 1: MANAGE PUBLICATIONS (Screenshot 1)
-            ----------------------------------------------------------------- */}
-        {activeTab === 'publications' && (
-          <div>
-            {/* Add New Publication Image Card */}
-            <div className="admin-card">
-              <div className="admin-card-header">
-                <h2 className="admin-card-title">Add New Publication Image</h2>
-              </div>
-
-              <form onSubmit={handlePubUpload}>
-                <div className="admin-form-group">
-                  <label className="admin-label">
-                    Title <span className="admin-label-optional">(Optional)</span>
-                  </label>
-                  <input
-                    type="text"
-                    className="admin-input"
-                    placeholder="e.g., The Lancet 2024"
-                    value={pubTitle}
-                    onChange={(e) => setPubTitle(e.target.value)}
-                  />
-                </div>
-
-                <div className="admin-form-group">
-                  <label className="admin-label">
-                    URL <span className="admin-label-optional">(Optional)</span>
-                  </label>
-                  <input
-                    type="url"
-                    className="admin-input"
-                    placeholder="https://example.com/article"
-                    value={pubUrl}
-                    onChange={(e) => setPubUrl(e.target.value)}
-                  />
-                </div>
-
-                <div className="admin-form-group">
-                  <label className="admin-label">Category</label>
-                  <select
-                    className="admin-select"
-                    value={pubCategory}
-                    onChange={(e) => setPubCategory(e.target.value)}
-                  >
-                    <option value="Research Batch Publications">Research Batch Publications</option>
-                    <option value="Original Research">Original Research</option>
-                    <option value="Case Reports">Case Reports</option>
-                    <option value="Systematic Reviews">Systematic Reviews</option>
-                    <option value="Thesis Conversions">Thesis Conversions</option>
-                  </select>
-                </div>
-
-                <div className="admin-form-group">
-                  <label className="admin-label">
-                    Image File (Drag &amp; Drop or Paste anywhere)
-                  </label>
-                  <div
-                    className="admin-file-picker"
-                    onClick={() => pubFileInputRef.current?.click()}
-                  >
-                    <button type="button" className="admin-file-picker-btn">
-                      <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>upload_file</span>
-                      <span>Choose file</span>
-                    </button>
-                    <span className="admin-file-picker-text">{pubImageName}</span>
-                    <input
-                      ref={pubFileInputRef}
-                      type="file"
-                      accept="image/*"
-                      style={{ display: 'none' }}
-                      onChange={handlePubFileChange}
-                    />
-                  </div>
-
-                  {pubImage && (
-                    <div className="admin-file-preview">
-                      <img src={pubImage} alt="Preview" className="admin-file-preview-img" />
-                      <div>
-                        <div style={{ fontWeight: 600, fontSize: '0.88rem', color: '#0f172a' }}>Image Ready for Upload</div>
-                        <div style={{ fontSize: '0.78rem', color: '#64748b' }}>Click "Upload Image" below to save to publications list.</div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <button type="submit" className="admin-btn-primary">
-                  <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>upload</span>
-                  <span>Upload Image</span>
-                </button>
-              </form>
-            </div>
-
-            {/* Existing Publications List */}
-            <div style={{ marginTop: '36px' }}>
-              <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>
-                Research Batch Publications ({publications.length})
-              </h2>
-
-              {publications.length === 0 ? (
-                <div className="admin-empty-state">
-                  No publication records found. Upload your first publication image above.
-                </div>
-              ) : (
-                <div className="admin-items-grid">
-                  {publications.map((pub) => (
-                    <div key={pub.id} className="admin-item-card">
-                      <div className="admin-item-card-img-wrap">
-                        <img src={pub.image} alt={pub.title} className="admin-item-card-img" />
-                      </div>
-                      <div className="admin-item-card-body">
-                        <h4 className="admin-item-card-title">{pub.title}</h4>
-                        <div className="admin-item-card-meta">
-                          <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>bookmark</span>
-                          <span>{pub.type} • {pub.year || '2024'}</span>
-                        </div>
-                        {pub.articleUrl && (
-                          <div style={{ marginTop: '4px' }}>
-                            <a
-                              href={pub.articleUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              style={{ fontSize: '0.8rem', color: '#2563eb', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
-                            >
-                              <span>View Linked Article</span>
-                              <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>open_in_new</span>
-                            </a>
-                          </div>
-                        )}
-                      </div>
-                      <div className="admin-item-card-footer">
-                        <span style={{ fontSize: '0.75rem', color: '#64748b' }}>{pub.specialty}</span>
-                        <button
-                          type="button"
-                          className="admin-btn-danger"
-                          onClick={() => {
-                            if (window.confirm(`Delete "${pub.title}"?`)) {
-                              deletePublication(pub.id);
-                              showToast('Publication deleted.');
-                            }
-                          }}
-                        >
-                          <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>delete</span>
-                          <span>Delete</span>
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+        {/* TOAST FEEDBACK */}
+        {successToast && (
+          <div className="admin-toast-banner">
+            <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>task_alt</span>
+            <span>{successToast}</span>
           </div>
         )}
 
-        {/* -----------------------------------------------------------------
-            TAB 2: MANAGE TESTIMONIALS (Screenshot 2)
-            ----------------------------------------------------------------- */}
-        {activeTab === 'testimonials' && (
-          <div>
-            {/* Add New Testimonial Screenshot Card */}
-            <div className="admin-card">
-              <div className="admin-card-header">
-                <h2 className="admin-card-title">Add New Testimonial Screenshot</h2>
+        {/* ===================================================================
+            TAB 1: HEADER TAGS & EYEBROWS (H1, H2, H3, H4, H5, H6 & EYEBROWS)
+            =================================================================== */}
+        {activeTab === 'header-tags' && (
+          <section>
+            <div className="admin-page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px' }}>
+              <div>
+                <h1 className="admin-page-title">Website Headers &amp; Eyebrows Editor</h1>
+                <p className="admin-page-subtitle">
+                  Directly customize all H1, H2, H3, H4, H5, H6 headings and eyebrow badges across all pages of the website.
+                </p>
               </div>
 
-              <form onSubmit={handleTestiUpload}>
-                <div className="admin-form-group">
-                  <label className="admin-label">
-                    Image File (Drag &amp; Drop or Paste anywhere)
-                  </label>
-                  <div
-                    className="admin-file-picker"
-                    onClick={() => testiFileInputRef.current?.click()}
-                  >
-                    <button type="button" className="admin-file-picker-btn">
-                      <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>upload_file</span>
-                      <span>Choose file</span>
-                    </button>
-                    <span className="admin-file-picker-text">{testiImageName}</span>
-                    <input
-                      ref={testiFileInputRef}
-                      type="file"
-                      accept="image/*"
-                      style={{ display: 'none' }}
-                      onChange={handleTestiFileChange}
-                    />
-                  </div>
-
-                  {testiImage && (
-                    <div className="admin-file-preview">
-                      <img src={testiImage} alt="Preview" className="admin-file-preview-img" />
-                      <div>
-                        <div style={{ fontWeight: 600, fontSize: '0.88rem', color: '#0f172a' }}>Screenshot Ready</div>
-                        <div style={{ fontSize: '0.78rem', color: '#64748b' }}>Click "Upload Image" below to save to testimonials gallery.</div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                <div className="admin-form-group">
-                  <label className="admin-label">
-                    Client / Doctor Name <span className="admin-label-optional">(Optional)</span>
-                  </label>
-                  <input
-                    type="text"
-                    className="admin-input"
-                    placeholder="e.g., Dr. Avi Shah (Medical Oncologist)"
-                    value={testiAuthor}
-                    onChange={(e) => setTestiAuthor(e.target.value)}
-                  />
-                </div>
-
-                <button type="submit" className="admin-btn-primary">
-                  <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>upload</span>
-                  <span>Upload Image</span>
-                </button>
-              </form>
-            </div>
-
-            {/* Existing Testimonial Screenshots */}
-            <div style={{ marginTop: '36px' }}>
-              <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>
-                Existing Testimonial Screenshots ({testimonials.length})
-              </h2>
-
-              {testimonials.length === 0 ? (
-                <div className="admin-empty-state">
-                  No testimonial images found. Upload one above.
-                </div>
-              ) : (
-                <div className="admin-items-grid">
-                  {testimonials.map((testi) => (
-                    <div key={testi.id} className="admin-item-card">
-                      <div className="admin-item-card-img-wrap" style={{ height: '220px' }}>
-                        <img src={testi.image} alt={testi.authorName} className="admin-item-card-img" />
-                      </div>
-                      <div className="admin-item-card-body">
-                        <h4 className="admin-item-card-title">{testi.authorName}</h4>
-                        <p style={{ fontSize: '0.8rem', color: '#64748b', margin: '4px 0 0' }}>{testi.caption}</p>
-                      </div>
-                      <div className="admin-item-card-footer">
-                        <span style={{ fontSize: '0.75rem', color: '#64748b', textTransform: 'capitalize' }}>
-                          Type: {testi.type}
-                        </span>
-                        <button
-                          type="button"
-                          className="admin-btn-danger"
-                          onClick={() => {
-                            if (window.confirm('Delete this testimonial screenshot?')) {
-                              deleteTestimonial(testi.id);
-                              showToast('Testimonial deleted.');
-                            }
-                          }}
-                        >
-                          <span className="material-symbols-outlined" style={{ fontSize: '15px' }}>delete</span>
-                          <span>Delete</span>
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-
-        {/* -----------------------------------------------------------------
-            TAB 3: MANAGE BLOG POSTS (Screenshot 3)
-            ----------------------------------------------------------------- */}
-        {activeTab === 'blog-posts' && (
-          <div>
-            <div className="admin-card">
-              <div className="admin-card-header">
-                <h2 className="admin-card-title">Blog Posts</h2>
+              <div style={{ display: 'flex', gap: '10px' }}>
                 <button
                   type="button"
-                  className="admin-btn-primary"
-                  onClick={openNewPostModal}
+                  className="admin-btn-save-main"
+                  style={{ background: '#2563eb' }}
+                  onClick={() => setShowAddTagModal(true)}
                 >
                   <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>add</span>
-                  <span>New Post</span>
+                  <span>Add Custom Header Tag</span>
+                </button>
+                <button
+                  type="button"
+                  className="admin-btn-secondary-action"
+                  onClick={() => {
+                    if (window.confirm('Reset all header tags to original text?')) {
+                      resetHeaderTags();
+                      showToast('Headers reset to defaults!');
+                    }
+                  }}
+                >
+                  <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>restore</span>
+                  <span>Reset All Headers</span>
                 </button>
               </div>
+            </div>
 
-              {articles.length === 0 ? (
+            {/* FILTERING & SEARCH TOOLBAR */}
+            <div className="admin-filter-bar">
+              {/* Tag Level Filter */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#475569' }}>Tag Type:</span>
+                <div className="admin-filter-pills">
+                  {(['all', 'eyebrow', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const).map((lvl) => (
+                    <button
+                      key={lvl}
+                      type="button"
+                      className={`admin-filter-pill ${tagFilter === lvl ? 'active' : ''}`}
+                      onClick={() => setTagFilter(lvl)}
+                    >
+                      {lvl === 'all' ? 'All Tags' : lvl === 'eyebrow' ? 'Eyebrows / Badges' : lvl.toUpperCase()}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Page Filter */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                <span style={{ fontSize: '0.82rem', fontWeight: 700, color: '#475569' }}>Page:</span>
+                <div className="admin-filter-pills">
+                  {(['all', 'home', 'about', 'services', 'publications', 'testimonials', 'journal', 'contact', 'global', 'legal'] as const).map((p) => (
+                    <button
+                      key={p}
+                      type="button"
+                      className={`admin-filter-pill ${pageFilter === p ? 'active' : ''}`}
+                      onClick={() => setPageFilter(p)}
+                    >
+                      {p.charAt(0).toUpperCase() + p.slice(1)}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Search Bar */}
+              <div className="admin-search-input-wrap">
+                <span className="material-symbols-outlined admin-search-icon">search</span>
+                <input
+                  type="text"
+                  className="admin-search-input"
+                  placeholder="Search headings, eyebrows, labels..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </div>
+            </div>
+
+            {/* TAGS LIST */}
+            <div style={{ marginTop: '16px' }}>
+              {filteredHeaderTags.length === 0 ? (
                 <div className="admin-empty-state">
-                  No blog posts found. Click "+ New Post" to write your first article.
+                  <span className="material-symbols-outlined" style={{ fontSize: '36px', color: '#94a3b8' }}>search_off</span>
+                  <p>No header tags match the selected filters or search query.</p>
                 </div>
               ) : (
-                <div className="admin-table-container">
-                  <table className="admin-table">
-                    <thead>
-                      <tr>
-                        <th>TITLE</th>
-                        <th>STATUS</th>
-                        <th>FEATURED</th>
-                        <th>DATE</th>
-                        <th style={{ textAlign: 'right' }}>ACTIONS</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {articles.map((art) => (
-                        <tr key={art.id}>
-                          <td>
-                            <div className="admin-post-title-cell">
-                              <div className="admin-post-thumb" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#e0e7ff', color: '#4338ca', fontWeight: 'bold' }}>
-                                <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>article</span>
-                              </div>
-                              <div className="admin-post-info">
-                                <h4>{art.title}</h4>
-                                <span>/{art.slug}</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <span className="admin-badge-published">published</span>
-                          </td>
-                          <td>
-                            <span style={{ fontSize: '0.85rem', color: '#64748b' }}>No</span>
-                          </td>
-                          <td>
-                            <span style={{ fontSize: '0.85rem', color: '#475569' }}>{art.date || '21/08/2026'}</span>
-                          </td>
-                          <td>
-                            <div className="admin-table-actions" style={{ justifyContent: 'flex-end' }}>
-                              <Link
-                                to={`/journal/${art.slug}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="admin-action-btn"
-                                title="View public article"
-                              >
-                                <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>visibility</span>
-                              </Link>
-                              <button
-                                type="button"
-                                className="admin-action-btn"
-                                onClick={() => openEditPostModal(art)}
-                                title="Edit post"
-                              >
-                                <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>edit</span>
-                              </button>
-                              <button
-                                type="button"
-                                className="admin-action-btn delete"
-                                onClick={() => {
-                                  if (window.confirm(`Delete post "${art.title}"?`)) {
-                                    deleteArticle(art.id);
-                                    showToast('Post deleted.');
-                                  }
-                                }}
-                                title="Delete post"
-                              >
-                                <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>delete</span>
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                filteredHeaderTags.map((item) => (
+                  <div key={item.id} className="header-tag-card">
+                    <div className="header-tag-meta">
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <span className={`tag-badge ${item.tagType}`}>
+                          {item.tagType === 'eyebrow' ? 'EYEBROW' : item.tagType.toUpperCase()}
+                        </span>
+                        <span className="header-tag-page-badge">{item.page}</span>
+                        <span className="header-tag-location">
+                          <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>arrow_forward</span>
+                          <span>{item.section}</span>
+                        </span>
+                      </div>
+
+                      <div style={{ display: 'flex', gap: '6px' }}>
+                        {item.text !== item.defaultText && (
+                          <button
+                            type="button"
+                            className="admin-btn-secondary-action"
+                            style={{ padding: '4px 8px', fontSize: '0.78rem' }}
+                            onClick={() => {
+                              updateHeaderTag(item.id, { text: item.defaultText, subtext: item.defaultSubtext });
+                              showToast(`Reset "${item.label}" to default.`);
+                            }}
+                          >
+                            Reset
+                          </button>
+                        )}
+                        {item.id.startsWith('custom-') && (
+                          <button
+                            type="button"
+                            className="admin-btn-secondary-action"
+                            style={{ padding: '4px 8px', fontSize: '0.78rem', color: '#ef4444' }}
+                            onClick={() => {
+                              if (window.confirm(`Delete custom header "${item.label}"?`)) {
+                                deleteHeaderTag(item.id);
+                                showToast('Custom header deleted.');
+                              }
+                            }}
+                          >
+                            Delete
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                    <div style={{ marginBottom: '10px' }}>
+                      <label className="admin-label" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <span>{item.label}</span>
+                        <span style={{ fontSize: '0.75rem', color: '#94a3b8' }}>ID: {item.id}</span>
+                      </label>
+                      <input
+                        type="text"
+                        className="admin-input"
+                        value={item.text}
+                        onChange={(e) => updateHeaderTag(item.id, { text: e.target.value })}
+                        placeholder={`Enter ${item.tagType.toUpperCase()} text...`}
+                        style={{ fontSize: item.tagType === 'h1' ? '1.08rem' : '0.94rem', fontWeight: item.tagType.startsWith('h') ? 600 : 500 }}
+                      />
+                    </div>
+
+                    {/* Subtext / Lead text if available */}
+                    {(item.subtext !== undefined || item.defaultSubtext !== undefined) && (
+                      <div style={{ marginTop: '10px' }}>
+                        <label className="admin-label">Accompanying Subtitle / Lead Paragraph</label>
+                        <textarea
+                          className="admin-textarea"
+                          rows={2}
+                          value={item.subtext || ''}
+                          onChange={(e) => updateHeaderTag(item.id, { subtext: e.target.value })}
+                          placeholder="Optional subtitle / lead text..."
+                        />
+                      </div>
+                    )}
+
+                    {/* Live Preview Box */}
+                    <div className="header-tag-preview">
+                      <div className="header-tag-preview-label">Live Preview Rendering</div>
+                      {item.tagType === 'eyebrow' && (
+                        <div style={{ display: 'inline-block', padding: '3px 10px', background: '#eff6ff', color: '#1d4ed8', borderRadius: '20px', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                          {item.text || '(Empty Eyebrow)'}
+                        </div>
+                      )}
+                      {item.tagType === 'h1' && (
+                        <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a', lineHeight: 1.2 }}>
+                          {item.text || '(Empty H1)'}
+                        </div>
+                      )}
+                      {item.tagType === 'h2' && (
+                        <div style={{ fontSize: '1.2rem', fontWeight: 700, color: '#1e293b', lineHeight: 1.3 }}>
+                          {item.text || '(Empty H2)'}
+                        </div>
+                      )}
+                      {item.tagType === 'h3' && (
+                        <div style={{ fontSize: '1.05rem', fontWeight: 600, color: '#334155' }}>
+                          {item.text || '(Empty H3)'}
+                        </div>
+                      )}
+                      {item.tagType === 'h4' && (
+                        <div style={{ fontSize: '0.95rem', fontWeight: 600, color: '#475569' }}>
+                          {item.text || '(Empty H4)'}
+                        </div>
+                      )}
+                      {item.tagType === 'h5' && (
+                        <div style={{ fontSize: '0.88rem', fontWeight: 600, color: '#64748b' }}>
+                          {item.text || '(Empty H5)'}
+                        </div>
+                      )}
+                      {item.tagType === 'h6' && (
+                        <div style={{ fontSize: '0.82rem', fontWeight: 600, color: '#94a3b8', textTransform: 'uppercase' }}>
+                          {item.text || '(Empty H6)'}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))
               )}
             </div>
-          </div>
+
+            {/* ADD CUSTOM TAG MODAL */}
+            {showAddTagModal && (
+              <div className="admin-modal-overlay" onClick={() => setShowAddTagModal(false)}>
+                <div className="admin-modal-container" onClick={(e) => e.stopPropagation()}>
+                  <div className="admin-modal-header">
+                    <h3>Add Custom Header Tag or Eyebrow</h3>
+                    <button
+                      type="button"
+                      style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+                      onClick={() => setShowAddTagModal(false)}
+                    >
+                      <span className="material-symbols-outlined">close</span>
+                    </button>
+                  </div>
+
+                  <form onSubmit={handleAddCustomTag}>
+                    <div className="admin-modal-body">
+                      <div className="admin-grid-2">
+                        <div className="admin-form-group">
+                          <label className="admin-label">Target Page</label>
+                          <select
+                            className="admin-select"
+                            value={newTagPage}
+                            onChange={(e) => setNewTagPage(e.target.value as PageKey)}
+                          >
+                            <option value="home">Home Page</option>
+                            <option value="about">About Page</option>
+                            <option value="services">Services Page</option>
+                            <option value="publications">Publications Page</option>
+                            <option value="testimonials">Testimonials Page</option>
+                            <option value="journal">Journal / Blog Page</option>
+                            <option value="contact">Contact Page</option>
+                            <option value="global">Global Banner / CTA</option>
+                            <option value="legal">Legal Policies</option>
+                          </select>
+                        </div>
+
+                        <div className="admin-form-group">
+                          <label className="admin-label">Tag Level / Element</label>
+                          <select
+                            className="admin-select"
+                            value={newTagLevel}
+                            onChange={(e) => setNewTagLevel(e.target.value as TagLevel)}
+                          >
+                            <option value="eyebrow">Eyebrow / Badge</option>
+                            <option value="h1">H1 — Main Page Headline</option>
+                            <option value="h2">H2 — Section Heading</option>
+                            <option value="h3">H3 — Sub-Section / Card Title</option>
+                            <option value="h4">H4 — Feature Item Title</option>
+                            <option value="h5">H5 — Small Section Title</option>
+                            <option value="h6">H6 — Minor Header / Footnote</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="admin-form-group">
+                        <label className="admin-label">Section Name</label>
+                        <input
+                          type="text"
+                          className="admin-input"
+                          placeholder="e.g. Hero Section, Guarantee Box, Callout Banner"
+                          value={newTagSection}
+                          onChange={(e) => setNewTagSection(e.target.value)}
+                        />
+                      </div>
+
+                      <div className="admin-form-group">
+                        <label className="admin-label">Label / Identifier</label>
+                        <input
+                          type="text"
+                          className="admin-input"
+                          placeholder="e.g. Hero Headline, Guarantee Box H3, Eyebrow Badge"
+                          value={newTagLabel}
+                          onChange={(e) => setNewTagLabel(e.target.value)}
+                          required
+                        />
+                      </div>
+
+                      <div className="admin-form-group">
+                        <label className="admin-label">Header Content Text</label>
+                        <textarea
+                          className="admin-textarea"
+                          rows={3}
+                          placeholder="Enter your header or eyebrow text here..."
+                          value={newTagText}
+                          onChange={(e) => setNewTagText(e.target.value)}
+                          required
+                        />
+                      </div>
+
+                      <div className="admin-form-group">
+                        <label className="admin-label">Optional Subtitle / Accompanying Lead Text</label>
+                        <textarea
+                          className="admin-textarea"
+                          rows={2}
+                          placeholder="Optional accompanying subtitle or lead paragraph..."
+                          value={newTagSubtext}
+                          onChange={(e) => setNewTagSubtext(e.target.value)}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="admin-modal-footer">
+                      <button
+                        type="button"
+                        className="admin-btn-secondary-action"
+                        onClick={() => setShowAddTagModal(false)}
+                      >
+                        Cancel
+                      </button>
+                      <button type="submit" className="admin-btn-save-main">
+                        Save Header Tag
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            )}
+          </section>
         )}
 
-        {/* -----------------------------------------------------------------
-            TAB 4: CLIENT TEXT REVIEWS
-            ----------------------------------------------------------------- */}
-        {activeTab === 'client-reviews' && (
-          <div>
+        {/* ===================================================================
+            TAB 2: PUBLICATIONS
+            =================================================================== */}
+        {activeTab === 'publications' && (
+          <section>
+            <div className="admin-page-header">
+              <h1 className="admin-page-title">Publications Portfolio</h1>
+              <p className="admin-page-subtitle">Upload and manage published research cards and DOI links.</p>
+            </div>
+
             <div className="admin-card">
               <div className="admin-card-header">
-                <h2 className="admin-card-title">Add Doctor Text Review</h2>
+                <h3 className="admin-card-title">Add New Publication Card</h3>
               </div>
-              <form onSubmit={handleDocReviewSubmit}>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
+              <form onSubmit={handlePubUpload}>
+                <div className="admin-grid-2">
                   <div className="admin-form-group">
-                    <label className="admin-label">Doctor Name</label>
+                    <label className="admin-label">Publication Title</label>
                     <input
                       type="text"
                       className="admin-input"
-                      placeholder="e.g. Dr. Priya Nair"
-                      value={docName}
-                      onChange={(e) => setDocName(e.target.value)}
+                      placeholder="e.g. Association Between Early Glycemic Control and Renal Outcomes"
+                      value={pubTitle}
+                      onChange={(e) => setPubTitle(e.target.value)}
                       required
                     />
                   </div>
                   <div className="admin-form-group">
-                    <label className="admin-label">Qualification</label>
+                    <label className="admin-label">Article URL / DOI Link</label>
                     <input
-                      type="text"
+                      type="url"
                       className="admin-input"
-                      placeholder="e.g. MS (OBG), DNB"
-                      value={docQual}
-                      onChange={(e) => setDocQual(e.target.value)}
+                      placeholder="https://doi.org/10.1016/..."
+                      value={pubUrl}
+                      onChange={(e) => setPubUrl(e.target.value)}
                     />
                   </div>
+                </div>
+
+                <div className="admin-grid-2">
                   <div className="admin-form-group">
-                    <label className="admin-label">Specialty</label>
+                    <label className="admin-label">Specialty / Category</label>
                     <input
                       type="text"
                       className="admin-input"
-                      placeholder="e.g. Obstetrics & Gynaecology"
-                      value={docSpecialty}
-                      onChange={(e) => setDocSpecialty(e.target.value)}
+                      value={pubCategory}
+                      onChange={(e) => setPubCategory(e.target.value)}
                     />
                   </div>
+
                   <div className="admin-form-group">
-                    <label className="admin-label">City / Institution</label>
+                    <label className="admin-label">Publication Screenshot / Image</label>
                     <input
-                      type="text"
+                      type="file"
+                      ref={pubFileInputRef}
+                      onChange={handlePubFileChange}
+                      accept="image/*"
                       className="admin-input"
-                      placeholder="e.g. Bengaluru, Karnataka"
-                      value={docCity}
-                      onChange={(e) => setDocCity(e.target.value)}
                     />
                   </div>
                 </div>
 
-                <div className="admin-form-group">
-                  <label className="admin-label">Service Rendered</label>
-                  <select
-                    className="admin-select"
-                    value={docService}
-                    onChange={(e) => setDocService(e.target.value)}
-                  >
-                    <option value="Original Research Manuscript">Original Research Manuscript</option>
-                    <option value="Systematic Review & Meta-Analysis">Systematic Review & Meta-Analysis</option>
-                    <option value="Postgraduate Thesis Writing">Postgraduate Thesis Writing</option>
-                    <option value="Medical Statistical Analysis">Medical Statistical Analysis</option>
-                    <option value="Thesis to Manuscript Conversion">Thesis to Manuscript Conversion</option>
-                  </select>
-                </div>
+                {pubImage && (
+                  <div style={{ marginBottom: '16px', maxWidth: '300px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #cbd5e1' }}>
+                    <img src={pubImage} alt="Preview" style={{ width: '100%', display: 'block' }} />
+                  </div>
+                )}
 
-                <div className="admin-form-group">
-                  <label className="admin-label">Doctor's Detailed Quote / Feedback</label>
-                  <textarea
-                    className="admin-textarea"
-                    rows={4}
-                    placeholder="Enter the doctor's review..."
-                    value={docQuote}
-                    onChange={(e) => setDocQuote(e.target.value)}
-                    required
-                  />
-                </div>
-
-                <button type="submit" className="admin-btn-primary">
-                  <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>add</span>
-                  <span>Add Doctor Review</span>
+                <button type="submit" className="admin-btn-save-main">
+                  Upload Publication
                 </button>
               </form>
             </div>
 
-            <div style={{ marginTop: '36px' }}>
-              <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>
-                Existing Doctor Testimonials ({doctorReviews.length})
-              </h2>
-              <div className="admin-items-grid">
-                {doctorReviews.map((rev) => (
-                  <div key={rev.id} className="admin-item-card" style={{ padding: '16px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '10px' }}>
-                      <img
-                        src={rev.avatarImage || '/assets/images/team_doctor_1.jpg'}
-                        alt={rev.doctorName}
-                        style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover' }}
-                      />
-                      <div>
-                        <h4 style={{ margin: 0, fontSize: '0.95rem', fontWeight: 700 }}>{rev.doctorName}</h4>
-                        <span style={{ fontSize: '0.78rem', color: '#64748b' }}>{rev.qualification} • {rev.specialty}</span>
-                      </div>
+            <div className="admin-card">
+              <div className="admin-card-header">
+                <h3 className="admin-card-title">Existing Publications ({publications.length})</h3>
+              </div>
+              <div className="admin-grid-cards">
+                {publications.map((p) => (
+                  <div key={p.id} className="admin-item-card">
+                    <div style={{ height: '140px', background: '#f1f5f9', overflow: 'hidden' }}>
+                      <img src={p.image} alt={p.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
-                    <p style={{ fontSize: '0.85rem', color: '#334155', fontStyle: 'italic', margin: '0 0 12px', flexGrow: 1 }}>
-                      "{rev.quote}"
-                    </p>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #f1f5f9', paddingTop: '10px' }}>
-                      <span style={{ fontSize: '0.75rem', color: '#2563eb', fontWeight: 600 }}>{rev.serviceType}</span>
+                    <div className="admin-item-card-body">
+                      <h4 style={{ fontSize: '0.92rem', margin: '0 0 6px 0', lineHeight: 1.3 }}>{p.title}</h4>
+                      <span style={{ fontSize: '0.78rem', color: '#64748b' }}>{p.specialty || p.type}</span>
+                    </div>
+                    <div className="admin-item-card-footer">
+                      <span style={{ fontSize: '0.78rem', color: '#94a3b8' }}>{p.year || '2024'}</span>
                       <button
                         type="button"
-                        className="admin-btn-danger"
-                        onClick={() => {
-                          if (window.confirm(`Delete review from ${rev.doctorName}?`)) {
-                            deleteDoctorReview(rev.id);
-                            showToast('Review removed.');
-                          }
-                        }}
+                        className="admin-btn-secondary-action"
+                        style={{ color: '#ef4444', padding: '4px 8px' }}
+                        onClick={() => deletePublication(p.id)}
                       >
-                        <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>delete</span>
-                        <span>Delete</span>
+                        Delete
                       </button>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
+          </section>
         )}
 
-        {/* -----------------------------------------------------------------
-            TAB 5: BLOG CATEGORIES
-            ----------------------------------------------------------------- */}
-        {activeTab === 'blog-categories' && (
-          <div>
+        {/* ===================================================================
+            TAB 3: TESTIMONIALS (SCREENSHOTS)
+            =================================================================== */}
+        {activeTab === 'testimonials' && (
+          <section>
+            <div className="admin-page-header">
+              <h1 className="admin-page-title">Testimonial Screenshots</h1>
+              <p className="admin-page-subtitle">Manage Google Reviews and WhatsApp conversation screenshots.</p>
+            </div>
+
             <div className="admin-card">
               <div className="admin-card-header">
-                <h2 className="admin-card-title">Manage Blog Categories</h2>
+                <h3 className="admin-card-title">Upload Testimonial Screenshot</h3>
               </div>
-              <form onSubmit={handleAddCategory} style={{ display: 'flex', gap: '12px', marginBottom: '20px' }}>
+              <form onSubmit={handleTestiUpload}>
+                <div className="admin-grid-2">
+                  <div className="admin-form-group">
+                    <label className="admin-label">Doctor / Client Name</label>
+                    <input
+                      type="text"
+                      className="admin-input"
+                      placeholder="e.g. Dr. Ramesh Patel (MD General Medicine)"
+                      value={testiAuthor}
+                      onChange={(e) => setTestiAuthor(e.target.value)}
+                    />
+                  </div>
+                  <div className="admin-form-group">
+                    <label className="admin-label">Screenshot File</label>
+                    <input
+                      type="file"
+                      ref={testiFileInputRef}
+                      onChange={handleTestiFileChange}
+                      accept="image/*"
+                      className="admin-input"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="admin-form-group">
+                  <label className="admin-label">Review Caption / Summary</label>
+                  <textarea
+                    className="admin-textarea"
+                    rows={2}
+                    placeholder="Brief description of the feedback..."
+                    value={testiCaption}
+                    onChange={(e) => setTestiCaption(e.target.value)}
+                  />
+                </div>
+
+                {testiImage && (
+                  <div style={{ marginBottom: '16px', maxWidth: '300px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #cbd5e1' }}>
+                    <img src={testiImage} alt="Preview" style={{ width: '100%', display: 'block' }} />
+                  </div>
+                )}
+
+                <button type="submit" className="admin-btn-save-main">
+                  Upload Screenshot
+                </button>
+              </form>
+            </div>
+
+            <div className="admin-card">
+              <div className="admin-card-header">
+                <h3 className="admin-card-title">Existing Screenshots ({testimonials.length})</h3>
+              </div>
+              <div className="admin-grid-cards">
+                {testimonials.map((t) => (
+                  <div key={t.id} className="admin-item-card">
+                    <div style={{ height: '160px', background: '#f8fafc', overflow: 'hidden' }}>
+                      <img src={t.image} alt={t.authorName} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                    </div>
+                    <div className="admin-item-card-body">
+                      <h4 style={{ fontSize: '0.92rem', margin: '0 0 4px 0' }}>{t.authorName}</h4>
+                      <p style={{ fontSize: '0.8rem', color: '#64748b', margin: 0 }}>{t.caption}</p>
+                    </div>
+                    <div className="admin-item-card-footer">
+                      <span style={{ fontSize: '0.78rem', color: '#059669', fontWeight: 600 }}>Verified Review</span>
+                      <button
+                        type="button"
+                        className="admin-btn-secondary-action"
+                        style={{ color: '#ef4444', padding: '4px 8px' }}
+                        onClick={() => deleteTestimonial(t.id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ===================================================================
+            TAB 4: BLOG & JOURNAL POSTS
+            =================================================================== */}
+        {activeTab === 'blog-posts' && (
+          <section>
+            <div className="admin-page-header">
+              <h1 className="admin-page-title">Blog &amp; Journal Articles</h1>
+              <p className="admin-page-subtitle">Publish and edit medical writing guides and research articles.</p>
+            </div>
+
+            <div className="admin-card">
+              <div className="admin-card-header">
+                <h3 className="admin-card-title">Publish New Journal Article</h3>
+              </div>
+              <form onSubmit={handlePostUpload}>
+                <div className="admin-grid-2">
+                  <div className="admin-form-group">
+                    <label className="admin-label">Article Title</label>
+                    <input
+                      type="text"
+                      className="admin-input"
+                      placeholder="e.g. How to Structure a High-Impact Medical Systematic Review"
+                      value={postTitle}
+                      onChange={(e) => setPostTitle(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="admin-form-group">
+                    <label className="admin-label">Category</label>
+                    <select
+                      className="admin-select"
+                      value={postCategory}
+                      onChange={(e) => setPostCategory(e.target.value)}
+                    >
+                      {blogCategories.map((c) => (
+                        <option key={c} value={c}>{c}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="admin-form-group">
+                  <label className="admin-label">Estimated Read Time</label>
+                  <input
+                    type="text"
+                    className="admin-input"
+                    value={postReadTime}
+                    onChange={(e) => setPostReadTime(e.target.value)}
+                  />
+                </div>
+
+                <div className="admin-form-group">
+                  <label className="admin-label">Excerpt / Short Summary</label>
+                  <textarea
+                    className="admin-textarea"
+                    rows={2}
+                    placeholder="Brief 2-3 sentence synopsis for search and card feeds..."
+                    value={postExcerpt}
+                    onChange={(e) => setPostExcerpt(e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className="admin-form-group">
+                  <label className="admin-label">Article Body Content (Markdown supported)</label>
+                  <textarea
+                    className="admin-textarea"
+                    rows={6}
+                    placeholder="Write or paste your article markdown / text..."
+                    value={postContent}
+                    onChange={(e) => setPostContent(e.target.value)}
+                  />
+                </div>
+
+                <button type="submit" className="admin-btn-save-main">
+                  Publish Article
+                </button>
+              </form>
+            </div>
+
+            <div className="admin-card">
+              <div className="admin-card-header">
+                <h3 className="admin-card-title">Existing Articles ({articles.length})</h3>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {articles.map((art) => (
+                  <div key={art.id} className="admin-item-card" style={{ padding: '16px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                      <div>
+                        <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#2563eb', textTransform: 'uppercase' }}>{art.category}</span>
+                        <h4 style={{ margin: '4px 0 6px 0', fontSize: '1.05rem' }}>{art.title}</h4>
+                        <span style={{ fontSize: '0.82rem', color: '#64748b' }}>{art.date} • {art.readTime}</span>
+                      </div>
+                      <button
+                        type="button"
+                        className="admin-btn-secondary-action"
+                        style={{ color: '#ef4444', padding: '4px 8px' }}
+                        onClick={() => deleteArticle(art.id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ===================================================================
+            TAB 6: BLOG CATEGORIES
+            =================================================================== */}
+        {activeTab === 'blog-categories' && (
+          <section>
+            <div className="admin-page-header">
+              <h1 className="admin-page-title">Blog &amp; Article Categories</h1>
+              <p className="admin-page-subtitle">Manage topic taxonomy for journal publications.</p>
+            </div>
+
+            <div className="admin-card">
+              <div className="admin-card-header">
+                <h3 className="admin-card-title">Add New Category</h3>
+              </div>
+              <form onSubmit={handleAddCategory} style={{ display: 'flex', gap: '10px' }}>
                 <input
                   type="text"
                   className="admin-input"
-                  placeholder="Enter new category name..."
-                  value={newCatInput}
-                  onChange={(e) => setNewCatInput(e.target.value)}
-                  style={{ maxWidth: '400px' }}
+                  placeholder="e.g. Meta-Analysis Methodologies"
+                  value={newCatName}
+                  onChange={(e) => setNewCatName(e.target.value)}
+                  style={{ flexGrow: 1 }}
+                  required
                 />
-                <button type="submit" className="admin-btn-primary">
-                  <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>add</span>
-                  <span>Add Category</span>
+                <button type="submit" className="admin-btn-save-main">
+                  Add Category
                 </button>
               </form>
+            </div>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                {blogCategories.map((cat) => (
+            <div className="admin-card">
+              <div className="admin-card-header">
+                <h3 className="admin-card-title">Active Categories ({blogCategories.length})</h3>
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {blogCategories.map((c) => (
                   <div
-                    key={cat}
+                    key={c}
                     style={{
-                      background: '#f1f5f9',
-                      padding: '8px 14px',
-                      borderRadius: '8px',
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '8px',
+                      padding: '6px 14px',
+                      background: '#f1f5f9',
+                      borderRadius: '20px',
                       fontSize: '0.88rem',
-                      fontWeight: 500,
+                      fontWeight: 600,
                       color: '#1e293b',
                     }}
                   >
-                    <span>{cat}</span>
+                    <span>{c}</span>
                     <button
                       type="button"
-                      onClick={() => deleteCategory(cat)}
-                      style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#94a3b8', display: 'flex' }}
-                      title="Delete category"
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#94a3b8', padding: 0 }}
+                      onClick={() => deleteCategory(c)}
                     >
-                      <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>close</span>
+                      ×
                     </button>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
+          </section>
         )}
 
-        {/* -----------------------------------------------------------------
-            TAB 6: AUTHORS
-            ----------------------------------------------------------------- */}
+        {/* ===================================================================
+            TAB 7: AUTHORS & EDITORS
+            =================================================================== */}
         {activeTab === 'authors' && (
-          <div>
+          <section>
+            <div className="admin-page-header">
+              <h1 className="admin-page-title">Editorial Team &amp; Authors</h1>
+              <p className="admin-page-subtitle">Manage author profiles for journal articles.</p>
+            </div>
+
             <div className="admin-card">
               <div className="admin-card-header">
-                <h2 className="admin-card-title">Add New Author</h2>
+                <h3 className="admin-card-title">Add New Author Profile</h3>
               </div>
               <form onSubmit={handleAddAuthor}>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px', marginBottom: '16px' }}>
+                <div className="admin-grid-2">
                   <div className="admin-form-group">
-                    <label className="admin-label">Author Name</label>
+                    <label className="admin-label">Author Full Name</label>
                     <input
                       type="text"
                       className="admin-input"
-                      placeholder="e.g. Dr. Ananya Sharma"
+                      placeholder="e.g. Dr. Priya Venkatesh"
                       value={newAuthorName}
                       onChange={(e) => setNewAuthorName(e.target.value)}
                       required
                     />
                   </div>
                   <div className="admin-form-group">
-                    <label className="admin-label">Designation / Role</label>
+                    <label className="admin-label">Editorial Role / Specialty</label>
                     <input
                       type="text"
                       className="admin-input"
-                      placeholder="e.g. Lead Medical Writer"
+                      placeholder="e.g. Senior Medical Writer &amp; Methodologist"
                       value={newAuthorRole}
                       onChange={(e) => setNewAuthorRole(e.target.value)}
+                      required
                     />
                   </div>
                 </div>
-                <button type="submit" className="admin-btn-primary">
-                  <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>add</span>
-                  <span>Add Author</span>
+                <button type="submit" className="admin-btn-save-main">
+                  Add Author
                 </button>
               </form>
             </div>
 
-            <div style={{ marginTop: '28px' }}>
-              <h2 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#0f172a', marginBottom: '16px' }}>
-                Active Authors ({authors.length})
-              </h2>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px' }}>
-                {authors.map((auth) => (
-                  <div key={auth.id} className="admin-item-card" style={{ padding: '16px', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: '#eff6ff', color: '#2563eb', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
-                        {auth.name.charAt(0)}
-                      </div>
+            <div className="admin-card">
+              <div className="admin-card-header">
+                <h3 className="admin-card-title">Existing Authors ({authors.length})</h3>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {authors.map((a) => (
+                  <div key={a.id} className="admin-item-card" style={{ padding: '14px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                       <div>
-                        <h4 style={{ margin: 0, fontSize: '0.92rem', fontWeight: 700 }}>{auth.name}</h4>
-                        <span style={{ fontSize: '0.78rem', color: '#64748b' }}>{auth.role}</span>
+                        <h4 style={{ margin: '0 0 2px 0', fontSize: '0.98rem' }}>{a.name}</h4>
+                        <span style={{ fontSize: '0.82rem', color: '#64748b' }}>{a.role}</span>
                       </div>
+                      <button
+                        type="button"
+                        className="admin-btn-secondary-action"
+                        style={{ color: '#ef4444', padding: '4px 8px' }}
+                        onClick={() => deleteAuthor(a.id)}
+                      >
+                        Delete
+                      </button>
                     </div>
-                    <button
-                      type="button"
-                      className="admin-action-btn delete"
-                      onClick={() => deleteAuthor(auth.id)}
-                    >
-                      <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>delete</span>
-                    </button>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
+          </section>
         )}
 
-        {/* -----------------------------------------------------------------
-            TAB 7: SERVICES ORDER
-            ----------------------------------------------------------------- */}
-        {activeTab === 'services-order' && (
-          <div className="admin-card">
-            <div className="admin-card-header">
-              <h2 className="admin-card-title">Services Display Order</h2>
-            </div>
-            <p style={{ color: '#64748b', fontSize: '0.9rem', marginBottom: '20px' }}>
-              Active featured medical writing services displayed on Homepage and Services directory.
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              {[
-                '01. Original Research Articles',
-                '02. Systematic Reviews & Meta-Analyses',
-                '03. Thesis & Dissertation Writing',
-                '04. Medical Statistical Analysis',
-                '05. Thesis to Manuscript Conversion',
-                '06. Reviewer Comments & Re-submission Support',
-              ].map((s, idx) => (
-                <div
-                  key={s}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '12px 18px',
-                    background: '#ffffff',
-                    border: '1px solid #e2e8f0',
-                    borderRadius: '8px',
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 600 }}>
-                    <span className="material-symbols-outlined" style={{ color: '#94a3b8', cursor: 'grab' }}>drag_indicator</span>
-                    <span>{s}</span>
-                  </div>
-                  <span style={{ fontSize: '0.75rem', background: '#dcfce7', color: '#166534', padding: '3px 8px', borderRadius: '4px', fontWeight: 600 }}>
-                    {idx < 3 ? 'Homepage Active' : 'Catalog Active'}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* -----------------------------------------------------------------
-            VISUAL EDITORS (Home, FAQ, About)
-            ----------------------------------------------------------------- */}
+        {/* ===================================================================
+            TAB 8: HOME PAGE CONTENT
+            =================================================================== */}
         {activeTab === 'home-content' && (
-          <div className="admin-card">
-            <div className="admin-card-header">
-              <h2 className="admin-card-title">Home Page Content Editor</h2>
+          <section>
+            <div className="admin-page-header">
+              <h1 className="admin-page-title">Home Page Content</h1>
+              <p className="admin-page-subtitle">Configure hero headlines, contact telephone, and support email.</p>
             </div>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                showToast('Home page content updated!');
-              }}
-            >
+
+            <div className="admin-card">
               <div className="admin-form-group">
                 <label className="admin-label">Hero Eyebrow Badge</label>
                 <input
@@ -1215,8 +1325,9 @@ export const AdminDashboard: React.FC = () => {
                   onChange={(e) => updateVisualContent({ heroBadge: e.target.value })}
                 />
               </div>
+
               <div className="admin-form-group">
-                <label className="admin-label">Main Hero Headline (H1)</label>
+                <label className="admin-label">Hero Title (H1)</label>
                 <input
                   type="text"
                   className="admin-input"
@@ -1224,8 +1335,9 @@ export const AdminDashboard: React.FC = () => {
                   onChange={(e) => updateVisualContent({ heroTitle: e.target.value })}
                 />
               </div>
+
               <div className="admin-form-group">
-                <label className="admin-label">Hero Subtitle / Description</label>
+                <label className="admin-label">Hero Lead Paragraph</label>
                 <textarea
                   className="admin-textarea"
                   rows={3}
@@ -1233,9 +1345,10 @@ export const AdminDashboard: React.FC = () => {
                   onChange={(e) => updateVisualContent({ heroLead: e.target.value })}
                 />
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+
+              <div className="admin-grid-2">
                 <div className="admin-form-group">
-                  <label className="admin-label">Contact Phone</label>
+                  <label className="admin-label">Contact Phone / WhatsApp</label>
                   <input
                     type="text"
                     className="admin-input"
@@ -1244,7 +1357,7 @@ export const AdminDashboard: React.FC = () => {
                   />
                 </div>
                 <div className="admin-form-group">
-                  <label className="admin-label">Contact Email</label>
+                  <label className="admin-label">Support Email</label>
                   <input
                     type="email"
                     className="admin-input"
@@ -1253,222 +1366,98 @@ export const AdminDashboard: React.FC = () => {
                   />
                 </div>
               </div>
-              <button type="submit" className="admin-btn-primary">
-                <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>save</span>
-                <span>Save Changes</span>
+
+              <button type="button" className="admin-btn-save-main" onClick={handleSaveAll}>
+                Save Changes to Disk
               </button>
-            </form>
-          </div>
+            </div>
+          </section>
         )}
 
+        {/* ===================================================================
+            TAB 9: FAQ CONTENT
+            =================================================================== */}
         {activeTab === 'faq-content' && (
-          <div>
+          <section>
+            <div className="admin-page-header">
+              <h1 className="admin-page-title">Frequently Asked Questions</h1>
+              <p className="admin-page-subtitle">Manage client question and answer accordions.</p>
+            </div>
+
             <div className="admin-card">
               <div className="admin-card-header">
-                <h2 className="admin-card-title">Manage Frequently Asked Questions</h2>
+                <h3 className="admin-card-title">All FAQs ({faqs.length})</h3>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                {faqs.map((faq) => (
-                  <div key={faq.id} style={{ padding: '16px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px' }}>
-                      <h4 style={{ margin: '0 0 6px', fontSize: '0.95rem', fontWeight: 600, color: '#0f172a' }}>{faq.question}</h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {faqs.map((f) => (
+                  <div key={f.id} className="admin-item-card" style={{ padding: '16px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                      <h4 style={{ margin: '0 0 6px 0', fontSize: '0.98rem', color: '#0f172a' }}>{f.question}</h4>
                       <button
                         type="button"
-                        className="admin-action-btn delete"
-                        onClick={() => deleteFaq(faq.id)}
+                        className="admin-btn-secondary-action"
+                        style={{ color: '#ef4444', padding: '4px 8px' }}
+                        onClick={() => deleteFaq(f.id)}
                       >
-                        <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>delete</span>
+                        Delete
                       </button>
                     </div>
-                    <p style={{ margin: 0, fontSize: '0.85rem', color: '#475569', lineHeight: 1.5 }}>{faq.answer}</p>
+                    <p style={{ margin: 0, fontSize: '0.88rem', color: '#475569', lineHeight: 1.5 }}>{f.answer}</p>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
+          </section>
         )}
 
+        {/* ===================================================================
+            TAB 10: ABOUT PAGE CONTENT
+            =================================================================== */}
         {activeTab === 'about-content' && (
-          <div className="admin-card">
-            <div className="admin-card-header">
-              <h2 className="admin-card-title">About Page Content</h2>
+          <section>
+            <div className="admin-page-header">
+              <h1 className="admin-page-title">About Page Content</h1>
+              <p className="admin-page-subtitle">Edit company mission, purpose statement, and academic principles.</p>
             </div>
-            <p style={{ color: '#64748b', fontSize: '0.9rem' }}>
-              Academic standards, editorial policies, team credentials, and research ethics.
-            </p>
-            <div style={{ background: '#f1f5f9', padding: '16px', borderRadius: '8px', fontSize: '0.88rem' }}>
-              <strong>Commitment to ICMJE &amp; COPE Guidelines:</strong> All manuscripts and thesis documents adhere strictly to international committee guidelines on medical authorship and research integrity.
+
+            <div className="admin-card">
+              <p style={{ color: '#475569', fontSize: '0.92rem', marginBottom: '16px' }}>
+                Use the <strong>Headers &amp; Eyebrows</strong> section to customize all H1, H2, H3, H4, H5, H6 headings and badges for the About page.
+              </p>
+              <button
+                type="button"
+                className="admin-btn-save-main"
+                onClick={() => {
+                  setPageFilter('about');
+                  setActiveTab('header-tags');
+                }}
+              >
+                Go to About Page Headers Editor
+              </button>
             </div>
+          </section>
+        )}
+
+        {/* FLOATING SAVE BAR IF UNSAVED CHANGES */}
+        {hasUnsavedChanges && (
+          <div className="admin-floating-save-bar">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span className="material-symbols-outlined" style={{ color: '#fbbf24', fontSize: '20px' }}>
+                pending
+              </span>
+              <span style={{ fontSize: '0.9rem', fontWeight: 600 }}>You have unsaved changes!</span>
+            </div>
+            <button
+              type="button"
+              className="admin-btn-save-main"
+              onClick={handleSaveAll}
+              style={{ padding: '6px 16px', fontSize: '0.88rem' }}
+            >
+              Save to Disk (Ctrl + S)
+            </button>
           </div>
         )}
       </main>
-
-      {/* ===================================================================
-          MODAL: CREATE / EDIT BLOG POST (With Image Upload)
-          =================================================================== */}
-      {isPostModalOpen && (
-        <div className="admin-modal-overlay">
-          <div className="admin-modal-container">
-            <div className="admin-modal-header">
-              <h3>{editingPostId ? 'Edit Blog Post' : 'Create New Blog Post'}</h3>
-              <button
-                type="button"
-                className="admin-action-btn"
-                onClick={() => setIsPostModalOpen(false)}
-              >
-                <span className="material-symbols-outlined">close</span>
-              </button>
-            </div>
-
-            <form onSubmit={handlePostSave}>
-              <div className="admin-modal-body">
-                <div className="admin-form-group">
-                  <label className="admin-label">Post Title</label>
-                  <input
-                    type="text"
-                    className="admin-input"
-                    placeholder="e.g., How to Choose the Right Journal for Your First Medical Research Paper"
-                    value={postTitle}
-                    onChange={(e) => setPostTitle(e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div className="admin-form-group">
-                  <label className="admin-label">
-                    URL Slug <span className="admin-label-optional">(Leave empty for auto-slug)</span>
-                  </label>
-                  <input
-                    type="text"
-                    className="admin-input"
-                    placeholder="e.g., how-to-choose-right-journal"
-                    value={postSlug}
-                    onChange={(e) => setPostSlug(e.target.value)}
-                  />
-                </div>
-
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                  <div className="admin-form-group">
-                    <label className="admin-label">Category</label>
-                    <select
-                      className="admin-select"
-                      value={postCategory}
-                      onChange={(e) => setPostCategory(e.target.value)}
-                    >
-                      {blogCategories.map((c) => (
-                        <option key={c} value={c}>
-                          {c}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="admin-form-group">
-                    <label className="admin-label">Read Time</label>
-                    <input
-                      type="text"
-                      className="admin-input"
-                      placeholder="e.g., 6 min read"
-                      value={postReadTime}
-                      onChange={(e) => setPostReadTime(e.target.value)}
-                    />
-                  </div>
-                </div>
-
-                <div className="admin-form-group">
-                  <label className="admin-label">Featured Image (Upload)</label>
-                  <div
-                    className="admin-file-picker"
-                    onClick={() => postFileInputRef.current?.click()}
-                  >
-                    <button type="button" className="admin-file-picker-btn">
-                      <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>upload_file</span>
-                      <span>Choose file</span>
-                    </button>
-                    <span className="admin-file-picker-text">{postImageName}</span>
-                    <input
-                      ref={postFileInputRef}
-                      type="file"
-                      accept="image/*"
-                      style={{ display: 'none' }}
-                      onChange={handlePostFileChange}
-                    />
-                  </div>
-                  {postImage && (
-                    <div className="admin-file-preview">
-                      <img src={postImage} alt="Post preview" className="admin-file-preview-img" />
-                      <span style={{ fontSize: '0.85rem', color: '#0f172a', fontWeight: 600 }}>Image Selected</span>
-                    </div>
-                  )}
-                </div>
-
-                <div className="admin-form-group">
-                  <label className="admin-label">Excerpt / Summary</label>
-                  <textarea
-                    className="admin-textarea"
-                    rows={2}
-                    placeholder="Brief description of this article for catalog cards..."
-                    value={postSummary}
-                    onChange={(e) => setPostSummary(e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div className="admin-form-group">
-                  <label className="admin-label">Article Body Content (Separate paragraphs with double newlines)</label>
-                  <textarea
-                    className="admin-textarea"
-                    rows={6}
-                    placeholder="Enter the complete educational guide or article content here..."
-                    value={postContent}
-                    onChange={(e) => setPostContent(e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
-                  <div className="admin-form-group" style={{ margin: 0 }}>
-                    <label className="admin-label">Status</label>
-                    <select
-                      className="admin-select"
-                      value={postStatus}
-                      onChange={(e) => setPostStatus(e.target.value as any)}
-                    >
-                      <option value="published">Published</option>
-                      <option value="draft">Draft</option>
-                    </select>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '20px' }}>
-                    <input
-                      type="checkbox"
-                      id="post-featured-cb"
-                      checked={postFeatured}
-                      onChange={(e) => setPostFeatured(e.target.checked)}
-                      style={{ width: '18px', height: '18px', cursor: 'pointer' }}
-                    />
-                    <label htmlFor="post-featured-cb" style={{ fontSize: '0.88rem', fontWeight: 600, color: '#334155', cursor: 'pointer' }}>
-                      Mark as Featured Guide
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div className="admin-modal-footer">
-                <button
-                  type="button"
-                  className="admin-btn-secondary"
-                  onClick={() => setIsPostModalOpen(false)}
-                >
-                  Cancel
-                </button>
-                <button type="submit" className="admin-btn-primary">
-                  <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>check</span>
-                  <span>{editingPostId ? 'Save Changes' : 'Publish Blog Post'}</span>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

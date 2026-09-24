@@ -11,7 +11,7 @@ import { CtaBanner } from '../components/sections/CtaBanner';
 
 export const Home: React.FC = () => {
   const { openConsultation } = useModal();
-  const { publications, testimonials, faqs, visualContent } = useAdminData();
+  const { publications, testimonials, faqs, visualContent, getHeader, getEyebrow, getHeaderSubtext } = useAdminData();
   const googleList = testimonials.filter((t) => t.type === 'google');
 
   return (
@@ -27,17 +27,17 @@ export const Home: React.FC = () => {
             <div className="hero-v2-content">
               {/* Understated Eyebrow Badge */}
               <div className="hero-v2-badge">
-                <span>{visualContent.heroBadge || 'Medical Research & Publication Support'}</span>
+                <span>{getEyebrow('home-hero-eyebrow', visualContent.heroBadge || 'Medical Research & Publication Support')}</span>
               </div>
 
-              {/* Main Headline */}
+              {/* Main Headline (H1) */}
               <h1 className="hero-v2-title">
-                {visualContent.heroTitle || 'Turn Complex Medical Research Into Clear, Publication-Ready Work'}
+                {getHeader('home-hero-h1', visualContent.heroTitle || 'Turn Complex Medical Research Into Clear, Publication-Ready Work')}
               </h1>
 
               {/* Subtitle */}
               <p className="hero-v2-lead">
-                {visualContent.heroLead || 'Medical writing, biostatistics, and publication support for clinicians, postgraduate doctors, researchers, and medical faculty — delivered with academic integrity and confidentiality.'}
+                {getHeaderSubtext('home-hero-h1', visualContent.heroLead || 'Medical writing, biostatistics, and publication support for clinicians, postgraduate doctors, researchers, and medical faculty — delivered with academic integrity and confidentiality.')}
               </p>
 
               {/* Action Buttons */}
@@ -64,15 +64,15 @@ export const Home: React.FC = () => {
               <div className="hero-v2-trust-row" aria-label="Key Commitments">
                 <div className="hero-v2-trust-item">
                   <span className="hero-v2-trust-check" aria-hidden="true">✓</span>
-                  <span>Academic integrity</span>
+                  <span>{getHeader('home-trust-item1-h4', 'Academic integrity')}</span>
                 </div>
                 <div className="hero-v2-trust-item">
                   <span className="hero-v2-trust-check" aria-hidden="true">✓</span>
-                  <span>Research confidentiality</span>
+                  <span>{getHeader('home-trust-item2-h4', 'Research confidentiality')}</span>
                 </div>
                 <div className="hero-v2-trust-item">
                   <span className="hero-v2-trust-check" aria-hidden="true">✓</span>
-                  <span>Medical-domain expertise</span>
+                  <span>{getHeader('home-trust-item3-h4', 'Medical-domain expertise')}</span>
                 </div>
               </div>
             </div>
@@ -102,19 +102,21 @@ export const Home: React.FC = () => {
           <div className="section-header text-center">
             <div className="pill-eyebrow-badge">
               <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>school</span>
-              <span>Specialised Research Support</span>
+              <span>{getEyebrow('home-services-eyebrow', 'Specialised Research Support')}</span>
             </div>
-            <h2 className="section-header-title">Medical Writing Services Across the Research Journey</h2>
+            <h2 className="section-header-title">
+              {getHeader('home-services-h2', 'Medical Writing Services Across the Research Journey')}
+            </h2>
             <p className="section-header-subtitle">
-              Whether you are developing a dissertation, preparing a manuscript, analysing clinical data, or responding to reviewer comments, MedZen Writes offers focused support at every stage.
+              {getHeaderSubtext('home-services-h2', 'Whether you are developing a dissertation, preparing a manuscript, analysing clinical data, or responding to reviewer comments, MedZen Writes offers focused support at every stage.')}
             </p>
           </div>
 
           <div className="services-grid-cards">
             {[
-              servicesData[0], // 01. Original Research Articles
-              servicesData[1], // 02. Systematic Reviews & Meta-Analyses
-              { ...servicesData[3], number: '03' }, // 03. Thesis & Dissertation Writing
+              { ...servicesData[0], title: getHeader('home-service1-h3', servicesData[0].title) }, // 01. Original Research Articles
+              { ...servicesData[1], title: getHeader('home-service2-h3', servicesData[1].title) }, // 02. Systematic Reviews & Meta-Analyses
+              { ...servicesData[3], title: getHeader('home-service3-h3', servicesData[3].title), number: '03' }, // 03. Thesis & Dissertation Writing
             ].map((s) => (
               <div key={s.id} className="service-card-clean">
                 <div className="service-card-top">
@@ -150,10 +152,13 @@ export const Home: React.FC = () => {
         <div className="site-container">
           {/* Header */}
           <div style={{ marginBottom: '20px' }}>
-            <span className="section-header-eyebrow">DOCUMENT ARCHIVE</span>
+            <span className="section-header-eyebrow">{getEyebrow('home-pubs-eyebrow', 'Verified Research Portfolio')}</span>
             <h2 id="home-portfolio-heading" style={{ fontSize: 'clamp(1.5rem, 2.5vw, 1.9rem)', margin: 0, fontWeight: 700 }}>
-              Verified Publication Records
+              {getHeader('home-pubs-h2', 'Recent Peer-Reviewed Publications & Accepted Manuscripts')}
             </h2>
+            <p style={{ color: 'var(--color-ink-soft)', marginTop: '6px', fontSize: '0.94rem' }}>
+              {getHeaderSubtext('home-pubs-h2', 'A curated selection of published original studies, systematic reviews, and clinical papers developed with our academic support.')}
+            </p>
           </div>
 
           {/* Cards Grid: Top 3 Cards */}
@@ -178,43 +183,43 @@ export const Home: React.FC = () => {
       <section className="editorial-section indexing-frameworks-section" aria-label="Target Databases and International Standards">
         <div className="site-container">
           <div className="section-header text-center">
-            <div className="pill-eyebrow-badge">
-              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>verified_user</span>
-              <span>INDEXING FRAMEWORKS</span>
-            </div>
+            <span className="section-header-eyebrow">{getEyebrow('home-journals-eyebrow', 'Indexed Venues')}</span>
             <h2 className="section-header-title">
-              Target Databases &amp; International Standards
+              {getHeader('home-journals-h2', 'Publication Pathways in High-Impact Indexed Journals')}
             </h2>
             <p className="section-header-subtitle">
-              We prepare manuscripts and structured synopses complying strictly with international bibliographic databases.
+              Manuscripts prepared and edited according to the technical and methodological requirements of leading indexing bodies and publisher guidelines.
             </p>
           </div>
 
-          <div className="indexing-logos-wrapper">
-            {/* Line 1: First 6 Logos */}
-            <div className="indexing-logos-row indexing-logos-row-1">
-              {targetJournalLogos.slice(0, 6).map((item) => (
-                <div key={item.name} className="indexing-logo-card" title={item.name}>
+          {/* Two-Tier Target Journal Logos */}
+          <div className="target-logos-wrapper">
+            {/* Row 1: 6 Logos */}
+            <div className="target-logos-row row-top">
+              {targetJournalLogos.slice(0, 6).map((logo) => (
+                <div key={logo.name} className="target-logo-card">
                   <img
-                    src={item.logo}
-                    alt={item.name}
-                    className="indexing-logo-img"
+                    src={logo.logo}
+                    alt={logo.name}
+                    className="target-logo-img"
                     loading="lazy"
                   />
+                  <span className="target-logo-caption">{logo.name}</span>
                 </div>
               ))}
             </div>
 
-            {/* Line 2: Next 5 Logos */}
-            <div className="indexing-logos-row indexing-logos-row-2">
-              {targetJournalLogos.slice(6, 11).map((item) => (
-                <div key={item.name} className="indexing-logo-card" title={item.name}>
+            {/* Row 2: 5 Logos */}
+            <div className="target-logos-row row-bottom">
+              {targetJournalLogos.slice(6, 11).map((logo) => (
+                <div key={logo.name} className="target-logo-card">
                   <img
-                    src={item.logo}
-                    alt={item.name}
-                    className="indexing-logo-img"
+                    src={logo.logo}
+                    alt={logo.name}
+                    className="target-logo-img"
                     loading="lazy"
                   />
+                  <span className="target-logo-caption">{logo.name}</span>
                 </div>
               ))}
             </div>
@@ -223,59 +228,67 @@ export const Home: React.FC = () => {
       </section>
 
       {/* ===================================================================
-          5. VERIFIED GOOGLE REVIEWS
+          5. REVIEWS SCREENSHOT CAROUSEL / GRID
           =================================================================== */}
-      <section className="editorial-section section-bg-paper" aria-labelledby="google-reviews-heading">
+      <section className="editorial-section section-bg-white" aria-labelledby="google-reviews-heading">
         <div className="site-container">
           <div className="section-header text-center">
             <div className="pill-eyebrow-badge">
-              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>star</span>
-              <span>Public Ratings</span>
+              <span className="material-symbols-outlined" style={{ fontSize: '16px', color: '#16a34a' }}>verified</span>
+              <span>{getEyebrow('home-reviews-eyebrow', 'Verified Feedback')}</span>
             </div>
             <h2 id="google-reviews-heading" className="section-header-title">
-              Verified Google Reviews
+              {getHeader('home-reviews-h2', 'What Researchers & Clinicians Say About Our Work')}
             </h2>
             <p className="section-header-subtitle">
-              Direct screenshot captures from our public Google Business review profile.
+              {getHeaderSubtext('home-reviews-h2', 'Read authentic experiences and direct feedback from clinicians, postgraduate residents, and researchers who entrusted their manuscripts to MedZen Writes.')}
             </p>
           </div>
 
-          <div className="screenshot-proof-grid">
-            {googleList.map((rev) => (
-              <GoogleReviewCard key={rev.id} review={rev} />
+          {/* Screenshot Cards Grid: Top 3 Cards */}
+          <div className="google-reviews-cards-grid">
+            {googleList.slice(0, 3).map((review) => (
+              <GoogleReviewCard key={review.id} review={review} />
             ))}
           </div>
+
+          <div style={{ textAlign: 'center', marginTop: '28px' }}>
+            <Link to="/testimonials" className="btn btn-outline btn-md">
+              <span>View All Verified Doctor Reviews</span>
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_forward</span>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* ===================================================================
-          5. FREQUENTLY ASKED QUESTIONS (FAQ)
+          6. FAQS ACCORDION
           =================================================================== */}
-      <section id="faq" className="editorial-section section-bg-white" aria-label="Frequently Asked Questions">
-        <div className="site-container site-container-narrow">
+      <section className="editorial-section section-bg-sand" aria-label="Frequently Asked Questions">
+        <div className="site-container" style={{ maxWidth: '820px' }}>
           <div className="section-header text-center">
-            <div className="pill-eyebrow-badge">
-              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>help</span>
-              <span>Frequently Asked Questions</span>
-            </div>
-            <h2 className="section-header-title">Clear Answers Before You Begin</h2>
+            <span className="section-header-eyebrow">{getEyebrow('home-faqs-eyebrow', 'Frequently Asked Questions')}</span>
+            <h2 className="section-header-title">{getHeader('home-faqs-h2', 'Clear Answers Before You Begin')}</h2>
             <p className="section-header-subtitle">
-              Understand how we approach confidentiality, academic integrity, timelines, revisions, and statistical support before starting your project.
+              {getHeaderSubtext('home-faqs-h2', 'Common questions regarding confidentiality, timelines, authorship ethics, and the manuscript review process.')}
             </p>
           </div>
 
-          <FaqAccordion items={faqs} />
+          <FaqAccordion items={faqs.slice(0, 5)} />
+
+          <div style={{ textAlign: 'center', marginTop: '28px' }}>
+            <Link to="/contact" className="btn btn-secondary btn-md">
+              <span>Have a specific question? Ask our editorial team</span>
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_forward</span>
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* ===================================================================
-          6. SCHEDULE CONSULTATION CTA BANNER
+          7. GLOBAL CTA BANNER
           =================================================================== */}
-      <CtaBanner
-        title="Ready to Move Your Research Forward?"
-        subtitle="Book a confidential consultation to discuss your research stage, requirements, and the support that would be most useful to you."
-        buttonText="Schedule a Consultation"
-      />
+      <CtaBanner />
     </div>
   );
 };

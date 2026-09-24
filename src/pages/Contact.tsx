@@ -4,19 +4,22 @@ import { companyData } from '../data/company';
 import { ConsultationForm } from '../components/forms/ConsultationForm';
 
 export const Contact: React.FC = () => {
-  const { visualContent } = useAdminData();
+  const { visualContent, getHeader, getEyebrow, getHeaderSubtext } = useAdminData();
   const currentPhone = visualContent.phone || companyData.phoneDisplay;
   const currentEmail = visualContent.email || companyData.email;
+
   return (
     <div className="page-contact">
       {/* Hero Header */}
       <section className="editorial-hero" aria-label="Contact MedZen Writes">
         <div className="site-container">
           <div style={{ maxWidth: '820px' }}>
-            <span className="hero-eyebrow">Academic Consultation &amp; Inquiry</span>
-            <h1 className="hero-title">Contact Our Academic Editorial Team</h1>
+            <span className="hero-eyebrow">{getEyebrow('contact-hero-eyebrow', 'Academic Consultation & Inquiry')}</span>
+            <h1 className="hero-title">
+              {getHeader('contact-hero-h1', 'Contact Our Academic Editorial Team')}
+            </h1>
             <p className="hero-lead">
-              Have a thesis, systematic review, or clinical dataset you would like to discuss? Share your study parameters below or reach out directly to our consultation desk.
+              {getHeaderSubtext('contact-hero-h1', 'Have a thesis, systematic review, or clinical dataset you would like to discuss? Share your study parameters below or reach out directly to our consultation desk.')}
             </p>
           </div>
         </div>
@@ -28,12 +31,12 @@ export const Contact: React.FC = () => {
           <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: 'clamp(20px, 3.5vw, 36px)', alignItems: 'flex-start' }}>
             {/* Left: Consultation Form */}
             <div>
-              <span className="section-header-eyebrow">Consultation Request</span>
+              <span className="section-header-eyebrow">{getEyebrow('contact-form-eyebrow', 'Consultation Request')}</span>
               <h2 id="contact-heading" style={{ fontSize: '1.65rem', marginBottom: '6px' }}>
-                Tell Us About Your Research
+                {getHeader('contact-form-h2', 'Request an Academic Assessment')}
               </h2>
               <p style={{ fontSize: '0.9rem', color: 'var(--color-ink-soft)', marginBottom: '16px' }}>
-                Complete the inquiry form below. An academic coordinator will review your study requirements and reply within 12 business hours.
+                {getHeaderSubtext('contact-form-h2', 'Share your research objectives, current draft status, and timeline. Our team will review and respond within 24 hours.')}
               </p>
 
               <div style={{ background: 'var(--color-paper)', padding: 'clamp(18px, 2.5vw, 24px)', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-line)' }}>
@@ -45,13 +48,13 @@ export const Contact: React.FC = () => {
             <div>
               <div style={{ background: 'var(--color-sand)', padding: '20px', borderRadius: 'var(--radius-md)', border: '1px solid #e0dad0', marginBottom: '16px' }}>
                 <h3 style={{ fontSize: '1.15rem', color: 'var(--color-ink)', marginBottom: '12px' }}>
-                  Direct Contact Channels
+                  {getHeader('contact-channels-h3', 'Direct Contact Channels')}
                 </h3>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   <div>
                     <span style={{ fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-teal)', letterSpacing: '0.05em' }}>
-                      Email Inquiries
+                      {getHeader('contact-email-h4', 'Email Inquiries')}
                     </span>
                     <p style={{ margin: '2px 0 0', fontWeight: 600 }}>
                       <a href={`mailto:${currentEmail}`} style={{ color: 'var(--color-ink)', fontSize: '0.96rem' }}>
@@ -63,7 +66,7 @@ export const Contact: React.FC = () => {
 
                   <div>
                     <span style={{ fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-teal)', letterSpacing: '0.05em' }}>
-                      Telephone &amp; WhatsApp
+                      {getHeader('contact-phone-h4', 'WhatsApp & Direct Call')}
                     </span>
                     <p style={{ margin: '2px 0 0', fontWeight: 600 }}>
                       <a href={`tel:${currentPhone.replace(/[^0-9+]/g, '')}`} style={{ color: 'var(--color-ink)', fontSize: '0.96rem' }}>
@@ -75,7 +78,7 @@ export const Contact: React.FC = () => {
 
                   <div>
                     <span style={{ fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-teal)', letterSpacing: '0.05em' }}>
-                      Operating Hours
+                      {getHeader('contact-hours-h4', 'Working Hours')}
                     </span>
                     <p style={{ margin: '2px 0 0', fontSize: '0.88rem', color: 'var(--color-ink)' }}>
                       {companyData.workingHours}
@@ -89,16 +92,18 @@ export const Contact: React.FC = () => {
                 <span className="material-symbols-outlined" style={{ fontSize: '24px', color: 'var(--color-teal)', marginBottom: '6px' }}>
                   location_on
                 </span>
-                <h4 style={{ fontSize: '1.05rem', marginBottom: '6px' }}>Consultation Office</h4>
+                <h4 style={{ fontSize: '1.05rem', marginBottom: '6px' }}>
+                  {getHeader('contact-office-h4', 'Consultation Office')}
+                </h4>
                 <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: '0 0 8px' }}>
                   {companyData.name} ({companyData.division})<br />
                   {companyData.address.line1}, {companyData.address.locality}<br />
                   {companyData.address.city}, {companyData.address.state} – {companyData.address.pincode}<br />
                   {companyData.address.country}
                 </p>
-                <span style={{ fontSize: '0.8rem', color: 'var(--color-muted)' }}>
-                  In-person consultations available by prior appointment.
-                </span>
+                <h6 style={{ fontSize: '0.8rem', color: 'var(--color-muted)', fontWeight: 500, margin: 0 }}>
+                  {getHeader('contact-nda-h6', 'All inquiries treated with non-disclosure strict confidentiality')}
+                </h6>
               </div>
             </div>
           </div>
