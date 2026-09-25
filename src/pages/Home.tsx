@@ -4,6 +4,7 @@ import { useModal } from '../context/ModalContext';
 import { useAdminData } from '../context/AdminDataContext';
 import { servicesData } from '../data/services';
 import { targetJournalLogos } from '../data/publications';
+import { googleReviews } from '../data/testimonials';
 import { PublicationCard } from '../components/cards/PublicationCard';
 import { GoogleReviewCard } from '../components/cards/GoogleReviewCard';
 import { FaqAccordion } from '../components/interactive/FaqAccordion';
@@ -11,8 +12,7 @@ import { CtaBanner } from '../components/sections/CtaBanner';
 
 export const Home: React.FC = () => {
   const { openConsultation } = useModal();
-  const { publications, testimonials, faqs, visualContent, getHeader, getEyebrow, getHeaderSubtext } = useAdminData();
-  const googleList = testimonials.filter((t) => t.type === 'google');
+  const { publications, faqs, visualContent, getHeader, getEyebrow, getHeaderSubtext } = useAdminData();
 
   return (
     <div className="page-home">
@@ -245,9 +245,9 @@ export const Home: React.FC = () => {
             </p>
           </div>
 
-          {/* Screenshot Cards Grid: Top 3 Cards */}
+          {/* Static Google Reviews Cards Grid */}
           <div className="google-reviews-cards-grid">
-            {googleList.slice(0, 3).map((review) => (
+            {googleReviews.map((review) => (
               <GoogleReviewCard key={review.id} review={review} />
             ))}
           </div>
