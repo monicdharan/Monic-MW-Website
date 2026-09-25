@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaqItem } from '../../types';
 
 export const FaqAccordion: React.FC<{ items: FaqItem[] }> = ({ items }) => {
-  const [openId, setOpenId] = useState<string | null>(items[0]?.id || null);
+  const [openId, setOpenId] = useState<string | null>(null);
 
   const toggleFaq = (id: string) => {
     setOpenId(prev => (prev === id ? null : id));

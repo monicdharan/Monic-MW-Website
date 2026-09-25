@@ -1009,7 +1009,7 @@
       "section": "Hero Section",
       "tagType": "h1",
       "label": "Journal Hero Title (H1)",
-      "text": "Medical Research & Publishing Journal",
+      "text": "Research & Publishing Info hub",
       "subtext": "Practical insights, biostatistical methodologies, manuscript preparation strategies and journal selection advice for clinical researchers.",
       "defaultText": "Medical Research & Publishing Journal",
       "defaultSubtext": "Practical guides on study methodology, IMRaD structuring, biostatistical analysis, and journal submission strategies for postgraduate residents and clinical authors."
@@ -1387,6 +1387,6 @@
       "defaultText": "Governed under the laws of Tamil Nadu and the Republic of India"
     }
   ],
-  "lastSavedTime": "15:51:43",
-  "savedAt": "2026-09-25T10:21:43.683Z"
+  "lastSavedTime": "15:57:21",
+  "savedAt": "2026-09-25T10:27:21.197Z"
 }
