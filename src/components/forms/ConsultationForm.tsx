@@ -109,10 +109,10 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
           </h3>
         </div>
         <p style={{ fontSize: '0.94rem', color: 'var(--color-ink-soft)', lineHeight: '1.6', marginBottom: '14px' }}>
-          Thank you, <strong>{formData.fullName}</strong>. Our academic coordinators have received your inquiry regarding <strong>{formData.requiredService}</strong> ({formData.specialty}).
+          Thank you, <strong>{formData.fullName}</strong>. Our editorial coordinators have received your inquiry regarding <strong>{formData.requiredService}</strong> ({formData.specialty}).
         </p>
         <p style={{ fontSize: '0.88rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
-          An academic consultant will review your research scope and contact you at <strong>{formData.email}</strong> or <strong>{formData.phone}</strong> within 12 business hours with a structured roadmap.
+          An editorial consultant will review your research scope and contact you at <strong>{formData.email}</strong> or <strong>{formData.phone}</strong> within 12 business hours with a structured roadmap.
         </p>
       </div>
     );
@@ -145,7 +145,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
       </div>
 
       {/* Row: Email & Phone */}
-      <div style={{ display: 'grid', gridTemplateColumns: compact ? '1fr' : '1fr 1fr', gap: '16px' }}>
+      <div className={compact ? '' : 'form-row-2col'}>
         <div className="form-group">
           <label htmlFor="form-email" className="form-label">
             Email Address <span className="required-indicator">*</span>
@@ -194,7 +194,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
       </div>
 
       {/* Row: Specialty & Service */}
-      <div style={{ display: 'grid', gridTemplateColumns: compact ? '1fr' : '1fr 1.2fr', gap: '16px' }}>
+      <div className={compact ? '' : 'form-row-2col'}>
         <div className="form-group">
           <label htmlFor="form-specialty" className="form-label">
             Medical Specialty / Department <span className="required-indicator">*</span>

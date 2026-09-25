@@ -170,12 +170,12 @@
       "slug": "converting-thesis-to-published-paper",
       "title": "Thesis to Manuscript: Converting a 150-Page Dissertation into a 3,500-Word Paper",
       "category": "Thesis Conversion",
-      "topic": "Academic Publishing",
+      "topic": "Journal Publishing",
       "readTime": "6 min read",
       "date": "June 2024",
       "summary": "Practical condensation strategies to extract your primary clinical finding, reformat complex tables, and update literature for peer review.",
       "content": [
-        "A postgraduate thesis is written to demonstrate exhaustive academic thoroughness to university examiners, often resulting in 100 to 200 pages of comprehensive background and extensive sub-tables. In contrast, a journal manuscript is written for busy clinicians and must deliver a focused message within 3,000–3,500 words.",
+        "A postgraduate thesis is written to demonstrate exhaustive research thoroughness to university examiners, often resulting in 100 to 200 pages of comprehensive background and extensive sub-tables. In contrast, a journal manuscript is written for busy clinicians and must deliver a focused message within 3,000–3,500 words.",
         "To convert a thesis successfully, you must discard peripheral secondary questions and isolate one primary clinical storyline. Reduce 25+ dissertation tables into 4 or 5 high-yield comparative tables with clear clinical annotations.",
         "Update your literature review to incorporate studies published during the 2–3 years you spent completing clinical data collection."
       ],
@@ -260,21 +260,21 @@
   "visualContent": {
     "heroBadge": "Medical Research & Publication Support",
     "heroTitle": "Turn Complex Medical Research Into Clear, Publication-Ready Work",
-    "heroLead": "Medical writing, biostatistics, and publication support for clinicians, postgraduate doctors, researchers, and medical faculty — delivered with academic integrity and confidentiality.",
-    "phone": "+91 88079 09503",
+    "heroLead": "Medical writing, biostatistics and publication support for clinicians, postgraduate doctors, researchers and medical faculty — delivered with research integrity and confidentiality.",
+    "phone": "+91 91763 65161",
     "email": "support@medzenwrites.com"
   },
   "faqs": [
     {
       "id": "faq-services-scope",
-      "question": "What types of academic and medical writing projects do you support?",
-      "answer": "We support the full spectrum of academic medical documentation: Original Research Manuscripts, Systematic Reviews & Meta-Analyses (PRISMA 2020), Medical Case Reports, Postgraduate Medical Dissertations (MD, MS, DNB, DM, MCh), Clinical Biostatistical Reports (SPSS/R), Literature Reviews, Research Protocols/Synopses, and Conference Abstracts & E-Posters.",
+      "question": "What types of medical research and writing projects do you support?",
+      "answer": "We support the full spectrum of medical research documentation: Original Research Manuscripts, Systematic Reviews & Meta-Analyses (PRISMA 2020), Medical Case Reports, Postgraduate Medical Dissertations (MD, MS, DNB, DM, MCh), Clinical Biostatistical Reports (SPSS/R), Literature Reviews, Research Protocols/Synopses, and Conference Abstracts & E-Posters.",
       "category": "general"
     },
     {
       "id": "faq-acceptance-guarantee",
       "question": "Do you guarantee journal acceptance or indexing?",
-      "answer": "No ethical academic writing consultancy can or should guarantee journal acceptance, as editorial decisions rest solely with independent peer-reviewers and journal editors. What we guarantee is rigorous adherence to ICMJE authorship guidelines, target journal formatting compliance, sound biostatistical methodology, and comprehensive support addressing peer-review comments during revision rounds.",
+      "answer": "No ethical medical writing consultancy can or should guarantee journal acceptance, as editorial decisions rest solely with independent peer-reviewers and journal editors. What we guarantee is rigorous adherence to ICMJE authorship guidelines, target journal formatting compliance, sound biostatistical methodology, and comprehensive support addressing peer-review comments during revision rounds.",
       "category": "ethics"
     },
     {
@@ -325,9 +325,36 @@
       "tagType": "h1",
       "label": "Hero Main Title (H1)",
       "text": "Turn Complex Medical Research Into Clear, Publication-Ready Work",
-      "subtext": "Medical writing, biostatistics, and publication support for clinicians, postgraduate doctors, researchers, and medical faculty — delivered with academic integrity and confidentiality.",
+      "subtext": "Medical writing, biostatistics and publication support for clinicians, postgraduate doctors, researchers and medical faculty — delivered with research integrity and confidentiality.",
       "defaultText": "Turn Complex Medical Research Into Clear, Publication-Ready Work",
-      "defaultSubtext": "Medical writing, biostatistics, and publication support for clinicians, postgraduate doctors, researchers, and medical faculty — delivered with academic integrity and confidentiality."
+      "defaultSubtext": "Medical writing, biostatistics, and publication support for clinicians, postgraduate doctors, researchers, and medical faculty — delivered with research integrity and confidentiality."
+    },
+    {
+      "id": "home-trust-item1-h4",
+      "page": "home",
+      "section": "Hero Trust Row",
+      "tagType": "h4",
+      "label": "Hero Trust Item 1 (H4)",
+      "text": "Research integrity",
+      "defaultText": "Research integrity"
+    },
+    {
+      "id": "home-trust-item2-h4",
+      "page": "home",
+      "section": "Hero Trust Row",
+      "tagType": "h4",
+      "label": "Hero Trust Item 2 (H4)",
+      "text": "Research confidentiality",
+      "defaultText": "Research confidentiality"
+    },
+    {
+      "id": "home-trust-item3-h4",
+      "page": "home",
+      "section": "Hero Trust Row",
+      "tagType": "h4",
+      "label": "Hero Trust Item 3 (H4)",
+      "text": "Medical-domain expertise",
+      "defaultText": "Medical-domain expertise"
     },
     {
       "id": "home-services-eyebrow",
@@ -345,7 +372,7 @@
       "tagType": "h2",
       "label": "Services Section Title (H2)",
       "text": "Medical Writing Services Across the Research Journey",
-      "subtext": "Whether you are developing a dissertation, preparing a manuscript, analysing clinical data, or responding to reviewer comments, MedZen Writes offers focused support at every stage.",
+      "subtext": "Whether you are developing a dissertation, preparing a manuscript, analysing clinical data or responding to reviewer comments, MedZen Writes offers focused support at every stage.",
       "defaultText": "Medical Writing Services Across the Research Journey",
       "defaultSubtext": "Whether you are developing a dissertation, preparing a manuscript, analysing clinical data, or responding to reviewer comments, MedZen Writes offers focused support at every stage."
     },
@@ -377,6 +404,164 @@
       "defaultText": "Thesis & Dissertation Writing"
     },
     {
+      "id": "process-timeline-eyebrow",
+      "page": "home",
+      "section": "4-Step Process Timeline",
+      "tagType": "eyebrow",
+      "label": "Process Timeline Eyebrow",
+      "text": "Our Working Method",
+      "defaultText": "Our Working Method"
+    },
+    {
+      "id": "process-timeline-h2",
+      "page": "home",
+      "section": "4-Step Process Timeline",
+      "tagType": "h2",
+      "label": "Process Timeline Title (H2)",
+      "text": "A Structured 4-Step Editorial Workflow",
+      "subtext": "Clear milestones from initial protocol evaluation to journal submission readiness.",
+      "defaultText": "A Structured 4-Step Editorial Workflow",
+      "defaultSubtext": "Clear milestones from initial protocol evaluation to journal submission readiness."
+    },
+    {
+      "id": "process-step1-h3",
+      "page": "home",
+      "section": "4-Step Process Timeline",
+      "tagType": "h3",
+      "label": "Step 1: Protocol & Question (H3)",
+      "text": "Understand the Research Question",
+      "subtext": "We review your clinical data sheet, study protocol, ethics approval and target journal requirements to evaluate methodological completeness.",
+      "defaultText": "Understand the Research Question",
+      "defaultSubtext": "We review your clinical data sheet, study protocol, ethics approval, and target journal requirements to evaluate methodological completeness."
+    },
+    {
+      "id": "process-step2-h3",
+      "page": "home",
+      "section": "4-Step Process Timeline",
+      "tagType": "h3",
+      "label": "Step 2: Methodology & Biostats (H3)",
+      "text": "Plan Methodology & Analysis",
+      "subtext": "Our medical statisticians audit variable distributions, execute hypothesis testing and generate publication-standard data tables.",
+      "defaultText": "Plan Methodology & Analysis",
+      "defaultSubtext": "Our medical statisticians audit variable distributions, execute hypothesis testing, and generate publication-standard data tables."
+    },
+    {
+      "id": "process-step3-h3",
+      "page": "home",
+      "section": "4-Step Process Timeline",
+      "tagType": "h3",
+      "label": "Step 3: Writing & Formatting (H3)",
+      "text": "Write, Edit & Format",
+      "subtext": "Our medical writing specialists draft the complete manuscript in strict accordance with reporting standards (STROBE, PRISMA, CARE, CONSORT).",
+      "defaultText": "Write, Edit & Format",
+      "defaultSubtext": "Our medical writing specialists draft the complete manuscript in strict accordance with reporting standards (STROBE, PRISMA, CARE, CONSORT)."
+    },
+    {
+      "id": "process-step4-h3",
+      "page": "home",
+      "section": "4-Step Process Timeline",
+      "tagType": "h3",
+      "label": "Step 4: Submission & Revisions (H3)",
+      "text": "Prepare for Submission & Revisions",
+      "subtext": "We assemble the complete submission package (Cover Letter, Declarations, Checklist) and provide support addressing peer-reviewer comments.",
+      "defaultText": "Prepare for Submission & Revisions",
+      "defaultSubtext": "We assemble the complete submission package (Cover Letter, Declarations, Checklist) and provide support addressing peer-reviewer comments."
+    },
+    {
+      "id": "home-problem-eyebrow",
+      "page": "home",
+      "section": "Problem vs Solution Section",
+      "tagType": "eyebrow",
+      "label": "Challenge Eyebrow",
+      "text": "The Challenge",
+      "defaultText": "The Challenge"
+    },
+    {
+      "id": "home-problem-h2",
+      "page": "home",
+      "section": "Problem vs Solution Section",
+      "tagType": "h2",
+      "label": "Challenge Title (H2)",
+      "text": "Clinical Demands Often Delay Publication Milestones",
+      "subtext": "Medical residents and clinical faculty generate high-yield clinical data every day. However, navigating complex journal author guidelines, rigorous biostatistical modeling and strict formatting requirements alongside 70+ hour hospital shifts leads to stalled drafts and missed submission deadlines.",
+      "defaultText": "Clinical Demands Often Delay Publication Milestones",
+      "defaultSubtext": "Medical residents and clinical faculty generate high-yield clinical data every day. However, navigating complex journal author guidelines, rigorous biostatistical modeling, and strict formatting requirements alongside 70+ hour hospital shifts leads to stalled drafts and missed submission deadlines."
+    },
+    {
+      "id": "home-problem-pt1",
+      "page": "home",
+      "section": "Problem vs Solution Section",
+      "tagType": "h4",
+      "label": "Challenge Point 1 (H4)",
+      "text": "Data collection is complete, but structuring the manuscript into standard IMRaD format takes months.",
+      "defaultText": "Data collection is complete, but structuring the manuscript into standard IMRaD format takes months."
+    },
+    {
+      "id": "home-problem-pt2",
+      "page": "home",
+      "section": "Problem vs Solution Section",
+      "tagType": "h4",
+      "label": "Challenge Point 2 (H4)",
+      "text": "Uncertainty regarding parametric vs. non-parametric statistical tests leads to reviewer rejections.",
+      "defaultText": "Uncertainty regarding parametric vs. non-parametric statistical tests leads to reviewer rejections."
+    },
+    {
+      "id": "home-problem-pt3",
+      "page": "home",
+      "section": "Problem vs Solution Section",
+      "tagType": "h4",
+      "label": "Challenge Point 3 (H4)",
+      "text": "Postgraduate theses remain archived on university shelves without ever reaching an indexed journal.",
+      "defaultText": "Postgraduate theses remain archived on university shelves without ever reaching an indexed journal."
+    },
+    {
+      "id": "home-solution-eyebrow",
+      "page": "home",
+      "section": "Problem vs Solution Section",
+      "tagType": "eyebrow",
+      "label": "Solution Eyebrow",
+      "text": "How MedZen Writes Helps",
+      "defaultText": "How MedZen Writes Helps"
+    },
+    {
+      "id": "home-solution-h2",
+      "page": "home",
+      "section": "Problem vs Solution Section",
+      "tagType": "h2",
+      "label": "Solution Title (H2)",
+      "text": "Structured, Ethical Editorial Partnership",
+      "subtext": "We partner with clinicians and researchers as a dedicated medical editorial consultancy. We provide the methodological clarity, statistical rigor and formatting discipline needed to bring your research to completion, while ensuring you maintain complete scientific and intellectual control over your work.",
+      "defaultText": "Structured, Ethical Editorial Partnership",
+      "defaultSubtext": "We partner with clinicians and researchers as a dedicated medical editorial consultancy. We provide the methodological clarity, statistical rigor, and formatting discipline needed to bring your research to completion, while ensuring you maintain complete scientific and intellectual control over your work."
+    },
+    {
+      "id": "home-solution-pt1",
+      "page": "home",
+      "section": "Problem vs Solution Section",
+      "tagType": "h4",
+      "label": "Solution Point 1 (H4)",
+      "text": "Rigorous target journal scoping and formatting tailored to PubMed and Scopus standards.",
+      "defaultText": "Rigorous target journal scoping and formatting tailored to PubMed and Scopus standards."
+    },
+    {
+      "id": "home-solution-pt2",
+      "page": "home",
+      "section": "Problem vs Solution Section",
+      "tagType": "h4",
+      "label": "Solution Point 2 (H4)",
+      "text": "Verified biostatistical computations with complete data tables and reproducible scripts.",
+      "defaultText": "Verified biostatistical computations with complete data tables and reproducible scripts."
+    },
+    {
+      "id": "home-solution-pt3",
+      "page": "home",
+      "section": "Problem vs Solution Section",
+      "tagType": "h4",
+      "label": "Solution Point 3 (H4)",
+      "text": "Clear milestone-based delivery schedules with responsive revision and mentor feedback support.",
+      "defaultText": "Clear milestone-based delivery schedules with responsive revision and mentor feedback support."
+    },
+    {
       "id": "home-pubs-eyebrow",
       "page": "home",
       "section": "Publications Section",
@@ -392,9 +577,9 @@
       "tagType": "h2",
       "label": "Publications Section Title (H2)",
       "text": "Recent Peer-Reviewed Publications & Accepted Manuscripts",
-      "subtext": "A curated selection of published original studies, systematic reviews, and clinical papers developed with our academic support.",
+      "subtext": "A curated selection of published original studies, systematic reviews, and clinical papers developed with our research support.",
       "defaultText": "Recent Peer-Reviewed Publications & Accepted Manuscripts",
-      "defaultSubtext": "A curated selection of published original studies, systematic reviews, and clinical papers developed with our academic support."
+      "defaultSubtext": "A curated selection of published original studies, systematic reviews, and clinical papers developed with our research support."
     },
     {
       "id": "home-journals-eyebrow",
@@ -412,7 +597,9 @@
       "tagType": "h2",
       "label": "Target Journals Section Title (H2)",
       "text": "Publication Pathways in High-Impact Indexed Journals",
-      "defaultText": "Publication Pathways in High-Impact Indexed Journals"
+      "subtext": "Manuscripts prepared and edited according to the technical and methodological requirements of leading indexing bodies and publisher guidelines.",
+      "defaultText": "Publication Pathways in High-Impact Indexed Journals",
+      "defaultSubtext": "Manuscripts prepared and edited according to the technical and methodological requirements of leading indexing bodies and publisher guidelines."
     },
     {
       "id": "home-reviews-eyebrow",
@@ -455,33 +642,6 @@
       "defaultSubtext": "Common questions regarding confidentiality, timelines, authorship ethics, and the manuscript review process."
     },
     {
-      "id": "home-trust-item1-h4",
-      "page": "home",
-      "section": "Hero Trust Row",
-      "tagType": "h4",
-      "label": "Hero Trust Item 1 (H4)",
-      "text": "Academic integrity",
-      "defaultText": "Academic integrity"
-    },
-    {
-      "id": "home-trust-item2-h4",
-      "page": "home",
-      "section": "Hero Trust Row",
-      "tagType": "h4",
-      "label": "Hero Trust Item 2 (H4)",
-      "text": "Research confidentiality",
-      "defaultText": "Research confidentiality"
-    },
-    {
-      "id": "home-trust-item3-h4",
-      "page": "home",
-      "section": "Hero Trust Row",
-      "tagType": "h4",
-      "label": "Hero Trust Item 3 (H4)",
-      "text": "Medical-domain expertise",
-      "defaultText": "Medical-domain expertise"
-    },
-    {
       "id": "about-hero-eyebrow",
       "page": "about",
       "section": "Hero Section",
@@ -496,10 +656,10 @@
       "section": "Hero Section",
       "tagType": "h1",
       "label": "About Hero Title (H1)",
-      "text": "Academic Support for Research With Clinical Purpose",
-      "subtext": "MedZen Writes is the academic medical consultancy division of MedZen Innovations Pvt. Ltd. We support clinicians, postgraduates, and researchers in presenting their work with clarity, methodological discipline, and respect for publication ethics.",
-      "defaultText": "Academic Support for Research With Clinical Purpose",
-      "defaultSubtext": "MedZen Writes is the academic medical consultancy division of MedZen Innovations Pvt. Ltd. We support clinicians, postgraduates, and researchers in presenting their work with clarity, methodological discipline, and respect for publication ethics."
+      "text": "Expert Medical Writing & Research Support",
+      "subtext": "MedZen Writes is the medical research consultancy division of MedZen Innovations Pvt. Ltd. We support clinicians, postgraduates, and researchers in presenting their work with clarity, methodological discipline, and respect for publication ethics.",
+      "defaultText": "Expert Medical Writing & Research Support",
+      "defaultSubtext": "MedZen Writes is the medical research consultancy division of MedZen Innovations Pvt. Ltd. We support clinicians, postgraduates, and researchers in presenting their work with clarity, methodological discipline, and respect for publication ethics."
     },
     {
       "id": "about-purpose-eyebrow",
@@ -520,13 +680,51 @@
       "defaultText": "Good Clinical Research Should Not Remain Unseen"
     },
     {
+      "id": "about-purpose-p1",
+      "page": "about",
+      "section": "Purpose & Mission Section",
+      "tagType": "h4",
+      "label": "Purpose Paragraph 1 (H4)",
+      "text": "Doctors and researchers often work under intense professional demands. Clinical responsibilities, hospital schedules, research deadlines and patient care can leave little time for the detailed work required to structure a thesis, interpret data, prepare a manuscript or respond to publication requirements.",
+      "defaultText": "Doctors and researchers often work under intense professional demands. Clinical responsibilities, hospital schedules, research deadlines, and patient care can leave little time for the detailed work required to structure a thesis, interpret data, prepare a manuscript, or respond to publication requirements."
+    },
+    {
+      "id": "about-purpose-p2",
+      "page": "about",
+      "section": "Purpose & Mission Section",
+      "tagType": "h4",
+      "label": "Purpose Paragraph 2 (H4)",
+      "text": "As a result, valuable research can remain incomplete, unpublished or difficult to communicate clearly.",
+      "defaultText": "As a result, valuable research can remain incomplete, unpublished, or difficult to communicate clearly."
+    },
+    {
+      "id": "about-purpose-p3",
+      "page": "about",
+      "section": "Purpose & Mission Section",
+      "tagType": "h4",
+      "label": "Purpose Paragraph 3 (H4)",
+      "text": "MedZen Writes exists to provide dependable research support around that challenge. We help researchers organise their work, strengthen its presentation and navigate the practical demands of medical writing and publication preparation.",
+      "defaultText": "MedZen Writes exists to provide dependable research support around that challenge. We help researchers organise their work, strengthen its presentation, and navigate the practical demands of medical writing and publication preparation."
+    },
+    {
+      "id": "about-purpose-p4",
+      "page": "about",
+      "section": "Purpose & Mission Section",
+      "tagType": "h4",
+      "label": "Purpose Paragraph 4 (H4)",
+      "text": "Our role is not to replace the researcher’s contribution. It is to support the process with structure, clarity and responsible professional guidance.",
+      "defaultText": "Our role is not to replace the researcher’s contribution. It is to support the process with structure, clarity, and responsible professional guidance."
+    },
+    {
       "id": "about-integrity-h4",
       "page": "about",
       "section": "Integrity Callout Box",
       "tagType": "h4",
       "label": "Integrity Box Title (H4)",
-      "text": "Built on Academic Integrity",
-      "defaultText": "Built on Academic Integrity"
+      "text": "Built on Research Integrity",
+      "subtext": "We believe credible research support must be transparent, ethical and respectful of authorship. Our work is guided by recognised publication principles, including ICMJE and COPE standards. We do not fabricate data, misrepresent findings, provide ghost authorship, or promise publication outcomes. Editorial and peer-review decisions remain independent.",
+      "defaultText": "Built on Research Integrity",
+      "defaultSubtext": "We believe credible research support must be transparent, ethical, and respectful of authorship. Our work is guided by recognised publication principles, including ICMJE and COPE standards. We do not fabricate data, misrepresent findings, provide ghost authorship, or promise publication outcomes. Editorial and peer-review decisions remain independent."
     },
     {
       "id": "about-principles-eyebrow",
@@ -544,9 +742,9 @@
       "tagType": "h2",
       "label": "Principles Section Title (H2)",
       "text": "A Clear, Responsible Approach to Every Project",
-      "subtext": "Clear principles that guide our interactions with authors, mentors, and academic institutions.",
+      "subtext": "Clear principles that guide our interactions with authors, mentors, and research institutions.",
       "defaultText": "A Clear, Responsible Approach to Every Project",
-      "defaultSubtext": "Clear principles that guide our interactions with authors, mentors, and academic institutions."
+      "defaultSubtext": "Clear principles that guide our interactions with authors, mentors, and research institutions."
     },
     {
       "id": "about-principle1-h3",
@@ -555,7 +753,9 @@
       "tagType": "h3",
       "label": "Principle 1 Title (H3)",
       "text": "Medical Accuracy",
-      "defaultText": "Medical Accuracy"
+      "subtext": "Medical writing demands precision. We focus on clear terminology, sound interpretation and a presentation that remains faithful to the clinical and scientific context of the work.",
+      "defaultText": "Medical Accuracy",
+      "defaultSubtext": "Medical writing demands precision. We focus on clear terminology, sound interpretation, and a presentation that remains faithful to the clinical and scientific context of the work."
     },
     {
       "id": "about-principle2-h3",
@@ -564,7 +764,9 @@
       "tagType": "h3",
       "label": "Principle 2 Title (H3)",
       "text": "Confidentiality",
-      "defaultText": "Confidentiality"
+      "subtext": "Research data, patient-related documentation, study materials and drafts are handled with care. Confidentiality and responsible data handling are central to every engagement.",
+      "defaultText": "Confidentiality",
+      "defaultSubtext": "Research data, patient-related documentation, study materials, and drafts are handled with care. Confidentiality and responsible data handling are central to every engagement."
     },
     {
       "id": "about-principle3-h3",
@@ -573,7 +775,9 @@
       "tagType": "h3",
       "label": "Principle 3 Title (H3)",
       "text": "Statistical Rigour",
-      "defaultText": "Statistical Rigour"
+      "subtext": "We communicate clearly about scope, timelines, revision support and the realities of journal publishing. We do not make promises that cannot be ethically guaranteed.",
+      "defaultText": "Statistical Rigour",
+      "defaultSubtext": "We communicate clearly about scope, timelines, revision support, and the realities of journal publishing. We do not make promises that cannot be ethically guaranteed."
     },
     {
       "id": "about-principle4-h3",
@@ -582,7 +786,376 @@
       "tagType": "h3",
       "label": "Principle 4 Title (H3)",
       "text": "Ethical Publication Guidance",
-      "defaultText": "Ethical Publication Guidance"
+      "subtext": "Adherence to ICMJE guidelines, COPE standards and transparent authorship frameworks across every manuscript.",
+      "defaultText": "Ethical Publication Guidance",
+      "defaultSubtext": "Adherence to ICMJE guidelines, COPE standards, and transparent authorship frameworks across every manuscript."
+    },
+    {
+      "id": "services-hero-eyebrow",
+      "page": "services",
+      "section": "Hero Section",
+      "tagType": "eyebrow",
+      "label": "Services Hero Eyebrow",
+      "text": "Comprehensive Research Solutions",
+      "defaultText": "Comprehensive Research Solutions"
+    },
+    {
+      "id": "services-hero-h1",
+      "page": "services",
+      "section": "Hero Section",
+      "tagType": "h1",
+      "label": "Services Hero Title (H1)",
+      "text": "Writing & Editorial Services for Medical Researchers",
+      "subtext": "From initial protocol formulation to journal publication, we offer focused, high-precision medical writing, biostatistics and editorial support across key medical specialties.",
+      "defaultText": "Nine specialized writing services for medical researchers.",
+      "defaultSubtext": "From postgraduate thesis structuring and clinical biostatistics to systematic review synthesis and manuscript conversion, we provide end-to-end medical editorial support."
+    },
+    {
+      "id": "services-list-eyebrow",
+      "page": "services",
+      "section": "Services Grid",
+      "tagType": "eyebrow",
+      "label": "Services Grid Eyebrow",
+      "text": "Service Portfolio",
+      "defaultText": "Specialty Directory"
+    },
+    {
+      "id": "services-list-h2",
+      "page": "services",
+      "section": "Services Grid",
+      "tagType": "h2",
+      "label": "Services Grid Title (H2)",
+      "text": "Specialised Medical Writing & Biostatistics Services",
+      "subtext": "Click any service below to review full scope, deliverables, client prerequisites, and working methodology.",
+      "defaultText": "Comprehensive Medical Writing Solutions",
+      "defaultSubtext": "Click any service below to review full scope, deliverables, client prerequisites, and working methodology."
+    },
+    {
+      "id": "services-feat1-h4",
+      "page": "services",
+      "section": "Services Feature Strip",
+      "tagType": "h4",
+      "label": "Feature Strip Item 1 (H4)",
+      "text": "Target Journal Compliance",
+      "subtext": "Every manuscript is formatted strictly according to author guidelines and word counts.",
+      "defaultText": "Target Journal Compliance",
+      "defaultSubtext": "Every manuscript is formatted strictly according to author guidelines and word counts."
+    },
+    {
+      "id": "services-feat2-h4",
+      "page": "services",
+      "section": "Services Feature Strip",
+      "tagType": "h4",
+      "label": "Feature Strip Item 2 (H4)",
+      "text": "Verified Biostatistics",
+      "subtext": "Computations in SPSS/R with reproducible outputs, exact p-values, and publication tables.",
+      "defaultText": "Verified Biostatistics",
+      "defaultSubtext": "Computations in SPSS/R with reproducible outputs, exact p-values, and publication tables."
+    },
+    {
+      "id": "services-feat3-h4",
+      "page": "services",
+      "section": "Services Feature Strip",
+      "tagType": "h4",
+      "label": "Feature Strip Item 3 (H4)",
+      "text": "Revision Support",
+      "subtext": "Post-delivery revisions to address guide, mentor, or journal peer-review feedback.",
+      "defaultText": "Revision Support",
+      "defaultSubtext": "Post-delivery revisions to address guide, mentor, or journal peer-review feedback."
+    },
+    {
+      "id": "services-feat4-h4",
+      "page": "services",
+      "section": "Services Feature Strip",
+      "tagType": "h4",
+      "label": "Feature Strip Item 4 (H4)",
+      "text": "Strict Confidentiality",
+      "subtext": "Enforceable Non-Disclosure Agreements (NDAs) to protect unpublished research findings.",
+      "defaultText": "Strict Confidentiality",
+      "defaultSubtext": "Enforceable Non-Disclosure Agreements (NDAs) to protect unpublished research findings."
+    },
+    {
+      "id": "pubs-hero-eyebrow",
+      "page": "publications",
+      "section": "Hero Section",
+      "tagType": "eyebrow",
+      "label": "Publications Hero Eyebrow",
+      "text": "",
+      "defaultText": "Evidence & Published Research"
+    },
+    {
+      "id": "pubs-hero-h1",
+      "page": "publications",
+      "section": "Hero Section",
+      "tagType": "h1",
+      "label": "Publications Hero Title (H1)",
+      "text": "Publications Portfolio",
+      "subtext": "A curated showcase of original clinical studies, systematic reviews, and accepted manuscripts supported by MedZen Writes ",
+      "defaultText": "Medical Publications Portfolio",
+      "defaultSubtext": "A curated record of client publications and clinical research papers supported by MedZen Writes across peer-reviewed PubMed, Scopus, and UGC-CARE indexed medical journals."
+    },
+    {
+      "id": "pubs-grid-eyebrow",
+      "page": "publications",
+      "section": "Portfolio Filter",
+      "tagType": "eyebrow",
+      "label": "Portfolio Filter Eyebrow",
+      "text": "Published Works",
+      "defaultText": "Document Archive"
+    },
+    {
+      "id": "pubs-grid-h2",
+      "page": "publications",
+      "section": "Portfolio Grid",
+      "tagType": "h2",
+      "label": "Portfolio Grid Title (H2)",
+      "text": "Accepted Papers & Published Articles",
+      "defaultText": "Recent Accepted Papers & Published Articles"
+    },
+    {
+      "id": "pubs-indexing-h4",
+      "page": "publications",
+      "section": "Indexing Header",
+      "tagType": "h4",
+      "label": "Indexing Coverage (H4)",
+      "text": "Indexed in PubMed / Medline, Scopus, Web of Science, Embase, DOAJ, EMBASE",
+      "defaultText": "Indexed in PubMed / Medline, Scopus, Web of Science, Embase, DOAJ, EMBASE"
+    },
+    {
+      "id": "testi-hero-eyebrow",
+      "page": "testimonials",
+      "section": "Hero Section",
+      "tagType": "eyebrow",
+      "label": "Testimonials Hero Eyebrow",
+      "text": "Client Feedback & Verifications",
+      "defaultText": "Author Feedback & Evidence"
+    },
+    {
+      "id": "testi-hero-h1",
+      "page": "testimonials",
+      "section": "Hero Section",
+      "tagType": "h1",
+      "label": "Testimonials Hero Title (H1)",
+      "text": "Reviews & Testimonials",
+      "subtext": "Verified feedback, Google reviews, WhatsApp conversations and written testimonials from valued clients.",
+      "defaultText": "Doctor Reviews & Testimonials",
+      "defaultSubtext": "Verified feedback and direct review screenshots from clinicians, postgraduate residents, and researchers who entrusted their manuscripts to MedZen Writes."
+    },
+    {
+      "id": "testi-screens-eyebrow",
+      "page": "testimonials",
+      "section": "Review Screenshots Section",
+      "tagType": "eyebrow",
+      "label": "Review Screenshots Eyebrow",
+      "text": "Direct Screenshots",
+      "defaultText": "Public Ratings"
+    },
+    {
+      "id": "testi-screens-h2",
+      "page": "testimonials",
+      "section": "Review Screenshots Section",
+      "tagType": "h2",
+      "label": "Review Screenshots Title (H2)",
+      "text": "Google Reviews ",
+      "subtext": "Direct screenshot captures from our public Google Business review profile and client feedback.",
+      "defaultText": "Google Reviews & Feedback Screenshots",
+      "defaultSubtext": "Direct screenshot captures from our public Google Business review profile and client feedback."
+    },
+    {
+      "id": "testi-whatsapp-eyebrow",
+      "page": "testimonials",
+      "section": "WhatsApp Reviews Section",
+      "tagType": "eyebrow",
+      "label": "WhatsApp Reviews Eyebrow",
+      "text": "Author Communication",
+      "defaultText": "Author Communication"
+    },
+    {
+      "id": "testi-whatsapp-h2",
+      "page": "testimonials",
+      "section": "WhatsApp Reviews Section",
+      "tagType": "h2",
+      "label": "WhatsApp Reviews Title (H2)",
+      "text": "Direct Client Conversations",
+      "subtext": "Unedited message exchanges confirming manuscript submissions, successful revisions, and thesis approvals.",
+      "defaultText": "Direct Client Conversations",
+      "defaultSubtext": "Unedited message exchanges confirming manuscript submissions, successful revisions, and thesis approvals."
+    },
+    {
+      "id": "journal-hero-eyebrow",
+      "page": "journal",
+      "section": "Hero Section",
+      "tagType": "eyebrow",
+      "label": "Journal Hero Eyebrow",
+      "text": "Research Knowledge Base",
+      "defaultText": "Research Knowledge Hub"
+    },
+    {
+      "id": "journal-hero-h1",
+      "page": "journal",
+      "section": "Hero Section",
+      "tagType": "h1",
+      "label": "Journal Hero Title (H1)",
+      "text": "Medical Research & Publishing Journal",
+      "subtext": "Practical insights, biostatistical methodologies, manuscript preparation strategies and journal selection advice for clinical researchers.",
+      "defaultText": "Medical Research & Publishing Journal",
+      "defaultSubtext": "Practical guides on study methodology, IMRaD structuring, biostatistical analysis, and journal submission strategies for postgraduate residents and clinical authors."
+    },
+    {
+      "id": "journal-list-eyebrow",
+      "page": "journal",
+      "section": "Articles Feed",
+      "tagType": "eyebrow",
+      "label": "Articles Feed Eyebrow",
+      "text": "All Articles",
+      "defaultText": "Latest Research Guides"
+    },
+    {
+      "id": "journal-list-h2",
+      "page": "journal",
+      "section": "Articles Feed",
+      "tagType": "h2",
+      "label": "Articles Feed Title (H2)",
+      "text": "Explore Medical Writing & Publishing Insights",
+      "defaultText": "Explore Medical Writing & Publishing Insights"
+    },
+    {
+      "id": "contact-hero-eyebrow",
+      "page": "contact",
+      "section": "Hero Section",
+      "tagType": "eyebrow",
+      "label": "Contact Hero Eyebrow",
+      "text": "Get In Touch",
+      "defaultText": "Research Consultation & Inquiry"
+    },
+    {
+      "id": "contact-hero-h1",
+      "page": "contact",
+      "section": "Hero Section",
+      "tagType": "h1",
+      "label": "Contact Hero Title (H1)",
+      "text": "Contact Us",
+      "subtext": "Discuss your medical manuscript, thesis with our senior research specialists. ",
+      "defaultText": "Contact Our Medical Editorial Team",
+      "defaultSubtext": "Have a thesis, systematic review, or clinical dataset you would like to discuss? Share your study parameters below or reach out directly to our consultation desk."
+    },
+    {
+      "id": "contact-form-eyebrow",
+      "page": "contact",
+      "section": "Consultation Form",
+      "tagType": "eyebrow",
+      "label": "Form Eyebrow",
+      "text": "Confidential Consultation",
+      "defaultText": "Consultation Request"
+    },
+    {
+      "id": "contact-form-h2",
+      "page": "contact",
+      "section": "Consultation Form",
+      "tagType": "h2",
+      "label": "Form Heading (H2)",
+      "text": "Request an Assessment",
+      "subtext": "Share your research objectives, current draft status and timeline. Our team will review and respond back on the next steps.",
+      "defaultText": "Request a Research Assessment",
+      "defaultSubtext": "Share your research objectives, current draft status, and timeline. Our team will review and respond within 24 hours."
+    },
+    {
+      "id": "contact-channels-h3",
+      "page": "contact",
+      "section": "Direct Information",
+      "tagType": "h3",
+      "label": "Direct Channels Heading (H3)",
+      "text": "Direct Communication Channels",
+      "defaultText": "Direct Contact Channels"
+    },
+    {
+      "id": "contact-email-h4",
+      "page": "contact",
+      "section": "Contact Card 2",
+      "tagType": "h4",
+      "label": "Email Card Title (H4)",
+      "text": "Email Inquiries",
+      "subtext": "",
+      "defaultText": "Email Inquiries",
+      "defaultSubtext": "Response time: within 12 hours"
+    },
+    {
+      "id": "contact-phone-h4",
+      "page": "contact",
+      "section": "Contact Card 3",
+      "tagType": "h4",
+      "label": "Phone Card Title (H4)",
+      "text": "WhatsApp & Call",
+      "subtext": "",
+      "defaultText": "WhatsApp & Direct Call",
+      "defaultSubtext": "Direct line for editorial coordinators"
+    },
+    {
+      "id": "contact-hours-h4",
+      "page": "contact",
+      "section": "Contact Card 4",
+      "tagType": "h4",
+      "label": "Hours Card Title (H4)",
+      "text": "Working Hours",
+      "subtext": "Monday – Saturday: 9:00 AM – 7:00 PM IST",
+      "defaultText": "Working Hours",
+      "defaultSubtext": "Monday – Saturday: 9:00 AM – 7:00 PM IST"
+    },
+    {
+      "id": "contact-office-h4",
+      "page": "contact",
+      "section": "Contact Card 1",
+      "tagType": "h4",
+      "label": "Office Card Title (H4)",
+      "text": "Consultation Office",
+      "defaultText": "Consultation Office"
+    },
+    {
+      "id": "contact-nda-h6",
+      "page": "contact",
+      "section": "NDA Clause",
+      "tagType": "h6",
+      "label": "Non-Disclosure Assurance (H6)",
+      "text": "",
+      "defaultText": "All inquiries treated with non-disclosure strict confidentiality"
+    },
+    {
+      "id": "global-cta-eyebrow",
+      "page": "global",
+      "section": "Global CTA Banner",
+      "tagType": "eyebrow",
+      "label": "Global CTA Eyebrow",
+      "text": "Confidential Research Consultation",
+      "defaultText": "Confidential Research Consultation"
+    },
+    {
+      "id": "global-cta-h2",
+      "page": "global",
+      "section": "Global CTA Banner",
+      "tagType": "h2",
+      "label": "Global CTA Main Title (H2)",
+      "text": "Ready to Advance Your Medical Research?",
+      "subtext": "Schedule a confidential discussion with our editorial and biostatistics team. We review your draft, outline an project plan, and provide clear timeline estimates.",
+      "defaultText": "Ready to Advance Your Medical Research?",
+      "defaultSubtext": "Schedule a confidential discussion with our editorial and biostatistics team. We review your draft, outline a project plan, and provide clear timeline estimates."
+    },
+    {
+      "id": "footer-brand-blurb",
+      "page": "global",
+      "section": "Site Footer",
+      "tagType": "h4",
+      "label": "Footer Brand Blurb",
+      "text": "Publishing isn't just a research milestone — it's a gateway to global recognition, clinical impact, and career advancement.",
+      "defaultText": "Publishing isn't just a research milestone — it's a gateway to global recognition, clinical impact, and career advancement."
+    },
+    {
+      "id": "legal-overview-h4",
+      "page": "legal",
+      "section": "Legal Pages Overview",
+      "tagType": "h4",
+      "label": "Legal Section Header (H4)",
+      "text": "Policy Overview & Editorial Governance",
+      "defaultText": "Policy Overview & Editorial Governance"
     },
     {
       "id": "about-stats-eyebrow",
@@ -599,8 +1172,8 @@
       "section": "Statistics / Impact Section",
       "tagType": "h2",
       "label": "Impact Section Title (H2)",
-      "text": "Academic Track Record & Clinical Reach",
-      "defaultText": "Academic Track Record & Clinical Reach"
+      "text": "Proven Track Record & Clinical Reach",
+      "defaultText": "Proven Track Record & Clinical Reach"
     },
     {
       "id": "about-stat1-h3",
@@ -644,8 +1217,8 @@
       "section": "Governance & Registration",
       "tagType": "h5",
       "label": "Governance Title (H5)",
-      "text": "Academic Editorial Consultancy Group — MedZen Innovations",
-      "defaultText": "Academic Editorial Consultancy Group — MedZen Innovations"
+      "text": "Medical Editorial Consultancy Group — MedZen Innovations",
+      "defaultText": "Medical Editorial Consultancy Group — MedZen Innovations"
     },
     {
       "id": "about-compliance-h6",
@@ -655,80 +1228,6 @@
       "label": "Compliance Level (H6)",
       "text": "Compliant with ICMJE, COPE, STROBE & PRISMA standards",
       "defaultText": "Compliant with ICMJE, COPE, STROBE & PRISMA standards"
-    },
-    {
-      "id": "services-hero-eyebrow",
-      "page": "services",
-      "section": "Hero Section",
-      "tagType": "eyebrow",
-      "label": "Services Hero Eyebrow",
-      "text": "Comprehensive Research Solutions",
-      "defaultText": "Comprehensive Research Solutions"
-    },
-    {
-      "id": "services-hero-h1",
-      "page": "services",
-      "section": "Hero Section",
-      "tagType": "h1",
-      "label": "Services Hero Title (H1)",
-      "text": "Academic Writing & Editorial Services for Medical Researchers",
-      "subtext": "From initial protocol formulation to journal publication, we offer focused, high-precision academic writing, biostatistics, and editorial support across 9 key medical specialties.",
-      "defaultText": "Academic Writing & Editorial Services for Medical Researchers",
-      "defaultSubtext": "From initial protocol formulation to journal publication, we offer focused, high-precision academic writing, biostatistics, and editorial support across 9 key medical specialties."
-    },
-    {
-      "id": "services-list-eyebrow",
-      "page": "services",
-      "section": "Services Grid",
-      "tagType": "eyebrow",
-      "label": "Services Grid Eyebrow",
-      "text": "Service Portfolio",
-      "defaultText": "Service Portfolio"
-    },
-    {
-      "id": "services-list-h2",
-      "page": "services",
-      "section": "Services Grid",
-      "tagType": "h2",
-      "label": "Services Grid Title (H2)",
-      "text": "9 Specialised Medical Writing & Biostatistics Services",
-      "defaultText": "9 Specialised Medical Writing & Biostatistics Services"
-    },
-    {
-      "id": "services-feat1-h4",
-      "page": "services",
-      "section": "Services Feature Strip",
-      "tagType": "h4",
-      "label": "Feature Strip Item 1 (H4)",
-      "text": "Target Journal Compliance",
-      "defaultText": "Target Journal Compliance"
-    },
-    {
-      "id": "services-feat2-h4",
-      "page": "services",
-      "section": "Services Feature Strip",
-      "tagType": "h4",
-      "label": "Feature Strip Item 2 (H4)",
-      "text": "Verified Biostatistics",
-      "defaultText": "Verified Biostatistics"
-    },
-    {
-      "id": "services-feat3-h4",
-      "page": "services",
-      "section": "Services Feature Strip",
-      "tagType": "h4",
-      "label": "Feature Strip Item 3 (H4)",
-      "text": "Revision Support",
-      "defaultText": "Revision Support"
-    },
-    {
-      "id": "services-feat4-h4",
-      "page": "services",
-      "section": "Services Feature Strip",
-      "tagType": "h4",
-      "label": "Feature Strip Item 4 (H4)",
-      "text": "Strict Confidentiality",
-      "defaultText": "Strict Confidentiality"
     },
     {
       "id": "services-guarantee-h5",
@@ -749,53 +1248,6 @@
       "defaultText": "Full reporting compliance: STROBE, PRISMA, CARE, CONSORT, SAMPL, SQUIRE 2.0"
     },
     {
-      "id": "pubs-hero-eyebrow",
-      "page": "publications",
-      "section": "Hero Section",
-      "tagType": "eyebrow",
-      "label": "Publications Hero Eyebrow",
-      "text": "Peer-Reviewed Archive",
-      "defaultText": "Peer-Reviewed Archive"
-    },
-    {
-      "id": "pubs-hero-h1",
-      "page": "publications",
-      "section": "Hero Section",
-      "tagType": "h1",
-      "label": "Publications Hero Title (H1)",
-      "text": "Medical Publications Portfolio",
-      "subtext": "A curated showcase of original clinical studies, systematic reviews, and accepted manuscripts supported by MedZen Writes across indexed national and international medical journals.",
-      "defaultText": "Medical Publications Portfolio",
-      "defaultSubtext": "A curated showcase of original clinical studies, systematic reviews, and accepted manuscripts supported by MedZen Writes across indexed national and international medical journals."
-    },
-    {
-      "id": "pubs-grid-eyebrow",
-      "page": "publications",
-      "section": "Portfolio Filter",
-      "tagType": "eyebrow",
-      "label": "Portfolio Filter Eyebrow",
-      "text": "Published Works",
-      "defaultText": "Published Works"
-    },
-    {
-      "id": "pubs-grid-h2",
-      "page": "publications",
-      "section": "Portfolio Grid",
-      "tagType": "h2",
-      "label": "Portfolio Grid Title (H2)",
-      "text": "Recent Accepted Papers & Published Articles",
-      "defaultText": "Recent Accepted Papers & Published Articles"
-    },
-    {
-      "id": "pubs-indexing-h4",
-      "page": "publications",
-      "section": "Indexing Header",
-      "tagType": "h4",
-      "label": "Indexing Coverage (H4)",
-      "text": "Indexed in PubMed / Medline, Scopus, Web of Science, Embase, DOAJ, EMBASE",
-      "defaultText": "Indexed in PubMed / Medline, Scopus, Web of Science, Embase, DOAJ, EMBASE"
-    },
-    {
       "id": "pubs-doi-h5",
       "page": "publications",
       "section": "Verification Tag",
@@ -812,44 +1264,6 @@
       "label": "Authorship Disclaimer (H6)",
       "text": "All publication entries respect client privacy agreements and copyright permissions",
       "defaultText": "All publication entries respect client privacy agreements and copyright permissions"
-    },
-    {
-      "id": "testi-hero-eyebrow",
-      "page": "testimonials",
-      "section": "Hero Section",
-      "tagType": "eyebrow",
-      "label": "Testimonials Hero Eyebrow",
-      "text": "Client Feedback & Verifications",
-      "defaultText": "Client Feedback & Verifications"
-    },
-    {
-      "id": "testi-hero-h1",
-      "page": "testimonials",
-      "section": "Hero Section",
-      "tagType": "h1",
-      "label": "Testimonials Hero Title (H1)",
-      "text": "Reviews & Testimonials",
-      "subtext": "Verified feedback, Google reviews, WhatsApp conversations, and written testimonials from valued clients.",
-      "defaultText": "Doctor Reviews & Testimonials",
-      "defaultSubtext": "Verified feedback, Google reviews, WhatsApp conversations, and written testimonials from clinicians, postgraduate candidates, and department faculty across India and abroad."
-    },
-    {
-      "id": "testi-screens-eyebrow",
-      "page": "testimonials",
-      "section": "Review Screenshots Section",
-      "tagType": "eyebrow",
-      "label": "Review Screenshots Eyebrow",
-      "text": "Direct Screenshots",
-      "defaultText": "Direct Screenshots"
-    },
-    {
-      "id": "testi-screens-h2",
-      "page": "testimonials",
-      "section": "Review Screenshots Section",
-      "tagType": "h2",
-      "label": "Review Screenshots Title (H2)",
-      "text": "Google Reviews & WhatsApp Feedback Screenshots",
-      "defaultText": "Google Reviews & WhatsApp Feedback Screenshots"
     },
     {
       "id": "testi-doc-eyebrow",
@@ -875,8 +1289,8 @@
       "section": "Rating Overview",
       "tagType": "h4",
       "label": "Average Client Rating (H4)",
-      "text": "4.9 / 5.0 Average Rating Across 150+ Verified Academic Projects",
-      "defaultText": "4.9 / 5.0 Average Rating Across 150+ Verified Academic Projects"
+      "text": "4.9 / 5.0 Average Rating Across 150+ Verified Medical Projects",
+      "defaultText": "4.9 / 5.0 Average Rating Across 150+ Verified Medical Projects"
     },
     {
       "id": "testi-hospitals-h5",
@@ -895,44 +1309,6 @@
       "label": "Verification Note (H6)",
       "text": "Every review screenshot is verified with client consent prior to publication",
       "defaultText": "Every review screenshot is verified with client consent prior to publication"
-    },
-    {
-      "id": "journal-hero-eyebrow",
-      "page": "journal",
-      "section": "Hero Section",
-      "tagType": "eyebrow",
-      "label": "Journal Hero Eyebrow",
-      "text": "Academic Knowledge Base",
-      "defaultText": "Academic Knowledge Base"
-    },
-    {
-      "id": "journal-hero-h1",
-      "page": "journal",
-      "section": "Hero Section",
-      "tagType": "h1",
-      "label": "Journal Hero Title (H1)",
-      "text": "Medical Research & Publishing Journal",
-      "subtext": "Practical insights, biostatistical methodologies, manuscript preparation strategies, and journal selection advice for clinical researchers.",
-      "defaultText": "Medical Research & Publishing Journal",
-      "defaultSubtext": "Practical insights, biostatistical methodologies, manuscript preparation strategies, and journal selection advice for clinical researchers."
-    },
-    {
-      "id": "journal-list-eyebrow",
-      "page": "journal",
-      "section": "Articles Feed",
-      "tagType": "eyebrow",
-      "label": "Articles Feed Eyebrow",
-      "text": "All Articles",
-      "defaultText": "All Articles"
-    },
-    {
-      "id": "journal-list-h2",
-      "page": "journal",
-      "section": "Articles Feed",
-      "tagType": "h2",
-      "label": "Articles Feed Title (H2)",
-      "text": "Explore Medical Writing & Publishing Insights",
-      "defaultText": "Explore Medical Writing & Publishing Insights"
     },
     {
       "id": "journal-editorial-h4",
@@ -955,96 +1331,11 @@
     {
       "id": "journal-cite-h6",
       "page": "journal",
-      "section": "Academic Citation",
+      "section": "Research Citation",
       "tagType": "h6",
       "label": "Citation Guideline (H6)",
-      "text": "Open-access educational materials intended for clinical and academic enhancement",
-      "defaultText": "Open-access educational materials intended for clinical and academic enhancement"
-    },
-    {
-      "id": "contact-hero-eyebrow",
-      "page": "contact",
-      "section": "Hero Section",
-      "tagType": "eyebrow",
-      "label": "Contact Hero Eyebrow",
-      "text": "Get In Touch",
-      "defaultText": "Get In Touch"
-    },
-    {
-      "id": "contact-hero-h1",
-      "page": "contact",
-      "section": "Hero Section",
-      "tagType": "h1",
-      "label": "Contact Hero Title (H1)",
-      "text": "Contact Us",
-      "subtext": "Discuss your medical manuscript, thesis, with our senior research specialists. ",
-      "defaultText": "Contact Our Academic Editorial Team",
-      "defaultSubtext": "Discuss your medical manuscript, thesis, or biostatistics requirements directly with our senior research specialists. Confidential, structured, and prompt."
-    },
-    {
-      "id": "contact-form-eyebrow",
-      "page": "contact",
-      "section": "Consultation Form",
-      "tagType": "eyebrow",
-      "label": "Form Eyebrow",
-      "text": "Confidential Consultation",
-      "defaultText": "Confidential Consultation"
-    },
-    {
-      "id": "contact-form-h2",
-      "page": "contact",
-      "section": "Consultation Form",
-      "tagType": "h2",
-      "label": "Form Heading (H2)",
-      "text": "Request an Academic Assessment",
-      "subtext": "Share your research objectives, current draft status, and timeline. Our team will review and respond within 24 hours.",
-      "defaultText": "Request an Academic Assessment",
-      "defaultSubtext": "Share your research objectives, current draft status, and timeline. Our team will review and respond within 24 hours."
-    },
-    {
-      "id": "contact-channels-h3",
-      "page": "contact",
-      "section": "Direct Information",
-      "tagType": "h3",
-      "label": "Direct Channels Heading (H3)",
-      "text": "Direct Communication Channels",
-      "defaultText": "Direct Communication Channels"
-    },
-    {
-      "id": "contact-office-h4",
-      "page": "contact",
-      "section": "Contact Card 1",
-      "tagType": "h4",
-      "label": "Office Card Title (H4)",
-      "text": "Consultation Office",
-      "defaultText": "Consultation Office"
-    },
-    {
-      "id": "contact-email-h4",
-      "page": "contact",
-      "section": "Contact Card 2",
-      "tagType": "h4",
-      "label": "Email Card Title (H4)",
-      "text": "Email Inquiries",
-      "defaultText": "Email Inquiries"
-    },
-    {
-      "id": "contact-phone-h4",
-      "page": "contact",
-      "section": "Contact Card 3",
-      "tagType": "h4",
-      "label": "Phone Card Title (H4)",
-      "text": "WhatsApp & Direct Call",
-      "defaultText": "WhatsApp & Direct Call"
-    },
-    {
-      "id": "contact-hours-h4",
-      "page": "contact",
-      "section": "Contact Card 4",
-      "tagType": "h4",
-      "label": "Hours Card Title (H4)",
-      "text": "Working Hours",
-      "defaultText": "Working Hours"
+      "text": "Open-access educational materials intended for clinical and research enhancement",
+      "defaultText": "Open-access educational materials intended for clinical and research enhancement"
     },
     {
       "id": "contact-loc-h5",
@@ -1052,37 +1343,8 @@
       "section": "Location Detail",
       "tagType": "h5",
       "label": "Headquarters Location (H5)",
-      "text": "Chennai, Tamil Nadu, India — Global Academic Delivery",
-      "defaultText": "Chennai, Tamil Nadu, India — Global Academic Delivery"
-    },
-    {
-      "id": "contact-nda-h6",
-      "page": "contact",
-      "section": "NDA Clause",
-      "tagType": "h6",
-      "label": "Non-Disclosure Assurance (H6)",
-      "text": "Strict Non-Disclosure Guarantee: All manuscripts and datasets remain 100% confidential",
-      "defaultText": "Strict Non-Disclosure Guarantee: All manuscripts and datasets remain 100% confidential"
-    },
-    {
-      "id": "global-cta-eyebrow",
-      "page": "global",
-      "section": "Global CTA Banner",
-      "tagType": "eyebrow",
-      "label": "Global CTA Eyebrow",
-      "text": "Confidential Academic Consultation",
-      "defaultText": "Confidential Academic Consultation"
-    },
-    {
-      "id": "global-cta-h2",
-      "page": "global",
-      "section": "Global CTA Banner",
-      "tagType": "h2",
-      "label": "Global CTA Main Title (H2)",
-      "text": "Ready to Advance Your Medical Research?",
-      "subtext": "Schedule a confidential discussion with our editorial and biostatistics team. We review your draft, outline an academic plan, and provide clear timeline estimates.",
-      "defaultText": "Ready to Advance Your Medical Research?",
-      "defaultSubtext": "Schedule a confidential discussion with our editorial and biostatistics team. We review your draft, outline an academic plan, and provide clear timeline estimates."
+      "text": "Chennai, Tamil Nadu, India — Global Research Delivery",
+      "defaultText": "Chennai, Tamil Nadu, India — Global Research Delivery"
     },
     {
       "id": "global-cta-h3",
@@ -1090,17 +1352,8 @@
       "section": "Global CTA Banner",
       "tagType": "h3",
       "label": "Global CTA Secondary Prompt (H3)",
-      "text": "Direct Phone & WhatsApp Support: +91 88079 09503",
-      "defaultText": "Direct Phone & WhatsApp Support: +91 88079 09503"
-    },
-    {
-      "id": "legal-overview-h4",
-      "page": "legal",
-      "section": "Legal Pages Overview",
-      "tagType": "h4",
-      "label": "Legal Section Header (H4)",
-      "text": "Policy Overview & Academic Governance",
-      "defaultText": "Policy Overview & Academic Governance"
+      "text": "Direct Phone & WhatsApp Support: +91 91763 65161",
+      "defaultText": "Direct Phone & WhatsApp Support: +91 91763 65161"
     },
     {
       "id": "legal-contact-h5",
@@ -1121,6 +1374,6 @@
       "defaultText": "Governed under the laws of Tamil Nadu and the Republic of India"
     }
   ],
-  "lastSavedTime": "13:00:42",
-  "savedAt": "2026-09-24T07:30:42.487Z"
+  "lastSavedTime": "11:50:25",
+  "savedAt": "2026-09-25T06:20:25.247Z"
 }

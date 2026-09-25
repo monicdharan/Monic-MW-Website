@@ -17,7 +17,7 @@ about_html = f"""{gs.get_base_meta(
     "@type": "AboutPage",
     "name": "About MedZen Writes",
     "description": "A medical research writing company helping PG residents and clinicians with thesis writing, manuscript writing, and journal publication.",
-    "url": "https://medzenwrites.in/about",
+    "url": "https://www.medzenwrites.com/about",
     "mainEntity": {{
       "@type": "MedicalBusiness",
       "name": "MedZen Writes",

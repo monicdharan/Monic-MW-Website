@@ -104,7 +104,7 @@ This blueprint establishes the exact visual identity, layout rules, typography h
   - Button 1 (White Clinical Pill): `[calendar_month] Book Free 1-on-1 Consultation`
   - Button 2 (Outline Mint Pill): `[download] Save This Post for Your Dissertation`
 - **Bottom Sign-Off**:
-  - `@medzenwrites` | `medzenwrites.in` | `+91 91763 65161`
+  - `@medzenwrites` | `medzenwrites.com` | `+91 91763 65161`
 
 ---
 

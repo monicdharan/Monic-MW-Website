@@ -19,7 +19,7 @@ services_hub_html = f"""{gs.get_base_meta(
     "@type": "CollectionPage",
     "name": "Medical Research Paper Publication & Thesis Writing Services",
     "description": "Comprehensive medical writing services to support your research and publication goals — from your first protocol to a published, journal-ready manuscript.",
-    "url": "https://medzenwrites.in/services",
+    "url": "https://www.medzenwrites.com/services",
     "provider": {{
       "@type": "MedicalBusiness",
       "name": "MedZen Writes",

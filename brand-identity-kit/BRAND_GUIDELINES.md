@@ -1,6 +1,6 @@
 # MedZen Writes — Master Brand & Visual Identity Guidelines
 
-> **Brand Identity Kit for MedZen Writes (`medzenwrites.in`)**  
+> **Brand Identity Kit for MedZen Writes (`medzenwrites.com`)**  
 > *Novadent-Inspired Medical & Clinical Research Design System*  
 > **Primary Color**: Oceanic Deep Teal (`#004E57`) | **Accent Color**: Fresh Mint (`#00C2B2`)  
 > **Typography**: Plus Jakarta Sans (Headlines) & Inter (Body) | **Icons**: Material Symbols Outlined

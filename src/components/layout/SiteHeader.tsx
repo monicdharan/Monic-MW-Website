@@ -64,7 +64,7 @@ export const SiteHeader: React.FC = () => {
                 type="button"
                 className="btn btn-white btn-sm"
                 onClick={() => openConsultation()}
-                aria-label="Book an academic consultation"
+                aria-label="Book a consultation"
               >
                 <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>
                   calendar_month

@@ -28,13 +28,13 @@ export const ConsultationModal: React.FC = () => {
 
         <div style={{ marginBottom: '24px' }}>
           <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-teal)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-            Academic Consultation
+            Research Consultation
           </span>
           <h3 id="consultation-modal-title" style={{ fontSize: '1.45rem', marginTop: '4px', marginBottom: '8px' }}>
             Schedule a Research Consultation
           </h3>
           <p style={{ fontSize: '0.92rem', color: 'var(--color-ink-soft)', lineHeight: '1.5', margin: 0 }}>
-            Share your research stage or manuscript scope. An academic coordinator will review your requirements and provide a milestone roadmap.
+            Share your research stage or manuscript scope. An editorial coordinator will review your requirements and provide a milestone roadmap.
           </p>
         </div>
 

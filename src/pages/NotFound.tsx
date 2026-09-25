@@ -11,7 +11,7 @@ export const NotFound: React.FC = () => {
         </span>
         <h1 style={{ fontSize: '1.8rem', marginBottom: '10px' }}>Page Not Found</h1>
         <p style={{ fontSize: '0.94rem', color: 'var(--color-ink-soft)', lineHeight: '1.55', marginBottom: '20px' }}>
-          The medical research page or academic document you are looking for may have been moved or updated.
+          The medical research page or publication resource you are looking for may have been moved or updated.
         </p>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '12px' }}>
           <Button variant="primary" to="/">

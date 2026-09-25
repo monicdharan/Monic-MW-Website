@@ -14,9 +14,9 @@ export const Contact: React.FC = () => {
       <section className="editorial-hero" aria-label="Contact MedZen Writes">
         <div className="site-container">
           <div style={{ maxWidth: '820px' }}>
-            <span className="hero-eyebrow">{getEyebrow('contact-hero-eyebrow', 'Academic Consultation & Inquiry')}</span>
+            <span className="hero-eyebrow">{getEyebrow('contact-hero-eyebrow', 'Research Consultation & Inquiry')}</span>
             <h1 className="hero-title">
-              {getHeader('contact-hero-h1', 'Contact Our Academic Editorial Team')}
+              {getHeader('contact-hero-h1', 'Contact Our Medical Editorial Team')}
             </h1>
             <p className="hero-lead">
               {getHeaderSubtext('contact-hero-h1', 'Have a thesis, systematic review, or clinical dataset you would like to discuss? Share your study parameters below or reach out directly to our consultation desk.')}
@@ -28,12 +28,12 @@ export const Contact: React.FC = () => {
       {/* Main 2-Column Content */}
       <section className="editorial-section section-bg-white" aria-labelledby="contact-heading">
         <div className="site-container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: 'clamp(20px, 3.5vw, 36px)', alignItems: 'flex-start' }}>
+          <div className="contact-layout-grid">
             {/* Left: Consultation Form */}
             <div>
               <span className="section-header-eyebrow">{getEyebrow('contact-form-eyebrow', 'Consultation Request')}</span>
               <h2 id="contact-heading" style={{ fontSize: '1.65rem', marginBottom: '6px' }}>
-                {getHeader('contact-form-h2', 'Request an Academic Assessment')}
+                {getHeader('contact-form-h2', 'Request a Research Assessment')}
               </h2>
               <p style={{ fontSize: '0.9rem', color: 'var(--color-ink-soft)', marginBottom: '16px' }}>
                 {getHeaderSubtext('contact-form-h2', 'Share your research objectives, current draft status, and timeline. Our team will review and respond within 24 hours.')}
@@ -61,7 +61,11 @@ export const Contact: React.FC = () => {
                         {currentEmail}
                       </a>
                     </p>
-                    <span style={{ fontSize: '0.78rem', color: 'var(--color-muted)' }}>Response time: within 12 hours</span>
+                    {getHeaderSubtext('contact-email-h4') ? (
+                      <span style={{ fontSize: '0.78rem', color: 'var(--color-muted)', display: 'block' }}>
+                        {getHeaderSubtext('contact-email-h4')}
+                      </span>
+                    ) : null}
                   </div>
 
                   <div>
@@ -73,16 +77,22 @@ export const Contact: React.FC = () => {
                         {currentPhone}
                       </a>
                     </p>
-                    <span style={{ fontSize: '0.78rem', color: 'var(--color-muted)' }}>Direct line for academic coordinators</span>
+                    {getHeaderSubtext('contact-phone-h4') ? (
+                      <span style={{ fontSize: '0.78rem', color: 'var(--color-muted)', display: 'block' }}>
+                        {getHeaderSubtext('contact-phone-h4')}
+                      </span>
+                    ) : null}
                   </div>
 
                   <div>
                     <span style={{ fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--color-teal)', letterSpacing: '0.05em' }}>
                       {getHeader('contact-hours-h4', 'Working Hours')}
                     </span>
-                    <p style={{ margin: '2px 0 0', fontSize: '0.88rem', color: 'var(--color-ink)' }}>
-                      {companyData.workingHours}
-                    </p>
+                    {getHeaderSubtext('contact-hours-h4', companyData.workingHours) ? (
+                      <p style={{ margin: '2px 0 0', fontSize: '0.88rem', color: 'var(--color-ink)' }}>
+                        {getHeaderSubtext('contact-hours-h4', companyData.workingHours)}
+                      </p>
+                    ) : null}
                   </div>
                 </div>
               </div>

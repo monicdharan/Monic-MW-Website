@@ -23,7 +23,7 @@ export const Journal: React.FC = () => {
       <section className="editorial-hero" aria-label="Research Journal">
         <div className="site-container">
           <div style={{ maxWidth: '820px' }}>
-            <span className="hero-eyebrow">{getEyebrow('journal-hero-eyebrow', 'Academic Knowledge Hub')}</span>
+            <span className="hero-eyebrow">{getEyebrow('journal-hero-eyebrow', 'Research Knowledge Hub')}</span>
             <h1 className="hero-title">
               {getHeader('journal-hero-h1', 'Medical Research & Publishing Journal')}
             </h1>
@@ -39,7 +39,7 @@ export const Journal: React.FC = () => {
         <div className="site-container">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px', marginBottom: '16px' }}>
             <div>
-              <span className="section-header-eyebrow">{getEyebrow('journal-list-eyebrow', 'Latest Academic Guides')}</span>
+              <span className="section-header-eyebrow">{getEyebrow('journal-list-eyebrow', 'Latest Research Guides')}</span>
               <h2 id="journal-articles-heading" style={{ fontSize: '1.7rem', margin: 0 }}>
                 {getHeader('journal-list-h2', 'Explore Medical Writing & Publishing Insights')}
               </h2>

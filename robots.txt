@@ -5,4 +5,4 @@ Disallow: /refund-policy
 Disallow: /terms-conditions
 Disallow: /shipping-policy
 
-Sitemap: https://medzenwrites.in/sitemap.xml
+Sitemap: https://www.medzenwrites.com/sitemap.xml

@@ -2,7 +2,7 @@ import { CompanyInfo } from '../types';
 
 export const companyData: CompanyInfo = {
   name: "MedZen Writes",
-  division: "An Academic Division of MedZen Innovations Pvt. Ltd.",
+  division: "A Specialized Division of MedZen Innovations Pvt. Ltd.",
   parentCompany: "MedZen Innovations Pvt. Ltd.",
   tagline: "Medical research writing, biostatistics & manuscript consultancy for clinicians and postgraduate residents.",
   phone: "+919176365161",

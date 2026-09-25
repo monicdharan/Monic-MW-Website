@@ -3,14 +3,14 @@ import { FaqItem } from '../types';
 export const faqsData: FaqItem[] = [
   {
     id: "faq-services-scope",
-    question: "What types of academic and medical writing projects do you support?",
-    answer: "We support the full spectrum of academic medical documentation: Original Research Manuscripts, Systematic Reviews & Meta-Analyses (PRISMA 2020), Medical Case Reports, Postgraduate Medical Dissertations (MD, MS, DNB, DM, MCh), Clinical Biostatistical Reports (SPSS/R), Literature Reviews, Research Protocols/Synopses, and Conference Abstracts & E-Posters.",
+    question: "What types of medical research and writing projects do you support?",
+    answer: "We support the full spectrum of medical research documentation: Original Research Manuscripts, Systematic Reviews & Meta-Analyses (PRISMA 2020), Medical Case Reports, Postgraduate Medical Dissertations (MD, MS, DNB, DM, MCh), Clinical Biostatistical Reports (SPSS/R), Literature Reviews, Research Protocols/Synopses, and Conference Abstracts & E-Posters.",
     category: "general",
   },
   {
     id: "faq-acceptance-guarantee",
     question: "Do you guarantee journal acceptance or indexing?",
-    answer: "No ethical academic writing consultancy can or should guarantee journal acceptance, as editorial decisions rest solely with independent peer-reviewers and journal editors. What we guarantee is rigorous adherence to ICMJE authorship guidelines, target journal formatting compliance, sound biostatistical methodology, and comprehensive support addressing peer-review comments during revision rounds.",
+    answer: "No ethical medical writing consultancy can or should guarantee journal acceptance, as editorial decisions rest solely with independent peer-reviewers and journal editors. What we guarantee is rigorous adherence to ICMJE authorship guidelines, target journal formatting compliance, sound biostatistical methodology, and comprehensive support addressing peer-review comments during revision rounds.",
     category: "ethics",
   },
   {

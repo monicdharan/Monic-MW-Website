@@ -35,7 +35,7 @@ export const Testimonials: React.FC = () => {
             <SectionHeading
               eyebrow={getEyebrow('testi-screens-eyebrow', 'Public Ratings')}
               title={getHeader('testi-screens-h2', 'Google Reviews & Feedback Screenshots')}
-              subtitle="Direct screenshot captures from our public Google Business review profile and client feedback."
+              subtitle={getHeaderSubtext('testi-screens-h2', 'Direct screenshot captures from our public Google Business review profile and client feedback.')}
             />
 
             <div className="screenshot-proof-grid">
@@ -52,9 +52,9 @@ export const Testimonials: React.FC = () => {
         <section className="editorial-section section-bg-paper section-border-top" aria-labelledby="whatsapp-heading">
           <div className="site-container">
             <SectionHeading
-              eyebrow="Author Communication"
-              title="Direct Client Conversations"
-              subtitle="Unedited message exchanges confirming manuscript submissions, successful revisions, and thesis approvals."
+              eyebrow={getEyebrow('testi-whatsapp-eyebrow', 'Author Communication')}
+              title={getHeader('testi-whatsapp-h2', 'Direct Client Conversations')}
+              subtitle={getHeaderSubtext('testi-whatsapp-h2', 'Unedited message exchanges confirming manuscript submissions, successful revisions, and thesis approvals.')}
             />
 
             <div className="screenshot-proof-grid">

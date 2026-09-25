@@ -40,7 +40,7 @@ export const ServiceDetail: React.FC = () => {
       {/* Main Content Body with Sidebar Layout */}
       <section className="editorial-section section-bg-white" aria-labelledby="service-spec-heading">
         <div className="site-container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: 'clamp(20px, 3.5vw, 36px)', alignItems: 'flex-start' }}>
+          <div className="service-detail-layout">
             {/* Main Content Column */}
             <div>
               {/* Section 1: Who it is for */}
@@ -139,7 +139,7 @@ export const ServiceDetail: React.FC = () => {
             </div>
 
             {/* Sidebar Column: Services Directory & Consultation Widget */}
-            <aside style={{ position: 'sticky', top: '96px' }}>
+            <aside className="service-detail-sidebar">
               <div style={{ background: 'var(--color-paper)', border: '1px solid var(--color-line)', borderRadius: 'var(--radius-md)', padding: '18px', marginBottom: '16px' }}>
                 <h4 style={{ fontSize: '0.96rem', color: 'var(--color-ink)', marginBottom: '10px', borderBottom: '1px solid var(--color-line)', paddingBottom: '6px' }}>
                   All Services
@@ -176,7 +176,7 @@ export const ServiceDetail: React.FC = () => {
                   Need Guidance?
                 </h4>
                 <p style={{ fontSize: '0.84rem', color: 'rgba(255, 255, 255, 0.8)', lineHeight: '1.45', marginBottom: '14px' }}>
-                  Our academic coordinators can review your study protocol and provide a milestone roadmap.
+                  Our editorial coordinators can review your study protocol and provide a milestone roadmap.
                 </p>
                 <Button variant="white" size="sm" onClick={() => openConsultation(service.title)} style={{ width: '100%' }}>
                   Book Consultation

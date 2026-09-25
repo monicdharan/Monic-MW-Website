@@ -56,19 +56,19 @@ def generate_service_subpage(slug, title, meta_desc, h1, subhead, intro_p, aeo_s
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://medzenwrites.in"
+            "item": "https://www.medzenwrites.com"
           }},
           {{
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://medzenwrites.in/services"
+            "item": "https://www.medzenwrites.com/services"
           }},
           {{
             "@type": "ListItem",
             "position": 3,
             "name": "{h1}",
-            "item": "https://medzenwrites.in/services/{slug}"
+            "item": "https://www.medzenwrites.com/services/{slug}"
           }}
         ]
       }},

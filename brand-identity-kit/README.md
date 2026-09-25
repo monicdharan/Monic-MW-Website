@@ -1,6 +1,6 @@
 # MedZen Writes — Brand & Visual Identity Kit
 
-Welcome to the official Brand & Visual Identity Kit for **MedZen Writes** (`medzenwrites.in`). This self-contained folder provides all assets, design tokens, typography rules, logos, icons, imagery guidelines, and ready-to-use carousel templates needed to maintain identical visual branding across external projects, social carousels (Instagram & LinkedIn), and academic presentations.
+Welcome to the official Brand & Visual Identity Kit for **MedZen Writes** (`medzenwrites.com`). This self-contained folder provides all assets, design tokens, typography rules, logos, icons, imagery guidelines, and ready-to-use carousel templates needed to maintain identical visual branding across external projects, social carousels (Instagram & LinkedIn), and academic presentations.
 
 ---
 

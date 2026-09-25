@@ -17,7 +17,7 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({
   const { getHeader, getHeaderSubtext } = useAdminData();
 
   const displayTitle = title || getHeader('global-cta-h2', 'Ready to Advance Your Medical Research?');
-  const displaySubtitle = subtitle || getHeaderSubtext('global-cta-h2', 'Schedule a confidential discussion with our editorial and biostatistics team. We review your draft, outline an academic plan, and provide clear timeline estimates.');
+  const displaySubtitle = subtitle || getHeaderSubtext('global-cta-h2', 'Schedule a confidential discussion with our editorial and biostatistics team. We review your draft, outline a project plan, and provide clear timeline estimates.');
 
   return (
     <section className="screenshot-cta-banner" aria-label="Schedule Your Research and Thesis Consultation">

@@ -1,6 +1,6 @@
 # MedZen Writes — Complete Brand & Visual Identity Reference
 
-> **Brand Identity Kit for MedZen Writes (`medzenwrites.in`)**  
+> **Brand Identity Kit for MedZen Writes (`medzenwrites.com`)**  
 > *Novadent-Inspired Medical & Clinical Research Design System*  
 > **Primary Color**: Oceanic Deep Teal (`#004E57`) | **Accent Color**: Fresh Mint (`#00C2B2`)  
 > **Typography**: Plus Jakarta Sans (Headlines) & Inter (Body) | **Icons**: Material Symbols Outlined
@@ -227,7 +227,7 @@ brand-identity-kit/
    - Headline: *"Stuck With Your Thesis or Research Paper?"*.
    - Button 1: *"Book Free 1-on-1 Consultation"*.
    - Button 2: *"Save This Post for Your Dissertation"*.
-   - Contact info: WhatsApp `+91 91763 65161` | `medzenwrites.in`.
+   - Contact info: WhatsApp `+91 91763 65161` | `medzenwrites.com`.
 
 ---
 

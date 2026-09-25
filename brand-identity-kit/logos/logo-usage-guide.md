@@ -65,7 +65,7 @@ When generating carousel slides at **1080 × 1350 px** (Instagram 4:5 Portrait /
 1. Always use `medzen-writes-logo-light.png` on the signature Oceanic Teal (`#004E57`) hero background.
 2. Always use `medzen-writes-logo-dark.png` on white carousel slides, light sage backgrounds, and PDF document headers.
 3. Keep the aspect ratio locked (`height: auto; width: [scale]` or `object-fit: contain`).
-4. Accompany the logo with the verified handle `@medzenwrites` or URL `medzenwrites.in` on carousel footers.
+4. Accompany the logo with the verified handle `@medzenwrites` or URL `medzenwrites.com` on carousel footers.
 
 ### ❌ DO NOT:
 1. **Do NOT squish, stretch, or rotate** the logo mark.

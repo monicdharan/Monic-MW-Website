@@ -17,7 +17,7 @@ publications_html = f"""{gs.get_base_meta(
     "@type": "CollectionPage",
     "name": "Medical Research Publications Portfolio",
     "description": "Explore our portfolio of research and client publications delivered through our medical research paper publication and thesis writing services.",
-    "url": "https://medzenwrites.in/publications",
+    "url": "https://www.medzenwrites.com/publications",
     "provider": {{
       "@type": "MedicalBusiness",
       "name": "MedZen Writes"
@@ -281,7 +281,7 @@ testimonials_html = f"""{gs.get_base_meta(
     "@type": "CollectionPage",
     "name": "Medical Writing Service Reviews & Testimonials",
     "description": "Read verified feedback and testimonials from doctors, PG medical residents, and academic researchers who worked with MedZen Writes.",
-    "url": "https://medzenwrites.in/testimonials"
+    "url": "https://www.medzenwrites.com/testimonials"
   }}
   </script>
 </head>
@@ -605,7 +605,7 @@ blog_html = f"""{gs.get_base_meta(
     "@type": "Blog",
     "name": "MedZen Writes Medical Research & Thesis Blog",
     "description": "Practical guides on thesis writing, journal publication, research methodology, biostatistics, and academic success for MD, MS, DNB and healthcare professionals.",
-    "url": "https://medzenwrites.in/blog",
+    "url": "https://www.medzenwrites.com/blog",
     "publisher": {{
       "@type": "MedicalBusiness",
       "name": "MedZen Writes"
@@ -1035,7 +1035,7 @@ contact_html = f"""{gs.get_base_meta(
     "@type": "ContactPage",
     "name": "Contact MedZen Writes",
     "description": "Get in touch with MedZen Writes for medical research paper publication and thesis writing services. Call, email, or visit our Chennai office.",
-    "url": "https://medzenwrites.in/contact",
+    "url": "https://www.medzenwrites.com/contact",
     "mainEntity": {{
       "@type": "MedicalBusiness",
       "name": "MedZen Writes",
@@ -1321,103 +1321,103 @@ generate_legal_page(
 sitemap_xml = """<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://medzenwrites.in/</loc>
+    <loc>https://www.medzenwrites.com/</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://medzenwrites.in/about</loc>
+    <loc>https://www.medzenwrites.com/about</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medzenwrites.in/services</loc>
+    <loc>https://www.medzenwrites.com/services</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://medzenwrites.in/services/original-research</loc>
+    <loc>https://www.medzenwrites.com/services/original-research</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medzenwrites.in/services/systematic-review</loc>
+    <loc>https://www.medzenwrites.com/services/systematic-review</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medzenwrites.in/services/case-report</loc>
+    <loc>https://www.medzenwrites.com/services/case-report</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medzenwrites.in/services/thesis</loc>
+    <loc>https://www.medzenwrites.com/services/thesis</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medzenwrites.in/services/statistical-analysis</loc>
+    <loc>https://www.medzenwrites.com/services/statistical-analysis</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medzenwrites.in/services/review-article</loc>
+    <loc>https://www.medzenwrites.com/services/review-article</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medzenwrites.in/services/protocol</loc>
+    <loc>https://www.medzenwrites.com/services/protocol</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medzenwrites.in/services/thesis-to-manuscript</loc>
+    <loc>https://www.medzenwrites.com/services/thesis-to-manuscript</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medzenwrites.in/services/abstract-poster</loc>
+    <loc>https://www.medzenwrites.com/services/abstract-poster</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medzenwrites.in/publications</loc>
+    <loc>https://www.medzenwrites.com/publications</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medzenwrites.in/testimonials</loc>
+    <loc>https://www.medzenwrites.com/testimonials</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://medzenwrites.in/blog</loc>
+    <loc>https://www.medzenwrites.com/blog</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://medzenwrites.in/faq</loc>
+    <loc>https://www.medzenwrites.com/faq</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://medzenwrites.in/contact</loc>
+    <loc>https://www.medzenwrites.com/contact</loc>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -1436,7 +1436,7 @@ Disallow: /refund-policy
 Disallow: /terms-conditions
 Disallow: /shipping-policy
 
-Sitemap: https://medzenwrites.in/sitemap.xml
+Sitemap: https://www.medzenwrites.com/sitemap.xml
 """
 
 with open(os.path.join(base_dir, "robots.txt"), "w", encoding="utf-8") as f:

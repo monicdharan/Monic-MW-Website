@@ -313,21 +313,21 @@ def get_base_meta(title, description, canonical_url, is_subpage=False):
   <meta name="description" content="{description}">
   <meta name="keywords" content="medical research paper publication services, medical thesis writing services, PG thesis writing help, medical manuscript writing India, biostatistical analysis SPSS, systematic review meta-analysis PRISMA, MedZen Writes">
   <meta name="author" content="MedZen Writes — Unit of MedZen Innovations Pvt. Ltd.">
-  <link rel="canonical" href="https://medzenwrites.in/{canonical_url}">
+  <link rel="canonical" href="https://www.medzenwrites.com/{canonical_url}">
 
   <!-- Open Graph / Facebook / LinkedIn -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://medzenwrites.in/{canonical_url}">
+  <meta property="og:url" content="https://www.medzenwrites.com/{canonical_url}">
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{description}">
-  <meta property="og:image" content="https://medzenwrites.in/assets/images/hero_doctor.jpg">
+  <meta property="og:image" content="https://www.medzenwrites.com/assets/images/hero_doctor.jpg">
   <meta property="og:site_name" content="MedZen Writes">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{title}">
   <meta name="twitter:description" content="{description}">
-  <meta name="twitter:image" content="https://medzenwrites.in/assets/images/hero_doctor.jpg">
+  <meta name="twitter:image" content="https://www.medzenwrites.com/assets/images/hero_doctor.jpg">
 
   <!-- Google Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

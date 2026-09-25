@@ -2,7 +2,7 @@ import React from 'react';
 
 export const TrustStrip: React.FC = () => {
   return (
-    <section className="trust-strip" aria-label="Core Academic Standards">
+    <section className="trust-strip" aria-label="Core Editorial Standards">
       <div className="site-container">
         <div className="trust-strip-inner">
           <div className="trust-item">

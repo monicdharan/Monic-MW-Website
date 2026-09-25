@@ -845,7 +845,7 @@
 
 /* --------------------------------------------------------------------------
 /* --------------------------------------------------------------------------
-   6. Academic Support 3-Column Square Cards (Screenshot 3 Layout)
+   6. Medical Writing Support 3-Column Square Cards (Screenshot 3 Layout)
    -------------------------------------------------------------------------- */
 .rigor-square-grid {
   display: grid;
@@ -921,7 +921,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .services-grid-cards,
   .services-square-grid {
     grid-template-columns: 1fr;
@@ -942,7 +942,7 @@
   color: inherit;
   box-shadow: var(--shadow-subtle);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
-  min-height: 220px;
+  min-height: 200px;
 }
 
 .service-card-clean:hover,
@@ -952,7 +952,13 @@
   border-color: var(--mint-primary);
 }
 
-.service-card-top,
+.service-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
 .service-square-top {
   display: flex;
   align-items: center;
@@ -966,6 +972,8 @@
   font-size: 1.25rem;
   font-weight: 800;
   color: var(--mint-primary);
+  line-height: 1.25;
+  flex-shrink: 0;
 }
 
 .service-square-icon-box {
@@ -997,6 +1005,8 @@
 .service-card-title-link {
   text-decoration: none;
   color: inherit;
+  flex: 1;
+  min-width: 0;
 }
 
 .service-card-title-link h3,
@@ -1006,7 +1016,7 @@
   font-weight: 700;
   color: var(--text-headline);
   line-height: 1.35;
-  margin-bottom: 6px;
+  margin: 0;
   transition: color var(--transition-fast);
 }
 
@@ -1021,14 +1031,16 @@
   font-size: 0.88rem;
   color: var(--text-body);
   line-height: 1.48;
-  margin: 0;
+  margin: 10px 0 0 0;
+  flex-grow: 1;
 }
 
 .service-card-action,
 .service-square-action {
   display: flex;
   align-items: center;
-  padding-top: 10px;
+  margin-top: 14px;
+  padding-top: 12px;
   border-top: 1px solid var(--border-subtle);
 }
 
@@ -1320,21 +1332,50 @@
   }
 }
 
-/* WhatsApp Review Card - Tall Vertical Card */
+@media (max-width: 480px) {
+  .target-logos-row {
+    gap: 10px;
+  }
+  .target-logo-card {
+    width: calc(50% - 6px);
+    height: 70px;
+    padding: 8px 10px;
+  }
+  .target-logo-img {
+    max-height: 28px;
+    max-width: 95px;
+  }
+  .target-logo-caption {
+    font-size: 0.64rem;
+  }
+}
+
+/* WhatsApp Review Card - Clean Tall Vertical Card (matches Screenshot 2) */
 .whatsapp-review-card {
-  min-height: 420px;
-  justify-content: space-between;
-  padding: 14px;
+  min-height: auto;
+  padding: 0;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.whatsapp-review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+  border-color: #0d9488;
 }
 
 .whatsapp-review-card .screenshot-card-img {
   width: 100%;
-  height: clamp(300px, 32vw, 380px);
-  object-fit: contain;
-  background: #F8FCFC;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-subtle);
+  height: auto;
+  object-fit: cover;
   display: block;
+  border-radius: 16px;
+  border: none;
+  background: transparent;
 }
 
 /* --------------------------------------------------------------------------
@@ -1835,28 +1876,28 @@
 .site-footer {
   background-color: var(--bg-deep-footer);
   color: rgba(255, 255, 255, 0.85);
-  padding: 24px 0 14px;
+  padding: 44px 0 22px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-top-grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1.3fr;
-  gap: 20px 20px;
-  margin-bottom: 16px;
+  gap: 24px 20px;
+  margin-bottom: 24px;
 }
 
 @media (max-width: 960px) {
   .footer-top-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 18px;
+    gap: 20px;
   }
 }
 
 @media (max-width: 540px) {
   .footer-top-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 18px;
   }
 }
 
@@ -1865,13 +1906,13 @@
   font-size: 0.98rem;
   font-weight: 700;
   color: #FFFFFF;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .footer-links-list {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 7px;
 }
 
 .footer-link {
@@ -1954,7 +1995,7 @@
 }
 
 .footer-bottom-bar {
-  padding-top: 12px;
+  padding-top: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
@@ -2353,6 +2394,80 @@
   .indexing-logo-img {
     max-height: 34px;
     max-width: 120px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   19. Master Mobile Responsiveness Layout Classes
+   -------------------------------------------------------------------------- */
+.service-detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: clamp(20px, 3.5vw, 36px);
+  align-items: flex-start;
+}
+
+.service-detail-sidebar {
+  position: sticky;
+  top: 96px;
+}
+
+@media (max-width: 900px) {
+  .service-detail-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .service-detail-sidebar {
+    position: static !important;
+    order: 2;
+  }
+}
+
+.contact-layout-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: clamp(20px, 3.5vw, 36px);
+  align-items: flex-start;
+}
+
+@media (max-width: 860px) {
+  .contact-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .form-row-2col {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* Global Mobile Cleanups */
+@media (max-width: 768px) {
+  .site-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .hero-title {
+    font-size: clamp(1.85rem, 6.5vw, 2.35rem) !important;
+    line-height: 1.2 !important;
+  }
+  .hero-lead {
+    font-size: 0.95rem !important;
+    line-height: 1.55 !important;
+  }
+  .footer-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 }
 

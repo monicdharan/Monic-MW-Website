@@ -19,12 +19,6 @@ export const WhatsAppReviewCard: React.FC<{ review: ReviewScreenshot }> = ({ rev
         }
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px', padding: '0 4px' }}>
-        <span className="material-symbols-outlined" style={{ fontSize: '16px', color: '#16a34a' }}>chat</span>
-        <span style={{ fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-ink)' }}>
-          Verified Message
-        </span>
-      </div>
       <img
         src={review.image}
         alt={`WhatsApp Feedback - ${review.authorName}`}

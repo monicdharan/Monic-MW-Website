@@ -5,7 +5,7 @@ import { companyData } from '../../data/company';
 import { servicesData } from '../../data/services';
 
 export const SiteFooter: React.FC = () => {
-  const { visualContent } = useAdminData();
+  const { visualContent, getHeader } = useAdminData();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -28,7 +28,7 @@ export const SiteFooter: React.FC = () => {
               />
             </Link>
             <p style={{ fontSize: '0.86rem', color: 'rgba(255, 255, 255, 0.78)', lineHeight: '1.5', marginBottom: '12px' }}>
-              Publishing isn't just an academic milestone — it's a gateway to global recognition, clinical impact, and career advancement.
+              {getHeader('footer-brand-blurb', "Publishing isn't just a research milestone — it's a gateway to global recognition, clinical impact, and career advancement.")}
             </p>
             <div className="footer-social-row" style={{ display: 'flex', gap: '10px' }}>
               <a
@@ -175,7 +175,7 @@ export const SiteFooter: React.FC = () => {
           <div>
             © {new Date().getFullYear()} MedZen Writes. A unit of MedZen Innovations Pvt. Ltd. All rights reserved.
           </div>
-          <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap' }}>
             <Link to="/privacy-policy" className="footer-link" style={{ fontSize: '0.84rem' }}>
               Privacy Policy
             </Link>
@@ -187,13 +187,6 @@ export const SiteFooter: React.FC = () => {
             </Link>
             <Link to="/shipping-policy" className="footer-link" style={{ fontSize: '0.84rem' }}>
               Shipping Policy
-            </Link>
-            <Link to="/sitemap" className="footer-link" style={{ fontSize: '0.84rem' }}>
-              Sitemap
-            </Link>
-            <Link to="/admin" className="footer-link" style={{ fontSize: '0.84rem', color: '#93c5fd', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>admin_panel_settings</span>
-              <span>Admin Panel</span>
             </Link>
           </div>
         </div>

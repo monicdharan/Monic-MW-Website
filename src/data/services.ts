@@ -57,7 +57,7 @@ export const servicesData: ServiceItem[] = [
     whoItsFor: [
       "Specialists establishing clinical consensus on controversial treatments or diagnostics.",
       "Postgraduate fellows conducting high-yield secondary research during clinical rotations.",
-      "Academic departments building robust evidence synthesis portfolios.",
+      "Medical departments building robust evidence synthesis portfolios.",
     ],
     includes: [
       "PICO question formulation and PROSPERO protocol preparation.",
@@ -140,12 +140,12 @@ export const servicesData: ServiceItem[] = [
     number: "04",
     title: "Thesis & Dissertation Writing",
     shortDesc: "Receive structured support for postgraduate dissertations—from protocol and chapter planning to data presentation, discussion, and formatting.",
-    heroSubtitle: "Methodical academic support for MD, MS, DNB, DM, and MCh residents balancing demanding clinical duties with mandatory thesis deadlines.",
+    heroSubtitle: "Methodical writing support for MD, MS, DNB, DM, and MCh residents balancing demanding clinical duties with mandatory thesis deadlines.",
     iconName: "fact_check",
     whoItsFor: [
       "MD / MS / DNB postgraduate medical residents facing dissertation submission deadlines.",
       "Super-specialty (DM / MCh / DrNB) fellows preparing final exit dissertations.",
-      "Ph.D. and biomedical research scholars requiring structured academic thesis formatting.",
+      "Ph.D. and biomedical research scholars requiring structured dissertation formatting.",
     ],
     includes: [
       "Complete 5-chapter thesis architecture: Introduction, Review of Literature, Materials & Methods, Results & Observations, Discussion & Summary.",
@@ -153,7 +153,7 @@ export const servicesData: ServiceItem[] = [
       "Accurate sample size validation and statistical methodology framework.",
       "Master data table analysis with corresponding bar charts, pie diagrams, and cross-tabulations.",
       "University-specific layout, pagination, certificate pages, and proforma formatting.",
-      "Turnitin similarity verification ensuring ethical academic integrity.",
+      "Turnitin similarity verification ensuring ethical research integrity.",
     ],
     clientProvides: [
       "Approved synopsis / protocol document.",
@@ -228,11 +228,11 @@ export const servicesData: ServiceItem[] = [
     slug: "review-article",
     number: "06",
     title: "Narrative & Scoping Reviews",
-    shortDesc: "Build authoritative review articles that organise complex literature into a coherent, clinically relevant academic narrative.",
+    shortDesc: "Build authoritative review articles that organise complex literature into a coherent, clinically relevant scientific narrative.",
     heroSubtitle: "Synthesize extensive literature into coherent, highly citable medical review articles providing clinical clarity on critical healthcare themes.",
     iconName: "science",
     whoItsFor: [
-      "Senior consultants establishing academic authority in sub-specialty clinical domains.",
+      "Senior consultants establishing clinical authority in sub-specialty domains.",
       "Postgraduates and junior faculty needing comprehensive subject reviews for institutional portfolios.",
       "Clinical researchers reviewing translational medicine, diagnostic modalities, or pharmacology.",
     ],
@@ -271,7 +271,7 @@ export const servicesData: ServiceItem[] = [
     slug: "protocol",
     number: "07",
     title: "Research Protocols & Synopsis",
-    shortDesc: "Prepare focused, ethically sound research protocols and synopses for academic review, institutional approvals, and project planning.",
+    shortDesc: "Prepare focused, ethically sound research protocols and synopses for committee review, institutional approvals, and project planning.",
     heroSubtitle: "Methodologically sound, ethics-compliant research proposals designed for first-round institutional approvals.",
     iconName: "checklist",
     whoItsFor: [
@@ -315,7 +315,7 @@ export const servicesData: ServiceItem[] = [
     slug: "thesis-to-manuscript",
     number: "08",
     title: "Thesis-to-Manuscript Conversion",
-    shortDesc: "Convert dissertation work into concise, publication-focused manuscripts while retaining the research value and academic ownership of the original study.",
+    shortDesc: "Convert dissertation work into concise, publication-focused manuscripts while retaining the research value and author ownership of the original study.",
     heroSubtitle: "Do not let your hard-earned postgraduate research sit on an archive shelf. Convert your dissertation into indexed journal publications.",
     iconName: "swap_horiz",
     whoItsFor: [
@@ -326,7 +326,7 @@ export const servicesData: ServiceItem[] = [
     includes: [
       "Extraction of core clinical findings from the thesis document.",
       "Drastic condensation from 150+ pages down to 3,000–3,500 words complying with journal word limits.",
-      "Rewriting academic thesis prose into concise, publication-standard scientific language.",
+      "Rewriting dissertation prose into concise, publication-standard scientific language.",
       "Re-analyzing and selecting the most impactful tables and figures (consolidating 30+ tables to 4–5).",
       "Contemporary literature update ensuring references reflect recent 3–5 year advancements.",
       "Target journal selection matching study design, specialty, and indexing requirements.",

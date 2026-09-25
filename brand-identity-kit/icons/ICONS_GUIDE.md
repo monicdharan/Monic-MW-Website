@@ -99,7 +99,7 @@ Used for slide swipe cues, save triggers, and profile footers:
 | `chat` | `<span class="material-symbols-outlined">chat</span>` | WhatsApp consultation / DM prompt |
 | `schedule` | `<span class="material-symbols-outlined">schedule</span>` | 14-Day express delivery timeline |
 | `support_agent` | `<span class="material-symbols-outlined">support_agent</span>` | Dedicated academic coordinator |
-| `open_in_new` | `<span class="material-symbols-outlined">open_in_new</span>` | Link in bio / visit medzenwrites.in |
+| `open_in_new` | `<span class="material-symbols-outlined">open_in_new</span>` | Link in bio / visit medzenwrites.com |
 
 ---
 

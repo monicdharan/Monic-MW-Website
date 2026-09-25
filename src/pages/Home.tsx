@@ -17,7 +17,7 @@ export const Home: React.FC = () => {
   return (
     <div className="page-home">
       {/* ===================================================================
-          1. HERO SECTION (Editorial Medical Research & Academic Publication)
+          1. HERO SECTION (Editorial Medical Research & Journal Publication)
           =================================================================== */}
       <section className="editorial-hero-v2" aria-label="Introduction to MedZen Writes">
         <div className="hero-v2-bg-layer" />
@@ -37,7 +37,7 @@ export const Home: React.FC = () => {
 
               {/* Subtitle */}
               <p className="hero-v2-lead">
-                {getHeaderSubtext('home-hero-h1', visualContent.heroLead || 'Medical writing, biostatistics, and publication support for clinicians, postgraduate doctors, researchers, and medical faculty — delivered with academic integrity and confidentiality.')}
+                {getHeaderSubtext('home-hero-h1', visualContent.heroLead || 'Medical writing, biostatistics, and publication support for clinicians, postgraduate doctors, researchers, and medical faculty — delivered with research integrity and confidentiality.')}
               </p>
 
               {/* Action Buttons */}
@@ -64,7 +64,7 @@ export const Home: React.FC = () => {
               <div className="hero-v2-trust-row" aria-label="Key Commitments">
                 <div className="hero-v2-trust-item">
                   <span className="hero-v2-trust-check" aria-hidden="true">✓</span>
-                  <span>{getHeader('home-trust-item1-h4', 'Academic integrity')}</span>
+                  <span>{getHeader('home-trust-item1-h4', 'Research integrity')}</span>
                 </div>
                 <div className="hero-v2-trust-item">
                   <span className="hero-v2-trust-check" aria-hidden="true">✓</span>
@@ -157,7 +157,7 @@ export const Home: React.FC = () => {
               {getHeader('home-pubs-h2', 'Recent Peer-Reviewed Publications & Accepted Manuscripts')}
             </h2>
             <p style={{ color: 'var(--color-ink-soft)', marginTop: '6px', fontSize: '0.94rem' }}>
-              {getHeaderSubtext('home-pubs-h2', 'A curated selection of published original studies, systematic reviews, and clinical papers developed with our academic support.')}
+              {getHeaderSubtext('home-pubs-h2', 'A curated selection of published original studies, systematic reviews, and clinical papers developed with our research support.')}
             </p>
           </div>
 

@@ -65,7 +65,7 @@
         { "name": "calendar_month", "use_case": "Book a 1-on-1 consultation" },
         { "name": "schedule", "use_case": "Turnaround time guarantee (e.g. 14-day draft)" },
         { "name": "support_agent", "use_case": "24/7 Academic coordinator support" },
-        { "name": "open_in_new", "use_case": "Visit link in bio / medzenwrites.in" },
+        { "name": "open_in_new", "use_case": "Visit link in bio / medzenwrites.com" },
         { "name": "touch_app", "use_case": "Tap to view full carousel" },
         { "name": "all_inclusive", "use_case": "Unlimited revisions until guide approval" }
       ]

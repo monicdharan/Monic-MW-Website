@@ -14,12 +14,12 @@ export const Services: React.FC = () => {
       <section className="editorial-hero" aria-label="Services Overview">
         <div className="site-container">
           <div style={{ maxWidth: '820px' }}>
-            <span className="hero-eyebrow">{getEyebrow('services-hero-eyebrow', 'Academic & Clinical Services')}</span>
+            <span className="hero-eyebrow">{getEyebrow('services-hero-eyebrow', 'Medical & Clinical Services')}</span>
             <h1 className="hero-title">
-              {getHeader('services-hero-h1', 'Nine specialized academic services for medical researchers.')}
+              {getHeader('services-hero-h1', 'Nine specialized writing services for medical researchers.')}
             </h1>
             <p className="hero-lead">
-              {getHeaderSubtext('services-hero-h1', 'From postgraduate thesis structuring and clinical biostatistics to systematic review synthesis and manuscript conversion, we provide end-to-end academic editorial support.')}
+              {getHeaderSubtext('services-hero-h1', 'From postgraduate thesis structuring and clinical biostatistics to systematic review synthesis and manuscript conversion, we provide end-to-end medical editorial support.')}
             </p>
           </div>
         </div>
@@ -54,7 +54,7 @@ export const Services: React.FC = () => {
                 {getHeader('services-feat1-h4', 'Target Journal Compliance')}
               </h4>
               <p style={{ fontSize: '0.86rem', color: 'var(--color-ink-soft)', lineHeight: '1.45', margin: 0 }}>
-                Every manuscript is formatted strictly according to author guidelines and word counts.
+                {getHeaderSubtext('services-feat1-h4', 'Every manuscript is formatted strictly according to author guidelines and word counts.')}
               </p>
             </div>
 
@@ -66,7 +66,7 @@ export const Services: React.FC = () => {
                 {getHeader('services-feat2-h4', 'Verified Biostatistics')}
               </h4>
               <p style={{ fontSize: '0.86rem', color: 'var(--color-ink-soft)', lineHeight: '1.45', margin: 0 }}>
-                Computations in SPSS/R with reproducible outputs, exact p-values, and publication tables.
+                {getHeaderSubtext('services-feat2-h4', 'Computations in SPSS/R with reproducible outputs, exact p-values, and publication tables.')}
               </p>
             </div>
 
@@ -78,7 +78,7 @@ export const Services: React.FC = () => {
                 {getHeader('services-feat3-h4', 'Revision Support')}
               </h4>
               <p style={{ fontSize: '0.86rem', color: 'var(--color-ink-soft)', lineHeight: '1.45', margin: 0 }}>
-                Post-delivery revisions to address guide, mentor, or journal peer-review feedback.
+                {getHeaderSubtext('services-feat3-h4', 'Post-delivery revisions to address guide, mentor, or journal peer-review feedback.')}
               </p>
             </div>
 
@@ -90,7 +90,7 @@ export const Services: React.FC = () => {
                 {getHeader('services-feat4-h4', 'Strict Confidentiality')}
               </h4>
               <p style={{ fontSize: '0.86rem', color: 'var(--color-ink-soft)', lineHeight: '1.45', margin: 0 }}>
-                Enforceable Non-Disclosure Agreements (NDAs) to protect unpublished research findings.
+                {getHeaderSubtext('services-feat4-h4', 'Enforceable Non-Disclosure Agreements (NDAs) to protect unpublished research findings.')}
               </p>
             </div>
           </div>
