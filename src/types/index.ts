@@ -86,8 +86,20 @@ export interface CompanyInfo {
   };
   workingHours: string;
   socials: {
-    linkedin: string;
+    linkedin?: string;
     instagram: string;
     facebook: string;
   };
+}
+
+export interface ConsultationLead {
+  id: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  specialty: string;
+  requiredService: string;
+  researchScope: string;
+  submittedAt: string;
+  status?: 'new' | 'contacted' | 'in-progress' | 'completed';
 }

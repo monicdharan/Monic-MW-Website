@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useRef } from 'react';
-import { PublicationItem, ReviewScreenshot, DoctorTestimonial, JournalArticleItem, FaqItem } from '../types';
+import { PublicationItem, ReviewScreenshot, DoctorTestimonial, JournalArticleItem, FaqItem, ConsultationLead } from '../types';
 import { publicationsData as initialPublications } from '../data/publications';
 import { googleReviews, whatsappReviews, doctorTestimonials as initialDoctorReviews } from '../data/testimonials';
 import { journalArticlesData as initialArticles } from '../data/articles';
@@ -85,6 +85,12 @@ export interface AdminDataContextType {
   getHeader: (id: string, defaultFallback?: string) => string;
   getHeaderSubtext: (id: string, defaultFallback?: string) => string;
   getEyebrow: (id: string, defaultFallback?: string) => string;
+
+  // Consultation Leads & Client Inquiries
+  leads: ConsultationLead[];
+  addLead: (lead: Omit<ConsultationLead, 'id' | 'submittedAt'>) => void;
+  deleteLead: (id: string) => void;
+  updateLeadStatus: (id: string, status: ConsultationLead['status']) => void;
 
   // Persistence & Disk Sync
   isSaving: boolean;
@@ -177,6 +183,9 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   const [faqs, setFaqs] = useState<FaqItem[]>(() =>
     localGet('faqs', staticData.faqs || initialFaqs)
   );
+  const [leads, setLeads] = useState<ConsultationLead[]>(() =>
+    localGet('leads', staticData.leads || [])
+  );
   const [headerTags, setHeaderTags] = useState<HeaderTagItem[]>(() => {
     const cached = localGet<HeaderTagItem[]>('headers', staticData.headerTags || initialHeaderTags);
     return mergeHeaderTags(cached);
@@ -221,6 +230,7 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     if (p.authors) setAuthors(p.authors);
     if (p.visualContent) setVisualContent(p.visualContent);
     if (p.faqs) setFaqs(p.faqs);
+    if (p.leads) setLeads(p.leads);
     if (p.headerTags) setHeaderTags(mergeHeaderTags(p.headerTags));
     if (p.lastSavedTime) setLastSavedTime(p.lastSavedTime);
     setHasUnsavedChanges(false);
@@ -316,6 +326,7 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       authors,
       visualContent,
       faqs,
+      leads,
       headerTags,
       lastSavedTime: nowDisplay,
       savedAt: nowIso,
@@ -330,6 +341,7 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     localSet('authors', authors);
     localSet('visual', visualContent);
     localSet('faqs', faqs);
+    localSet('leads', leads);
     localSet('headers', headerTags);
     localSet('last_saved', nowDisplay);
     localSet('saved_at', nowIso);
@@ -367,7 +379,7 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         clearTimeout(autoSaveTimerRef.current);
       }
     };
-  }, [publications, testimonials, doctorReviews, articles, blogCategories, authors, visualContent, faqs, headerTags, notifyAllTabs]);
+  }, [publications, testimonials, doctorReviews, articles, blogCategories, authors, visualContent, faqs, leads, headerTags, notifyAllTabs]);
 
   // --------------------------------------------------------------------------
   // EXPLICIT SAVE ALL TO DISK (FLUSHES IMMEDIATELY)
@@ -389,6 +401,7 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       authors,
       visualContent,
       faqs,
+      leads,
       headerTags,
       lastSavedTime: nowDisplay,
       savedAt: nowIso,
@@ -403,6 +416,7 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       localSet('authors', authors);
       localSet('visual', visualContent);
       localSet('faqs', faqs);
+      localSet('leads', leads);
       localSet('headers', headerTags);
       localSet('last_saved', nowDisplay);
       localSet('saved_at', nowIso);
@@ -583,6 +597,30 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     setFaqs((prev) => prev.filter((f) => f.id !== id));
   };
 
+  const addLead = (lead: Omit<ConsultationLead, 'id' | 'submittedAt'>) => {
+    const newLead: ConsultationLead = {
+      ...lead,
+      id: `lead-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
+      submittedAt: new Date().toLocaleString('en-IN', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      }),
+      status: 'new',
+    };
+    setLeads((prev) => [newLead, ...prev]);
+  };
+
+  const deleteLead = (id: string) => {
+    setLeads((prev) => prev.filter((l) => l.id !== id));
+  };
+
+  const updateLeadStatus = (id: string, status: ConsultationLead['status']) => {
+    setLeads((prev) => prev.map((l) => (l.id === id ? { ...l, status } : l)));
+  };
+
   // --------------------------------------------------------------------------
   // BACKUP EXPORT & IMPORT
   // --------------------------------------------------------------------------
@@ -596,6 +634,7 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
       authors,
       visualContent,
       faqs,
+      leads,
       headerTags,
       exportedAt: new Date().toISOString(),
     });
@@ -615,6 +654,7 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
           if (json.authors) setAuthors(json.authors);
           if (json.visualContent) setVisualContent(json.visualContent);
           if (json.faqs) setFaqs(json.faqs);
+          if (json.leads) setLeads(json.leads);
           if (json.headerTags) setHeaderTags(mergeHeaderTags(json.headerTags));
 
           await saveAllToDisk();
@@ -638,6 +678,7 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     setAuthors(initialAuthorsList);
     setVisualContent(initialVisualContent);
     setFaqs(initialFaqs);
+    setLeads([]);
     setHeaderTags(initialHeaderTags);
     setHasUnsavedChanges(true);
   };
@@ -670,6 +711,10 @@ export const AdminDataProvider: React.FC<{ children: React.ReactNode }> = ({ chi
         faqs,
         addFaq,
         deleteFaq,
+        leads,
+        addLead,
+        deleteLead,
+        updateLeadStatus,
         headerTags,
         updateHeaderTag,
         addHeaderTag,

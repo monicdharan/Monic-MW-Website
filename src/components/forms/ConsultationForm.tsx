@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { servicesData } from '../../data/services';
+import { useAdminData } from '../../context/AdminDataContext';
 
 interface ConsultationFormProps {
   initialService?: string;
@@ -29,6 +30,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
   initialService = '',
   compact = false,
 }) => {
+  const { addLead } = useAdminData();
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
     email: '',
@@ -90,11 +92,24 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({
 
     setIsSubmitting(true);
 
-    // Simulate reliable consultation request dispatch
+    // Save lead to persistent admin lead storage
+    try {
+      addLead({
+        fullName: formData.fullName.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        specialty: formData.specialty.trim(),
+        requiredService: formData.requiredService,
+        researchScope: formData.researchScope.trim(),
+      });
+    } catch (err) {
+      console.warn('[ConsultationForm] Error capturing lead:', err);
+    }
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 900);
+    }, 600);
   };
 
   if (isSubmitted) {

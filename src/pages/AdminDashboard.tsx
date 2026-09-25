@@ -2,9 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAdminData } from '../context/AdminDataContext';
 import { TagLevel, PageKey } from '../data/headerTags';
+import { ConsultationLead } from '../types';
 import '../styles/admin.css';
 
 type AdminTab =
+  | 'leads'
   | 'header-tags'
   | 'home-content'
   | 'about-content'
@@ -47,6 +49,9 @@ export const AdminDashboard: React.FC = () => {
     addHeaderTag,
     deleteHeaderTag,
     resetHeaderTags,
+    leads,
+    deleteLead,
+    updateLeadStatus,
     isSaving,
     hasUnsavedChanges,
     lastSavedTime,
@@ -56,9 +61,13 @@ export const AdminDashboard: React.FC = () => {
     resetToDefaults,
   } = useAdminData();
 
-  const [activeTab, setActiveTab] = useState<AdminTab>('header-tags');
+  const [activeTab, setActiveTab] = useState<AdminTab>('leads');
   const [successToast, setSuccessToast] = useState<string | null>(null);
   const fileImportRef = useRef<HTMLInputElement>(null);
+
+  // Leads search & filter state
+  const [leadFilterStatus, setLeadFilterStatus] = useState<string>('all');
+  const [leadSearchQuery, setLeadSearchQuery] = useState<string>('');
 
   const showToast = (msg: string) => {
     setSuccessToast(msg);
@@ -385,6 +394,41 @@ export const AdminDashboard: React.FC = () => {
         </div>
 
         <nav className="admin-nav">
+          <div className="admin-nav-divider">CLIENT LEADS &amp; INQUIRIES</div>
+
+          <button
+            type="button"
+            className={`admin-nav-item ${activeTab === 'leads' ? 'active' : ''}`}
+            onClick={() => setActiveTab('leads')}
+            style={
+              activeTab === 'leads'
+                ? { background: '#ecfdf5', color: '#047857', borderColor: '#a7f3d0' }
+                : {}
+            }
+          >
+            <span
+              className="material-symbols-outlined admin-nav-icon"
+              style={{ color: activeTab === 'leads' ? '#047857' : '#0d9488' }}
+            >
+              mark_email_unread
+            </span>
+            <span style={{ fontWeight: 700, flex: 1, textAlign: 'left' }}>Inquiries &amp; Leads</span>
+            {leads && leads.length > 0 && (
+              <span
+                style={{
+                  background: leads.some((l) => !l.status || l.status === 'new') ? '#ef4444' : '#0d9488',
+                  color: '#ffffff',
+                  fontSize: '0.72rem',
+                  fontWeight: 700,
+                  padding: '2px 7px',
+                  borderRadius: '9999px',
+                }}
+              >
+                {leads.length}
+              </span>
+            )}
+          </button>
+
           <div className="admin-nav-divider">CORE SYSTEM</div>
 
           <button
@@ -1683,6 +1727,341 @@ export const AdminDashboard: React.FC = () => {
                 ))}
               </div>
             </div>
+          </section>
+        )}
+
+        {/* ===================================================================
+            TAB: CLIENT LEADS & CONSULTATION INQUIRIES
+            =================================================================== */}
+        {activeTab === 'leads' && (
+          <section>
+            <div className="admin-page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px' }}>
+              <div>
+                <h1 className="admin-page-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span className="material-symbols-outlined" style={{ color: '#0d9488', fontSize: '28px' }}>
+                    mark_email_unread
+                  </span>
+                  Consultation Leads &amp; Inquiries
+                </h1>
+                <p className="admin-page-subtitle">
+                  Review, contact, and manage client inquiries submitted from the website consultation form.
+                </p>
+              </div>
+
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <button
+                  type="button"
+                  className="admin-btn-save-main"
+                  onClick={() => {
+                    if (!leads || leads.length === 0) {
+                      alert('No leads available to export.');
+                      return;
+                    }
+                    const headers = ['Date Submitted', 'Full Name', 'Email', 'Phone', 'Specialty', 'Required Service', 'Status', 'Research Scope / Notes'];
+                    const rows = leads.map(l => [
+                      `"${new Date(l.submittedAt).toLocaleString()}"`,
+                      `"${(l.fullName || '').replace(/"/g, '""')}"`,
+                      `"${(l.email || '').replace(/"/g, '""')}"`,
+                      `"${(l.phone || '').replace(/"/g, '""')}"`,
+                      `"${(l.specialty || '').replace(/"/g, '""')}"`,
+                      `"${(l.requiredService || '').replace(/"/g, '""')}"`,
+                      `"${(l.status || 'new').toUpperCase()}"`,
+                      `"${(l.researchScope || '').replace(/"/g, '""')}"`
+                    ]);
+                    const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
+                    const encodedUri = encodeURI(csvContent);
+                    const link = document.createElement('a');
+                    link.setAttribute('href', encodedUri);
+                    link.setAttribute('download', `medzen_leads_${new Date().toISOString().slice(0, 10)}.csv`);
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    showToast('Leads exported to CSV successfully!');
+                  }}
+                  style={{ background: '#0d9488', display: 'flex', alignItems: 'center', gap: '6px' }}
+                >
+                  <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>download</span>
+                  Export Leads (CSV)
+                </button>
+              </div>
+            </div>
+
+            {/* Quick Stats Grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '14px', marginBottom: '20px' }}>
+              <div className="admin-card" style={{ padding: '16px', display: 'flex', alignItems: 'center', gap: '14px' }}>
+                <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: '#ecfdf5', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#059669' }}>
+                  <span className="material-symbols-outlined">inbox</span>
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>Total Leads</div>
+                  <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0f172a' }}>{leads.length}</div>
+                </div>
+              </div>
+
+              <div className="admin-card" style={{ padding: '16px', display: 'flex', alignItems: 'center', gap: '14px' }}>
+                <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: '#fef2f2', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#dc2626' }}>
+                  <span className="material-symbols-outlined">mark_email_unread</span>
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>New / Pending</div>
+                  <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#dc2626' }}>
+                    {leads.filter(l => !l.status || l.status === 'new').length}
+                  </div>
+                </div>
+              </div>
+
+              <div className="admin-card" style={{ padding: '16px', display: 'flex', alignItems: 'center', gap: '14px' }}>
+                <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: '#eff6ff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2563eb' }}>
+                  <span className="material-symbols-outlined">contact_phone</span>
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>Contacted</div>
+                  <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#2563eb' }}>
+                    {leads.filter(l => l.status === 'contacted' || l.status === 'in-progress').length}
+                  </div>
+                </div>
+              </div>
+
+              <div className="admin-card" style={{ padding: '16px', display: 'flex', alignItems: 'center', gap: '14px' }}>
+                <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: '#f0fdf4', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#16a34a' }}>
+                  <span className="material-symbols-outlined">check_circle</span>
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>Completed</div>
+                  <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#16a34a' }}>
+                    {leads.filter(l => l.status === 'completed').length}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Filter & Search Bar */}
+            <div className="admin-card" style={{ marginBottom: '20px', padding: '14px' }}>
+              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
+                <div style={{ flex: '1 1 240px', position: 'relative' }}>
+                  <input
+                    type="text"
+                    className="admin-input"
+                    placeholder="Search by client name, email, phone, or specialty..."
+                    value={leadSearchQuery}
+                    onChange={(e) => setLeadSearchQuery(e.target.value)}
+                    style={{ paddingLeft: '36px' }}
+                  />
+                  <span
+                    className="material-symbols-outlined"
+                    style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8', fontSize: '18px' }}
+                  >
+                    search
+                  </span>
+                </div>
+
+                <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                  <label style={{ fontSize: '0.84rem', fontWeight: 600, color: '#475569' }}>Status:</label>
+                  <select
+                    className="admin-select"
+                    style={{ width: 'auto', minWidth: '130px', padding: '6px 10px' }}
+                    value={leadFilterStatus}
+                    onChange={(e) => setLeadFilterStatus(e.target.value)}
+                  >
+                    <option value="all">All Statuses</option>
+                    <option value="new">New / Pending</option>
+                    <option value="contacted">Contacted</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="completed">Completed</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            {/* Leads List / Cards */}
+            {leads.length === 0 ? (
+              <div className="admin-card" style={{ textAlign: 'center', padding: '48px 20px', color: '#64748b' }}>
+                <span className="material-symbols-outlined" style={{ fontSize: '48px', color: '#cbd5e1', marginBottom: '12px' }}>
+                  inbox
+                </span>
+                <h3 style={{ margin: '0 0 6px', color: '#1e293b' }}>No consultation leads yet</h3>
+                <p style={{ margin: 0, fontSize: '0.9rem' }}>
+                  When visitors or doctors submit the consultation form on your website, their details will instantly appear here.
+                </p>
+              </div>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                {leads
+                  .filter((lead) => {
+                    const matchesStatus =
+                      leadFilterStatus === 'all' ||
+                      (leadFilterStatus === 'new' && (!lead.status || lead.status === 'new')) ||
+                      lead.status === leadFilterStatus;
+                    const query = leadSearchQuery.toLowerCase();
+                    const matchesQuery =
+                      !query ||
+                      (lead.fullName && lead.fullName.toLowerCase().includes(query)) ||
+                      (lead.email && lead.email.toLowerCase().includes(query)) ||
+                      (lead.phone && lead.phone.toLowerCase().includes(query)) ||
+                      (lead.specialty && lead.specialty.toLowerCase().includes(query)) ||
+                      (lead.requiredService && lead.requiredService.toLowerCase().includes(query)) ||
+                      (lead.researchScope && lead.researchScope.toLowerCase().includes(query));
+                    return matchesStatus && matchesQuery;
+                  })
+                  .map((lead) => {
+                    const cleanPhone = (lead.phone || '').replace(/[^0-9]/g, '');
+                    const waLink = cleanPhone ? `https://wa.me/${cleanPhone.length === 10 ? '91' + cleanPhone : cleanPhone}` : null;
+                    const currentStatus = lead.status || 'new';
+
+                    const statusBadgeColors = {
+                      new: { bg: '#fee2e2', text: '#991b1b', border: '#fca5a5', label: 'New Inquiry' },
+                      contacted: { bg: '#e0f2fe', text: '#0369a1', border: '#bae6fd', label: 'Contacted' },
+                      'in-progress': { bg: '#fef3c7', text: '#92400e', border: '#fde68a', label: 'In Progress' },
+                      completed: { bg: '#dcfce7', text: '#15803d', border: '#86efac', label: 'Completed' },
+                    }[currentStatus] || { bg: '#f1f5f9', text: '#475569', border: '#e2e8f0', label: currentStatus };
+
+                    return (
+                      <div
+                        key={lead.id}
+                        className="admin-card"
+                        style={{
+                          padding: '20px',
+                          borderLeft: `4px solid ${currentStatus === 'new' ? '#ef4444' : currentStatus === 'completed' ? '#22c55e' : '#0ea5e9'}`,
+                        }}
+                      >
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '12px', marginBottom: '14px' }}>
+                          <div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                              <h3 style={{ margin: 0, fontSize: '1.15rem', color: '#0f172a', fontWeight: 700 }}>
+                                {lead.fullName}
+                              </h3>
+                              <span
+                                style={{
+                                  background: statusBadgeColors.bg,
+                                  color: statusBadgeColors.text,
+                                  border: `1px solid ${statusBadgeColors.border}`,
+                                  padding: '2px 8px',
+                                  borderRadius: '9999px',
+                                  fontSize: '0.74rem',
+                                  fontWeight: 700,
+                                }}
+                              >
+                                {statusBadgeColors.label}
+                              </span>
+                            </div>
+                            <div style={{ fontSize: '0.82rem', color: '#64748b', marginTop: '4px' }}>
+                              Submitted: {new Date(lead.submittedAt).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })}
+                            </div>
+                          </div>
+
+                          {/* Quick Contact & Action Buttons */}
+                          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+                            {lead.phone && (
+                              <>
+                                <a
+                                  href={`tel:${lead.phone}`}
+                                  className="admin-btn-secondary-action"
+                                  style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', padding: '5px 10px', color: '#0f172a' }}
+                                  title="Call Phone"
+                                >
+                                  <span className="material-symbols-outlined" style={{ fontSize: '16px', color: '#0284c7' }}>call</span>
+                                  <span>{lead.phone}</span>
+                                </a>
+
+                                {waLink && (
+                                  <a
+                                    href={waLink}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="admin-btn-secondary-action"
+                                    style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', padding: '5px 10px', color: '#15803d', background: '#f0fdf4', borderColor: '#bbf7d0' }}
+                                    title="Open WhatsApp Chat"
+                                  >
+                                    <span className="material-symbols-outlined" style={{ fontSize: '16px', color: '#22c55e' }}>chat</span>
+                                    <span>WhatsApp</span>
+                                  </a>
+                                )}
+                              </>
+                            )}
+
+                            {lead.email && (
+                              <a
+                                href={`mailto:${lead.email}?subject=MedZen Consultation Inquiry - ${encodeURIComponent(lead.requiredService || 'Medical Writing')}`}
+                                className="admin-btn-secondary-action"
+                                style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', padding: '5px 10px', color: '#4338ca', background: '#eef2ff', borderColor: '#c7d2fe' }}
+                                title="Send Email"
+                              >
+                                <span className="material-symbols-outlined" style={{ fontSize: '16px', color: '#6366f1' }}>mail</span>
+                                <span>{lead.email}</span>
+                              </a>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Details grid */}
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px', background: '#f8fafc', padding: '12px 16px', borderRadius: '8px', marginBottom: '14px' }}>
+                          <div>
+                            <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.04em', display: 'block' }}>
+                              Specialty / Department
+                            </span>
+                            <strong style={{ fontSize: '0.92rem', color: '#1e293b' }}>{lead.specialty || 'Not specified'}</strong>
+                          </div>
+
+                          <div>
+                            <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.04em', display: 'block' }}>
+                              Required Service
+                            </span>
+                            <strong style={{ fontSize: '0.92rem', color: '#1e293b' }}>{lead.requiredService || 'General Consultation'}</strong>
+                          </div>
+                        </div>
+
+                        {/* Research Scope / Inquiry Description */}
+                        {lead.researchScope && (
+                          <div style={{ marginBottom: '14px' }}>
+                            <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#475569', display: 'block', marginBottom: '4px' }}>
+                              Research Stage / Project Notes:
+                            </span>
+                            <div style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '6px', padding: '10px 12px', fontSize: '0.88rem', color: '#334155', lineHeight: 1.5, whiteSpace: 'pre-wrap' }}>
+                              {lead.researchScope}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Footer Status Switcher & Delete */}
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '10px', borderTop: '1px solid #f1f5f9', flexWrap: 'wrap', gap: '10px' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <span style={{ fontSize: '0.82rem', fontWeight: 600, color: '#64748b' }}>Update Status:</span>
+                            <select
+                              className="admin-select"
+                              style={{ width: 'auto', padding: '4px 8px', fontSize: '0.82rem' }}
+                              value={currentStatus}
+                              onChange={(e) => {
+                                updateLeadStatus(lead.id, e.target.value as ConsultationLead['status']);
+                                showToast(`Lead status updated to ${e.target.value}`);
+                              }}
+                            >
+                              <option value="new">New / Pending</option>
+                              <option value="contacted">Contacted</option>
+                              <option value="in-progress">In Progress</option>
+                              <option value="completed">Completed</option>
+                            </select>
+                          </div>
+
+                          <button
+                            type="button"
+                            className="admin-btn-secondary-action"
+                            style={{ color: '#ef4444', padding: '4px 10px', fontSize: '0.82rem', display: 'flex', alignItems: 'center', gap: '4px' }}
+                            onClick={() => {
+                              if (window.confirm(`Are you sure you want to remove lead for "${lead.fullName}"?`)) {
+                                deleteLead(lead.id);
+                                showToast('Lead removed.');
+                              }
+                            }}
+                          >
+                            <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>delete</span>
+                            Remove Lead
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            )}
           </section>
         )}
 
