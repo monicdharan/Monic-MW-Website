@@ -251,7 +251,7 @@ export const AdminDashboard: React.FC = () => {
       image: testiImage,
       authorName: testiAuthor.trim() || 'Verified Doctor / Client',
       caption: testiCaption.trim() || 'Verified feedback on research and thesis service.',
-      type: 'google',
+      type: 'whatsapp',
       stars: 5,
     });
 
@@ -259,7 +259,7 @@ export const AdminDashboard: React.FC = () => {
     setTestiAuthor('');
     setTestiCaption('');
     if (testiFileInputRef.current) testiFileInputRef.current.value = '';
-    showToast('Testimonial screenshot uploaded successfully!');
+    showToast('WhatsApp / Client review screenshot uploaded successfully!');
   };
 
   // --------------------------------------------------------------------------

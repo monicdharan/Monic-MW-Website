@@ -7,7 +7,10 @@ import { CtaBanner } from '../components/sections/CtaBanner';
 export const Testimonials: React.FC = () => {
   const { testimonials, getHeader, getEyebrow, getHeaderSubtext } = useAdminData();
 
-  const whatsappList = testimonials.filter((t) => t.type === 'whatsapp');
+  // Display all WhatsApp reviews and any uploaded client feedback screenshots
+  const displayList = testimonials.filter(
+    (t) => t.type === 'whatsapp' || t.id?.startsWith('testi-') || t.id?.startsWith('whatsapp-') || (!t.id?.startsWith('google-') && t.image)
+  );
 
   return (
     <div className="page-testimonials">
@@ -36,7 +39,7 @@ export const Testimonials: React.FC = () => {
           />
 
           <div className="screenshot-proof-grid">
-            {whatsappList.map((rev) => (
+            {displayList.map((rev) => (
               <WhatsAppReviewCard key={rev.id} review={rev} />
             ))}
           </div>
